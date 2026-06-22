@@ -1,0 +1,8 @@
+faiss-cpu>=1.9
+google-genai>=1.0
+numpy>=2.0
+openai>=1.60
+pandas>=2.2
+python-dotenv>=1.0
+streamlit>=1.40
+pytest>=8.0

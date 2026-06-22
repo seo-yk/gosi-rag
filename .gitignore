@@ -1,0 +1,14 @@
+.DS_Store
+.env
+.venv/
+__pycache__/
+.pytest_cache/
+*.py[cod]
+*.egg-info/
+
+data/*.csv
+!data/*.example.csv
+index/*.faiss
+index/metadata.json
+output/*.csv
+output/*.txt
