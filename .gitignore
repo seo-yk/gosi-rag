@@ -8,6 +8,7 @@ __pycache__/
 
 data/*.csv
 !data/*.example.csv
+!data/faq.csv
 index/*.faiss
 index/metadata.json
 output/*.csv
