@@ -9,7 +9,17 @@ from dotenv import load_dotenv
 from google import genai
 from openai import OpenAI
 
-from src.generation import GeminiAnswerGenerator
+
+def _load_project_env() -> None:
+    env_file = os.environ.get("FAQ_ENV_FILE", "").strip()
+    if env_file:
+        load_dotenv(env_file, override=True)
+        return
+    load_dotenv(".env.local", override=True)
+    load_dotenv(".env", override=False)
+
+
+from src.generation import GeminiAnswerGenerator, GeneratedAnswer
 from src.indexing import build_embedder, index_bundle_paths, load_documents
 from src.retrieval import FaissRetriever
 
@@ -31,14 +41,14 @@ class Settings:
 
     @classmethod
     def from_mapping(cls, values: Mapping[str, str]) -> "Settings":
-        openai_api_key = values.get("OPENAI_API_KEY", "").strip()
         gemini_api_key = values.get("GEMINI_API_KEY", "").strip()
-        if not openai_api_key:
-            raise ValueError("OPENAI_API_KEY 환경변수가 필요합니다.")
         if not gemini_api_key:
             raise ValueError("GEMINI_API_KEY 환경변수가 필요합니다.")
 
         embedding_provider = values.get("FAQ_EMBEDDING_PROVIDER", "openai")
+        openai_api_key = values.get("OPENAI_API_KEY", "").strip()
+        if embedding_provider == "openai" and not openai_api_key:
+            raise ValueError("OPENAI_API_KEY 환경변수가 필요합니다.")
         chunking_mode = values.get("FAQ_CHUNKING_MODE", "row")
         embedding_mode = values.get("FAQ_EMBEDDING_MODE", "title_body")
         top_k = int(values.get("FAQ_TOP_K", "3"))
@@ -91,7 +101,7 @@ def main() -> None:
     st.title("국가공무원 채용시험 FAQ RAG")
     st.caption("국가공무원 채용시험 FAQ를 검색하고 근거 기반 답변을 생성합니다.")
 
-    load_dotenv()
+    _load_project_env()
     try:
         settings = Settings.from_mapping(os.environ)
         retriever, generator = build_services(settings)
@@ -111,15 +121,28 @@ def main() -> None:
 
         try:
             results = retriever.search(question, top_k=settings.top_k)
-            generated = generator.generate(question, results)
         except Exception as error:
-            st.error(f"질의 처리 중 오류가 발생했습니다: {error}")
+            st.error(f"검색 중 오류가 발생했습니다: {error}")
             return
 
+        try:
+            generated = generator.generate(question, results)
+            answer = generated
+            generation_notice = None
+        except Exception as error:
+            answer = GeneratedAnswer(
+                "Gemini 응답이 지연되어 검색 결과만 먼저 보여드립니다.\n잠시 후 다시 시도하면 답변을 받을 수 있습니다.",
+                tuple(results),
+            )
+            generation_notice = f"답변 생성은 건너뛰고 검색 결과만 표시했어요: {error}"
+
+        if generation_notice:
+            st.warning(generation_notice)
+
         st.subheader("답변")
-        st.write(generated.text)
+        st.write(answer.text)
         st.subheader("출처")
-        for source in generated.sources:
+        for source in answer.sources:
             document = source.document
             with st.expander(
                 f"FAQ {document.resolved_row_id} · {document.title} · 유사도 {source.score:.3f}"

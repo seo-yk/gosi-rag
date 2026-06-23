@@ -9,6 +9,17 @@ from typing import Sequence
 
 import faiss
 from dotenv import load_dotenv
+
+
+def _load_project_env() -> None:
+    env_file = os.environ.get("FAQ_ENV_FILE", "").strip()
+    if env_file:
+        load_dotenv(env_file, override=True)
+        return
+    load_dotenv(".env.local", override=True)
+    load_dotenv(".env", override=False)
+
+
 from src.indexing import (
     ChunkingMode,
     EmbeddingMode,
@@ -124,7 +135,7 @@ def main() -> None:
     parser.add_argument("--top-ks", nargs="+", type=int, default=[3, 5])
     args = parser.parse_args()
 
-    load_dotenv()
+    _load_project_env()
     embedders = {provider: build_embedder(provider, os.environ) for provider in args.providers}
     questions = read_questions(args.questions)
     rows = _experiment_rows(

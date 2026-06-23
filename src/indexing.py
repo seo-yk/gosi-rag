@@ -6,13 +6,22 @@ import os
 import re
 from dataclasses import asdict, dataclass
 from pathlib import Path
-from typing import Any, Literal, Protocol, Sequence
+from typing import Any, Literal, Mapping, Protocol, Sequence
 
 import faiss
 import numpy as np
 import pandas as pd
 from dotenv import load_dotenv
 from openai import OpenAI
+
+
+def _load_project_env() -> None:
+    env_file = os.environ.get("FAQ_ENV_FILE", "").strip()
+    if env_file:
+        load_dotenv(env_file, override=True)
+        return
+    load_dotenv(".env.local", override=True)
+    load_dotenv(".env", override=False)
 
 
 EmbeddingMode = Literal["title", "title_body"]
@@ -349,7 +358,7 @@ def main() -> None:
     parser.add_argument("--embedding-modes", nargs="+", default=["title", "title_body"])
     args = parser.parse_args()
 
-    load_dotenv()
+    _load_project_env()
     embedders = {provider: build_embedder(provider, os.environ) for provider in args.providers}
     build_indexes(
         args.csv,

@@ -1,15 +1,22 @@
+# macOS / Python
 .DS_Store
-.env
 .venv/
 __pycache__/
 .pytest_cache/
 *.py[cod]
 *.egg-info/
 
+# Secrets / local env files
+.env
+.env.*
+!.env.example
+
+# Generated data
+index/**/*.faiss
+index/**/metadata.json
+output/*.csv
+output/*.txt
+
 data/*.csv
 !data/*.example.csv
 !data/faq.csv
-index/*.faiss
-index/metadata.json
-output/*.csv
-output/*.txt
