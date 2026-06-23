@@ -4,12 +4,12 @@
 
 ## 주요 기능
 
-- CSV의 `FAQ 1행 = 청크 1개` 전처리
+- CSV의 `FAQ 1행 = 청크 1개`를 기본 가설로 두고 행/문단/파일 전체를 비교
 - OpenAI `text-embedding-3-small` 임베딩
-- FAISS와 cosine similarity 기반 Top 3 검색
+- FAISS와 cosine similarity 기반 Top 3 / Top 5 검색
 - Gemini 기반 근거 제한 답변 생성
 - FAQ 연번·제목·본문·유사도 출처 표시
-- 제목 임베딩과 제목+본문 임베딩의 Hit@1·Hit@3·MRR 비교
+- 제목 임베딩과 제목+본문 임베딩의 Hit@1·Hit@3·Hit@5·MRR 비교
 
 ## 기술 스택
 
@@ -19,10 +19,11 @@ Python, Pandas, NumPy, OpenAI API, FAISS, Google Gen AI SDK, Gemini, Streamlit, 
 
 ```text
 CSV 로드 및 검증
+→ 청킹 방식 선택(행/문단/파일 전체)
 → 제목 / 제목+본문 임베딩
 → L2 정규화 및 FAISS IndexFlatIP 저장
 → 질문 임베딩 및 cosine similarity 검색
-→ Top 3 FAQ를 Gemini에 전달
+→ Top K FAQ를 Gemini에 전달
 → 답변과 애플리케이션 검증 출처 표시
 ```
 
@@ -53,9 +54,18 @@ python src/indexing.py --csv data/faq.csv --output index
 
 ```text
 index/
-├── title.faiss
-├── title_body.faiss
-└── metadata.json
+├── row/
+│   ├── title.faiss
+│   ├── title_body.faiss
+│   └── metadata.json
+├── paragraph/
+│   ├── title.faiss
+│   ├── title_body.faiss
+│   └── metadata.json
+└── file/
+    ├── title.faiss
+    ├── title_body.faiss
+    └── metadata.json
 ```
 
 ## 실행
@@ -64,21 +74,21 @@ index/
 python -m streamlit run app.py
 ```
 
+환경변수로 `FAQ_CHUNKING_MODE`, `FAQ_EMBEDDING_MODE`, `FAQ_TOP_K`를 조정할 수 있습니다.
+
 ## 검색 평가
 
 `evaluation/questions.csv`에 실제 평가 질문과 정답 FAQ 연번을 작성합니다.
 
 ```bash
-python evaluation/evaluate.py \
-  --questions evaluation/questions.csv \
-  --index-dir index \
-  --output output/evaluation_summary.csv
+python evaluation/evaluate.py   --questions evaluation/questions.csv   --index-dir index   --output output/evaluation_summary.csv
 ```
 
 평가 지표:
 
 - Hit@1
 - Hit@3
+- Hit@5
 - MRR
 - 정답 FAQ 미검색 사례
 
@@ -103,7 +113,8 @@ python evaluation/evaluate.py \
 
 ## 핵심 설계 결정
 
-- CSV 행이 독립된 FAQ이므로 행 단위 청킹을 사용합니다.
+- FAQ 행, 문단, 파일 전체를 모두 비교하도록 청킹을 실험 축으로 둡니다.
+- Top 3와 Top 5를 함께 비교합니다.
 - 임베딩 생성과 벡터 비교를 분리합니다.
 - 벡터를 L2 정규화한 뒤 FAISS 내적 검색을 사용해 cosine similarity 순위를 구합니다.
 - 생성 모델이 출처를 만들게 하지 않고 검색 메타데이터를 애플리케이션이 표시합니다.

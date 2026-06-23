@@ -18,7 +18,7 @@ def test_generator_uses_only_retrieved_context_and_preserves_sources() -> None:
     models = FakeModels()
     client = SimpleNamespace(models=models)
     source = SearchResult(
-        document=FaqDocument(12, "응시수수료 반환", "접수 취소 시 반환 기준입니다."),
+        document=FaqDocument(12, "응시수수료 반환", "접수 취소 시 반환 기준입니다.", chunk_id="row-12", source_row_id=12),
         score=0.91,
     )
     generator = GeminiAnswerGenerator(client=client, model="gemini-test")

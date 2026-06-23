@@ -29,7 +29,11 @@ class GeminiAnswerGenerator:
             return GeneratedAnswer("검색된 FAQ에서 답변 근거를 찾을 수 없습니다.", ())
 
         contexts = "\n\n".join(
-            f"[FAQ {result.document.row_id}]\n제목: {result.document.title}\n본문: {result.document.body}"
+            "[FAQ {row_id}]\n제목: {title}\n본문: {body}".format(
+                row_id=result.document.resolved_row_id,
+                title=result.document.title,
+                body=result.document.body,
+            )
             for result in sources
         )
         prompt = (

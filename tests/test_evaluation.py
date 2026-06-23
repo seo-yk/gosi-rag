@@ -12,6 +12,7 @@ def test_evaluate_rankings_calculates_hit_rates_and_mrr() -> None:
 
     assert result.hit_at_1 == 1 / 3
     assert result.hit_at_3 == 2 / 3
+    assert result.hit_at_5 == 2 / 3
     assert result.mrr == (1 + 1 / 2 + 0) / 3
     assert result.failed_expected_ids == (7,)
 
