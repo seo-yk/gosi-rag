@@ -3,31 +3,18 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Mapping
 
-import faiss
 import streamlit as st
-from dotenv import load_dotenv
 from google import genai
-from openai import OpenAI
 
-
-def _load_project_env() -> None:
-    """환경 변수 파일 우선순위 로드"""
-    env_file = os.environ.get("FAQ_ENV_FILE", "").strip()
-    if env_file:
-        load_dotenv(env_file, override=True)
-        return
-    load_dotenv(".env.local", override=True)
-    load_dotenv(".env", override=False)
-
-
+from src.config import load_project_env
 from src.generation import GeminiAnswerGenerator, GeneratedAnswer
-from src.indexing import build_embedder, index_bundle_paths, load_documents
-from src.retrieval import FaissRetriever
+from src.indexing import build_embedder, index_bundle_paths
+from src.retrieval import FaissRetriever, build_retriever
 
 
 @dataclass(frozen=True, slots=True)
 class Settings:
-    """앱 실행 설정"""
+    """앱 실행 설정 생성."""
 
     openai_api_key: str
     gemini_api_key: str
@@ -42,7 +29,7 @@ class Settings:
 
     @classmethod
     def from_mapping(cls, values: Mapping[str, str]) -> "Settings":
-        """환경변수 매핑에서 앱 설정 생성"""
+        """환경변수 매핑에서 앱 설정 생성."""
         gemini_api_key = values.get("GEMINI_API_KEY", "").strip()
         if not gemini_api_key:
             raise ValueError("GEMINI_API_KEY 환경변수가 필요합니다.")
@@ -78,7 +65,7 @@ class Settings:
 
 @st.cache_resource
 def build_services(settings: Settings) -> tuple[FaissRetriever, GeminiAnswerGenerator]:
-    """검색기와 답변 생성기 초기화"""
+    """검색기와 답변 생성기 초기화 실행."""
     embedder = build_embedder(
         settings.embedding_provider,
         {
@@ -87,11 +74,7 @@ def build_services(settings: Settings) -> tuple[FaissRetriever, GeminiAnswerGene
             "LOCAL_EMBEDDING_MODEL": settings.embedding_model,
         },
     )
-    retriever = FaissRetriever(
-        index=faiss.read_index(str(settings.index_path)),
-        documents=load_documents(settings.metadata_path),
-        embedder=embedder,
-    )
+    retriever = build_retriever(settings.index_path, settings.metadata_path, embedder)
     generator = GeminiAnswerGenerator(
         client=genai.Client(api_key=settings.gemini_api_key),
         model=settings.gemini_model,
@@ -100,12 +83,12 @@ def build_services(settings: Settings) -> tuple[FaissRetriever, GeminiAnswerGene
 
 
 def main() -> None:
-    """Streamlit FAQ RAG 앱 실행"""
+    """Streamlit FAQ RAG 앱 실행."""
     st.set_page_config(page_title="국가공무원 채용시험 FAQ RAG", page_icon="🔎")
     st.title("국가공무원 채용시험 FAQ RAG")
     st.caption("국가공무원 채용시험 FAQ를 검색하고 근거 기반 답변을 생성합니다.")
 
-    _load_project_env()
+    load_project_env()
     try:
         settings = Settings.from_mapping(os.environ)
         retriever, generator = build_services(settings)

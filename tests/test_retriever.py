@@ -1,11 +1,13 @@
+import json
+from pathlib import Path
 from types import SimpleNamespace
 
 import faiss
 import numpy as np
 import pytest
 
-from src.indexing import FaqDocument
-from src.retrieval import FaissRetriever
+from src.indexing import FaqDocument, save_index_bundle
+from src.retrieval import FaissRetriever, build_retriever
 
 
 class FakeEmbedder:
@@ -53,3 +55,20 @@ def test_retriever_caps_top_k_to_document_count() -> None:
     )
 
     assert len(retriever.search("환불 가능한가요?", top_k=3)) == 1
+
+
+def test_build_retriever_loads_index_and_metadata(tmp_path: Path) -> None:
+    documents = [
+        FaqDocument(row_id=1, title="환불", body="환불 기준", chunk_id="row-1", source_row_id=1),
+        FaqDocument(row_id=2, title="취소", body="취소 기준", chunk_id="row-2", source_row_id=2),
+    ]
+    index = faiss.IndexFlatIP(2)
+    index.add(np.array([[1.0, 0.0], [0.0, 1.0]], dtype=np.float32))
+    index_path = tmp_path / "faq.faiss"
+    metadata_path = tmp_path / "metadata.json"
+    save_index_bundle(index, documents, index_path, metadata_path)
+
+    retriever = build_retriever(index_path, metadata_path, FakeEmbedder())
+
+    results = retriever.search("환불 가능한가요?", top_k=2)
+    assert [result.document.row_id for result in results] == [1, 2]

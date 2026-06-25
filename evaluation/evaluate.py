@@ -7,19 +7,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Sequence
 
-import faiss
-from dotenv import load_dotenv
-
-
-def _load_project_env() -> None:
-    """환경 변수 파일 우선순위 로드"""
-    env_file = os.environ.get("FAQ_ENV_FILE", "").strip()
-    if env_file:
-        load_dotenv(env_file, override=True)
-        return
-    load_dotenv(".env.local", override=True)
-    load_dotenv(".env", override=False)
-
+from src.config import load_project_env
 
 from src.indexing import (
     ChunkingMode,
@@ -27,9 +15,8 @@ from src.indexing import (
     EmbeddingProvider,
     build_embedder,
     index_bundle_paths,
-    load_documents,
 )
-from src.retrieval import FaissRetriever
+from src.retrieval import build_retriever
 
 
 @dataclass(frozen=True, slots=True)
@@ -82,11 +69,7 @@ def evaluate_index(
     top_k: int,
 ) -> EvaluationResult:
     """단일 인덱스 기준 검색 성능 평가 실행"""
-    retriever = FaissRetriever(
-        index=faiss.read_index(str(index_path)),
-        documents=load_documents(metadata_path),
-        embedder=embedder,
-    )
+    retriever = build_retriever(index_path, metadata_path, embedder)
     rankings = [
         (
             expected_id,
@@ -141,7 +124,7 @@ def main() -> None:
     parser.add_argument("--top-ks", nargs="+", type=int, default=[3, 5])
     args = parser.parse_args()
 
-    _load_project_env()
+    load_project_env()
     embedders = {provider: build_embedder(provider, os.environ) for provider in args.providers}
     questions = read_questions(args.questions)
     rows = _experiment_rows(

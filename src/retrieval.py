@@ -1,12 +1,13 @@
-"""질문 벡터와 FAQ 벡터를 비교해 관련 FAQ 검색"""
+"""질문 벡터와 FAQ 벡터를 비교해 관련 FAQ 검색."""
 
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Protocol, Sequence
 
 import faiss
 import numpy as np
 
-from src.indexing import EmbeddingRole, FaqDocument
+from src.indexing import EmbeddingRole, FaqDocument, load_documents
 
 
 class Embedder(Protocol):
@@ -52,3 +53,12 @@ class FaissRetriever:
             for score, position in zip(scores[0], positions[0], strict=True)
             if position >= 0
         ]
+
+
+def build_retriever(index_path: str | Path, metadata_path: str | Path, embedder: Embedder) -> FaissRetriever:
+    """인덱스와 메타데이터 로드 후 검색기 생성"""
+    return FaissRetriever(
+        index=faiss.read_index(str(index_path)),
+        documents=load_documents(metadata_path),
+        embedder=embedder,
+    )
