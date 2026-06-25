@@ -17,14 +17,15 @@
 
 ## 기술 스택
 
-| 영역     | 기술                                                                          | 비고                       |
-| ------ | --------------------------------------------------------------------------- | ------------------------ |
-| 언어     | Python                                                                      | 데이터 처리 및 AI API 연동       |
-| 데이터 처리 | Pandas, NumPy                                                               | CSV 탐색 및 전처리             |
-| 임베딩    | OpenAI: `text-embedding-3-small`<br>Local: `intfloat/multilingual-e5-small` | 텍스트 → 벡터 변환,<br>성능 비교 실험 |
-| 벡터 검색  | FAISS(IndexFlatIP), cosine similarity                                       | 텍스트 임베딩 의미 비교            |
-| 답변 생성  | Gemini API                                                                  | 자연어 답변 생성                |
-| UI     | Streamlit                                                                   | 데모 UI                    |
+| 영역     | 기술                                                                                                   | 비고                       |
+| ------ | ---------------------------------------------------------------------------------------------------- | ------------------------ |
+| 언어     | Python                                                                                               | 데이터 처리 및 AI API 연동       |
+| 데이터 처리 | Pandas, NumPy                                                                                        | CSV 탐색 및 전처리             |
+| 임베딩    | OpenAI: `text-embedding-3-small`<br>Local: `intfloat/multilingual-e5-small`(`sentence-transformers`) | 텍스트 → 벡터 변환,<br>성능 비교 실험 |
+| 벡터 검색  | FAISS(IndexFlatIP), cosine similarity                                                                | 텍스트 임베딩 의미 비교            |
+| 답변 생성  | Gemini API                                                                                           | 자연어 답변 생성                |
+| UI     | Streamlit                                                                                            | 데모 UI                    |
+|        |                                                                                                      |                          |
 
 ## 디렉터리 구조
 
@@ -40,7 +41,8 @@ gosi-rag/
 │   └── evaluate.py      # Hit@K, MRR 기반 검색 성능 평가 스크립트
 ├── tests/               # 핵심 로직 테스트
 ├── data/                # 원본 데이터
-├── .env                 # 실행 환경 변수 파일
+├── .env.openai.example  # 환경 변수 예시 파일(openai 임베딩)
+├── .env.local.example   # 환경 변수 예시 파일(local 임베딩)
 ├── requirements.txt     # 의존성 목록
 └── README.md
 ```
@@ -78,20 +80,22 @@ pip install -r requirements.txt
 
 ## 환경변수 설정
 
-| 기능         | 방식                                     | 비용  | 설정 방법                                           | 비고                                                           |
-| ---------- | -------------------------------------- | --- | ----------------------------------------------- | ------------------------------------------------------------ |
-| 답변 생성 (필수) | Gemini API                             | 무료  | `GEMINI_API_KEY` 설정                             | 발급: [Google AI Studio](https://aistudio.google.com/)         |
-| 임베딩        | Local `intfloat/multilingual-e5-small` | 무료  | `FAQ_ENV_FILE=.env.local`                       | 로컬 모델 기반 임베딩                                                 |
-| 임베딩        | OpenAI `text-embedding-3-small`        | 유료  | `FAQ_ENV_FILE=.env.openai`, `OPENAI_API_KEY` 설정 | 발급: [OpenAI API Platform](https://platform.openai.com/login) |
+| 기능          | 방식                               | 비용  | 설정 방법                                                                  | 비고                                                           |
+| ----------- | -------------------------------- | --- | ---------------------------------------------------------------------- | ------------------------------------------------------------ |
+| 답변 생성 (필수)  | Gemini API                       | 무료  | `.env.local.example` 또는 `.env.openai.example`를 복사해 `GEMINI_API_KEY` 설정 | 발급: [Google AI Studio](https://aistudio.google.com/)         |
+| 임베딩(Local)  | `intfloat/multilingual-e5-small` | 무료  | `.env.local.example`를 기준으로 `.env.local` 작성                             | 로컬 모델 기반 임베딩                                                 |
+| 임베딩(OpenAI) | `text-embedding-3-small`         | 유료  | `.env.openai.example`를 기준으로 `.env.openai` 작성 후 `OPENAI_API_KEY` 설정     | 발급: [OpenAI API Platform](https://platform.openai.com/login) |
 
 ## 실행 방식
 
 ```bash
 # 로컬 임베딩 실행
+cp .env.local.example .env.local
 FAQ_ENV_FILE=.env.local python3 src/indexing.py --csv data/faq.csv --output index --providers local
 FAQ_ENV_FILE=.env.local python3 -m streamlit run app.py
 
 # OpenAI 임베딩 실행
+cp .env.openai.example .env.openai
 FAQ_ENV_FILE=.env.openai python3 src/indexing.py --csv data/faq.csv --output index --providers openai
 FAQ_ENV_FILE=.env.openai python3 -m streamlit run app.py
 ```
