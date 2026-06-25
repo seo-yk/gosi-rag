@@ -33,6 +33,7 @@
 gosi-rag/
 ├── app.py               # 질의응답 데모 앱(UI)
 ├── src/
+│   ├── config.py        # 공통 환경 변수 로드
 │   ├── indexing.py      # 데이터 전처리, 청킹, 임베딩, FAISS 인덱스 생성
 │   ├── retrieval.py     # 질문 임베딩과 Top K 유사 문서 검색
 │   └── generation.py    # 검색 결과 기반 최종 답변 생성

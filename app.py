@@ -14,7 +14,7 @@ from src.retrieval import FaissRetriever, build_retriever
 
 @dataclass(frozen=True, slots=True)
 class Settings:
-    """앱 실행 설정 생성."""
+    """앱 실행 설정 생성"""
 
     openai_api_key: str
     gemini_api_key: str
@@ -29,7 +29,7 @@ class Settings:
 
     @classmethod
     def from_mapping(cls, values: Mapping[str, str]) -> "Settings":
-        """환경변수 매핑에서 앱 설정 생성."""
+        """환경변수 매핑에서 앱 설정 생성"""
         gemini_api_key = values.get("GEMINI_API_KEY", "").strip()
         if not gemini_api_key:
             raise ValueError("GEMINI_API_KEY 환경변수가 필요합니다.")
@@ -65,7 +65,7 @@ class Settings:
 
 @st.cache_resource
 def build_services(settings: Settings) -> tuple[FaissRetriever, GeminiAnswerGenerator]:
-    """검색기와 답변 생성기 초기화 실행."""
+    """검색기와 답변 생성기 초기화 실행"""
     embedder = build_embedder(
         settings.embedding_provider,
         {
@@ -83,7 +83,7 @@ def build_services(settings: Settings) -> tuple[FaissRetriever, GeminiAnswerGene
 
 
 def main() -> None:
-    """Streamlit FAQ RAG 앱 실행."""
+    """Streamlit FAQ RAG 앱 실행"""
     st.set_page_config(page_title="국가공무원 채용시험 FAQ RAG", page_icon="🔎")
     st.title("국가공무원 채용시험 FAQ RAG")
     st.caption("국가공무원 채용시험 FAQ를 검색하고 근거 기반 답변을 생성합니다.")
