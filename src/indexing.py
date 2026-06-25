@@ -1,4 +1,4 @@
-"""FAQ CSV를 검증하고 청킹한 뒤 임베딩하여 FAISS 인덱스로 저장한다."""
+"""FAQ CSV를 검증하고 청킹한 뒤 임베딩하여 FAISS 인덱스로 저장"""
 
 import argparse
 import json
@@ -16,6 +16,7 @@ from openai import OpenAI
 
 
 def _load_project_env() -> None:
+    """환경 변수 파일 우선순위 로드"""
     env_file = os.environ.get("FAQ_ENV_FILE", "").strip()
     if env_file:
         load_dotenv(env_file, override=True)
@@ -35,7 +36,7 @@ LOCAL_EMBEDDING_MODEL = "intfloat/multilingual-e5-small"
 
 @dataclass(frozen=True, slots=True)
 class FaqDocument:
-    """검색과 출처 표시에 사용하는 하나의 FAQ 또는 청크 레코드."""
+    """검색과 출처 표시에 사용하는 하나의 FAQ 또는 청크 레코드"""
 
     row_id: int
     title: str
@@ -47,9 +48,11 @@ class FaqDocument:
 
     @property
     def resolved_row_id(self) -> int:
+        """출처 표시용 FAQ 연번 반환"""
         return self.source_row_id if self.source_row_id is not None else self.row_id
 
     def embedding_text(self, mode: EmbeddingMode) -> str:
+        """임베딩 입력 텍스트 생성"""
         if mode == "title":
             return self.title
         if mode == "title_body":
@@ -70,13 +73,14 @@ class Embedder(Protocol):
 
 
 class OpenAIEmbedder:
-    """OpenAI Embeddings API 응답을 FAISS가 사용할 float32 배열로 변환한다."""
+    """OpenAI Embeddings API 응답을 FAISS가 사용할 float32 배열로 변환"""
 
     def __init__(self, client: EmbeddingClient, model: str = "text-embedding-3-small") -> None:
         self._client = client
         self.model = model
 
     def embed(self, texts: Sequence[str], role: EmbeddingRole = "passage") -> np.ndarray:
+        """OpenAI 임베딩 API 호출 실행"""
         del role
         if not texts:
             raise ValueError("임베딩할 텍스트 목록이 비어 있습니다.")
@@ -91,13 +95,14 @@ class OpenAIEmbedder:
 
 
 class LocalEmbedder:
-    """로컬 sentence-transformers 모델을 사용해 텍스트를 임베딩한다."""
+    """로컬 sentence-transformers 모델을 사용해 텍스트 임베딩"""
 
     def __init__(self, model_name: str = LOCAL_EMBEDDING_MODEL, model: LocalEmbeddingModel | None = None) -> None:
         self.model_name = model_name
         self._model = model
 
     def _load_model(self) -> LocalEmbeddingModel:
+        """로컬 임베딩 모델 지연 로드 실행"""
         if self._model is not None:
             return self._model
         try:
@@ -110,6 +115,7 @@ class LocalEmbedder:
         return self._model
 
     def embed(self, texts: Sequence[str], role: EmbeddingRole = "passage") -> np.ndarray:
+        """로컬 임베딩 벡터 생성 실행"""
         if not texts:
             raise ValueError("임베딩할 텍스트 목록이 비어 있습니다.")
 
@@ -126,6 +132,7 @@ class LocalEmbedder:
 
 
 def _read_csv(path: Path) -> pd.DataFrame:
+    """인코딩 후보를 순회하며 FAQ CSV 읽기 실행"""
     last_error: UnicodeDecodeError | None = None
     for encoding in ENCODINGS:
         try:
@@ -136,6 +143,7 @@ def _read_csv(path: Path) -> pd.DataFrame:
 
 
 def _split_paragraphs(body: str) -> list[str]:
+    """본문 문단 분리 실행"""
     stripped = body.strip()
     if not stripped:
         return []
@@ -149,6 +157,7 @@ def _split_paragraphs(body: str) -> list[str]:
 
 
 def _chunk_label(row_id: int, chunking_mode: ChunkingMode, paragraph_index: int | None = None) -> str:
+    """청크 식별자 생성"""
     if chunking_mode == "file":
         return "file-0"
     if chunking_mode == "paragraph":
@@ -158,7 +167,7 @@ def _chunk_label(row_id: int, chunking_mode: ChunkingMode, paragraph_index: int 
 
 
 def load_faq_csv(path: str | Path) -> list[FaqDocument]:
-    """CSV 필수 컬럼과 값의 무결성을 검사한 뒤 FAQ 목록을 반환한다."""
+    """CSV 필수 컬럼과 값의 무결성을 검사한 뒤 FAQ 목록 반환"""
 
     frame = _read_csv(Path(path))
     missing = REQUIRED_COLUMNS.difference(frame.columns)
@@ -190,7 +199,7 @@ def load_faq_csv(path: str | Path) -> list[FaqDocument]:
 
 
 def build_chunked_documents(documents: Sequence[FaqDocument], chunking_mode: ChunkingMode) -> list[FaqDocument]:
-    """행/문단/파일 전체 기준으로 검색용 청크를 생성한다."""
+    """행/문단/파일 전체 기준으로 검색용 청크 생성"""
 
     if chunking_mode == "row":
         return [
@@ -244,6 +253,7 @@ def build_chunked_documents(documents: Sequence[FaqDocument], chunking_mode: Chu
 
 
 def normalize_vectors(vectors: np.ndarray) -> np.ndarray:
+    """코사인 유사도(cosine similarity) 계산용 L2 정규화 실행"""
     normalized = np.asarray(vectors, dtype=np.float32).copy()
     if normalized.ndim != 2 or normalized.shape[0] == 0:
         raise ValueError("임베딩 벡터는 비어 있지 않은 2차원 배열이어야 합니다.")
@@ -252,7 +262,7 @@ def normalize_vectors(vectors: np.ndarray) -> np.ndarray:
 
 
 def build_faiss_index(vectors: np.ndarray) -> faiss.IndexFlatIP:
-    """L2 정규화 후 내적 검색을 사용해 cosine similarity 인덱스를 만든다."""
+    """L2 정규화 후 내적 검색을 사용해 cosine similarity 인덱스 생성"""
 
     normalized = normalize_vectors(vectors)
     index = faiss.IndexFlatIP(normalized.shape[1])
@@ -266,6 +276,7 @@ def index_bundle_paths(
     embedding_provider: EmbeddingProvider,
     embedding_mode: EmbeddingMode,
 ) -> tuple[Path, Path]:
+    """인덱스와 메타데이터 저장 경로 생성"""
     mode_dir = Path(output_dir) / chunking_mode / embedding_provider
     return mode_dir / f"{embedding_mode}.faiss", mode_dir / "metadata.json"
 
@@ -276,6 +287,7 @@ def save_index_bundle(
     index_path: str | Path,
     metadata_path: str | Path,
 ) -> None:
+    """FAISS 인덱스와 FAQ 메타데이터 저장"""
     if index.ntotal != len(documents):
         raise ValueError("FAISS 벡터 개수와 메타데이터 개수가 다릅니다.")
 
@@ -291,6 +303,7 @@ def save_index_bundle(
 
 
 def load_documents(path: str | Path) -> list[FaqDocument]:
+    """저장된 FAQ 메타데이터 로드"""
     rows = json.loads(Path(path).read_text(encoding="utf-8"))
     documents: list[FaqDocument] = []
     for row in rows:
@@ -315,7 +328,7 @@ def build_indexes(
     chunking_modes: Sequence[ChunkingMode] = ("row", "paragraph", "file"),
     embedding_modes: Sequence[EmbeddingMode] = ("title", "title_body"),
 ) -> None:
-    """청킹 방식과 임베딩 입력 필드를 조합해 실험용 인덱스를 생성한다."""
+    """청킹 방식과 임베딩 입력 필드를 조합해 실험용 인덱스 생성"""
 
     source_documents = load_faq_csv(csv_path)
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -337,6 +350,7 @@ def build_indexes(
 
 
 def build_embedder(provider: EmbeddingProvider, values: Mapping[str, str]) -> Embedder:
+    """임베딩 제공자별 Embedder 생성"""
     if provider == "openai":
         api_key = values.get("OPENAI_API_KEY", "").strip()
         if not api_key:
@@ -350,6 +364,7 @@ def build_embedder(provider: EmbeddingProvider, values: Mapping[str, str]) -> Em
 
 
 def main() -> None:
+    """FAQ 인덱스 생성 CLI 실행"""
     parser = argparse.ArgumentParser(description="FAQ CSV에서 FAISS 인덱스를 생성합니다.")
     parser.add_argument("--csv", type=Path, default=Path("data/faq.csv"))
     parser.add_argument("--output", type=Path, default=Path("index"))

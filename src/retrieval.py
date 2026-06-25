@@ -1,4 +1,4 @@
-"""질문 벡터와 FAQ 벡터를 비교해 관련 FAQ를 검색한다."""
+"""질문 벡터와 FAQ 벡터를 비교해 관련 FAQ 검색"""
 
 from dataclasses import dataclass
 from typing import Protocol, Sequence
@@ -15,12 +15,13 @@ class Embedder(Protocol):
 
 @dataclass(frozen=True, slots=True)
 class SearchResult:
+    """검색 문서와 유사도 점수 보관"""
     document: FaqDocument
     score: float
 
 
 class FaissRetriever:
-    """정규화된 질문 벡터로 FAISS Top K 검색을 수행한다."""
+    """정규화된 질문 벡터로 FAISS Top K 검색 수행"""
 
     def __init__(
         self,
@@ -35,6 +36,7 @@ class FaissRetriever:
         self._embedder = embedder
 
     def search(self, question: str, top_k: int = 3) -> list[SearchResult]:
+        """질문 벡터화 후 Top K 검색 실행."""
         if not question.strip():
             raise ValueError("질문을 입력해야 합니다.")
         if top_k < 1:

@@ -1,4 +1,4 @@
-"""검색 실험을 실행하고 청킹, Top K, 임베딩 입력 필드를 비교한다."""
+"""검색 실험을 실행하고 청킹, Top K, 임베딩 입력 필드 비교"""
 
 import argparse
 import csv
@@ -12,6 +12,7 @@ from dotenv import load_dotenv
 
 
 def _load_project_env() -> None:
+    """환경 변수 파일 우선순위 로드"""
     env_file = os.environ.get("FAQ_ENV_FILE", "").strip()
     if env_file:
         load_dotenv(env_file, override=True)
@@ -33,6 +34,7 @@ from src.retrieval import FaissRetriever
 
 @dataclass(frozen=True, slots=True)
 class EvaluationResult:
+    """검색 성능 지표와 실패 FAQ 목록 보관"""
     hit_at_1: float
     hit_at_3: float
     hit_at_5: float
@@ -41,7 +43,7 @@ class EvaluationResult:
 
 
 def evaluate_rankings(rankings: Sequence[tuple[int, Sequence[int]]]) -> EvaluationResult:
-    """정답 FAQ 순위를 Hit@1, Hit@3, Hit@5, MRR로 요약한다."""
+    """정답 순위 목록을 Hit@K와 MRR로 집계"""
 
     if not rankings:
         raise ValueError("평가 결과가 비어 있습니다.")
@@ -64,6 +66,7 @@ def evaluate_rankings(rankings: Sequence[tuple[int, Sequence[int]]]) -> Evaluati
 
 
 def read_questions(path: Path) -> list[tuple[str, int]]:
+    """평가 질문셋 로드"""
     with path.open(encoding="utf-8-sig", newline="") as file:
         return [
             (row["question"].strip(), int(row["expected_row_id"]))
@@ -78,6 +81,7 @@ def evaluate_index(
     embedder,
     top_k: int,
 ) -> EvaluationResult:
+    """단일 인덱스 기준 검색 성능 평가 실행"""
     retriever = FaissRetriever(
         index=faiss.read_index(str(index_path)),
         documents=load_documents(metadata_path),
@@ -101,6 +105,7 @@ def _experiment_rows(
     embedding_modes: Sequence[EmbeddingMode],
     top_ks: Sequence[int],
 ) -> list[dict[str, object]]:
+    """실험 조합별 평가 결과 행 생성"""
     rows: list[dict[str, object]] = []
     for chunking_mode in chunking_modes:
         for embedding_provider, embedder in embedders.items():
@@ -125,6 +130,7 @@ def _experiment_rows(
 
 
 def main() -> None:
+    """검색 성능 평가 CLI 실행"""
     parser = argparse.ArgumentParser(description="청킹, Top K, 임베딩 입력 필드의 검색 성능을 평가합니다.")
     parser.add_argument("--questions", type=Path, required=True)
     parser.add_argument("--index-dir", type=Path, default=Path("index"))
