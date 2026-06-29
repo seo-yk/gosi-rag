@@ -6,13 +6,12 @@
 - [🎯 개요 및 목표](#개요-및-목표)
 - [🛠️ 기술 스택](#기술-스택)
 - [📁 디렉터리 구조](#디렉터리-구조)
-- [💾 데이터셋](#데이터셋)
+- [💾 데이터셋 및 출처](#데이터셋-및-출처)
 - [⚙️ 설치](#설치)
 - [🔑 환경변수 설정](#환경변수-설정)
 - [🚀 실행 및 파이프라인 가이드](#실행-및-파이프라인-가이드)
 - [📊 평가 프레임워크 및 결과](#평가-프레임워크-및-결과)
 - [🔍 개선 검토](#개선-검토)
-- [💾 데이터 출처 및 이용 조건](#데이터-출처-및-이용-조건)
 
 ---
 
@@ -34,9 +33,9 @@
      | **임베딩 입력 필드** | 제목(질문) 단독 vs 제목 + 본문 | 사용자의 실제 질의가 FAQ 본문의 장황한 텍스트에 희석되지 않고 정렬될 수 있는지 검증 | **"FAQ 본문 정보는 시맨틱 검색에서 유의미한 맥락인가, 벡터 왜곡을 일으키는 노이즈인가?"** |
      | **검색 범위 (Top-K)** | Top 3 검색 vs Top 5 검색 | LLM 입력 토큰 증가로 인한 지연 시간(Latency) 및 비용 최소화와 검색 재현율(Recall) 간의 효율성 비교 | **"LLM의 입력 비용과 추론 레이턴시를 최소화하면서 검색 누락을 방지하는 임계점은 어디인가?"** |
 
-     > 💡 실험 결과는 문서 하단의 **[평가 결과 및 분석](#평가-결과-및-분석)** 섹션에서 확인 가능합니다.
+     > 💡 각 대조군 실험을 통한 결과는 문서 하단의 **평가 결과 및 분석** 섹션에서 확인 가능합니다.
 3. **프로덕션 환경을 고려한 비용/레이턴시 최적화 (System Efficiency)**
-   * LLM Judge 평가 수행 시 발생하는 대량의 API 호출 지연과 레이트 리밋 오버헤드를 해소하기 위해, 다중 호출 방식을 단일 JSON 배치(Structured Output) 병합 호출로 최적화하여 API 호출 비용 및 레이턴시를 80% 감축하고 다중 프로바이더(OpenRouter/Gemini) 백업 설계를 적용했습니다.
+   * 자동 평가(LLM-as-a-Judge) 수행 시 발생하는 대량의 API 호출 지연과 레이트 리밋 오버헤드를 해소하기 위해, 다중 호출 방식을 단일 JSON 배치(Structured Output) 병합 호출로 최적화하여 API 호출 비용 및 레이턴시를 80% 감축하고 다중 프로바이더 백업 설계를 적용했습니다.
 
 실제 실험 결과는 문서 하단의 평가 결과 섹션에 상세히 정리되어 있습니다.
 
@@ -62,24 +61,30 @@ gosi-rag/
 │   ├── retrieval.py     # 질문 임베딩 및 검색
 │   └── generation.py    # 검색 결과 기반 최종 답변 생성
 ├── evaluation/
+│   ├── retrieval_questions.csv  # 검색 성능 평가용 질문셋
 │   ├── generation_questions.csv # 생성 답변 평가용 질문셋
 │   ├── evaluate_generation.py   # 생성 답변 평가 스크립트
-│   ├── retrieval_questions.csv  # 검색 성능 평가용 질문셋
 │   └── evaluate_retrieval.py    # 검색 성능 평가 스크립트
 ├── tests/               # 핵심 로직 테스트
 ├── data/                # 원본 데이터
-├── .env.example         # 환경 변수 설정 템플릿
+├── .env.example         # 통합 환경 변수 설정 템플릿
 ├── requirements.txt     # 의존성 목록
 └── README.md
 ```
 
-## 💾 데이터셋
+## 💾 데이터셋 및 출처
 
-- 출처: [인사혁신처 사이버국가고시센터의 국가공무원 채용시험 FAQ, 2026-03-20 기준](https://www.data.go.kr/data/15120427/fileData.do)
-- 형식: CSV
-- 주요 컬럼: `연번`, `제목`, `본문`
-- 레코드 수: 289개
-- 데이터 크기: 약 232KB
+본 프로젝트는 인사혁신처 사이버국가고시센터에서 제공하는 국가공무원 채용시험 FAQ 공공데이터를 가공하여 활용합니다.
+
+- **제공기관:** 인사혁신처
+- **데이터셋명:** 인사혁신처_사이버국가고시센터 국가공무원 채용시험 종합안내(FAQ)_20260320
+- **데이터 형식:** CSV (`연번`, `제목`, `본문` 컬럼)
+- **데이터 규모:** 289개 레코드 (약 232KB, 기준일: 2026-03-20)
+- **원천 자료 출처:** [공공데이터포털](https://www.data.go.kr/data/15120427/fileData.do)
+- **이용조건:** 공공누리 제1유형 (출처표시 조건)
+
+> 💡 **이용 안내:**  
+> 본 저장소는 위 출처 및 이용허락 조건을 준수하여 원본 CSV를 포함하고 있습니다. 공무원 채용 제도가 변경되는 경우, 본 데이터셋에 즉시 반영되지 않을 수 있으므로 실제 시험 준비 시에는 사이버국가고시센터의 최신 공식 공고를 교차 검증해야 합니다.
 
 ## ⚙️ 설치
 
@@ -113,7 +118,7 @@ pip install -r requirements.txt
 | **임베딩(Local)** | `intfloat/multilingual-e5-small` | 무료 | `FAQ_EMBEDDING_PROVIDER=local` 설정 | 로컬 모델 기반 임베딩 |
 | **임베딩(OpenAI)** | `text-embedding-3-small` | 유료 | `FAQ_EMBEDDING_PROVIDER=openai`, `OPENAI_API_KEY` 설정 | 발급: [OpenAI Platform](https://platform.openai.com/) |
 | **답변 생성** | Gemini API 또는 OpenRouter | 무료 | `FAQ_GENERATION_PROVIDER`, `GEMINI_API_KEY` 또는 `OPENROUTER_API_KEY` 설정 | 기본 OpenRouter 생성 모델: `qwen/qwen3-8b:free` |
-| **평가** | OpenRouter 또는 Gemini | 무료 | `FAQ_JUDGE_PROVIDER`, `OPENROUTER_API_KEY` 또는 `GEMINI_API_KEY` 설정 | 기본 judge 모델: `meta-llama/llama-3.3-70b-instruct:free` |
+| **Judge 평가** | OpenRouter 또는 Gemini | 무료 | `FAQ_JUDGE_PROVIDER`, `OPENROUTER_API_KEY` 또는 `GEMINI_API_KEY` 설정 | 기본 judge 모델: `meta-llama/llama-3.3-70b-instruct:free` |
 
 ---
 
@@ -164,16 +169,17 @@ python3 -m evaluation.evaluate_generation
 
 ## 📊 평가 프레임워크 및 결과
 
-본 프로젝트에서는 RAG 시스템의 성능 병목을 정확히 추적하고 통제하기 위해 검색 성능 평가(Retrieval Evaluation)와 생성 답변 품질 평가(Generation Evaluation)를 엄격하게 분리하여 평가 프레임워크를 구성했습니다.
-
-> [!NOTE]
-> 본 프로젝트의 생성 답변 품질 평가(Generation Evaluation) 메트릭은 엔터프라이즈 RAG 솔루션 전문 기업인 **올거나이즈(Allganize)의 RAG 평가 방법론 및 실무 벤치마크 프레임워크를 벤치마킹**하여 설계되었습니다.
+본 프로젝트에서는 RAG 시스템의 성능 병목을 정확히 추적하고 통제하기 위해 **1) 검색 성능 평가(Retrieval Evaluation)**와 **2) 생성 답변 품질 평가(Generation Evaluation)**를 엄격하게 분리하여 평가 프레임워크를 구성했습니다.
 
 ---
 
 ### 1. Retrieval (검색) 평가 결과
 
 검색 평가는 평가용 질문셋(50개 질의)과 정답 FAQ 매핑 정보를 기준으로 각 실험군별 **Hit@K**와 **MRR(Mean Reciprocal Rank)**을 정량 측정하여 설계 결정을 검증했습니다.
+
+> **평가 지표 정의:**
+> - **Hit@K**: 검색된 상위 K개 문서 중 정답 FAQ가 포함될 확률 (수치가 높을수록 유효 문서를 잘 찾았음을 의미)
+> - **MRR (Mean Reciprocal Rank)**: 검색 결과 중 정답 FAQ가 위치한 순위의 역수 평균 (1.0에 가까울수록 정답이 최상위에 노출됨)
 
 #### 1-1. 실험 결과 테이블
 
@@ -184,10 +190,6 @@ python3 -m evaluation.evaluate_generation
 | paragraph | Local (E5-Small) | title | 3 | 90.2% | 96.1% | 96.1% | 0.928 | row 청킹과 결과 동일 |
 | paragraph | Local (E5-Small) | title_body | 3 | 86.3% | 96.1% | 96.1% | 0.905 | row 청킹과 결과 동일 |
 | file | Local (E5-Small) | title | 3 | 0.0% | 0.0% | 0.0% | 0.000 | 단일 파일 청킹은 RAG에 부적합 |
-
-> **평가 지표 정의:**
-> - **Hit@K**: 검색된 상위 K개 문서 중 정답 FAQ가 포함될 확률 (수치가 높을수록 유효 문서를 잘 찾았음을 의미)
-> - **MRR (Mean Reciprocal Rank)**: 검색 결과 중 정답 FAQ가 위치한 순위의 역수 평균 (1.0에 가까울수록 정답이 최상위에 노출됨)
 
 #### 1-2. 엔지니어링 분석 및 인사이트
 
@@ -244,15 +246,3 @@ python3 -m evaluation.evaluate_generation
     2. 환경변수 `OPENROUTER_JUDGE_MODEL`에 지정된 **단 하나의 고정 모델**에게 각 평가 프롬프트(Similarity, Groundedness, Correctness 등)를 전송합니다.
     3. 채점 결과를 정수화(Similarity: 0~5, Groundedness: 0~2 등)하여 취합한 뒤, 다수결 또는 특정 조건식을 만족할 때 최종 `Pass` 여부를 결정해 CSV 파일로 로깅합니다.
 *   **고정 채점관의 필요성:** 평가 대상을 변경하더라도 채점관 모델의 등급 기준을 1개로 고정함으로써 평가 편향을 방지하고 일관된 정량 지표를 도출하도록 보장합니다.
-
----
-
-## 💾 데이터 출처 및 이용 조건
-
-- **제공기관:** 인사혁신처
-- **데이터명:** 인사혁신처_사이버국가고시센터 국가공무원 채용시험 종합안내(FAQ)_20260320
-- **기준일:** 2026-03-20
-- **원천 자료 출처:** [공공데이터포털](https://www.data.go.kr/data/15120427/fileData.do)
-- **이용조건:** 공공누리 제1유형 (출처표시)
-
-본 저장소는 위 출처와 이용조건을 명시하고 원본 CSV를 활용합니다. 공무원 채용 제도가 변경된 경우 데이터에 즉시 반영되지 않을 수 있으므로 실제 지원 전 사이버국가고시센터의 최신 공고와 제도를 별도로 확인해야 합니다.
