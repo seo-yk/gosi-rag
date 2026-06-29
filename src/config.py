@@ -11,5 +11,6 @@ def load_project_env() -> None:
     if env_file:
         load_dotenv(env_file, override=True)
         return
+    # Default to loading the unified .env file, allowing local overrides via .env.local
+    load_dotenv(".env", override=True)
     load_dotenv(".env.local", override=True)
-    load_dotenv(".env", override=False)

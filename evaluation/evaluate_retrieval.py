@@ -61,7 +61,7 @@ def read_questions(path: Path) -> list[tuple[str, int]]:
     """평가 질문셋 로드"""
     with path.open(encoding="utf-8-sig", newline="") as file:
         return [
-            (row["question"].strip(), int(row["expected_row_id"]))
+            (row["question"].strip(), int(row["target_answer_no"]))
             for row in csv.DictReader(file)
         ]
 

@@ -13,7 +13,8 @@ def test_settings_reads_required_keys_and_defaults() -> None:
 
     assert settings.embedding_provider == "openai"
     assert settings.embedding_model == "text-embedding-3-small"
-    assert settings.gemini_model == "gemini-3.5-flash"
+    assert settings.generation_provider == "gemini"
+    assert settings.generation_model == "gemini-3.5-flash"
     assert str(settings.index_path) == "index/row/openai/title_body.faiss"
 
 
@@ -30,6 +31,28 @@ def test_settings_allows_local_provider_without_openai_key() -> None:
     assert str(settings.index_path) == "index/row/local/title_body.faiss"
 
 
+def test_settings_supports_openrouter_generation_provider() -> None:
+    settings = Settings.from_mapping(
+        {
+            "OPENAI_API_KEY": "openai-key",
+            "OPENROUTER_API_KEY": "openrouter-key",
+            "FAQ_GENERATION_PROVIDER": "openrouter",
+            "OPENROUTER_GENERATION_MODEL": "qwen/qwen3-8b:free",
+        }
+    )
+
+    assert settings.generation_provider == "openrouter"
+    assert settings.generation_model == "qwen/qwen3-8b:free"
+
+
 def test_settings_rejects_missing_api_keys() -> None:
     with pytest.raises(ValueError, match="GEMINI_API_KEY"):
         Settings.from_mapping({"OPENAI_API_KEY": "openai-key"})
+
+    with pytest.raises(ValueError, match="OPENROUTER_API_KEY"):
+        Settings.from_mapping(
+            {
+                "OPENAI_API_KEY": "openai-key",
+                "FAQ_GENERATION_PROVIDER": "openrouter",
+            }
+        )

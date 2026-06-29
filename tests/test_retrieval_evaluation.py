@@ -1,4 +1,4 @@
-from evaluation.evaluate import evaluate_rankings
+from evaluation.evaluate_retrieval import evaluate_rankings
 
 
 def test_evaluate_rankings_calculates_hit_rates_and_mrr() -> None:

@@ -1,6 +1,6 @@
 from types import SimpleNamespace
 
-from src.generation import GeminiAnswerGenerator
+from src.generation import GeminiAnswerGenerator, OpenRouterAnswerGenerator
 from src.indexing import FaqDocument
 from src.retrieval import SearchResult
 
@@ -12,6 +12,17 @@ class FakeModels:
     def generate_content(self, **kwargs: object) -> SimpleNamespace:
         self.kwargs = kwargs
         return SimpleNamespace(text="응시수수료는 기준에 따라 반환됩니다.")
+
+
+class FakeCompletions:
+    def __init__(self) -> None:
+        self.kwargs: dict[str, object] = {}
+
+    def create(self, **kwargs: object) -> SimpleNamespace:
+        self.kwargs = kwargs
+        message = SimpleNamespace(content="응시수수료는 기준에 따라 반환됩니다.")
+        choice = SimpleNamespace(message=message)
+        return SimpleNamespace(choices=[choice])
 
 
 def test_generator_uses_only_retrieved_context_and_preserves_sources() -> None:
@@ -43,3 +54,25 @@ def test_generator_returns_fallback_without_calling_model() -> None:
     assert answer.text == "검색된 FAQ에서 답변 근거를 찾을 수 없습니다."
     assert answer.sources == ()
     assert client.models.kwargs == {}
+
+
+def test_openrouter_generator_uses_same_retrieved_context_rules() -> None:
+    completions = FakeCompletions()
+    client = SimpleNamespace(chat=SimpleNamespace(completions=completions))
+    source = SearchResult(
+        document=FaqDocument(12, "응시수수료 반환", "접수 취소 시 반환 기준입니다.", chunk_id="row-12", source_row_id=12),
+        score=0.91,
+    )
+    generator = OpenRouterAnswerGenerator(client=client, model="qwen-test")
+
+    answer = generator.generate("환불 가능한가요?", [source])
+
+    assert answer.text == "응시수수료는 기준에 따라 반환됩니다."
+    assert answer.sources == (source,)
+    assert completions.kwargs["model"] == "qwen-test"
+    messages = completions.kwargs["messages"]
+    assert isinstance(messages, list)
+    prompt = str(messages[-1]["content"])
+    assert "제공된 FAQ만 근거" in prompt
+    assert "[FAQ 12]" in prompt
+    assert "응시수수료 반환" in prompt

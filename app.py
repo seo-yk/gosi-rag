@@ -7,9 +7,10 @@ from typing import Mapping
 
 import streamlit as st
 from google import genai
+from openai import OpenAI
 
 from src.config import load_project_env
-from src.generation import GeminiAnswerGenerator, GeneratedAnswer
+from src.generation import GeneratedAnswer, GeminiAnswerGenerator, OpenRouterAnswerGenerator
 from src.indexing import build_embedder, index_bundle_paths
 from src.retrieval import FaissRetriever, SearchMetrics, build_retriever
 
@@ -45,9 +46,11 @@ class Settings:
 
     openai_api_key: str
     gemini_api_key: str
+    openrouter_api_key: str
     embedding_provider: str
+    generation_provider: str
     embedding_model: str
-    gemini_model: str
+    generation_model: str
     chunking_mode: str
     embedding_mode: str
     top_k: int
@@ -58,8 +61,12 @@ class Settings:
     def from_mapping(cls, values: Mapping[str, str]) -> "Settings":
         """환경변수 매핑에서 앱 설정 생성"""
         gemini_api_key = values.get("GEMINI_API_KEY", "").strip()
-        if not gemini_api_key:
+        openrouter_api_key = values.get("OPENROUTER_API_KEY", "").strip()
+        generation_provider = values.get("FAQ_GENERATION_PROVIDER", "gemini").strip()
+        if generation_provider == "gemini" and not gemini_api_key:
             raise ValueError("GEMINI_API_KEY 환경변수가 필요합니다.")
+        if generation_provider == "openrouter" and not openrouter_api_key:
+            raise ValueError("OPENROUTER_API_KEY 환경변수가 필요합니다.")
 
         embedding_provider = values.get("FAQ_EMBEDDING_PROVIDER", "openai")
         openai_api_key = values.get("OPENAI_API_KEY", "").strip()
@@ -77,11 +84,15 @@ class Settings:
         return cls(
             openai_api_key=openai_api_key,
             gemini_api_key=gemini_api_key,
+            openrouter_api_key=openrouter_api_key,
             embedding_provider=embedding_provider,
+            generation_provider=generation_provider,
             embedding_model=values.get("OPENAI_EMBEDDING_MODEL", "text-embedding-3-small")
             if embedding_provider == "openai"
             else values.get("LOCAL_EMBEDDING_MODEL", "intfloat/multilingual-e5-small"),
-            gemini_model=values.get("GEMINI_MODEL", "gemini-3.5-flash"),
+            generation_model=values.get("GEMINI_MODEL", "gemini-3.5-flash")
+            if generation_provider == "gemini"
+            else values.get("OPENROUTER_GENERATION_MODEL", "qwen/qwen3-8b:free"),
             chunking_mode=chunking_mode,
             embedding_mode=embedding_mode,
             top_k=top_k,
@@ -94,7 +105,7 @@ class Settings:
 def build_services(
     settings: Settings,
     cache_version: str = SERVICES_CACHE_VERSION,
-) -> tuple[FaissRetriever, GeminiAnswerGenerator]:
+) -> tuple[FaissRetriever, GeminiAnswerGenerator | OpenRouterAnswerGenerator]:
     """검색기와 답변 생성기 초기화 실행"""
     del cache_version
     embedder = build_embedder(
@@ -106,10 +117,21 @@ def build_services(
         },
     )
     retriever = build_retriever(settings.index_path, settings.metadata_path, embedder)
-    generator = GeminiAnswerGenerator(
-        client=genai.Client(api_key=settings.gemini_api_key),
-        model=settings.gemini_model,
-    )
+    if settings.generation_provider == "gemini":
+        generator = GeminiAnswerGenerator(
+            client=genai.Client(api_key=settings.gemini_api_key),
+            model=settings.generation_model,
+        )
+    else:
+        generator = OpenRouterAnswerGenerator(
+            client=OpenAI(
+                base_url="https://openrouter.ai/api/v1",
+                api_key=settings.openrouter_api_key,
+                timeout=30.0,
+                max_retries=1,
+            ),
+            model=settings.generation_model,
+        )
     return retriever, generator
 
 
@@ -187,7 +209,7 @@ def build_metrics_data(
         sources_used=len(answer.sources),
         sources_limit=settings.top_k,
         embedding_model=settings.embedding_model,
-        generation_model=settings.gemini_model,
+        generation_model=settings.generation_model,
         embedding_tokens_estimate=embedding_tokens_estimate,
         generation_input_tokens_estimate=generation_input_tokens_estimate,
         generation_output_tokens_estimate=generation_output_tokens_estimate,
@@ -247,7 +269,8 @@ def main() -> None:
         st.stop()
 
     st.sidebar.caption(
-        f"provider={settings.embedding_provider}, chunking={settings.chunking_mode}, embedding={settings.embedding_mode}, top_k={settings.top_k}"
+        f"embedding={settings.embedding_provider}, generation={settings.generation_provider}, "
+        f"chunking={settings.chunking_mode}, embedding_mode={settings.embedding_mode}, top_k={settings.top_k}"
     )
 
     question = st.text_input("질문을 입력하세요")
