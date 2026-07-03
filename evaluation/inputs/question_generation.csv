@@ -1,4 +1,4 @@
-question_id,question,question_type,evaluation_intent,target_answer_no,target_answer,supporting_answer_nos
+question_id,question,question_type,evaluation_intent,target_answer_no,target_answer,supporting_answer_nos,notes
 q001,직렬별 가산대상 자격증은 어디에서 확인하나요?,원문유사,가산대상 자격증 확인 경로 안내,3,직렬별 가산대상 자격증 종류는 공무원임용시험령 별표 11과 별표 12에서 확인할 수 있습니다.,,
 q002,원서 접수 끝나고 나서 응시지역이나 선택과목을 바꿀 수 있나요?,복합질문,접수 완료 후 수정 가능 범위 안내,4,접수기간이 종료되면 추가 접수는 불가능하고 응시직렬 응시지역 선택과목 지방인재 여부 등도 수정할 수 없습니다.,,
 q003,결제까지 했는데 원서가 제대로 접수된 건지 어디서 확인해요?,일상표현,원서접수 완료 여부 확인 방법 안내,4,국가공무원채용시스템의 원서접수-응시원서 확인 화면에서 결제여부가 결제완료로 표시되면 정상 접수된 것입니다.,,
