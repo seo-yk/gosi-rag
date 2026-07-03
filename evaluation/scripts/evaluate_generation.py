@@ -28,7 +28,7 @@ BATCH_EVALUATION_SYSTEM_PROMPT = (
     "You must return ONLY a valid JSON object matching the requested schema, without any markdown formatting or extra text."
 )
 
-BATCH_EVALUATION_PROMPT = """Evaluate the candidate answer on 5 metrics.
+BATCH_EVALUATION_PROMPT = """Evaluate the candidate answer on 3 metrics.
 
 Question:
 {question}
@@ -43,52 +43,36 @@ Candidate answer to evaluate:
 {generated_answer}
 
 Evaluation criteria:
-1. similarity (integer 0 to 5):
-   5 = essentially the same meaning
-   4 = mostly the same meaning with only minor differences
-   3 = partially correct but important details differ or are missing
-   2 = limited overlap
-   1 = mostly different
-   0 = incorrect or unrelated
-
-2. groundedness (integer 0 to 2):
+1. groundedness (integer 0 to 2):
    2 = fully grounded in the retrieved FAQ contexts (all claims supported)
    1 = partially grounded, but some claims are weakly supported or vague
    0 = not grounded in the retrieved contexts at all
 
-3. correctness (integer 0 or 1):
+2. correctness (integer 0 or 1):
    Does the candidate answer correctly answer the question according to the reference answer?
    1 = correct, 0 = incorrect.
 
-4. completeness (integer 0 or 1):
+3. completeness (integer 0 or 1):
    Does the candidate answer cover the essential information required by the question without important omissions?
    1 = yes, 0 = no.
 
-5. unsupported_claims (integer 0 or 1):
-   Does the candidate answer contain unsupported or invented claims beyond the reference answer?
-   1 = yes (contains unsupported claims), 0 = no (does not contain unsupported claims).
-
 Return a JSON object in this exact format (no markdown blocks, no leading/trailing text):
 {{
-  "similarity": <integer>,
   "groundedness": <integer>,
   "correctness": <integer>,
-  "completeness": <integer>,
-  "unsupported_claims": <integer>
+  "completeness": <integer>
 }}
 """
 
-BATCH_MULTI_EVALUATION_PROMPT_TEMPLATE = """Evaluate each candidate answer item on the same 5 metrics.
+BATCH_MULTI_EVALUATION_PROMPT_TEMPLATE = """Evaluate each candidate answer item on the same 3 metrics.
 
 Return a JSON array only. Each array item must match this exact format:
 [
   {{
     "question_id": "<question_id>",
-    "similarity": <integer>,
     "groundedness": <integer>,
     "correctness": <integer>,
-    "completeness": <integer>,
-    "unsupported_claims": <integer>
+    "completeness": <integer>
   }}
 ]
 
@@ -355,21 +339,16 @@ def parse_evaluation_json(text: str) -> EvaluationScores:
         else:
             unsupported_claims = -1
 
-    overall = most_frequent_element(
-        [
-            similarity_to_ox(similarity),
-            binary_to_ox(correctness),
-            binary_to_ox(completeness),
-            unsupported_claims_to_ox(unsupported_claims),
-        ]
-    )
+    # 3대 지표 엄격 AND 조건 판정 (groundedness >= 1, correctness == 1, completeness == 1)
+    is_pass = (groundedness in {1, 2}) and (correctness == 1) and (completeness == 1)
+    overall_str = "pass" if is_pass else "fail"
     return EvaluationScores(
         similarity=similarity,
         groundedness=groundedness,
         correctness=correctness,
         completeness=completeness,
         unsupported_claims=unsupported_claims,
-        overall="pass" if overall == "O" else "fail",
+        overall=overall_str,
     )
 
 
