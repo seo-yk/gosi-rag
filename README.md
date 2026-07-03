@@ -1,6 +1,6 @@
 # 국가공무원 채용시험 FAQ RAG 평가 파이프라인
 
-인사혁신처 사이버국가고시센터 FAQ 데이터로 만든 RAG 프로젝트입니다. 검색과 생성을 분리해 답변 품질 저하의 원인을 추적하고, 자동 평가가 어디까지 유효한지 함께 검증했습니다.
+인사혁신처 사이버국가고시센터 FAQ 데이터로 만든 RAG 프로젝트입니다. 검색과 생성을 분리해 답변 품질 저하의 원인을 추적하고, 반복적인 품질 검증 과정을 자동 평가와 비교 실험 구조로 시스템화했습니다.
 
 ## 1. 프로젝트 목적
 
@@ -28,7 +28,7 @@
 | **데이터 처리** | Pandas, NumPy | CSV 탐색 및 전처리 |
 | **임베딩 모델** | `intfloat/multilingual-e5-small` (오픈소스)<br>OpenAI `text-embedding-3-small`, `text-embedding-3-large` | 임베딩 성능 비교 |
 | **벡터 검색** | FAISS (IndexFlatIP), Cosine Similarity | 의미 기반 검색 |
-| **답변 생성** | OpenAI `gpt-5.4-mini`<br>Gemini `gemini-3.5-flash`<br>Ollama `qwen2.5:3b` | 검색 결과를 바탕으로 답변 생성 |
+| **답변 생성** | OpenAI `gpt-5.4-mini` | 검색 결과를 바탕으로 답변 생성 |
 | **평가 모델** | Ollama `gemma3:4b` | 자동 평가 |
 | **데모 UI** | Streamlit | 데모 UI |
 
@@ -131,10 +131,10 @@ python src/indexing.py
 | **검색** | 청킹 방식 | `row` vs `paragraph` vs `file` | `Hit@1`, `Hit@3`, `Hit@5`, `MRR` |
 | | 임베딩 프로바이더 | `sentence-transformers` vs `openai` | `Hit@1`, `Hit@3`, `Hit@5`, `MRR` |
 | | 임베딩 모델 | `intfloat/multilingual-e5-small` vs `text-embedding-3-small` vs `text-embedding-3-large` | `Hit@1`, `Hit@3`, `Hit@5`, `MRR` |
-| | 임베딩 대상 필드 | `title` vs `title_body` | `Hit@1`, `Hit@3`, `Hit@5`, `MRR` |
+| | 임베딩 대상 필드 | `title` vs `title + body` | `Hit@1`, `Hit@3`, `Hit@5`, `MRR` |
 | | 검색 범위 | `Top 3` vs `Top 5` | `Hit@1`, `Hit@3`, `Hit@5`, `MRR` |
 | **생성** | 생성 모델 | OpenAI `gpt-5.4-mini` | - |
-| **평가** | 평가 모델 | Ollama `gemma3:4b` | `groundedness`, `correctness`, `completeness`, `unsupported_claims`, `overall` |
+| **평가** | 평가 모델 | Ollama `gemma3:4b` | `groundedness`, `correctness`, `completeness`, `Overall` |
 
 ---
 
@@ -142,7 +142,7 @@ python src/indexing.py
 
 ### 7-1. 검색(Retrieval)
 
-- **최종 조합:** `row` + `E5-Small` + `title` + `Top 3`
+- **최종 조합:** `row` + `e5-small` + `title` + `Top 3`
 
 | Hit@1 | Hit@3 | Hit@5 | MRR |
 |---:|---:|---:|---:|
@@ -150,19 +150,19 @@ python src/indexing.py
 
 **주요 결과**
 
-- Retrieval 기준선은 `row + E5-Small + title + Top 3`입니다.
-- FAQ 질문만 임베딩한 `title` 구성이 본문까지 포함한 `title_body` 구성보다 더 안정적으로 정답을 찾았습니다.
-- 이 데이터셋에서는 OpenAI `text-embedding-3-small`보다 경량 오픈소스 모델인 `E5-Small`이 더 높은 검색 성능을 보였습니다.
-- `text-embedding-3-large`까지 비교했지만 여전히 `E5-Small`이 검색 성능이 더 높았습니다.
+- Retrieval 기준선은 `row + e5-small + title + Top 3`입니다.
+- FAQ 질문만 임베딩한 `title` 구성이 본문까지 포함한 `title + body` 구성보다 더 안정적으로 정답을 찾았습니다.
+- 이 데이터셋에서는 OpenAI `text-embedding-3-small`보다 경량 오픈소스 모델인 `e5-small`이 더 높은 검색 성능을 보였습니다.
+- `text-embedding-3-large`까지 비교했지만 여전히 `e5-small`이 검색 성능이 더 높았습니다.
 
 **해석**
 
 - 원본 FAQ 제목이 실제 사용자 질문과 가까워, 본문 설명까지 넣는 것보다 질문 문장만 임베딩하는 편이 더 잘 맞았습니다.
 - 다만 일부 답변의 세부 키워드는 본문에만 있어 충분히 회수되지 않았습니다.
-- 이 한계를 통해 의미 기반 벡터 검색만으로는 부족한 케이스가 있으며, 키워드 검색을 함께 쓰는 **하이브리드 서치**가 필요하다는 점을 확인했습니다.
+- 이 한계를 통해 의미 기반 벡터 검색만으로는 부족한 케이스가 있음을 확인했고, 본문 세부 키워드 회수 한계를 보완할 방향을 추가 검토할 필요가 있다고 봤습니다.
 
 > **산출물**
-> - `E5-small` 결과: `output/retr_e5-small.csv`
+> - `e5-small` 결과: `output/retr_e5-small.csv`
 > - `text-embedding-3-small` 결과: `output/retr_openai-3-small.csv`
 > - `text-embedding-3-large` 결과: `output/retr_openai-3-large.csv`
 
@@ -189,10 +189,10 @@ python src/indexing.py
 - 하지만 작은 배치(`batch_size=3`)에서도 11문항 오차가 발생했습니다.
 - `gemma3:4b`처럼 로컬에서 돌리는 소형 평가기에서는 단건 평가가 더 안정적이었습니다.
 
-**필드명 조정**
+**평가 기준 정비**
 
-- 초기 평가 프롬프트에서는 `hallucination` 필드명이 판정을 흔들었습니다. 프롬프트에 1(환각 없음)이라고 명시했음에도 필드명을 기준으로 0(환각 없음)으로 평가했습니다.
-- 따라서 필드명을 `unsupported_claims`로 바꾼 뒤 판정이 더 안정적으로 유지됐습니다.
+- 초기 루브릭에는 환각 관련 항목도 포함했지만, 근거성과 의미가 일부 중복되어 최종적으로는 `groundedness`, `correctness`, `completeness`, `Overall` 4개 기준으로 정비했습니다.
+- 다만 정답이 있는데 답을 유보한 경우까지는 자동 평가만으로 완전히 구분하지는 못했습니다.
 
 > **생성 및 평가 산출물**
 > - 답변 생성 원본: `output/gen_60_gpt-5.4-mini.csv`
