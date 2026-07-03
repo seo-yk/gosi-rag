@@ -1,0 +1,13 @@
+chunking_mode,embedding_provider,embedding_model,embedding_mode,top_k,hit_at_1,hit_at_3,hit_at_5,mrr,failed_expected_ids,status,error_message
+row,openai,text-embedding-3-small,title,3,0.68,0.8,0.8,0.7333333333333333,4|4|6|11|13|77|78|78|79|227,success,
+row,openai,text-embedding-3-small,title,5,0.68,0.8,0.8,0.7333333333333333,4|4|6|11|13|77|78|78|79|227,success,
+row,openai,text-embedding-3-small,title_body,3,0.7,0.88,0.88,0.7833333333333333,77|78|78|79|227|234,success,
+row,openai,text-embedding-3-small,title_body,5,0.7,0.88,0.88,0.7833333333333333,77|78|78|79|227|234,success,
+paragraph,openai,text-embedding-3-small,title,3,0.68,0.8,0.8,0.7366666666666666,4|4|6|11|13|77|78|78|79|227,success,
+paragraph,openai,text-embedding-3-small,title,5,0.68,0.8,0.8,0.7366666666666666,4|4|6|11|13|77|78|78|79|227,success,
+paragraph,openai,text-embedding-3-small,title_body,3,0.7,0.88,0.88,0.7833333333333333,77|78|78|79|227|234,success,
+paragraph,openai,text-embedding-3-small,title_body,5,0.7,0.88,0.88,0.7833333333333333,77|78|78|79|227|234,success,
+file,openai,text-embedding-3-small,title,3,0.0,0.0,0.0,0.0,3|4|4|6|6|7|8|9|9|10|11|11|12|13|13|14|15|77|77|78|78|79|79|226|227|228|229|230|231|232|233|234|240|241|242|243|244|247|248|249|250|251|276|277|278|279|280|281|288|289,success,
+file,openai,text-embedding-3-small,title,5,0.0,0.0,0.0,0.0,3|4|4|6|6|7|8|9|9|10|11|11|12|13|13|14|15|77|77|78|78|79|79|226|227|228|229|230|231|232|233|234|240|241|242|243|244|247|248|249|250|251|276|277|278|279|280|281|288|289,success,
+file,openai,text-embedding-3-small,title_body,3,,,,,,error,OpenAI embeddings create failed: maximum input length is 8192 tokens for the file-level title_body document.
+file,openai,text-embedding-3-small,title_body,5,,,,,,error,OpenAI embeddings create failed: maximum input length is 8192 tokens for the file-level title_body document.

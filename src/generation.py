@@ -10,7 +10,7 @@ class GeminiClient(Protocol):
     models: Any
 
 
-class OpenRouterClient(Protocol):
+class OpenAIChatClient(Protocol):
     chat: Any
 
 
@@ -57,9 +57,9 @@ class GeminiAnswerGenerator:
         return GeneratedAnswer(text, sources)
 
 
-class OpenRouterAnswerGenerator:
+class OpenAIAnswerGenerator:
 
-    def __init__(self, client: OpenRouterClient, model: str) -> None:
+    def __init__(self, client: OpenAIChatClient, model: str) -> None:
         self._client = client
         self.model = model
 

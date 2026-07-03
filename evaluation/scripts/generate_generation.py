@@ -71,10 +71,21 @@ def generate_answers(
     questions = read_generation_questions(questions_path)
     retriever, generator = build_services(settings)
 
+    total = len(questions)
+    print(f"총 {total}개의 질문에 대해 답변 생성을 시작합니다. (모델: {settings.generation_model})")
+
     rows: list[dict[str, Any]] = []
-    for item in questions:
+    for i, item in enumerate(questions, 1):
+        print(f"[{i}/{total}] '{item.question[:25]}...' 답변 생성 중...", end="", flush=True)
+        from time import perf_counter
+        start = perf_counter()
+        
         results = retriever.search(item.question, top_k=settings.top_k)
         answer = generator.generate(item.question, results)
+        
+        elapsed = perf_counter() - start
+        print(f" 완료! ({elapsed:.2f}초)")
+        
         rows.append(
             build_output_row(
                 item=item,
@@ -99,7 +110,7 @@ def main() -> None:
     parser.add_argument(
         "--questions",
         type=Path,
-        default=Path("evaluation/inputs/question_generation.csv"),
+        default=Path("evaluation/inputs/generation_question.csv"),
     )
     parser.add_argument(
         "--output",

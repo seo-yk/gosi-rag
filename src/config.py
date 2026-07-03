@@ -7,8 +7,8 @@ from dotenv import load_dotenv
 
 def load_project_env() -> None:
     """환경 변수 파일 우선순위 로드"""
-    env_file = os.environ.get("FAQ_ENV_FILE", "").strip()
+    env_file = os.environ.get("ENV_FILE", "").strip()
     if env_file:
-        load_dotenv(env_file, override=True)
+        load_dotenv(env_file, override=False)
         return
-    load_dotenv(".env", override=True)
+    load_dotenv(".env", override=False)

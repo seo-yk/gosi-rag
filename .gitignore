@@ -9,13 +9,20 @@ __pycache__/
 # Secrets
 .env
 .env.*
+!.env.example
 
 # Generated data
 index/**/*.faiss
 index/**/metadata.json
-output/*.csv
-output/*.txt
+output/archive/
+output/archive/**
+output/*
+!output/retr_e5-small.csv
+!output/retr_openai-3-small.csv
+!output/retr_openai-3-large.csv
+!output/gen_60_gpt-5.4-mini.csv
+!output/eval_60_gpt-5.4-mini-gemma3-4b_single.csv
+!output/eval_60_gpt-5.4-mini-gemma3-4b_b3.csv
 
 data/*.csv
-!data/*.example.csv
 !data/faq.csv
