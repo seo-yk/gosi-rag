@@ -1,0 +1,5 @@
+chunking_mode,embedding_provider,embedding_mode,top_k,hit_at_1,hit_at_3,hit_at_5,mrr,failed_expected_ids
+row,openai,title,3,0.68,0.8,0.8,0.7366666666666666,4|4|6|11|13|77|78|78|79|227
+row,openai,title,5,0.68,0.8,0.8,0.7366666666666666,4|4|6|11|13|77|78|78|79|227
+row,openai,title_body,3,0.7,0.88,0.88,0.7833333333333333,77|78|78|79|227|234
+row,openai,title_body,5,0.7,0.88,0.88,0.7833333333333333,77|78|78|79|227|234

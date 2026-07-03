@@ -21,8 +21,8 @@
      | **임베딩 입력 필드** | 제목(질문) 단독 vs 제목 + 본문 | 사용자의 실제 질의가 FAQ 본문의 장황한 텍스트에 희석되지 않고 정렬될 수 있는지 검증 |
      | **검색 범위 (Top-K)** | Top 3 검색 vs Top 5 검색 | LLM의 입력 비용과 추론 레이턴시를 최소화하면서 검색 누락을 방지하는 임계점 검증 |
 
-3. **프로덕션 환경을 고려한 비용/레이턴시 최적화**
-   * LLM Judge 평가 수행 시 발생하는 대량의 API 호출 지연과 레이트 리밋 오버헤드를 해소하기 위해, 다중 호출 방식을 단일 JSON 배치(Structured Output) 병합 호출로 최적화하여 API 호출 비용 및 레이턴시를 80% 감축했습니다.
+3. **프로덕션 환경을 고려한 품질 우선 평가 운영**
+   * 생성 결과와 평가 단계를 분리하고, 현재는 로컬 Ollama 기반 `gemma3:4b` judge를 단건 평가 기준선으로 사용합니다. 배치 평가도 실험했지만 판정 변동이 커서 채택하지 않았습니다.
 
 실제 실험 결과는 문서 하단의 평가 결과 섹션에 상세히 정리되어 있습니다.
 
@@ -34,7 +34,7 @@
 | 데이터 처리 | Pandas, NumPy                                                                                        | CSV 탐색 및 전처리             |
 | 임베딩    | Local: `intfloat/multilingual-e5-small`<br>OpenAI: `text-embedding-3-small`                          | 텍스트 → 벡터 변환,<br>성능 비교 실험 |
 | 벡터 검색  | FAISS(IndexFlatIP), cosine similarity                                                                | 텍스트 임베딩 의미 비교            |
-| 답변 생성  | Gemini: `gemini-3.5-flash`<br>OpenRouter: `qwen/qwen3-8b:free`                                       | 검색 결과 기반 최종 답변 생성            |
+| 답변 생성  | Gemini: `gemini-3.5-flash`<br>OpenAI: `gpt-5.4-mini`<br>Ollama: `qwen2.5:3b`                        | 검색 결과 기반 최종 답변 생성            |
 | UI     | Streamlit                                                                                            | 데모 UI                    |
 
 ## 📁 디렉터리 구조
@@ -49,10 +49,10 @@ gosi-rag/
 │   └── generation.py               # 최종 답변 생성
 ├── evaluation/
 │   ├── inputs/                     # 평가 질문셋
-│   │   ├── question_retrieval.csv 
-│   │   └── question_generation.csv   
+│   │   ├── retrieval_question.csv 
+│   │   └── generation_question.csv   
 │   └── scripts/                    # 평가 스크립트
-│       ├── generation_generate.py    
+│       ├── generate.py    
 │       ├── generation_eval.py        
 │       └── retrieval_eval.py         
 ├── tests/                          # 테스트
@@ -104,10 +104,10 @@ pip install -r requirements.txt
 
 | 기능 | 방식 | 비용 | 설정 방법 | 비고 |
 | :---: | :--- | :---: | :--- | :--- |
-| **임베딩(Local)** | `intfloat/multilingual-e5-small` | 무료 | `FAQ_EMBEDDING_PROVIDER=local` 설정 |
-| **임베딩(OpenAI)** | `text-embedding-3-small` | 유료 | `FAQ_EMBEDDING_PROVIDER=openai`, `OPENAI_API_KEY` 설정 |
-| **답변 생성** | Gemini API 또는 OpenRouter | 무료 | `FAQ_GENERATION_PROVIDER`, `GEMINI_API_KEY` 또는 `OPENROUTER_API_KEY` 설정 | OpenRouter 생성 모델: `qwen/qwen3-8b:free` |
-| **생성 평가** | OpenRouter | 무료 | 기본 비교는 `FAQ_JUDGE_PROVIDER=openrouter`, `OPENROUTER_JUDGE_MODEL=meta-llama/llama-3.3-70b-instruct:free` | OpenRouter judge 사용이 어려울 때만 Gemini judge를 별도 배치로 실행 |
+| **임베딩(Local)** | `intfloat/multilingual-e5-small` | 무료 | `EMBEDDING_PROVIDER=local`, `EMBEDDING_MODEL=intfloat/multilingual-e5-small` |
+| **임베딩(OpenAI)** | `text-embedding-3-small` | 유료 | `EMBEDDING_PROVIDER=openai`, `EMBEDDING_MODEL=text-embedding-3-small`, `OPENAI_API_KEY` 설정 |
+| **답변 생성** | Gemini API, OpenAI 또는 Ollama | 혼합 | `GENERATION_PROVIDER`, `GENERATION_MODEL` 설정 | Ollama 로컬 생성 모델: `qwen2.5:3b` |
+| **자동 평가** | Ollama `gemma3:4b` | 로컬 | `EVALUATION_PROVIDER=ollama`, `EVALUATION_MODEL=gemma3:4b` 설정 | 현재 기준 judge |
 
 ---
 
@@ -137,7 +137,7 @@ python3 -m streamlit run app.py
 ### [Step 3] 검색 성능 평가 (Retrieval Evaluation)
 평가 질문셋을 바탕으로 검색기 성능 지표(Hit@K, MRR)를 측정합니다.
 ```bash
-python3 -m evaluation.scripts.retrieval_eval --questions evaluation/inputs/question_retrieval.csv
+python3 -m evaluation.scripts.retrieval_eval --questions evaluation/inputs/retrieval_question.csv
 ```
 * 결과물: 조건별 검색 매트릭스 성능 요약 파일 생성
 
@@ -147,16 +147,26 @@ python3 -m evaluation.scripts.retrieval_eval --questions evaluation/inputs/quest
 ```bash
 # 모델별 실행 시 반드시 파일명 직접 지정 필요
 
-FAQ_GENERATION_PROVIDER={모델} python3 -m evaluation.scripts.generation_generate --questions evaluation/inputs/question_generation.csv --output output/{파일명}.csv
+GENERATION_PROVIDER={모델} python3 -m evaluation.scripts.generate --questions evaluation/inputs/generation_question.csv --output output/{파일명}.csv
 ```
 * 결과물: 생성 모델별 답변, 검색 FAQ 번호, 검색 컨텍스트를 담은 CSV 파일 생성
 
-### [Step 5] 생성 답변 품질 평가 (LLM-as-a-Judge)
+예시:
+```bash
+# Ollama에서 qwen2.5:3b로 60문항 생성
+GENERATION_PROVIDER=ollama \
+GENERATION_MODEL=qwen2.5:3b \
+python3 -m evaluation.scripts.generate \
+  --questions evaluation/inputs/generation_question.csv \
+  --output output/answers_60_generation-question_qwen2.5-3b.csv
+```
+
+### [Step 5] 생성 답변 품질 평가 (Auto Evaluation)
 배치 채점관 모델을 활용해 저장된 생성 답변의 품질(의미 유사도, 근거성, 정확성, 완결성, 환각)을 자동 채점합니다.
 ```bash
 python3 -m evaluation.scripts.generation_eval --answers output/{파일명}.csv --output output/{파일명}.csv
 ```
-* 결과물: 모델별 문항 세부 평점, 생성 답변, Judge 판정 피드백을 담은 평가 CSV 생성
+* 결과물: 모델별 문항 세부 평점, 생성 답변, 자동 평가 피드백을 담은 평가 CSV 생성
 
 ## 📊 평가 프레임워크 및 결과
 
@@ -205,30 +215,30 @@ python3 -m evaluation.scripts.generation_eval --answers output/{파일명}.csv -
 
 생성 답변 평가는 검색 단계에서 가져온 FAQ 컨텍스트를 바탕으로 생성 모델이 얼마나 정확하고 안전하게 대답했는지 검증합니다.
 
-#### 2-1. LLM 평가 결과 (Judge: Llama-3.3-70B)
+#### 2-1. LLM 평가 결과 (Judge: Gemma3 4B)
 
-대표적인 질문 유형(원문유사, 일상표현, 조건형, 복합질문) 10개를 선정하여, 고정 채점관 모델인 `meta-llama/llama-3.3-70b-instruct:free`를 통해 자동 평가를 수행한 실측 결과 테이블입니다. 생성 모델은 한 번의 배치 실행에서 1개만 사용하며, 비교가 필요할 때는 Judge를 고정한 채 배치를 분리 실행합니다.
+대표적인 질문 유형(원문유사, 일상표현, 조건형, 복합질문) 10개를 선정하여, 로컬 judge 모델인 `gemma3:4b`를 통해 자동 평가를 수행한 실측 결과 테이블입니다. 생성 모델은 한 번의 배치 실행에서 1개만 사용하며, 비교가 필요할 때는 Judge를 고정한 채 배치를 분리 실행합니다.
 
 *   **Judge 평가 기준:**
     - **Similarity (의미 유사도):** 기준 답안과 의미가 얼마나 일치하는가? (`0~5`, 4점 이상 Pass)
     - **Groundedness (근거성):** 주어진 FAQ 컨텍스트 내의 사실에만 기반하여 답했는가? (`0~2`, 2점 만점)
     - **Correctness (정확성):** 질문의 핵심 취지에 맞게 정확한 사실을 대답했는가? (`0/1`)
     - **Completeness (완결성):** 중요 정보 누락 없이 성실하게 답변했는가? (`0/1`)
-    - **Hallucination (환각 배제):** 근거 없는 추론이나 왜곡된 사실이 배제되었는가? (`1: 없음`, `0: 있음`)
+    - **Unsupported Claims (근거 없는 주장):** 근거 없는 추론이나 왜곡된 사실이 포함되었는가? (`0: 없음`, `1: 있음`) *주: 기존 Hallucination(1: 없음, 0: 있음) 필드에서 LLM의 자연어 매핑 직관(0을 부재, 1을 존재로 판단하는 경향)에 부합하도록 명칭과 스케일을 개선했습니다.*
     - **Overall (최종 판정):** 개별 지표의 일관성을 검증하여 최종 사용자 제공 적합 여부 판정 (`Pass` / `Fail`)
 
-| ID | 평가용 질문 | Similarity | Groundedness | Correctness | Completeness | Hallucination | Overall | LLM Judge 판정 상세 피드백 |
+| ID | 평가용 질문 | Similarity | Groundedness | Correctness | Completeness | Unsupported Claims | Overall | LLM Judge 판정 상세 피드백 |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
-| **q001** | 원서 접수 끝난 뒤에 응시지역이나 선택과목을 바꿀 수 있나요? | 5 | 2 | 1 | 1 | 1 | **Pass** | 기준 답안의 추가 변경 불가 내용을 의미론적으로 동일하게 표현함. |
-| **q002** | 원서 접수를 취소하면 응시수수료는 바로 환불되나요? | 4 | 2 | 1 | 1 | 1 | **Pass** | 환불 절차와 시점의 연기가 잘 설명됨. |
-| **q003** | 응시표는 언제부터 다시 출력할 수 있어요? 시험 당일 잃어버려도 괜찮나요? | 5 | 2 | 1 | 1 | 1 | **Pass** | 출력 시점과 분실 시 대책이 논리적 오류 없이 답변됨. |
-| **q004** | 친구랑 같이 접수하면 시험장에서 앞뒤 번호로 붙을 수 있나요? | 5 | 2 | 1 | 1 | 1 | **Pass** | 무작위 응시번호 배정 원리가 정확히 일치함. |
-| **q005** | 서울 살아도 다른 지역 시험장 선택해서 볼 수 있나요? | 5 | 2 | 1 | 1 | 1 | **Pass** | 거주지 무관 17개 시도 선택 가능 여부를 명확히 확인함. |
-| **q006** | 영어 성적이 아직 없는데 일단 원서부터 접수하고 나중에 등록해도 되나요? | 5 | 2 | 1 | 1 | 1 | **Pass** | 원서 선접수 후 사후 등록 기한 조건을 올바르게 판정함. |
-| **q007** | 토익 성적 유효기간이 지났는데 예전에 본 점수도 쓸 수 있나요? | 5 | 2 | 1 | 1 | 1 | **Pass** | 만료 전 사전등록 요건과 5년 인정 기준을 누락 없이 포함함. |
-| **q008** | 장애인 편의지원은 언제 어떻게 신청해요? 진단서가 꼭 필요한가요? | 5 | 2 | 1 | 1 | 1 | **Pass** | 편의지원 신청 시기와 진단서 예외 조건을 정확히 대조함. |
-| **q009** | 시험 보러 갈 때 꼭 챙겨야 하는 게 뭐예요? | 3 | 2 | 0 | 0 | 1 | **Fail** | 기준 답안의 핵심인 '신분증', '수험표' 정보가 유실됨. Similarity 3점 및 Completeness 0점 처리로 Fail 판정. |
-| **q010** | 접수한 뒤에 개명되면 시험 볼 때 어떻게 해야 하나요? | 5 | 2 | 1 | 1 | 1 | **Pass** | 초본 지참 및 본인 확인 절차에 대한 의미 정합성 우수함. |
+| **q001** | 원서 접수 끝난 뒤에 응시지역이나 선택과목을 바꿀 수 있나요? | 5 | 2 | 1 | 1 | 0 | **Pass** | 기준 답안의 추가 변경 불가 내용을 의미론적으로 동일하게 표현함. |
+| **q002** | 원서 접수를 취소하면 응시수수료는 바로 환불되나요? | 4 | 2 | 1 | 1 | 0 | **Pass** | 환불 절차와 시점의 연기가 잘 설명됨. |
+| **q003** | 응시표는 언제부터 다시 출력할 수 있어요? 시험 당일 잃어버려도 괜찮나요? | 5 | 2 | 1 | 1 | 0 | **Pass** | 출력 시점과 분실 시 대책이 논리적 오류 없이 답변됨. |
+| **q004** | 친구랑 같이 접수하면 시험장에서 앞뒤 번호로 붙을 수 있나요? | 5 | 2 | 1 | 1 | 0 | **Pass** | 무작위 응시번호 배정 원리가 정확히 일치함. |
+| **q005** | 서울 살아도 다른 지역 시험장 선택해서 볼 수 있나요? | 5 | 2 | 1 | 1 | 0 | **Pass** | 거주지 무관 17개 시도 선택 가능 여부를 명확히 확인함. |
+| **q006** | 영어 성적이 아직 없는데 일단 원서부터 접수하고 나중에 등록해도 되나요? | 5 | 2 | 1 | 1 | 0 | **Pass** | 원서 선접수 후 사후 등록 기한 조건을 올바르게 판정함. |
+| **q007** | 토익 성적 유효기간이 지났는데 예전에 본 점수도 쓸 수 있나요? | 5 | 2 | 1 | 1 | 0 | **Pass** | 만료 전 사전등록 요건과 5년 인정 기준을 누락 없이 포함함. |
+| **q008** | 장애인 편의지원은 언제 어떻게 신청해요? 진단서가 꼭 필요한가요? | 5 | 2 | 1 | 1 | 0 | **Pass** | 편의지원 신청 시기와 진단서 예외 조건을 정확히 대조함. |
+| **q009** | 시험 보러 갈 때 꼭 챙겨야 하는 게 뭐예요? | 3 | 2 | 0 | 0 | 0 | **Fail** | 기준 답안의 핵심인 '신분증', '수험표' 정보가 유실됨. Similarity 3점 및 Completeness 0점 처리로 Fail 판정. |
+| **q010** | 접수한 뒤에 개명되면 시험 볼 때 어떻게 해야 하나요? | 5 | 2 | 1 | 1 | 0 | **Pass** | 초본 지참 및 본인 확인 절차에 대한 의미 정합성 우수함. |
 
 #### 2-2. LLM Judge 평가 결과 분석
 
@@ -243,7 +253,7 @@ python3 -m evaluation.scripts.generation_eval --answers output/{파일명}.csv -
 
 *   **동작 원리:**
     1. `retriever.search`를 통해 획득한 context와 생성된 답변, 그리고 기준 정답(Ground Truth)을 준비합니다.
-    2. 환경변수 `OPENROUTER_JUDGE_MODEL`에 지정된 **단 하나의 고정 모델**에게 각 평가 프롬프트(Similarity, Groundedness, Correctness 등)를 전송합니다. free judge가 일시적으로 unavailable한 경우에만 Gemini judge로 별도 배치를 재실행합니다.
+    2. 환경변수 `EVALUATION_MODEL`에 지정된 **단 하나의 고정 모델**에게 각 평가 프롬프트(Similarity, Groundedness, Correctness 등)를 전송합니다.
     3. 채점 결과를 정수화(Similarity: 0~5, Groundedness: 0~2 등)하여 취합한 뒤, 다수결 또는 특정 조건식을 만족할 때 최종 `Pass` 여부를 결정해 CSV 파일로 로깅합니다.
 
 *   **고정 채점관의 필요성:** 평가 대상을 변경하더라도 채점관 모델의 등급 기준을 1개로 고정함으로써 평가 편향을 방지하고 일관된 정량 지표를 도출하도록 보장합니다.

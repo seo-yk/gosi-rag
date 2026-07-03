@@ -10,7 +10,7 @@ from google import genai
 from openai import OpenAI
 
 from src.config import load_project_env
-from src.generation import GeneratedAnswer, GeminiAnswerGenerator, OpenRouterAnswerGenerator
+from src.generation import GeneratedAnswer, GeminiAnswerGenerator, OpenAIAnswerGenerator
 from src.indexing import build_embedder, index_bundle_paths
 from src.retrieval import FaissRetriever, SearchMetrics, build_retriever
 
@@ -46,7 +46,7 @@ class Settings:
 
     openai_api_key: str
     gemini_api_key: str
-    openrouter_api_key: str
+    ollama_base_url: str
     embedding_provider: str
     generation_provider: str
     embedding_model: str
@@ -61,22 +61,26 @@ class Settings:
     def from_mapping(cls, values: Mapping[str, str]) -> "Settings":
         """환경변수 매핑에서 앱 설정 생성"""
         gemini_api_key = values.get("GEMINI_API_KEY", "").strip()
-        openrouter_api_key = values.get("OPENROUTER_API_KEY", "").strip()
-        generation_provider = values.get("FAQ_GENERATION_PROVIDER", "gemini").strip()
+        openai_api_key = values.get("OPENAI_API_KEY", "").strip()
+        ollama_base_url = values.get("OLLAMA_BASE_URL", "http://localhost:11434/v1").strip()
+        generation_provider = values.get("GENERATION_PROVIDER", "gemini").strip().lower()
         if generation_provider == "gemini" and not gemini_api_key:
             raise ValueError("GEMINI_API_KEY 환경변수가 필요합니다.")
-        if generation_provider == "openrouter" and not openrouter_api_key:
-            raise ValueError("OPENROUTER_API_KEY 환경변수가 필요합니다.")
+        if generation_provider == "openai" and not openai_api_key:
+            raise ValueError("OPENAI_API_KEY 환경변수가 필요합니다.")
+        if generation_provider == "ollama" and not ollama_base_url:
+            raise ValueError("OLLAMA_BASE_URL 환경변수가 필요합니다.")
+        if generation_provider not in {"gemini", "openai", "ollama"}:
+            raise ValueError(f"지원하지 않는 generation provider 입니다: {generation_provider}")
 
-        embedding_provider = values.get("FAQ_EMBEDDING_PROVIDER", "openai")
-        openai_api_key = values.get("OPENAI_API_KEY", "").strip()
+        embedding_provider = values.get("EMBEDDING_PROVIDER", "openai").strip().lower()
         if embedding_provider == "openai" and not openai_api_key:
             raise ValueError("OPENAI_API_KEY 환경변수가 필요합니다.")
-        chunking_mode = values.get("FAQ_CHUNKING_MODE", "row")
-        embedding_mode = values.get("FAQ_EMBEDDING_MODE", "title_body")
-        top_k = int(values.get("FAQ_TOP_K", "3"))
+        chunking_mode = values.get("CHUNKING_MODE", "row")
+        embedding_mode = values.get("EMBEDDING_MODE", "title_body")
+        top_k = int(values.get("TOP_K", "3"))
         index_path, metadata_path = index_bundle_paths(
-            values.get("FAQ_INDEX_DIR", "index"),
+            values.get("INDEX_DIR", "index"),
             chunking_mode,  # type: ignore[arg-type]
             embedding_provider,  # type: ignore[arg-type]
             embedding_mode,  # type: ignore[arg-type]
@@ -84,15 +88,21 @@ class Settings:
         return cls(
             openai_api_key=openai_api_key,
             gemini_api_key=gemini_api_key,
-            openrouter_api_key=openrouter_api_key,
+            ollama_base_url=ollama_base_url,
             embedding_provider=embedding_provider,
             generation_provider=generation_provider,
-            embedding_model=values.get("OPENAI_EMBEDDING_MODEL", "text-embedding-3-small")
-            if embedding_provider == "openai"
-            else values.get("LOCAL_EMBEDDING_MODEL", "intfloat/multilingual-e5-small"),
-            generation_model=values.get("GEMINI_MODEL", "gemini-3.5-flash")
-            if generation_provider == "gemini"
-            else values.get("OPENROUTER_GENERATION_MODEL", "qwen/qwen3-8b:free"),
+            embedding_model=values.get(
+                "EMBEDDING_MODEL",
+                "text-embedding-3-small" if embedding_provider == "openai" else "intfloat/multilingual-e5-small",
+            ),
+            generation_model=values.get(
+                "GENERATION_MODEL",
+                "gemini-3.5-flash"
+                if generation_provider == "gemini"
+                else "gpt-5.4-mini"
+                if generation_provider == "openai"
+                else "qwen2.5:3b",
+            ),
             chunking_mode=chunking_mode,
             embedding_mode=embedding_mode,
             top_k=top_k,
@@ -105,15 +115,14 @@ class Settings:
 def build_services(
     settings: Settings,
     cache_version: str = SERVICES_CACHE_VERSION,
-) -> tuple[FaissRetriever, GeminiAnswerGenerator | OpenRouterAnswerGenerator]:
+) -> tuple[FaissRetriever, GeminiAnswerGenerator | OpenAIAnswerGenerator]:
     """검색기와 답변 생성기 초기화 실행"""
     del cache_version
     embedder = build_embedder(
         settings.embedding_provider,
         {
             "OPENAI_API_KEY": settings.openai_api_key,
-            "OPENAI_EMBEDDING_MODEL": settings.embedding_model,
-            "LOCAL_EMBEDDING_MODEL": settings.embedding_model,
+            "EMBEDDING_MODEL": settings.embedding_model,
         },
     )
     retriever = build_retriever(settings.index_path, settings.metadata_path, embedder)
@@ -122,11 +131,29 @@ def build_services(
             client=genai.Client(api_key=settings.gemini_api_key),
             model=settings.generation_model,
         )
-    else:
-        generator = OpenRouterAnswerGenerator(
+    elif settings.generation_provider == "openai":
+        generator = OpenAIAnswerGenerator(
             client=OpenAI(
-                base_url="https://openrouter.ai/api/v1",
-                api_key=settings.openrouter_api_key,
+                api_key=settings.openai_api_key,
+                timeout=30.0,
+                max_retries=1,
+            ),
+            model=settings.generation_model,
+        )
+    elif settings.generation_provider == "ollama":
+        generator = OpenAIAnswerGenerator(
+            client=OpenAI(
+                base_url=settings.ollama_base_url,
+                api_key="ollama",
+                timeout=300.0,
+                max_retries=1,
+            ),
+            model=settings.generation_model,
+        )
+    else:
+        generator = OpenAIAnswerGenerator(
+            client=OpenAI(
+                api_key=settings.openai_api_key,
                 timeout=30.0,
                 max_retries=1,
             ),

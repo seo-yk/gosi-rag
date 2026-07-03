@@ -1,0 +1,364 @@
+question_id,question,question_type,evaluation_intent,target_answer_no,target_answer,supporting_answer_nos,generation_provider,generation_model,evaluation_model,generated_answer,retrieved_answer_nos,similarity_score,groundedness,correctness,completeness,unsupported_claims,overall,notes
+q001,직렬별 가산대상 자격증은 어디에서 확인하나요?,원문유사,가산대상 자격증 확인 경로 안내,3,직렬별 가산대상 자격증 종류는 공무원임용시험령 별표 11과 별표 12에서 확인할 수 있습니다.,,openai,gpt-5.4-mini,gemma3:4b,"직렬별 가산대상 자격증 종류는 **「공무원임용시험령」 별표 11, 12**에서 확인할 수 있습니다.",3|280|85,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=3|280|85 | generated_chars=55"
+q002,원서 접수 끝나고 나서 응시지역이나 선택과목을 바꿀 수 있나요?,복합질문,접수 완료 후 수정 가능 범위 안내,4,접수기간이 종료되면 추가 접수는 불가능하고 응시직렬 응시지역 선택과목 지방인재 여부 등도 수정할 수 없습니다.,,openai,gpt-5.4-mini,gemma3:4b,"원서접수 **종료 후에는 응시지역이나 선택과목을 변경할 수 없습니다.**
+
+근거:
+- FAQ 252: 접수기간에만 응시원서 입력사항을 수정할 수 있으며, **접수기간 종료 이후에는 응시지역, 선택과목 등을 수정할 수 없다**고 안내합니다.
+- FAQ 255: **원서 접수기간 종료 이후에는 응시지역 변경이 불가**하다고 안내합니다.
+
+따라서 원서 접수 끝난 뒤에는 **응시지역 변경도, 선택과목 변경도 불가**합니다.",252|255|153,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=252|255|153 | generated_chars=234"
+q003,결제까지 했는데 원서가 제대로 접수된 건지 어디서 확인해요?,일상표현,원서접수 완료 여부 확인 방법 안내,4,국가공무원채용시스템의 원서접수-응시원서 확인 화면에서 결제여부가 결제완료로 표시되면 정상 접수된 것입니다.,,openai,gpt-5.4-mini,gemma3:4b,"결제 후 원서가 제대로 접수됐는지는 **[국가공무원채용시스템] → [원서접수] → [응시원서 확인]** 화면에서 확인할 수 있습니다.  
+여기서 **결제여부가 ‘결제완료’**로 표시되면 **정상 접수된 것**입니다.",4|249|248,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=4|249|248 | generated_chars=120"
+q004,접수하고 나서 개명되면 시험 볼 때 뭘 챙겨가야 하나요?,복합질문,개명 이후 시험장 본인확인 절차 안내,6,원서 제출 후 개명신고가 처리됐다면 시험장에 새 신분증과 성명 정정을 확인할 수 있는 주민등록초본을 지참해야 합니다.,,openai,gpt-5.4-mini,gemma3:4b,"원서접수 **이후에 개명신고가 처리된 경우**, 필기시험장에는 **새 신분증(주민등록증 또는 주민등록증 발급신청 확인서)**과 **성명정정을 확인할 수 있는 주민등록초본**을 지참해야 합니다.
+
+시험 중 본인확인 시간에 감독관에게 **개명했다고 말씀드리고 초본을 제시**하면 됩니다.
+
+또한 합격자 발표 이후에도 성명 정정이 필요할 수 있으므로, **면접시험 등 최종시험까지는 새 신분증 외에 주민등록초본을 반드시 지참**하라고 안내되어 있습니다.",6|271|212,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=6|271|212 | generated_chars=250"
+q005,개명 판결은 받았는데 주민등록 이름은 아직 안 바뀌었어요. 원서 이름은 뭘로 써야 하나요?,조건형,개명 처리 시점별 원서 성명 기준 안내,6,원서에 쓰는 성명은 주민등록에 있는 성명을 기준으로 하므로 주민등록상 개명이 반영되지 않았다면 이전 성명을 사용해야 합니다.,,openai,gpt-5.4-mini,gemma3:4b,"개명 판결만 받았고 **주민등록에 아직 새 성명으로 개명되지 않았다면, 원서에는 이전 성명을 사용해야 합니다.**  
+FAQ에 따르면 원서제출에 사용하는 성명은 **주민등록에 있는 성명**입니다.",6|153|28,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=6|153|28 | generated_chars=109"
+q006,저소득층이나 장애인 구분모집은 증빙서류를 무조건 따로 내야 하나요?,일상표현,구분모집 증빙서류 제출 필요 여부와 예외 안내,7,원서접수 시 정보를 정확히 입력했다면 보통 별도 증빙서류를 제출할 필요는 없습니다. 다만 관계기관 조회가 되지 않거나 일부 예외 사유가 있으면 안내된 기간에 서류를 제출해야 합니다.,,openai,gpt-5.4-mini,gemma3:4b,"아니요. FAQ에 따르면 **원서접수 시 이름과 주민번호를 정확히 입력했다면 별도의 증빙서류를 따로 제출할 필요는 없습니다.**
+
+다만, **관계기관 조회·확인이 되지 않는 경우에는 별도로 연락이 오며**, 그때는 인사혁신처가 안내한 기간 내에 **장애인증명서, 수급자증명서, 한부모가족증명서, 사회보장급여결정통지서 등** 안내받은 서류를 제출해야 합격 취소를 막을 수 있습니다.
+
+즉, **무조건 따로 내는 것은 아니고, 조회가 안 될 때만 제출이 필요합니다.**",7|132|124,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=7|132|124 | generated_chars=260"
+q007,경쟁률은 접수 끝나자마자 바로 공개되나요?,일상표현,경쟁률 공개 시점 안내,8,원서접수 결과는 1일 단위로 공개되며 최종 경쟁률은 원서접수 마감 다음날 국가공무원채용시스템 등을 통해 공개됩니다.,,openai,gpt-5.4-mini,gemma3:4b,"네. FAQ에 따르면 **2025년도부터는 원서접수 결과를 1일 단위로 공개**하고 있으며, **최종 결과는 원서접수 마감 다음날 국가공무원채용시스템 등을 통해 공개**합니다.
+
+따라서 **접수 종료 직후 바로가 아니라, 마감 다음날 최종 결과가 공개**된다고 볼 수 있습니다.",8|136|254,4,2,1,1,0,pass,"overall=pass | similarity=4, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=8|136|254 | generated_chars=155"
+q008,사는 곳이랑 다른 지역 시험장으로 지원할 수 있나요?,일상표현,응시지역 선택 가능 범위 설명,9,주민등록지나 현재 거주지와 관계없이 17개 시도 가운데 원하는 필기시험 지역을 선택할 수 있습니다.,,openai,gpt-5.4-mini,gemma3:4b,"네, 가능합니다. FAQ에 따르면 응시원서 접수 시 **주민등록지나 현재 거주지와 관계없이 원하는 지역을 선택할 수 있습니다.**  
+다만 **지역 내의 구체적인 시험장(학교)은 선택하거나 변경할 수 없고**, 응시번호 등에 따라 배정됩니다.",9|267|141,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=9|267|141 | generated_chars=135"
+q009,시도는 골라도 실제 학교 시험장까지 내가 정할 수 있나요?,복합질문,응시지역 선택과 시험장 배정 구분 안내,9,시험 지역은 선택할 수 있지만 실제 시험장은 모집단위별로 무작위 부여된 응시번호에 따라 배정되므로 수험생이 직접 선택하거나 변경할 수 없습니다.,,openai,gpt-5.4-mini,gemma3:4b,"제공된 FAQ만으로는 **시도는 골라도 실제 학교 시험장까지 내가 정할 수 있는지**를 확인할 수 없습니다.
+
+관련 FAQ에는 응시지역이나 시험장 선택에 대한 직접적인 안내가 없으므로, **확인할 수 없다고 답변드립니다.**",240|221|141,4,2,1,1,0,pass,"overall=pass | similarity=4, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=240|221|141 | generated_chars=125"
+q010,9급 지역구분모집은 거주지 조건이 정확히 어떻게 되나요?,원문유사,지역구분모집 거주요건 설명,10,9급 지역구분모집은 해당 연도 1월 1일을 포함해 전후로 연속 3개월 이상 해당 지역에 주민등록이 되어 있어야 응시할 수 있습니다. 다만 서울 인천 경기 지역은 주민등록지와 관계없이 누구나 응시할 수 있습니다.,,openai,gpt-5.4-mini,gemma3:4b,"9급 지역구분모집의 거주지 요건은 FAQ 기준으로 다음과 같습니다.
+
+- **2022.1.1을 반드시 포함하여**
+- **1월 1일 전 또는 후로 연속하여 3개월 이상**
+- **해당 지역에 주민등록이 되어 있어야** 응시할 수 있습니다.
+
+또한 FAQ에 따르면 **서울·인천·경기지역은 주민등록지와 관계없이 누구나 응시 가능**합니다.
+
+다만, **지방공무원 시험의 거주지 제한요건과는 다르다**고 안내되어 있습니다.  
+더 구체적인 적용 여부는 FAQ에 없는 내용이라 확인할 수 없습니다.",45|10|139,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=45|10|139 | generated_chars=275"
+q011,접수증이랑 응시표는 각각 언제부터 출력할 수 있나요?,복합질문,접수증과 응시표 출력 시점 비교,11,접수증은 원서접수 취소 마감일 18시부터 출력할 수 있고 응시표는 시험장소 공고일부터 그 해 말까지 출력할 수 있습니다.,251,openai,gpt-5.4-mini,gemma3:4b,"접수증은 **원서접수 취소 마감일 18시부터** 출력할 수 있습니다.  
+응시표는 **시험장소 공고일로부터 시험일이 속한 연도의 말까지** 언제든지 출력할 수 있습니다.
+
+출력 경로는 **국가공무원채용시스템 → 마이페이지 → 원서접수 내역**의 **‘접수증 출력’ / ‘응시표 출력’** 버튼입니다.",11|251|28,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=11|251|28 | generated_chars=167"
+q012,응시표를 잃어버렸는데 시험 전에 다시 출력할 수 있나요?,일상표현,응시표 재출력 가능 여부 안내,11,응시표는 시험장소 공고일부터 시험일이 속한 연도 말까지 언제든 다시 출력할 수 있습니다.,251,openai,gpt-5.4-mini,gemma3:4b,"네, 가능합니다.  
+FAQ에 따르면 응시표는 **시험일이 속한 연도의 말까지 언제든지 다시 출력**할 수 있습니다. 또한 **시험 당일 응시표를 소지하지 못했더라도 시험 응시는 가능**합니다.
+
+다만 응시표가 없으면 **시험장/시험실 좌석 확인**이나 일부 시험의 **선택과목 확인**에 어려움이 있을 수 있으니, 가능하면 **재출력해서 지참**하시는 것이 좋습니다.",251|272|11,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=251|272|11 | generated_chars=206"
+q013,가산점은 언제까지 등록해야 하고 서류도 따로 제출해야 하나요?,복합질문,가산점 등록기한과 증빙서류 필요 여부 안내,12,가산점 대상 자격은 시험 전일까지 취득해야 하며 시험일을 포함한 3일 안에 국가공무원채용시스템에 등록해야 합니다. 관계기관이 직접 조회하므로 보통 별도 증빙서류는 제출하지 않습니다.,3,openai,gpt-5.4-mini,gemma3:4b,"가산점은 **시험 시행 전일까지** 가산점 대상 자격을 취득한 경우에만 등록할 수 있습니다.  
+- **7급 공채**: 제1차시험 시행일 전일까지 취득해야 하며, **제1차시험 시행일을 포함한 3일 내** 국가공무원채용시스템에 등록해야 합니다.  
+- **9급 공채**: 필기시험 시행일 전일까지 취득해야 하며, **필기시험 시행일을 포함한 3일 내** 등록해야 합니다.
+
+또한 **별도의 증빙서류는 제출하지 않아도 됩니다.**  
+인사혁신처가 수험생이 입력한 내용을 바탕으로 관계기관에 직접 조회·확인합니다.",12|91|94,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=12|91|94 | generated_chars=285"
+q014,원서 사진은 꼭 증명사진처럼 엄격해야 하나요?,일상표현,원서 사진 규격과 허용 범위 설명,13,단색 배경에 이마와 귀를 가리지 않은 최근 6개월 이내 사진을 권장하지만 본인 식별이 명확하다면 일부 권장사항을 엄격히 충족하지 않아도 사용할 수 있습니다.,,openai,gpt-5.4-mini,gemma3:4b,"원서 사진은 **꼭 증명사진처럼 아주 엄격해야 하는 것은 아닙니다.**
+
+FAQ에 따르면,  
+- **단색 배경**
+- **이마와 귀를 가리지 않은**
+- **6개월 이내 사진**을 권장하지만,
+- **이미 찍어둔 사진이라도 본인 식별이 명확하면** 권장사항을 엄격하게 모두 갖추지 않아도 사용할 수 있습니다.
+- 이 경우에는 **이마와 귀를 가린 사진도 가능**하다고 되어 있습니다.
+
+다만, 다음 사진은 사용할 수 없습니다:
+- 군복 등 제복 착용
+- 90도 누운 사진
+- 희미한 사진(역광 포함)
+- 얼굴 일부만 보이거나 전혀 안 보이는 사진
+- 얼굴이 너무 작은 사진
+- 신분증을 재촬영한 사진
+- 좌우로 몸을 돌린 사진
+- 한 방향만 축소한 사진 등
+
+즉, **본인 식별이 명확하면 어느 정도 유연하게 가능하지만, 식별이 어려운 사진은 안 됩니다.**",13|154|252,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=13|154|252 | generated_chars=425"
+q015,사진을 아무거나 올리면 시험장에서 문제가 생길 수도 있나요?,조건형,부적절한 사진 사용 시 불이익 안내,13,응시원서 사진과 실물이 크게 다르면 시험 중이나 종료 후 추가 본인확인 절차가 진행되어 시험시간을 허비하거나 번거로움이 생길 수 있습니다.,,openai,gpt-5.4-mini,gemma3:4b,"네. FAQ에 따르면 **응시원서 사진과 실물이 많이 달라 본인 확인이 어려울 경우**, 시험 당일에 **지문 날인**과 **신분확인용 개인정보 제공동의서 작성** 등을 하게 되어 **시험시간을 허비하거나 번거로운 일이 생길 수 있습니다**.
+
+또한 **사용할 수 없는 사진**도 안내되어 있습니다. 예를 들면:
+- 군복 등 제복 착용 사진
+- 90도 누운 사진
+- 희미한 사진(역광 포함)
+- 얼굴 일부만 보이거나 전혀 안 보이는 사진
+- 얼굴이 너무 작은 사진
+- 신분증을 재촬영한 사진
+- 좌우로 몸을 돌린 사진
+- 한 방향만 축소한 사진
+
+따라서 **아무 사진이나 올리면 시험장에서 문제가 생길 수도 있습니다**.  
+다만, **본인 식별이 명확하게 가능하다면** 권장사항을 엄격하게 모두 갖추지 않아도 사용할 수 있다고 FAQ에 안내되어 있습니다.",13|200|66,4,2,1,1,0,pass,"overall=pass | similarity=4, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=13|200|66 | generated_chars=423"
+q016,합격하고 임용 절차 진행 중에 입영통지서를 받으면 입영 연기를 신청할 수 있나요?,조건형,채용 합격자의 입영기일 연기 절차 안내,14,징집 또는 소집통지서를 받은 채용시험 합격자가 입영연기를 원하면 통지서를 발부한 지방병무청에 입영기일 연기신청을 해야 하며 가능 기간은 최대 2년입니다.,,openai,gpt-5.4-mini,gemma3:4b,"네, 가능합니다.  
+FAQ 14에 따르면 공무원 채용시험 합격자가 징집 또는 소집통지서를 받은 경우, 통지서를 발부한 지방병무청에 **입영기일 연기신청**을 해야 합니다.  
+입영연기 가능기간은 **최대 2년**입니다.
+
+자세한 사항은 해당 지방병무청 현역입영과(현역대상) 또는 사회복무과(보충역)로 문의해야 합니다.",14|43|27,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=14|43|27 | generated_chars=178"
+q017,직장 다니는 중인데 공무원 임용되면 사표는 언제 내는 게 맞나요?,일상표현,현직 재직자의 퇴사 시점 안내,15,배치받은 부처에서 임용일을 통보받은 뒤 그 임용일 전일까지 사표가 수리되도록 조치하면 됩니다. 임용 전 교육훈련이나 실무수습이 있으면 수습기관장과 상의해 시기를 정해야 합니다.,,openai,gpt-5.4-mini,gemma3:4b,"현재 직장에 다니고 있다면, **배치받은 부처에서 임용일을 통보받은 후 그 임용일 전일(임용 전 교육훈련 시작 전일)까지 사표가 수리될 수 있도록** 조치하시면 됩니다.
+
+또한 **임용 전 교육훈련이나 실무수습을 받는 경우에는 수습기관장과 충분히 상의한 후 시기를 결정**하셔야 합니다.
+
+FAQ에 따르면, **임용일이 통보되기 전부터 미리 사표를 내야 한다고는 되어 있지 않으며**, 구체적인 시점은 **임용일 통보 후 전일까지 사표가 수리되도록** 하는 것이 기준입니다.",15|176|22,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=15|176|22 | generated_chars=265"
+q018,시험 당일 꼭 챙겨가야 하는 준비물이 뭐예요?,일상표현,필수 지참물 안내,77,시험 당일에는 응시표와 신분증 그리고 컴퓨터용 흑색사인펜을 지참해야 합니다. 필요하면 수정테이프와 계산 기능이 없는 시계도 가져갈 수 있습니다.,,openai,gpt-5.4-mini,gemma3:4b,"시험 당일에는 FAQ 기준으로 다음을 지참하시면 됩니다.
+
+- **응시표**
+- **신분증**: 주민등록증, 여권, 운전면허증, 주민등록번호가 기재된 장애인등록증(복지카드) 등
+- **컴퓨터용 흑색사인펜**
+- **수정테이프**: 답안 수정을 위해 소지 가능하며, **본인이 준비해야 합니다**
+- **시계**: 계산기능이 없는 것만 소지 가능
+
+또한 FAQ에 따르면 **수정테이프는 시험본부나 감독관이 제공하지 않으므로 본인이 가져가야 합니다.**
+
+근거가 없는 다른 준비물은 확인할 수 없습니다.",275|77|13,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=275|77|13 | generated_chars=279"
+q019,응시표 없이 가도 시험 볼 수 있나요? 신분증만 있으면 되나요?,복합질문,응시표 재출력 여부와 필수 지참물 확인,77,응시표와 신분증은 모두 지참해야 합니다. 응시표를 잃어버렸다면 시험 전에 다시 출력해서 가져가는 것이 맞습니다.,251,openai,gpt-5.4-mini,gemma3:4b,"네, **응시표를 분실했더라도 시험응시는 가능합니다.** 다만 응시표가 없으면 **시험장·시험실 좌석 확인이 어렵고**, 9급공채의 경우 **선택과목명 등을 확인하기 어려울 수 있어** 가급적 **응시표를 재출력해 지참**하는 것이 좋습니다.
+
+또한 **신분증만으로 되는지는 FAQ에 따르면 신분확인용 신분증이 필요**합니다. 공무원 채용시험에서 인정되는 신분증은 **주민등록증, 운전면허증, 여권, 주민등록번호가 기재된 장애인등록증(복지카드)**입니다.  
+따라서 **응시표 없이도 응시는 가능하지만, 신분증은 반드시 필요**합니다.
+
+근거가 부족한 부분은 확인할 수 없습니다.",272|78|69,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=272|78|69 | generated_chars=324"
+q020,기한 지난 여권밖에 없는데 이걸로도 시험장 입실이 되나요?,일상표현,만료 여권의 신분증 인정 여부 안내,78,기한이 만료된 여권은 신분증으로 인정되지 않습니다. 가능하면 다른 신분증이나 주민등록증 발급신청 확인서를 준비하는 것이 좋습니다.,77,openai,gpt-5.4-mini,gemma3:4b,"기한 만료된 여권은 응시자 본인 확인에 유효하지 않아 **신분증으로 인정되지 않습니다**.  
+다만 **부득이 시험당일까지 다른 신분증을 재발급받지 못한 경우에도 응시는 가능**하지만, **시험시간 중 본인확인을 위한 좌우무인 날인 등의 절차를 이행해야 합니다**.
+
+즉, **기한 지난 여권만으로는 신분증 인정은 안 되지만, 응시 자체는 가능할 수 있습니다**.",78|199|268,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=78|199|268 | generated_chars=203"
+q021,유효한 신분증이 없으면 시험 자체를 못 보나요 아니면 다른 절차로 볼 수 있나요?,복합질문,신분증 미지참 시 응시 가능 여부와 대체 절차 안내,78,유효한 신분증이 없더라도 부득이한 경우 응시는 가능할 수 있지만 시험시간 중 좌우무인 날인 등 본인확인 절차를 거쳐야 합니다.,77,openai,gpt-5.4-mini,gemma3:4b,"유효한 신분증이 없더라도 **응시가 완전히 불가능하다고만 보기는 어렵습니다.**  
+FAQ에 따르면, **부득이하게 시험당일까지 신분증을 재발급받지 못한 경우에도 응시는 가능**하며, 대신 **시험시간 중 본인확인을 위한 좌우무인 날인 등의 절차**를 이행해야 합니다. (FAQ 78)
+
+다만, **유효한 신분증은 본인 확인에 사용되는 기준 신분증**이며, **기한 만료된 여권은 신분증으로 인정되지 않습니다.** (FAQ 78)
+
+정리하면:
+- **유효한 신분증이 없다고 해서 무조건 시험을 못 보는 것은 아님**
+- **대체 절차가 있을 수 있음**
+- 구체적으로는 **시험시간 중 본인확인 절차**를 따라야 함
+
+FAQ에 없는 추가적인 예외나 세부 절차는 확인할 수 없습니다.",69|271|78,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=69|271|78 | generated_chars=381"
+q022,필기시험 보다가 배탈 나면 중간에 나갈 수 있나요?,일상표현,시험 중 퇴실 가능 여부와 조건 안내,"64,79","시험시간 중에는 원칙적으로 퇴실이 불가능하지만 배탈 등으로 화장실 이용이 불가피한 경우 예외적으로 퇴실이 인정됩니다. 7급 공채 및 경채는 화장실 이용 후 재입실이 허용되는 반면, 9급 공채는 재입실이 불가합니다.",,openai,gpt-5.4-mini,gemma3:4b,"네. FAQ 79에 따르면 **시험시간 중에는 원칙적으로 퇴실이 불가능**하지만, **배탈 등으로 화장실 이용이 불가피한 경우에 한해 퇴실이 인정**됩니다.  
+다만 **재입실은 허용되지 않으며**, 시험이 끝날 때까지 시험시행본부에서 대기한 뒤 귀가하게 됩니다.  
+또한 **퇴실 전까지 작성한 답안지는 유효**하고, 이로 인한 **불이익은 없습니다**.",55|79|91,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=55|79|91 | generated_chars=199"
+q023,화장실 때문에 잠깐 나가면 다시 들어와서 계속 볼 수 있나요?,복합질문,재입실 가능 여부와 퇴실 후 조치 안내,"64,79","일부 시험(7급 공채 및 경채)은 시험 중 화장실 이용 후 재입실하여 계속 응시할 수 있으나, 9급 공채는 재입실이 허용되지 않고 시험시행본부에서 대기해야 합니다.",,openai,gpt-5.4-mini,gemma3:4b,"제공된 FAQ만으로는 **화장실 때문에 잠깐 나갔다가 다시 들어와서 계속 볼 수 있는지**를 직접 확인할 수 없습니다.
+
+다만 FAQ 63에는 화장실 이용 수험생을 **시험감독관이 바로 옆에서 안내**하고, **화장실 사용 전·후에 검사**를 하며, **화장실 이용 시간대를 지정**한다고만 되어 있습니다.  
+따라서 **재입실 가능 여부나 시험 계속 응시 가능 여부는 FAQ에 명시되어 있지 않아 확인할 수 없습니다.**",63|119|62,3,2,1,1,0,pass,"overall=pass | similarity=3, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=63|119|62 | generated_chars=236"
+q024,7급 감사직 회계학이랑 세무직 회계학 문제는 서로 다른가요?,일상표현,동일 과목 시험문제 동일 여부 안내,226,동일 직급이고 같은 날 시행되는 시험에서 과목명이 같은 과목은 시험문제가 같습니다. 따라서 감사직 회계학과 세무직 회계학 문제는 동일합니다.,,openai,gpt-5.4-mini,gemma3:4b,"네. **7급 감사직 회계학과 세무직 회계학은 동일한 문제**입니다.
+
+근거: FAQ 226에 따르면, **동일 직급이고 동일한 날짜에 시행되는 시험과목 중 과목명이 같으면 시험문제가 같습니다.** 따라서 7급 공채시험에서 **감사직렬의 회계학 문제와 세무직렬의 회계학 문제는 동일한 문제**라고 안내되어 있습니다.",226|83|84,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=226|83|84 | generated_chars=176"
+q025,직렬별 시험과목은 어디에서 확인할 수 있나요?,원문유사,채용분야별 시험과목 확인 경로 안내,227,국가직 공무원 채용시험 과목은 공무원임용시험령 별표 1과 국가법령정보센터에서 확인할 수 있고 인사혁신처가 주관하는 공개경쟁채용시험 과목은 매년 1월 초 시험계획 공고문에서도 확인할 수 있습니다.,,openai,gpt-5.4-mini,gemma3:4b,"직렬별 시험과목은 「공무원임용시험령」 별표 1에서 규정되어 있으며, 국가법령정보센터 홈페이지를 통해 확인하실 수 있습니다.  
+또한 5·7·9급 공개경쟁채용시험 및 외교관후보자 선발시험의 시험과목은 매년 1월 초 국가공무원채용시스템 공지사항에 게시되는 「국가공무원 공개경쟁채용시험 등 계획 공고」에서도 확인할 수 있습니다.",3|227|241,4,2,1,1,0,pass,"overall=pass | similarity=4, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=3|227|241 | generated_chars=180"
+q026,국공립대나 교육기관 행정직으로 가려면 어떤 시험을 준비해야 하나요?,일상표현,교육행정직 지원 경로 안내,228,국공립 대학이나 교육기관에서 행정직 공무원으로 일하려면 교육행정직렬을 선발하는 시험에 응시해야 합니다. 국가직은 인사혁신처의 공개경쟁채용시험으로 선발하고 지방직은 시도교육청이 선발합니다.,,openai,gpt-5.4-mini,gemma3:4b,"국·공립대나 교육기관의 행정직으로 근무하려면 **교육행정직렬 시험**에 응시해야 합니다.
+
+- **국가직 교육행정직렬**: 인사혁신처가 실시하는 **5급 및 7·9급 공개경쟁채용시험**
+- **지방직 교육행정직렬**: 시·도교육청별로 **9급 위주 선발시험**
+
+즉, 준비해야 할 시험은 **교육행정직렬 공개경쟁채용시험**입니다.  
+다만, 구체적으로 국가직인지 지방직인지에 따라 시험 종류가 다르므로 본인이 원하는 근무기관에 맞춰 확인해야 합니다.",228|245|141,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=228|245|141 | generated_chars=251"
+q027,9급 사회복지직은 왜 국가직 공채 계획에 안 보이나요?,일상표현,국가직 9급 사회복지직 미선발 이유 안내,229,국가공무원 9급 공개경쟁채용시험에서는 사회복지직렬을 선발하지 않습니다. 중앙부처의 9급 사회복지 인력 수요가 거의 없고 현장업무는 주로 지방자치단체가 담당하기 때문입니다.,,openai,gpt-5.4-mini,gemma3:4b,"9급 사회복지직은 **국가공무원 9급 공개경쟁채용시험에서는 선발하지 않기 때문**입니다.  
+FAQ에 따르면, **중앙부처는 사회복지 정책·제도 업무를 주로 담당해 5급 인력수요는 있지만, 9급이 맡는 일선 현장업무는 대부분 지방자치단체가 수행하므로 중앙부처의 9급 수요가 거의 없습니다.**
+
+따라서 **9급 사회복지직은 보통 광역지방자치단체(시·도)에서 선발**하며, **거주하시는 시·도의 채용계획을 확인**하셔야 합니다.",229|158|187,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=229|158|187 | generated_chars=239"
+q028,9급 국제통상직은 왜 선발을 안 하나요?,일상표현,9급 국제통상 직류 미선발 이유 설명,230,9급 공개경쟁채용시험에서는 국제통상 재경 법무행정직류 등을 선발하지 않습니다. 대부분의 9급 행정직 수요가 일반행정에 집중되고 기타 직류는 일부 부처가 자체 충원하기 때문입니다.,,openai,gpt-5.4-mini,gemma3:4b,"9급 공개경쟁채용시험에서는 행정직렬 중 국제통상·재경·법무행정직류 등을 선발하고 있지 않습니다.  
+그 이유는 중앙부처의 9급 행정직렬은 대부분 일반행정직류이고, 기타 직류는 일부 부처에만 한정되어 정원 규모가 적기 때문에 부처별로 필요 인력을 자체적으로 충원하고 있기 때문입니다.
+
+다만 5급 공개경쟁채용시험에서는 국제통상·재경·법무행정직류를 매년 일정 인원 선발하고 있습니다.",230|42|43,4,2,1,1,0,pass,"overall=pass | similarity=4, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=230|42|43 | generated_chars=212"
+q029,공채 선발인원은 보통 언제쯤 확정돼서 공고되나요?,원문유사,선발예정 직렬 및 인원 공고 시점 안내,231,공개경쟁채용시험의 선발예정 직렬과 인원은 하반기 부처별 수요조사를 거쳐 연말에 충원계획이 확정되고 다음 해 1월 시험계획 공고문을 통해 확인할 수 있습니다.,,openai,gpt-5.4-mini,gemma3:4b,"공채 선발예정직렬 및 인원은 **매년 12월 말경에 국가공무원 충원계획으로 확정**되고, 이를 반영한 **다음 해 1월 시험계획 공고문**에서 확인할 수 있습니다.
+
+즉, **보통 매년 1월에 발표되는 시험계획 공고문을 통해 공고**된다고 보면 됩니다.",231|95|34,4,2,1,1,0,pass,"overall=pass | similarity=4, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=231|95|34 | generated_chars=141"
+q030,인사혁신처가 시행하는 시험 정보는 어디서 한 번에 볼 수 있나요?,일상표현,인사혁신처 주관 시험정보 확인 경로 안내,232,국가공무원채용시스템에서 인사혁신처가 실시하는 시험계획 제도 통계 공지사항 등을 확인할 수 있습니다.,,openai,gpt-5.4-mini,gemma3:4b,"인사혁신처가 시행하는 시험 정보는 **국가공무원채용시스템**에서 한 번에 확인할 수 있습니다.  
+FAQ에 따르면 이곳에서 **모든 시험계획, 채용시험 제도, 연간 채용시험 통계, 각종 공지사항** 등을 확인할 수 있습니다.",232|233|71,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=232|233|71 | generated_chars=125"
+q031,국가직뿐 아니라 다른 기관 채용시험 정보도 한 번에 모아보는 사이트가 있나요?,일상표현,통합 채용정보 확인 경로 안내,233,나라일터 홈페이지의 채용정보 메뉴에서 국가기관과 지방자치단체 등의 공개경쟁채용시험 및 경력경쟁채용시험 정보를 함께 확인할 수 있습니다.,232,openai,gpt-5.4-mini,gemma3:4b,"네. FAQ에 따르면 **인사혁신처 나라일터 홈페이지(www.gojobs.go.kr)의 ‘채용정보’ 메뉴**에서 **국가기관뿐만 아니라 지방자치단체 등에서 실시하는 공개경쟁채용시험 및 경력경쟁채용시험 정보도 한 번에 확인할 수 있습니다.**
+
+다만, 공고문 관련 문의는 **해당 시험실시기관 담당부서**나 **기관 홈페이지**를 참고해야 합니다.",233|239|232,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=233|239|232 | generated_chars=193"
+q032,지방직 공무원 시험은 인사혁신처에 문의하면 되나요?,조건형,지방공무원 시험 문의처 구분 안내,234,지방공무원 채용시험은 해당 시도청이나 지방교육청에 직접 문의해야 정확한 정보를 얻을 수 있습니다. 관련 정보는 자치단체통합인터넷원서접수센터에서도 확인할 수 있습니다.,233,openai,gpt-5.4-mini,gemma3:4b,"아니요. FAQ에 따르면 **지방자치단체에서 주관하는 지방공무원 채용시험**은 인사혁신처가 아니라,  
+- **광역 지방자치단체(시·도) 시험**은 해당 **시·도청**(서울특별시는 **서울특별시인재개발원**)  
+- **지방교육청 시험**은 해당 **지방교육청**  
+
+으로 직접 문의해야 합니다.
+
+또한 지방공무원 채용시험 정보는 **자치단체통합인터넷원서접수센터(http://local.gosi.go.kr)** 에서도 확인할 수 있습니다.",234|104|237,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=234|104|237 | generated_chars=247"
+q033,고졸자만 따로 볼 수 있는 공무원 시험이 있나요?,일상표현,고졸 대상 시험 존재 여부와 예외 제도 안내,240,일반적으로 고등학교 졸업만을 응시요건으로 하거나 고졸자에게 별도 가산점을 주는 공무원 시험은 없습니다. 다만 지역인재 9급 수습직원 선발시험처럼 고등학교 졸업예정자 등을 대상으로 하는 예외 제도가 있습니다.,,openai,gpt-5.4-mini,gemma3:4b,"FAQ에 따르면, **고졸자만 따로 응시할 수 있는 일반적인 공무원 시험은 없습니다.**
+
+다만 예외적으로, **「지역인재 9급 수습직원 선발시험」**은  
+고등(기술)학교 졸업(예정)자 중에서 **학과성적이 우수하고 학교장의 추천을 받은 사람**에게만 응시자격을 부여합니다.
+
+즉, **고졸자만을 대상으로 하는 별도 시험이 전혀 없는 것은 아니지만**, FAQ 기준으로는 **일반적인 공무원 채용시험 중 고졸자만 따로 보는 시험은 없고**, 예외적으로 지역인재 9급 수습직원 선발시험이 있습니다.",165|240|245,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=165|240|245 | generated_chars=278"
+q034,부처별 9급 경력경쟁채용도 공채랑 같은 과목으로 준비하면 되나요?,조건형,경채와 공채 시험과목 차이 안내,241,경력경쟁채용시험 과목은 공개경쟁채용시험과 다르게 규정될 수 있고 시험실시기관장이 일부 변경해 시행할 수도 있으므로 해당 기관의 공고문을 반드시 확인해야 합니다.,,openai,gpt-5.4-mini,gemma3:4b,"아니요. FAQ에 따르면 **각 부처별 9급 경력경쟁채용시험 과목은 9급 공개경쟁채용시험 과목과 서로 다르게 규정**되어 있습니다.
+
+다만, **경력경쟁채용시험은 시험실시기관장이 필요하면 시험과목을 일부 변경해 시행할 수 있으므로**, 반드시 **해당 부처(기관)의 채용시험 계획 공고문**과 **나라일터 홈페이지**를 확인하셔야 합니다.",241|245|162,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=241|245|162 | generated_chars=189"
+q035,중증장애인만 지원할 수 있는 별도 시험도 있나요?,일상표현,중증장애인 대상 경력경쟁채용 안내,242,인사혁신처는 장애인 구분모집 외에도 중증장애인만 응시할 수 있는 경력경쟁채용시험을 별도로 실시하고 있습니다. 다만 관련 학위나 자격증 등 요건을 갖춰야 합니다.,,openai,gpt-5.4-mini,gemma3:4b,"네. 제공된 FAQ에 따르면 **중증장애인만 응시할 수 있는 별도의 경력경쟁채용시험**이 있습니다.  
+또한 **인사혁신처 주관 7급 및 9급 공개경쟁채용시험**에서는 장애인 구분모집이 별도로 실시된다고 안내되어 있습니다.
+
+다만, 중증장애인 경력경쟁채용시험은 **임용예정직위에 필요한 관련 분야 학위, 자격증 등 응시요건을 갖춰야 응시자격이 인정**된다고 되어 있습니다.  
+자세한 내용은 **국가공무원채용시스템**에서 확인하라고 FAQ에 안내되어 있습니다.",242|133|113,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=242|133|113 | generated_chars=257"
+q036,경력경쟁채용시험의 절차나 합격 기준은 어디 법이나 사이트에서 확인하나요?,원문유사,경채 시험 기준 확인 경로 안내,243,경력경쟁채용시험의 응시자격과 시험절차 및 합격기준은 국가공무원법과 공무원임용령 및 공무원임용시험령에서 확인할 수 있고 구체적인 시험정보는 나라일터에서 확인할 수 있습니다.,,openai,gpt-5.4-mini,gemma3:4b,"경력경쟁채용시험의 **응시자격은 국가공무원법 제28조 및 공무원임용령 제16조**에서 확인할 수 있고, **구체적인 시험방법 및 합격자 결정기준은 공무원임용시험령 제29조 및 제30조**에서 정하고 있습니다.
+
+또한, **각 부처(기관)별 경력경쟁채용시험의 구체적인 정보(선발예정직렬 및 인원, 응시자격, 시험과목, 시험방법 등)**는 **나라일터(www.gojobs.go.kr)**에서 확인할 수 있습니다.",243|245|233,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=243|245|233 | generated_chars=228"
+q037,9급 공채도 특정 자격증이 필요하거나 거주지 제한이 걸리는 경우가 있나요?,복합질문,응시에 필요한 자격증과 지역 제한 예외 안내,244,일부 직렬은 필수 자격증이 필요할 수 있고 9급 공개경쟁채용시험에서는 지역별 구분모집을 별도로 시행하므로 일정한 주민등록 요건을 충족해야 하는 경우가 있습니다.,10,openai,gpt-5.4-mini,gemma3:4b,"네, **있습니다**.
+
+FAQ에 따르면 9급 공개경쟁채용시험에서는 경우에 따라:
+
+- **응시를 위한 필수 자격증**이 별도로 정해진 직렬이 있고,
+- **지역별 구분모집**을 하는 경우에는 **거주지 제한 요건**이 적용됩니다.
+
+다만 FAQ 244에 따르면, **인사혁신처가 주관하는 9급 공개경쟁채용시험에 포함된 직렬 중에는** 사서·수의·해양수산·의무·약무·간호·항공·시설(지적)·운전·간호조무·조리직렬 같은 **필수 자격증 직렬은 없습니다**.
+
+거주지 제한은 지역별 구분모집에서 적용되며, **해당 시험연도의 1월 1일을 포함하여 전후로 연속 3개월 이상 해당 지역에 주민등록**이 되어 있어야 응시자격이 인정됩니다.
+
+즉, **거주지 제한은 있을 수 있고**, **자격증 요건은 직렬에 따라 별도로 규정되지만, 인사혁신처 주관 9급 공채에는 해당 필수자격증 직렬이 없다고 FAQ에 나와 있습니다.**",45|244|138,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=45|244|138 | generated_chars=455"
+q038,5급 공채에서 영어 과목을 대신하는 시험은 어떤 걸 인정해주나요?,원문유사,영어 대체 시험 종류와 인정 범위 안내,247,5급 공개경쟁채용시험과 외교관후보자 선발시험의 영어 과목은 공고문에서 정한 영어능력검정시험 성적으로 대체합니다. 인정 여부는 기준점수와 취득 시기 및 정규시험 여부를 충족해야 합니다.,289,openai,gpt-5.4-mini,gemma3:4b,"5급 공채에서 영어 과목을 대신하는 것은 **공무원임용시험령 별표 3에 정한 영어능력검정시험 성적**입니다.
+
+FAQ에 따르면 인정되는 시험은 다음 기준을 충족해야 합니다.
+- **공무원임용시험령 별표 3의 영어능력검정시험**
+- **기준점수 이상**
+- **최종시험 시행예정일로부터 역산해 5년이 되는 해의 1월 1일 이후 실시된 시험**
+- **제1차시험 시행예정일 전날까지 점수가 발표된 시험**
+
+또한 FAQ에는 **TOEIC, TOEFL, TEPS, G-TELP**가 자체 유효기간 2년인 시험으로 언급되어 있습니다.  
+다만, **어떤 시험이 별표 3에 포함되는지의 전체 목록은 FAQ에 모두 적혀 있지 않아 확인할 수 없습니다.**
+
+원하시면 제가 FAQ 기준으로 **인정 조건만 더 간단히 정리**해드릴게요.",207|289|247,4,2,1,1,0,pass,"overall=pass | similarity=4, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=207|289|247 | generated_chars=404"
+q039,기초생활수급자면 응시수수료를 안 내도 되나요?,일상표현,저소득층 응시수수료 면제 여부 안내,248,원서접수 당시 국민기초생활보장법상 수급자나 차상위계층 또는 한부모가족지원법상 지원대상자라면 응시수수료 납부가 면제됩니다.,,openai,gpt-5.4-mini,gemma3:4b,"네. FAQ에 따르면 원서접수 당시 **국민기초생활보장법에 따른 수급자**이면 **응시수수료 납부가 면제**됩니다.  
+따라서 기초생활수급자라면 응시수수료를 내지 않아도 됩니다.
+
+원서접수 시에는 원서작성 화면에서 본인이 면제 대상인지 직접 확인할 수 있다고 안내되어 있습니다.",248|129|123,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=248|129|123 | generated_chars=155"
+q040,원서 접수를 취소하면 환불은 바로 되나요? 중복결제면 얼마나 걸리나요?,복합질문,응시수수료 환불 시점과 중복결제 예외 안내,249,원서접수 취소 시에는 즉시 결제취소 또는 환불됩니다. 다만 시스템 오류로 중복결제가 된 경우에는 취소기간 종료 후 정산절차를 거쳐 승인취소 또는 환불되며 보통 1주 정도 걸립니다.,,openai,gpt-5.4-mini,gemma3:4b,"원서접수를 취소하면 **즉시 결제취소 또는 환불**됩니다.
+
+다만 **시스템 오류로 중복결제**된 경우에는, **취소기간 종료 후** 결제대행사와 정산 절차를 거쳐 환불/승인취소가 진행되며, **통상 1주 정도** 소요됩니다.",249|4|253,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=249|4|253 | generated_chars=126"
+q041,친구랑 같이 접수하면 응시번호가 붙어서 나오나요?,일상표현,응시번호 무작위 부여 원리 안내,250,응시번호는 원서접수 취소기간 종료 후 출원인원이 확정된 뒤 무작위로 부여되므로 친구와 연달아 접수해도 연속 번호를 받을 가능성은 없습니다.,,openai,gpt-5.4-mini,gemma3:4b,"아니요. FAQ에 따르면 응시번호는 원서접수 취소기간이 종료되고 인원이 확정된 뒤 전산으로 무작위 부여되므로, 친구와 같이 또는 연달아 접수했더라도 응시번호가 연속으로 붙어서 나올 가능성은 없습니다.",5|250|152,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=5|250|152 | generated_chars=111"
+q042,응시표는 시험 전에 언제든 다시 출력할 수 있나요?,일상표현,응시표 출력 기간과 재출력 가능 여부 안내,251,응시표는 시험장소 공고일부터 시험일이 속한 연도 말까지 언제든 출력할 수 있고 분실한 경우에도 다시 출력할 수 있습니다.,11,openai,gpt-5.4-mini,gemma3:4b,"네. FAQ에 따르면 **응시표는 시험장소 공고일로부터 시험일이 속한 연도의 말까지 언제든지 다시 출력할 수 있습니다.**  
+따라서 **시험 전에 언제든 재출력 가능**하다고 볼 수 있습니다.
+
+출력 경로는 **국가공무원채용시스템 로그인 → 마이페이지 → 원서접수내역 → 응시표 출력**입니다.",251|11|272,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=251|11|272 | generated_chars=165"
+q043,답안 수정할 때 수정액이나 수정스티커를 써도 되나요?,일상표현,수정액 및 수정스티커 사용 가능 여부 안내,276,답안 수정은 수정테이프로만 해야 하며 수정액과 수정스티커는 사용할 수 없습니다.,277,openai,gpt-5.4-mini,gemma3:4b,"아니요. FAQ에 따르면 **수정액과 수정스티커는 사용할 수 없고, 수정은 오로지 수정테이프로만 해야 합니다.**  
+답안을 잘못 표기한 경우에는 **답안지를 교체하거나 수정테이프를 사용**할 수 있습니다.",276|277|80,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=276|277|80 | generated_chars=115"
+q044,답안을 잘못 마킹했으면 새 답안지를 받아야 하나요?,일상표현,답안 수정 방법 안내,277,답안을 잘못 표기했을 경우 새 답안지로 교체할 수도 있고 수정테이프로 수정할 수도 있습니다.,276,openai,gpt-5.4-mini,gemma3:4b,"아니요. FAQ 277에 따르면 답안을 수정할 때는 **새 답안지를 다시 받을 필요 없이 수정테이프(수정액, 수정스티커는 사용 불가)**로 수정할 수 있습니다.
+
+다만, **불량 수정테이프 사용이나 불완전한 수정 처리로 생기는 문제는 수험생 책임**이라고 안내되어 있습니다.",278|81|277,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=278|81|277 | generated_chars=153"
+q045,답안지를 점만 찍듯이 약하게 표시하면 OCR이 제대로 읽나요?,일상표현,잘못된 답안 표기 방식의 위험 안내,278,선택형 필기시험은 OCR 판독 결과로만 채점되므로 답안을 점만 찍듯이 잘못 표기하면 정상적으로 판독되지 않을 수 있고 그 불이익은 수험생이 감수해야 합니다.,279,openai,gpt-5.4-mini,gemma3:4b,"FAQ에 따르면, **답안을 점만 찍듯이 약하게 표시하는 경우 정상적으로 판독되지 않을 수 있습니다.**  
+선택형 필기시험은 **OCR 판독 결과로만 채점**되며, **잘못된 방식으로 마킹하면 인식되지 않을 수 있고 그 불이익은 수험생 책임**이라고 안내되어 있습니다.
+
+따라서 **약하게 점만 찍는 방식이 OCR에 제대로 읽힌다고 보장할 수는 없습니다.**",278|263|279,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=278|263|279 | generated_chars=201"
+q046,연필이나 빨간펜으로 예비마킹해두고 나중에 사인펜으로 다시 칠해도 되나요?,조건형,예비마킹 금지 사유 안내,279,연필 형광펜 적색펜 등으로 예비마킹을 하면 OCR이 모두 판독할 수 있어 더블마킹으로 무효 처리될 수 있으므로 반드시 컴퓨터용 흑색 사인펜만 사용해야 합니다.,278,openai,gpt-5.4-mini,gemma3:4b,"아니요. 제공된 FAQ에 따르면 **연필이나 적색펜으로 예비마킹한 뒤 나중에 컴퓨터용 흑색 사인펜으로 다시 칠하는 것은 안 됩니다.**
+
+근거:
+- FAQ 279: **연필, 적색펜 등으로 예비마킹을 하면 OCR 판독 과정에서 더블마킹으로 해당 문항이 무효 처리될 수 있으므로**, **반드시 컴퓨터용 흑색 사인펜만 사용**해야 한다고 안내합니다.
+- FAQ 80도 연필 종류 등은 사용할 수 없다고 안내합니다.
+
+따라서 **예비마킹은 하지 말고 처음부터 컴퓨터용 흑색 사인펜만 사용해야 합니다.**",279|81|80,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=279|81|80 | generated_chars=279"
+q047,가산점 자격증은 원서 접수일까지 따야 인정되나요?,조건형,자격증 가산점 인정 시점과 등록기한 안내,280,자격증 가산점은 원서접수일 기준이 아니라 필기시험 전일까지 요건을 충족하면 인정되며 시험일을 포함한 3일 이내에 등록해야 합니다.,12,openai,gpt-5.4-mini,gemma3:4b,"아니요. FAQ에 따르면 **원서 접수일까지** 자격증을 취득해야 하는 것은 아닙니다.
+
+- **6급 이하 채용시험**: **필기시험(7급은 2차시험) 전일까지** 자격증 가산점 적용요건을 충족하면 됩니다.
+- 이후 **시험일을 포함해 3일 이내**에 국가공무원채용시스템에 자격증명과 가산비율을 입력해야 가산점이 반영됩니다.
+
+따라서 **원서 접수일 기준이 아니라, 필기시험(7급은 2차시험) 전일까지** 취득하면 인정됩니다.",280|94|12,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=280|94|12 | generated_chars=238"
+q048,장애인 편의지원은 언제 신청하고 어떤 경우에 진단서를 내야 하나요?,복합질문,장애인 편의지원 신청 절차와 진단서 필요 예외 안내,281,편의지원은 원서접수 기간이나 사전신청 기간에 신청하고 일부 시험시간 연장 등 특수한 경우에만 종합병원 의사진단서를 제출해야 합니다.,,openai,gpt-5.4-mini,gemma3:4b,"장애인 편의지원은 **편의지원 사전신청 기간 또는 응시원서 접수 기간 중**에 신청합니다.  
+제1차 필기시험의 편의지원은 이 기간에 기본정보를 입력한 뒤 신청하면 되고, **제2차(논문형)·제3차(면접)시험의 편의지원은 제1차 및 제2차시험 합격자 발표일에 안내되는 기간 내에 국가공무원채용시스템을 통해 신청**할 수 있습니다.
+
+진단서는 **일반적으로는 추가 서류 제출이 없지만**, 일부 특수한 경우에 필요합니다. FAQ에 따르면 예를 들어 **뇌병변 장애정도가 심하지 않은 사람** 또는 **시각장애인 중 시험시간 연장을 위해 진단서가 필요한 사람이 시험시간 연장조치를 신청한 경우**에는 **종합병원에서 발급한 의사진단서**를 제출해야 합니다.  
+그 외의 구체적인 제출 대상은 **국가공무원채용시스템에 공지된 자료를 참조**해야 하며, FAQ만으로는 더 자세히 확인할 수 없습니다.",281|118|120,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=281|118|120 | generated_chars=443"
+q049,영어성적 사전등록은 언제 어디서 하나요?,원문유사,영어성적 사전등록 시기와 경로 안내,288,영어성적과 외국어성적은 국가공무원채용시스템 마이페이지의 영어외국어성적 사전등록 메뉴에서 등록할 수 있습니다. 매월 초 10일 동안 사전등록이 가능하며 일부 시험은 유효기간 내 상시등록도 가능합니다.,289,openai,gpt-5.4-mini,gemma3:4b,"영어성적(외국어 포함)은 **국가공무원채용시스템 → 마이페이지 → 영어/외국어성적 사전등록 메뉴**에서 등록할 수 있습니다.
+
+등록 가능 시기는 **매월 초 10일 동안**이며,  
+**토익(TOEIC), 텝스(TEPS), 지텔프(G-TELP), 스널트(SNULT), JPT(일본어)**는 **성적 유효기간 내 국가공무원채용시스템 사이트를 통해 상시등록** 가능합니다.
+
+따라서, 영어성적 사전등록은 **해당 메뉴에서** 하며, **기본적으로 매월 초 10일간** 가능합니다.",288|211|223,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=288|211|223 | generated_chars=266"
+q050,영어능력검정시험 성적은 언제까지 취득한 것까지 인정되고 성적표는 따로 내야 하나요?,복합질문,영어성적 인정기준과 제출 방식 안내,289,영어능력검정시험 성적은 최종시험일 기준 5년 범위 안에서 공고문 기준점수와 발표 시점을 충족한 경우 인정됩니다. 원서접수 시 성적표를 따로 제출할 필요는 없지만 유효기간이 끝나기 전 사전등록이 필요할 수 있습니다.,288,openai,gpt-5.4-mini,gemma3:4b,"영어능력검정시험 성적은 **면접시험 최종일로부터 역산하여 5년이 되는 해의 1월 1일 이후**에 실시된 시험만 인정됩니다.  
+예를 들어 **2025년도 공채시험**이라면 **2020년 1월 1일 이후** 실시된 시험이어야 합니다.
+
+성적표는 **별도로 제출할 필요는 없습니다.**  
+원서접수 후 제1차시험 전날까지 발표된 성적은 **국가공무원채용시스템에 사전등록**하면 되고, 인사혁신처가 시험검정기관에 직접 조회해 확인합니다.  
+다만 **조회가 불가능한 경우에는 성적표 제출을 요청할 수 있습니다.**",289|247|211,4,2,1,1,0,pass,"overall=pass | similarity=4, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=289|247|211 | generated_chars=284"
+q051,개명 신청은 됐는데 주민등록 이름은 아직 안 바뀌었어요. 원서에는 어떤 이름을 써야 하고 나중에 시험장에서는 뭘 챙겨가야 하나요?,조건형,개명 처리 전후의 원서 성명 기준과 시험장 지참물 종합 안내,6,원서에 쓰는 성명은 주민등록에 있는 성명을 기준으로 하므로 주민등록상 개명이 반영되지 않았다면 이전 성명을 사용해야 합니다. 이후 원서 제출 후 개명신고가 처리됐다면 시험장에 새 신분증과 성명 정정을 확인할 수 있는 주민등록초본을 지참해야 합니다.,,openai,gpt-5.4-mini,gemma3:4b,"개명 신청만 되었고 **주민등록에는 아직 새 이름이 반영되지 않았다면**, FAQ에 따르면 **원서에는 주민등록에 있는 이전 성명**을 사용해야 합니다.  
+즉, **새 이름이 아니라 현재 주민등록상 이름으로 원서 제출**해야 합니다.
+
+시험장 준비물은, **원서 제출 이후에 개명신고가 처리된 경우** 기준으로 FAQ에 따르면 다음을 지참해야 합니다.
+
+- **새 신분증**: 주민등록증 또는 주민등록증 발급신청 확인서
+- **주민등록초본**: 성명 정정을 확인할 수 있는 초본
+
+시험 중 본인확인 시간에는 **감독관에게 개명했다고 말씀드리고 초본을 제시**하면 됩니다.
+
+다만, 질문처럼 **아직 주민등록 이름이 바뀌지 않은 상태에서 시험장 준비물까지** 정확히 어떻게 되는지는 FAQ에 직접적으로 적혀 있지 않아, 그 부분은 **확인할 수 없습니다**.",6|153|152,4,2,1,1,0,pass,"overall=pass | similarity=4, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=6|153|152 | generated_chars=424"
+q052,응시표를 잃어버렸고 유효한 신분증도 없는데 만료된 여권만 있어요. 시험장에 그냥 가도 되나요?,복합질문,응시표 재출력과 신분증 미비 상황의 대체 절차 종합 안내,78,응시표는 시험장소 공고일부터 시험일이 속한 연도 말까지 언제든 다시 출력할 수 있으므로 분실했다면 시험 전에 다시 출력해서 가져가는 것이 맞습니다. 기한이 만료된 여권은 신분증으로 인정되지 않으며 유효한 신분증이 없더라도 부득이한 경우 응시는 가능할 수 있지만 시험시간 중 본인확인 절차를 거쳐야 합니다. 가능하면 다른 신분증이나 주민등록증 발급신청 확인서를 준비하는 것이 좋습니다.,"77,251",openai,gpt-5.4-mini,gemma3:4b,"응시표를 분실했더라도 시험응시는 가능합니다. 다만 응시표가 없으면 시험장과 시험실 좌석 확인이 어려울 수 있으므로, 가능하면 응시표를 재출력해 지참하는 것이 좋습니다.
+
+또한 기한 만료된 여권은 신분증으로 인정되지 않습니다. FAQ에 따르면 부득이하게 시험당일까지 다른 신분증을 재발급받지 못한 경우에도 응시는 가능하지만, 시험시간 중 본인확인을 위한 절차를 이행해야 합니다.
+
+따라서 **그냥 가서 응시는 가능하지만**, 응시표와 유효한 신분증이 없으면 불편이 있을 수 있고, 만료된 여권만으로는 신분증 인정이 되지 않습니다.",78|272|182,4,2,1,1,0,pass,"overall=pass | similarity=4, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=78|272|182 | generated_chars=295"
+q053,시험 당일 사인펜을 안 가져왔는데 연필로 예비마킹했다가 나중에 덧칠해도 되나요? 준비물 기준까지 같이 알려주세요.,복합질문,필수 지참물과 예비마킹 금지 사유 종합 안내,279,시험 당일에는 응시표와 신분증 그리고 컴퓨터용 흑색사인펜을 지참해야 합니다. 연필 형광펜 적색펜 등으로 예비마킹을 하면 OCR이 모두 판독할 수 있어 더블마킹으로 무효 처리될 수 있으므로 반드시 컴퓨터용 흑색 사인펜만 사용해야 합니다.,77,openai,gpt-5.4-mini,gemma3:4b,"FAQ 기준으로는 **연필로 예비마킹한 뒤 나중에 컴퓨터용 흑색 사인펜으로 덧칠하는 것은 안 됩니다.**  
+선택형 답안지는 **반드시 컴퓨터용 흑색 사인펜만 사용**해야 하며, 연필·적색펜 등으로 예비마킹하면 **더블마킹으로 무효 처리될 수 있습니다**. (FAQ 279)
+
+준비물 기준은 다음과 같습니다.  
+- **응시표**
+- **신분증**
+- **컴퓨터용 흑색 사인펜**
+- 필요 시 **수정테이프**
+- 필요 시 **시계**(계산기능 포함 제외)  
+(FAQ 77)
+
+따라서 시험 당일 사인펜이 없으면, FAQ상으로는 **연필 예비마킹으로 대체할 수 있다고 볼 수 없고**, **컴퓨터용 흑색 사인펜을 반드시 준비해야 합니다**.",279|81|77,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=279|81|77 | generated_chars=358"
+q054,가산점 자격증은 어디에서 확인하고 언제까지 따서 언제 등록해야 하나요? 서류도 따로 내야 하나요?,복합질문,가산대상 자격증 확인 경로와 취득·등록 기한 종합 안내,280,직렬별 가산대상 자격증 종류는 공무원임용시험령 별표 11과 별표 12에서 확인할 수 있습니다. 자격증 가산점은 원서접수일 기준이 아니라 필기시험 전일까지 요건을 충족하면 인정되며 시험일을 포함한 3일 이내에 등록해야 합니다. 관계기관이 직접 조회하므로 보통 별도 증빙서류는 제출하지 않습니다.,"3,12",openai,gpt-5.4-mini,gemma3:4b,"FAQ 기준으로 답변드리면:
+
+- **가산점 자격증 확인/등록은** 국가공무원채용시스템에서 합니다.
+- **취득 시점은**  
+  - **7급 공채**: 제1차시험 시행 **전일**까지  
+  - **9급 공채**: 필기시험 시행 **전일**까지  
+  자격을 취득해야 합니다.
+- **등록 기간은** 시험 시행일을 포함한 **3일 이내**입니다.  
+  - 7급 공채: 제1차시험 시행일 포함 3일  
+  - 9급 공채: 필기시험 시행일 포함 3일
+- **별도 증빙서류는 제출하지 않아도 됩니다.**  
+  인사혁신처가 관계기관에 직접 조회·확인합니다.
+
+즉, **국가공무원채용시스템에 정해진 기간 내 등록만 하면 되고, 서류 제출은 따로 필요 없습니다.**",12|94|91,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=12|94|91 | generated_chars=369"
+q055,5급 공채 준비 중인데 영어성적은 어디서 미리 등록하고 언제까지 취득한 점수까지 인정되나요? 성적표를 따로 내야 하나요?,복합질문,영어성적 사전등록 경로와 인정기준 및 제출 방식 종합 안내,289,영어성적과 외국어성적은 국가공무원채용시스템 마이페이지의 영어외국어성적 사전등록 메뉴에서 등록할 수 있습니다. 영어능력검정시험 성적은 최종시험일 기준 5년 범위 안에서 공고문 기준점수와 발표 시점을 충족한 경우 인정됩니다. 원서접수 시 성적표를 따로 제출할 필요는 없지만 유효기간이 끝나기 전 사전등록이 필요할 수 있습니다.,288,openai,gpt-5.4-mini,gemma3:4b,"FAQ 기준으로 답변드리면,
+
+- **사전등록은** `국가공무원채용시스템(gongmuwon.gosi.kr)`의 **마이페이지 → 영어/외국어성적 사전등록** 메뉴에서 할 수 있습니다.
+- **등록 시기**는 일반적으로 **매월 초 10일 동안** 가능하며,  
+  **토익(TOEIC), 텝스(TEPS), 지텔프(G-TELP), 스널트(SNULT), JPT**는 **성적유효기간 내 상시등록**도 가능합니다.
+- **언제까지 인정되느냐**는 5급 공채의 경우, **면접시험 최종일로부터 역산해 5년이 되는 해의 1월 1일 이후 실시된 시험 성적**이 인정됩니다.  
+  또한 **제1차시험 전날까지 점수(등급)가 발표된 성적**이어야 합니다.
+- **성적표를 따로 제출할 필요는 없습니다.**  
+  응시자가 입력한 시험명, 시험일자, 점수, 등록번호 등을 바탕으로 인사혁신처가 시험기관에 직접 조회·확인합니다.
+- 다만 **조회가 불가능한 경우에는 소명 공고를 통해 성적표 제출을 요청할 수 있습니다.**
+
+원하시면 제가 이 내용을 **5급 공채 기준으로만 더 짧게 정리**해드릴게요.",289|221|288,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=289|221|288 | generated_chars=552"
+q056,국가직 시험 정보는 어디서 보고 지방직이나 다른 기관 채용은 어디서 따로 확인해야 하나요? 문의처도 같이 알려주세요.,복합질문,국가직·지방직·통합 채용정보 확인 경로와 문의처 종합 안내,234,국가직 시험 정보는 국가공무원채용시스템에서 확인할 수 있습니다. 국가직뿐 아니라 다른 기관 채용시험 정보는 나라일터 홈페이지의 채용정보 메뉴에서 함께 볼 수 있습니다. 다만 지방공무원 채용시험은 해당 시도청이나 지방교육청에 직접 문의해야 정확한 정보를 얻을 수 있으며 관련 정보는 자치단체통합인터넷원서접수센터에서도 확인할 수 있습니다.,"232,233",openai,gpt-5.4-mini,gemma3:4b,"국가직 시험 정보는 **인사혁신처 나라일터 홈페이지(www.gojobs.go.kr) ‘채용정보’ 메뉴**에서 확인할 수 있습니다.  
+또한 **지방자치단체 등에서 실시하는 공개경쟁채용시험 및 경력경쟁채용시험 정보도 나라일터에서 함께 확인 가능**합니다.  
+추가로 **지방공무원 채용시험 정보는 자치단체통합인터넷원서접수센터(http://local.gosi.go.kr)**에서도 확인할 수 있습니다.
+
+문의처는 다음과 같습니다.
+- **공고문 관련 문의**: 해당 공고문에 포함된 **시험실시기관의 담당부서**에 직접 문의
+- **지방공무원 시험 문의**
+  - 광역 지방자치단체(시·도) 주관: **해당 시·도청**
+  - 서울특별시: **서울특별시인재개발원**
+  - 지방교육청 주관: **해당 지방교육청**
+
+원하시면 제가 위 내용을 **국가직 / 지방직 / 기타기관별로 표로 정리**해드릴게요.",233|234|243,4,2,1,1,0,pass,"overall=pass | similarity=4, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=233|234|243 | generated_chars=447"
+q057,9급 공채는 아무 자격증 없이 누구나 볼 수 있나요? 지역 제한이 붙는 경우나 고졸만 보는 별도 전형도 있는지 궁금해요.,복합질문,9급 공채의 자격증·지역요건·고졸 예외 제도 종합 안내,244,9급 공개경쟁채용시험은 일부 직렬에서 필수 자격증이 필요할 수 있고 지역별 구분모집을 별도로 시행하는 경우에는 일정한 주민등록 요건을 충족해야 할 수 있습니다. 일반적으로 고등학교 졸업만을 응시요건으로 하거나 고졸자에게 별도 가산점을 주는 공무원 시험은 없지만 지역인재 9급 수습직원 선발시험처럼 예외 제도가 있습니다.,"10,240",openai,gpt-5.4-mini,gemma3:4b,"FAQ 기준으로 보면, **9급 공개경쟁채용시험이 항상 자격증 없이 누구나 응시 가능한 것은 아닙니다.**
+
+- **일부 직렬은 필수 자격증이 필요**합니다.  
+  FAQ에 따르면 사서, 수의, 해양수산, 의무, 약무, 간호, 항공, 시설(지적), 운전, 간호조무, 조리 직렬은 응시를 위한 필수 자격증이 별도로 규정되어 있습니다.  
+  다만, **인사혁신처가 주관하는 공개경쟁채용시험에 포함된 직렬은 없다고** 되어 있습니다.
+
+- **지역 제한이 있는 구분모집도 있습니다.**  
+  9급 공개경쟁채용시험에서는 **지역별 구분모집을 별도로 시행**하며, 해당 모집에 응시하려면  
+  **해당 시험연도의 1월 1일을 포함하여 전후로 연속 3개월 이상 해당 지역에 주민등록**이 되어 있어야 합니다.
+
+- **고졸자만 보는 별도 전형은 있습니다.**  
+  일반적인 공무원 채용시험에는 고등학교 졸업(예정)자만을 대상으로 하거나 별도 가산점을 주는 시험은 없다고 되어 있습니다.  
+  다만 **「지역인재 9급 수습직원 선발시험」**은 고등(기술)학교 졸업(예정)자 중 **학과성적이 우수하고 학교장의 추천을 받은 자**만 응시할 수 있습니다.
+
+즉, **9급 공채는 무조건 누구나 보는 시험이라고 단정할 수 없고**, 직렬에 따라 자격증 요건이 있을 수 있으며, **지역 구분모집**과 **고졸 대상 별도 전형(지역인재 9급)**도 있습니다.",244|240|136,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=244|240|136 | generated_chars=699"
+q058,"결제는 끝났는데 접수가 제대로 됐는지 모르겠어요. 나중에 취소하면 바로 환불되는지, 중복결제면 얼마나 걸리는지도 알고 싶어요.",복합질문,접수 완료 확인과 취소·중복결제 환불 절차 종합 안내,249,국가공무원채용시스템의 원서접수-응시원서 확인 화면에서 결제여부가 결제완료로 표시되면 정상 접수된 것입니다. 원서접수 취소 시에는 즉시 결제취소 또는 환불됩니다. 다만 시스템 오류로 중복결제가 된 경우에는 취소기간 종료 후 정산절차를 거쳐 승인취소 또는 환불되며 보통 1주 정도 걸립니다.,4,openai,gpt-5.4-mini,gemma3:4b,"결제 후 접수 여부는 **[국가공무원채용시스템] → [원서접수] → [응시원서 확인]** 화면에서 **결제여부가 ‘결제완료’**로 표시되는지 확인하시면 됩니다. 표시되어 있다면 **정상 접수된 것**입니다.
+
+환불 관련해서는:
+- **원서접수를 취소하면 즉시 결제취소 또는 환불**됩니다.
+- 다만 **시스템 오류로 중복결제**된 경우에는 **취소기간 종료 후** 결제대행사와 정산 절차를 거쳐 **승인취소(카드, 휴대폰 결제) 또는 환불(계좌이체)** 처리됩니다.
+- 이 경우 **통상 1주 정도** 소요됩니다.
+
+또한 원서접수 취소는 **원서접수 기간, 취소기간(통상 마감일 + 3일), 추가취소기간**에 가능하며, 그 이후에는 취소가 불가합니다.",249|4|253,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=249|4|253 | generated_chars=364"
+q059,시험 보다가 화장실 때문에 나가야 하면 다시 들어와서 계속 볼 수 있나요? 그때까지 쓴 답안은 어떻게 되나요?,복합질문,시험 중 화장실 퇴실과 재입실 및 답안 처리 기준 종합 안내,"64,79","일부 시험(7급 공채 및 경채)은 시험 중 화장실 이용 후 재입실이 가능하나, 9급 공채 등 기타 시험은 재입실이 불가능하며 본부 대기 조치됩니다. 퇴실 전까지 작성한 답안은 모두 유효하게 처리됩니다.",,openai,gpt-5.4-mini,gemma3:4b,"제공된 FAQ만으로는 **화장실 때문에 시험 중 나갔다가 다시 들어와 계속 응시할 수 있는지**, 그리고 **그때까지 작성한 답안이 어떻게 처리되는지**는 확인할 수 없습니다.
+
+관련 FAQ에는
+- 일부 시험에서 **화장실 이용을 허용**하게 된 이유,
+- 화장실 이용 시 **부정행위 방지 관리 방법**
+
+만 안내되어 있고, **재입실 가능 여부**나 **작성한 답안 처리 방식**은 명시되어 있지 않습니다.",65|55|63,4,2,1,1,0,pass,"overall=pass | similarity=4, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=65|55|63 | generated_chars=229"
+q060,답안을 잘못 칠했는데 수정액이나 스티커를 써도 되나요? 연필로 예비마킹하거나 약하게 표시해도 괜찮은지도 같이 알려주세요.,복합질문,답안 수정 허용 수단과 OCR 오인식 위험 종합 안내,277,답안을 잘못 표기했을 경우 새 답안지로 교체하거나 수정테이프로 수정할 수 있습니다. 답안 수정은 수정테이프로만 해야 하며 수정액과 수정스티커는 사용할 수 없습니다. 또한 연필 형광펜 적색펜 등으로 예비마킹을 하면 더블마킹으로 무효 처리될 수 있고 답안을 점만 찍듯이 약하게 표시하면 OCR이 정상적으로 판독하지 못할 수 있으므로 반드시 컴퓨터용 흑색 사인펜으로 또렷하게 표기해야 합니다.,"276,278,279",openai,gpt-5.4-mini,gemma3:4b,"답안을 잘못 칠한 경우에는 **수정액과 수정스티커는 사용할 수 없고, 수정테이프만 사용해야 합니다.** 또는 **답안지를 교체하여 사용**할 수 있습니다.
+
+또한 **연필로 예비마킹하거나 약하게 표시하는 것도 하면 안 됩니다.** FAQ에 따르면 OCR 판독 때문에 **연필, 형광펜, 적색펜 등은 모두 판독될 가능성이 있어 예비마킹으로 인한 불이익(더블마킹 무효처리)**이 있을 수 있으므로, **반드시 컴퓨터용 흑색 사인펜만 사용**해야 합니다.",276|277|279,5,2,1,1,0,pass,"overall=pass | similarity=5, groundedness=2, correctness=1, completeness=1, unsupported_claims=0 | generation_provider=openai | generation_model=gpt-5.4-mini | evaluation_model=gemma3:4b | retrieved_answer_nos=276|277|279 | generated_chars=251"

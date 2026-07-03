@@ -1,6 +1,6 @@
 from types import SimpleNamespace
 
-from src.generation import GeminiAnswerGenerator, OpenRouterAnswerGenerator
+from src.generation import GeminiAnswerGenerator, OpenAIAnswerGenerator
 from src.indexing import FaqDocument
 from src.retrieval import SearchResult
 
@@ -56,14 +56,14 @@ def test_generator_returns_fallback_without_calling_model() -> None:
     assert client.models.kwargs == {}
 
 
-def test_openrouter_generator_uses_same_retrieved_context_rules() -> None:
+def test_openai_style_generator_uses_same_retrieved_context_rules() -> None:
     completions = FakeCompletions()
     client = SimpleNamespace(chat=SimpleNamespace(completions=completions))
     source = SearchResult(
         document=FaqDocument(12, "응시수수료 반환", "접수 취소 시 반환 기준입니다.", chunk_id="row-12", source_row_id=12),
         score=0.91,
     )
-    generator = OpenRouterAnswerGenerator(client=client, model="qwen-test")
+    generator = OpenAIAnswerGenerator(client=client, model="qwen-test")
 
     answer = generator.generate("환불 가능한가요?", [source])
 

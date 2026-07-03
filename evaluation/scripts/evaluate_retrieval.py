@@ -120,7 +120,7 @@ def _experiment_rows(
 def main() -> None:
     """검색 성능 평가 CLI 실행"""
     parser = argparse.ArgumentParser(description="청킹, Top K, 임베딩 입력 필드의 검색 성능을 평가합니다.")
-    parser.add_argument("--questions", type=Path, required=True)
+    parser.add_argument("--questions", type=Path, default=Path("evaluation/inputs/retrieval_question.csv"))
     parser.add_argument("--index-dir", type=Path, default=Path("index"))
     parser.add_argument("--output", type=Path, default=Path("output/evaluation_summary.csv"))
     parser.add_argument("--providers", nargs="+", default=["openai", "local"])

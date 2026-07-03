@@ -340,10 +340,10 @@ def build_embedder(provider: EmbeddingProvider, values: Mapping[str, str]) -> Em
         api_key = values.get("OPENAI_API_KEY", "").strip()
         if not api_key:
             raise ValueError("OPENAI_API_KEY 환경변수가 필요합니다.")
-        model = values.get("OPENAI_EMBEDDING_MODEL", "text-embedding-3-small")
+        model = values.get("EMBEDDING_MODEL", "text-embedding-3-small")
         return OpenAIEmbedder(OpenAI(api_key=api_key), model)
     if provider == "local":
-        model_name = values.get("LOCAL_EMBEDDING_MODEL", LOCAL_EMBEDDING_MODEL)
+        model_name = values.get("EMBEDDING_MODEL", LOCAL_EMBEDDING_MODEL)
         return LocalEmbedder(model_name=model_name)
     raise ValueError(f"Unsupported embedding provider: {provider}")
 

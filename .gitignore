@@ -13,8 +13,10 @@ __pycache__/
 # Generated data
 index/**/*.faiss
 index/**/metadata.json
-output/*.csv
+output/archive/
+output/archive/**
 output/*.txt
+!output/*.csv
 
 data/*.csv
 !data/*.example.csv
