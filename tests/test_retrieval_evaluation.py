@@ -14,7 +14,24 @@ def test_evaluate_rankings_calculates_hit_rates_and_mrr() -> None:
     assert result.hit_at_3 == 2 / 3
     assert result.hit_at_5 == 2 / 3
     assert result.mrr == (1 + 1 / 2 + 0) / 3
-    assert result.failed_expected_ids == (7,)
+    assert result.all_hit_at_3 == 2 / 3
+    assert result.recall_at_3 == 2 / 3
+    assert result.failed_expected_ids == ("7",)
+
+
+def test_evaluate_rankings_supports_multiple_required_answers() -> None:
+    rankings = [
+        ((64, 79), [79, 10, 64]),
+        ((64, 79), [79, 10, 11]),
+    ]
+
+    result = evaluate_rankings(rankings)
+
+    assert result.hit_at_1 == 1
+    assert result.mrr == 1
+    assert result.all_hit_at_1 == 0
+    assert result.all_hit_at_3 == 1 / 2
+    assert result.recall_at_3 == 3 / 4
 
 
 def test_evaluate_rankings_rejects_empty_input() -> None:

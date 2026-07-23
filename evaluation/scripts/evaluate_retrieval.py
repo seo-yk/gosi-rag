@@ -31,37 +31,77 @@ class EvaluationResult:
     hit_at_3: float
     hit_at_5: float
     mrr: float
-    failed_expected_ids: tuple[int, ...]
+    all_hit_at_1: float
+    all_hit_at_3: float
+    all_hit_at_5: float
+    recall_at_1: float
+    recall_at_3: float
+    recall_at_5: float
+    failed_expected_ids: tuple[str, ...]
 
 
-def evaluate_rankings(rankings: Sequence[tuple[int, Sequence[int]]]) -> EvaluationResult:
-    """정답 순위 목록을 Hit@K와 MRR로 집계"""
+def evaluate_rankings(rankings: Sequence[tuple[int | Sequence[int], Sequence[int]]]) -> EvaluationResult:
+    """정답 순위 목록을 any-hit, all-hit, recall, MRR로 집계한다."""
 
     if not rankings:
         raise ValueError("평가 결과가 비어 있습니다.")
     hit_1 = 0
     hit_3 = 0
     hit_5 = 0
+    all_hit_1 = 0
+    all_hit_3 = 0
+    all_hit_5 = 0
+    recall_1 = 0.0
+    recall_3 = 0.0
+    recall_5 = 0.0
     reciprocal_rank_sum = 0.0
-    failed: list[int] = []
-    for expected_id, retrieved_ids in rankings:
+    failed: list[str] = []
+    for expected, retrieved_ids in rankings:
+        expected_ids = {expected} if isinstance(expected, int) else set(expected)
+        if not expected_ids:
+            raise ValueError("정답 ID가 비어 있습니다.")
         ids = list(retrieved_ids)
-        hit_1 += int(bool(ids) and ids[0] == expected_id)
-        hit_3 += int(expected_id in ids[:3])
-        hit_5 += int(expected_id in ids[:5])
-        if expected_id in ids:
-            reciprocal_rank_sum += 1 / (ids.index(expected_id) + 1)
+        retrieved_1 = set(ids[:1])
+        retrieved_3 = set(ids[:3])
+        retrieved_5 = set(ids[:5])
+        hit_1 += int(bool(expected_ids & retrieved_1))
+        hit_3 += int(bool(expected_ids & retrieved_3))
+        hit_5 += int(bool(expected_ids & retrieved_5))
+        all_hit_1 += int(expected_ids <= retrieved_1)
+        all_hit_3 += int(expected_ids <= retrieved_3)
+        all_hit_5 += int(expected_ids <= retrieved_5)
+        recall_1 += len(expected_ids & retrieved_1) / len(expected_ids)
+        recall_3 += len(expected_ids & retrieved_3) / len(expected_ids)
+        recall_5 += len(expected_ids & retrieved_5) / len(expected_ids)
+        relevant_ranks = [ids.index(expected_id) + 1 for expected_id in expected_ids if expected_id in ids]
+        if relevant_ranks:
+            reciprocal_rank_sum += 1 / min(relevant_ranks)
         else:
-            failed.append(expected_id)
+            failed.append("|".join(map(str, sorted(expected_ids))))
     total = len(rankings)
-    return EvaluationResult(hit_1 / total, hit_3 / total, hit_5 / total, reciprocal_rank_sum / total, tuple(failed))
+    return EvaluationResult(
+        hit_1 / total,
+        hit_3 / total,
+        hit_5 / total,
+        reciprocal_rank_sum / total,
+        all_hit_1 / total,
+        all_hit_3 / total,
+        all_hit_5 / total,
+        recall_1 / total,
+        recall_3 / total,
+        recall_5 / total,
+        tuple(failed),
+    )
 
 
-def read_questions(path: Path) -> list[tuple[str, int]]:
+def read_questions(path: Path) -> list[tuple[str, tuple[int, ...]]]:
     """평가 질문셋 로드"""
     with path.open(encoding="utf-8-sig", newline="") as file:
         return [
-            (row["question"].strip(), int(row["target_answer_no"]))
+            (
+                row["question"].strip(),
+                tuple(int(value.strip()) for value in row["target_answer_no"].split(",")),
+            )
             for row in csv.DictReader(file)
         ]
 
@@ -69,7 +109,7 @@ def read_questions(path: Path) -> list[tuple[str, int]]:
 def evaluate_index(
     index_path: Path,
     metadata_path: Path,
-    questions: list[tuple[str, int]],
+    questions: list[tuple[str, tuple[int, ...]]],
     embedder,
     top_k: int,
 ) -> EvaluationResult:
@@ -87,7 +127,7 @@ def evaluate_index(
 
 def _experiment_rows(
     index_dir: Path,
-    questions: list[tuple[str, int]],
+    questions: list[tuple[str, tuple[int, ...]]],
     embedders: dict[EmbeddingProvider, object],
     chunking_modes: Sequence[ChunkingMode],
     embedding_modes: Sequence[EmbeddingMode],
@@ -111,7 +151,13 @@ def _experiment_rows(
                             "hit_at_3": result.hit_at_3,
                             "hit_at_5": result.hit_at_5,
                             "mrr": result.mrr,
-                            "failed_expected_ids": "|".join(map(str, result.failed_expected_ids)),
+                            "all_hit_at_1": result.all_hit_at_1,
+                            "all_hit_at_3": result.all_hit_at_3,
+                            "all_hit_at_5": result.all_hit_at_5,
+                            "recall_at_1": result.recall_at_1,
+                            "recall_at_3": result.recall_at_3,
+                            "recall_at_5": result.recall_at_5,
+                            "failed_expected_ids": ";".join(result.failed_expected_ids),
                         }
                     )
     return rows

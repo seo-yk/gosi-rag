@@ -14,15 +14,10 @@ __pycache__/
 # Generated data
 index/**/*.faiss
 index/**/metadata.json
-output/archive/
-output/archive/**
 output/*
-!output/retr_e5-small.csv
-!output/retr_openai-3-small.csv
-!output/retr_openai-3-large.csv
-!output/gen_60_gpt-5.4-mini.csv
-!output/eval_60_gpt-5.4-mini-gemma3-4b_single.csv
-!output/eval_60_gpt-5.4-mini-gemma3-4b_b3.csv
+
+evaluation/archive
+
 
 data/*.csv
 !data/faq.csv
