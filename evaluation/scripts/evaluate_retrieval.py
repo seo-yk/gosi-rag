@@ -38,8 +38,11 @@ from src.indexing import (
     EmbeddingMode,
     EmbeddingProvider,
     build_embedder,
+    embedder_model_name,
     index_bundle_paths,
     is_supported_combination,
+    load_documents,
+    load_index_manifest,
 )
 from src.retrieval import build_retriever
 
@@ -77,27 +80,30 @@ def evaluate_groups(
     return GroupEvaluationResult(total, len(singles), hit_at, recall_at, mrr, failed)
 
 
-def evaluate_by_type(
+def evaluate_subsets(
     rankings: Sequence[tuple[EvalQuestion, Sequence[int]]],
     ks: Sequence[int] = KS,
 ) -> dict[str, GroupEvaluationResult]:
-    """전체, 단일 그룹 문항 전체, 유형별(type) 지표
+    """전체, 단일 그룹 전체, 유형별, 작성자별 지표
 
-    복수근거 문항은 Hit@1이 구조적으로 0이므로, 단일 그룹 문항만 모은 행을 따로 낸다.
+    - 복수근거 문항은 Hit@1이 구조적으로 0이므로 단일 그룹 문항만 모은 행을 따로 낸다.
+    - 작성자별(본인/Claude) 행은 질문 작성 방식에 따른 편향을 점검하는 용도다.
     """
     results = {ALL_TYPES: evaluate_groups(rankings, ks)}
     singles = [(q, ids) for q, ids in rankings if q.is_single]
     if singles:
         results[SINGLE_ONLY] = evaluate_groups(singles, ks)
     for question_type in sorted({q.type for q, _ in rankings}):
-        results[question_type] = evaluate_groups([(q, ids) for q, ids in rankings if q.type == question_type], ks)
+        results[f"유형: {question_type}"] = evaluate_groups([(q, ids) for q, ids in rankings if q.type == question_type], ks)
+    for author in sorted({q.written_by for q, _ in rankings if q.written_by}):
+        results[f"작성: {author}"] = evaluate_groups([(q, ids) for q, ids in rankings if q.written_by == author], ks)
     return results
 
 
-def summary_row(config: dict[str, object], question_type: str, result: GroupEvaluationResult) -> dict[str, object]:
+def summary_row(config: dict[str, object], subset: str, result: GroupEvaluationResult) -> dict[str, object]:
     """결과 CSV 한 행"""
     row: dict[str, object] = dict(config)
-    row["type"] = question_type
+    row["subset"] = subset
     row["questions"] = result.questions
     row["single_questions"] = result.single_questions
     for k, value in result.hit_at.items():
@@ -128,9 +134,44 @@ def unique_faq_ranking(results: Sequence[object], depth: int) -> list[tuple[int,
     return ranked
 
 
-def embedding_model_name(embedder: object) -> str:
-    """결과 기록용 임베딩 모델 이름"""
-    return str(getattr(embedder, "model", None) or getattr(embedder, "model_name", ""))
+class QueryCachingEmbedder:
+    """질문 임베딩을 캐시하는 래퍼. 같은 모델의 여러 인덱스(청킹·임베딩 입력 조합)에서 질문 벡터를 한 번만 만든다.
+
+    조합마다 질문 벡터가 완전히 같아지고(비교 공정성), API 호출 수도 줄어든다.
+    """
+
+    def __init__(self, embedder: object) -> None:
+        self._embedder = embedder
+        self._cache: dict[str, object] = {}
+        self.query_calls = 0
+
+    def __getattr__(self, name: str) -> object:
+        return getattr(self._embedder, name)
+
+    def embed(self, texts: Sequence[str], role: str = "passage"):
+        if role != "query" or len(texts) != 1:
+            return self._embedder.embed(texts, role=role)
+        text = texts[0]
+        if text not in self._cache:
+            self._cache[text] = self._embedder.embed([text], role="query")
+            self.query_calls += 1
+        return self._cache[text]
+
+
+def check_index(index_path: Path, metadata_path: Path, embedder: object, embedding_mode: str,
+                questions: Sequence[EvalQuestion]) -> dict[str, object]:
+    """인덱스가 지금 임베딩 모델로 만들어졌는지, 정답 FAQ가 모두 들어 있는지 확인하고 manifest 반환"""
+    manifest = load_index_manifest(index_path)
+    model = embedder_model_name(embedder)
+    if manifest["embedding_model"] != model:
+        raise SystemExit(f"{index_path}: 인덱스 모델({manifest['embedding_model']})과 질문 임베딩 모델({model})이 다릅니다.")
+    if embedding_mode not in manifest["embedding_modes"]:
+        raise SystemExit(f"{index_path}: manifest에 {embedding_mode} 인덱스 기록이 없습니다.")
+    indexed = {document.resolved_row_id for document in load_documents(metadata_path)}
+    missing = sorted({faq_id for q in questions for group in q.required_faqs for faq_id in group} - indexed)
+    if missing:
+        raise SystemExit(f"{index_path}: 정답 FAQ가 인덱스에 없습니다: {missing}")
+    return manifest
 
 
 def run_experiments(
@@ -151,32 +192,42 @@ def run_experiments(
                 if not is_supported_combination(chunking_mode, embedding_mode):
                     continue
                 index_path, metadata_path = index_bundle_paths(index_dir, chunking_mode, provider, embedding_mode)
+                manifest = check_index(index_path, metadata_path, embedder, embedding_mode, questions)
                 retriever = build_retriever(index_path, metadata_path, embedder)
                 config = {
                     "eval_set": eval_set_name,
+                    "source_csv": manifest["source_csv"],
+                    "source_sha256": str(manifest["source_sha256"])[:12],
                     "index_dir": str(index_dir),
                     "chunking_mode": chunking_mode,
+                    "chunks": manifest["chunks"],
                     "embedding_provider": provider,
-                    "embedding_model": embedding_model_name(embedder),
+                    "embedding_model": manifest["embedding_model"],
                     "embedding_mode": embedding_mode,
                     "depth": depth,
                 }
 
                 rankings = []
+                short_rankings: list[int] = []
                 for question in questions:
                     ranked = unique_faq_ranking(retriever.search(question.question, top_k=depth * CHUNK_OVERSAMPLE), depth)
                     ids = [faq_id for faq_id, _ in ranked]
+                    if len(ids) < depth:
+                        short_rankings.append(question.id)
                     rankings.append((question, ids))
                     details.append({
                         **config,
                         "id": question.id,
                         "type": question.type,
+                        "written_by": question.written_by,
                         "required_faqs": format_groups(question.required_faqs),
                         "retrieved_ids": "|".join(map(str, ids)),
                         **{f"hit_at_{k}": int(is_hit(question.required_faqs, ids, k)) for k in KS},
                     })
-                for question_type, result in evaluate_by_type(rankings).items():
-                    summary.append(summary_row(config, question_type, result))
+                if short_rankings:
+                    print(f"경고: {chunking_mode}/{embedding_mode}에서 서로 다른 FAQ가 {depth}개 미만인 문항 {short_rankings}")
+                for subset, result in evaluate_subsets(rankings).items():
+                    summary.append(summary_row(config, subset, result))
 
                 for question in out_of_scope:
                     ranked = unique_faq_ranking(retriever.search(question.question, top_k=depth * CHUNK_OVERSAMPLE), depth)
@@ -224,7 +275,7 @@ def main() -> None:
     load_project_env()
     questions = read_evalset(args.questions)
     out_of_scope = read_out_of_scope(args.out_of_scope) if args.out_of_scope else []
-    embedders = {provider: build_embedder(provider, os.environ) for provider in args.providers}
+    embedders = {provider: QueryCachingEmbedder(build_embedder(provider, os.environ)) for provider in args.providers}
     summary, details, oos_rows = run_experiments(
         args.index_dir,
         args.questions.stem,

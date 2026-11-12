@@ -1,11 +1,13 @@
 """FAISS 인덱스 저장"""
 
 import argparse
+import hashlib
 import json
 import os
 import re
 import sys
 from dataclasses import asdict, dataclass
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Literal, Mapping, Protocol, Sequence
 
@@ -105,12 +107,17 @@ class LocalEmbedder:
         self._model = SentenceTransformer(self.model_name)
         return self._model
 
+    def _prefix(self, role: EmbeddingRole) -> str:
+        """e5 계열은 학습 규칙상 'query: '/'passage: ' 접두어가 필요하다. 다른 모델(bge-m3, KURE 등)에는 붙이지 않는다."""
+        if "e5" not in self.model_name.lower():
+            return ""
+        return "query: " if role == "query" else "passage: "
+
     def embed(self, texts: Sequence[str], role: EmbeddingRole = "passage") -> np.ndarray:
         if not texts:
             raise ValueError("임베딩할 텍스트 목록이 비어 있습니다.")
 
-        prefix = "query: " if role == "query" else "passage: "
-        payload = [f"{prefix}{text}" for text in texts]
+        payload =[f"{self._prefix(role)}{text}" for text in texts]
         model = self._load_model()
         vectors = model.encode(
             payload,
@@ -346,16 +353,40 @@ def is_supported_combination(chunking_mode: ChunkingMode, embedding_mode: Embedd
     return not (chunking_mode == "sentence" and embedding_mode == "title")
 
 
+MANIFEST_NAME = "manifest.json"
+
+
+def embedder_model_name(embedder: object) -> str:
+    """임베더의 모델 이름(OpenAIEmbedder.model, LocalEmbedder.model_name)"""
+    return str(getattr(embedder, "model", None) or getattr(embedder, "model_name", "") or "")
+
+
+def write_index_manifest(mode_dir: Path, manifest: dict[str, Any]) -> None:
+    (Path(mode_dir) / MANIFEST_NAME).write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def load_index_manifest(index_path: str | Path) -> dict[str, Any]:
+    """인덱스 파일과 같은 폴더의 manifest.json 로드. 없으면 오류(이전 방식으로 만든 인덱스)"""
+    path = Path(index_path).parent / MANIFEST_NAME
+    if not path.exists():
+        raise FileNotFoundError(f"{path}가 없습니다. src/indexing.py로 인덱스를 다시 만드세요.")
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
 def build_indexes(
     csv_path: Path,
     output_dir: Path,
     embedders: dict[EmbeddingProvider, Embedder],
-    chunking_modes: Sequence[ChunkingMode] = ("row", "paragraph", "file"),
+    chunking_modes: Sequence[ChunkingMode] = ("row", "sentence"),
     embedding_modes: Sequence[EmbeddingMode] = ("title", "title_body"),
 ) -> None:
-    """청킹 방식과 임베딩 입력 필드를 조합해 실험용 인덱스 생성"""
+    """청킹 방식과 임베딩 입력 필드를 조합해 실험용 인덱스 생성
+
+    폴더마다 manifest.json에 원천 CSV의 해시와 임베딩 모델을 남겨, 평가 때 다른 데이터·모델과 섞이지 않게 한다.
+    """
 
     source_documents = load_faq_csv(csv_path)
+    source_hash = hashlib.sha256(Path(csv_path).read_bytes()).hexdigest()
     output_dir.mkdir(parents=True, exist_ok=True)
 
     for chunking_mode in chunking_modes:
@@ -364,6 +395,7 @@ def build_indexes(
             mode_dir = output_dir / chunking_mode / embedding_provider
             mode_dir.mkdir(parents=True, exist_ok=True)
             metadata_path = mode_dir / "metadata.json"
+            built_modes: list[str] = []
 
             for embedding_mode in embedding_modes:
                 if not is_supported_combination(chunking_mode, embedding_mode):
@@ -374,6 +406,22 @@ def build_indexes(
                 )
                 index_path = mode_dir / f"{embedding_mode}.faiss"
                 save_index_bundle(build_faiss_index(vectors), chunked_documents, index_path, metadata_path)
+                built_modes.append(embedding_mode)
+
+            write_index_manifest(
+                mode_dir,
+                {
+                    "source_csv": str(csv_path),
+                    "source_sha256": source_hash,
+                    "source_rows": len(source_documents),
+                    "chunking_mode": chunking_mode,
+                    "chunks": len(chunked_documents),
+                    "embedding_provider": embedding_provider,
+                    "embedding_model": embedder_model_name(embedder),
+                    "embedding_modes": built_modes,
+                    "created_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+                },
+            )
 
 
 def build_embedder(provider: EmbeddingProvider, values: Mapping[str, str]) -> Embedder:

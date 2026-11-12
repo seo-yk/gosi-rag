@@ -3,7 +3,9 @@ from pathlib import Path
 import faiss
 import numpy as np
 
-from src.indexing import build_indexes
+import json
+
+from src.indexing import build_indexes, load_index_manifest
 
 
 class FakeEmbedder:
@@ -42,6 +44,7 @@ def test_build_indexes_creates_chunking_and_embedding_indexes(tmp_path: Path) ->
             "openai": FakeEmbedder(0.0),
             "local": FakeEmbedder(10.0),
         },
+        chunking_modes=("row", "paragraph", "sentence", "file"),
     )
 
     assert faiss.read_index(str(tmp_path / "index" / "row" / "openai" / "title.faiss")).ntotal == 2
@@ -50,3 +53,14 @@ def test_build_indexes_creates_chunking_and_embedding_indexes(tmp_path: Path) ->
     assert (tmp_path / "index" / "row" / "openai" / "metadata.json").exists()
     assert (tmp_path / "index" / "paragraph" / "local" / "metadata.json").exists()
     assert (tmp_path / "index" / "file" / "openai" / "metadata.json").exists()
+    # 문장 청킹은 title_body만 만든다
+    assert (tmp_path / "index" / "sentence" / "local" / "title_body.faiss").exists()
+    assert not (tmp_path / "index" / "sentence" / "local" / "title.faiss").exists()
+
+    manifest = load_index_manifest(tmp_path / "index" / "row" / "openai" / "title.faiss")
+    assert manifest["source_rows"] == 2
+    assert manifest["chunks"] == 2
+    assert manifest["embedding_modes"] == ["title", "title_body"]
+    assert len(manifest["source_sha256"]) == 64
+    sentence_manifest = json.loads((tmp_path / "index" / "sentence" / "local" / "manifest.json").read_text(encoding="utf-8"))
+    assert sentence_manifest["embedding_modes"] == ["title_body"]

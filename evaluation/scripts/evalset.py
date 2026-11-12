@@ -24,6 +24,7 @@ class EvalQuestion:
     required_faqs: Groups
     supporting_faqs: tuple[int, ...]
     reference_answer: str
+    written_by: str = ""  # 본인 / Claude (편향 점검용)
 
     @property
     def is_single(self) -> bool:
@@ -64,6 +65,7 @@ def read_evalset(path: Path) -> list[EvalQuestion]:
                 required_faqs=groups,
                 supporting_faqs=tuple(row["supporting_faqs"]),
                 reference_answer=row["reference_answer"].strip(),
+                written_by=row.get("written_by", ""),
             )
         )
     if not questions:
