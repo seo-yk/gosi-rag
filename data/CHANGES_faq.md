@@ -32,6 +32,10 @@
 - `5_기타확인` 시트의 결정은 사용자가 구글 시트 `검토결정표_v1.2`에 입력했다(2026-11-12 확인). `handoff/검토결정표_v1.2.xlsx`에는 이 시트가 비어 있다. 1~4번 시트는 두 파일이 같다.
 - 결정 입력: 본인. 처리 스크립트 실행: Claude Code.
 
+## 재생성
+
+`python evaluation/scripts/build_faq_v2.py` (입력: `handoff/faq_corrected.csv`, `handoff/faq_merge_map.csv`)
+
 ## 파일 형식
 
 `data/faq.csv`와 같게 UTF-8(BOM 포함), CRLF 줄바꿈, 필요한 칸만 따옴표로 저장했다.
