@@ -13,7 +13,7 @@ if __package__ is None or __package__ == "":
 
 from app import build_services
 from app import Settings
-from evaluation.scripts.generation_eval import GenerationQuestion, read_generation_questions, render_contexts
+from evaluation.scripts.evaluate_generation import GenerationQuestion, read_generation_questions, render_contexts
 from src.config import load_project_env
 
 
@@ -110,7 +110,7 @@ def main() -> None:
     parser.add_argument(
         "--questions",
         type=Path,
-        default=Path("evaluation/inputs/generation_question.csv"),
+        default=Path("evaluation/inputs/evalset_v1.3.jsonl"),
     )
     parser.add_argument(
         "--output",

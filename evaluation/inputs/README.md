@@ -58,6 +58,21 @@ FAQ 데이터의 `제목`은 질문 형태이고 `본문`은 답변이다. 평�
 
 148문항에서 1문항은 약 0.7%p다.
 
+복수근거 문항은 필수 그룹마다 서로 다른 FAQ가 필요하다. 그래서 Top-1에 FAQ가 하나뿐이면 적중할 수 없고, Hit@1은 항상 0이다. 따라서 전체 Hit@1의 최댓값은 111/148(75.0%)이다. Hit@1은 유형별 수치와 함께 읽는다.
+
+## 실행
+
+```bash
+# 1) 교정본 FAQ로 인덱스 생성 (1차 실험 인덱스와 섞이지 않게 폴더를 나눈다)
+python src/indexing.py --csv data/faq_v2.csv --output index/faq_v2
+# 2) 검색 평가: 요약(유형별), 문항별 상세, 범위 밖 Top-1 유사도를 output/에 저장
+python evaluation/scripts/evaluate_retrieval.py --index-dir index/faq_v2
+# 3) 생성·생성 평가: 앱 설정의 인덱스 폴더를 같은 곳으로 맞춘다
+INDEX_DIR=index/faq_v2 python evaluation/scripts/generate_generation.py
+```
+
+`evaluate_retrieval.py`는 문항당 5개(`--depth`)를 한 번 검색해 @1·@3·@5를 함께 계산한다. 결과 파일에는 평가셋 이름(`eval_set`), 문항 수(`questions`), 인덱스 폴더, 임베딩 모델을 함께 기록한다.
+
 ## 문항 수
 
 | 구분 | 문항 수 |

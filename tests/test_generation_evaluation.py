@@ -60,3 +60,18 @@ def test_build_row_note_includes_models_and_retrieved_ids() -> None:
     assert "generation_model=gemini-3.5-flash" in note
     assert "evaluation_model=gemma3:4b" in note
     assert "retrieved_answer_nos=12|15" in note
+
+
+def test_read_generation_questions_reads_evalset_v1_3() -> None:
+    from pathlib import Path
+
+    from evaluation.scripts.evaluate_generation import read_generation_questions
+
+    root = Path(__file__).resolve().parents[1]
+    items = read_generation_questions(root / "evaluation/inputs/evalset_v1.3.jsonl")
+    by_id = {item.question_id: item for item in items}
+
+    assert len(items) == 148
+    assert "12" not in by_id  # exclude 문항
+    assert by_id["52"].target_answer_no == "78 & 272|251"
+    assert by_id["52"].target_answer.startswith("기한이 만료된 여권은")

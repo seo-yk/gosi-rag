@@ -17,6 +17,7 @@ if __package__ is None or __package__ == "":
     sys.path.append(str(Path(__file__).resolve().parents[2]))
 
 from app import Settings, build_services
+from evaluation.scripts.evalset import format_groups, read_evalset
 from src.config import load_project_env
 from src.generation import GeneratedAnswer
 from src.retrieval import SearchResult
@@ -195,7 +196,21 @@ class OllamaEvaluator:
 
 
 def read_generation_questions(path: Path) -> list[GenerationQuestion]:
-    """생성 평가 질문셋 로드"""
+    """생성 평가 질문셋 로드. .jsonl은 평가셋 v1.3, .csv는 1차 실험 형식"""
+    if path.suffix == ".jsonl":
+        return [
+            GenerationQuestion(
+                question_id=str(item.id),
+                question=item.question,
+                question_type=item.type,
+                evaluation_intent=item.intent,
+                target_answer_no=format_groups(item.required_faqs),
+                target_answer=item.reference_answer,
+                supporting_answer_nos="|".join(map(str, item.supporting_faqs)),
+                notes="",
+            )
+            for item in read_evalset(path)
+        ]
     with path.open(encoding="utf-8-sig", newline="") as file:
         rows: list[GenerationQuestion] = []
         for row in csv.DictReader(file):
@@ -676,7 +691,7 @@ def main() -> None:
     parser.add_argument(
         "--questions",
         type=Path,
-        default=Path("evaluation/inputs/generation_question.csv"),
+        default=Path("evaluation/inputs/evalset_v1.3.jsonl"),
     )
     parser.add_argument(
         "--answers",
