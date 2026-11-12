@@ -12,7 +12,15 @@ from evaluation.scripts.evalset import (
     read_out_of_scope,
     reciprocal_rank,
 )
-from evaluation.scripts.evaluate_retrieval import ALL_TYPES, SINGLE_ONLY, evaluate_by_type, evaluate_groups
+from types import SimpleNamespace
+
+from evaluation.scripts.evaluate_retrieval import (
+    ALL_TYPES,
+    SINGLE_ONLY,
+    evaluate_by_type,
+    evaluate_groups,
+    unique_faq_ranking,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -130,6 +138,15 @@ def test_evaluate_by_type_includes_total_and_each_type() -> None:
     assert results[ALL_TYPES].hit_at[1] == 1 / 2
     assert results["원문유사"].hit_at[1] == 1.0
     assert results["조건형"].hit_at[1] == 0.0
+
+
+def test_unique_faq_ranking_keeps_best_chunk_per_faq() -> None:
+    def chunk(faq_id: int, score: float) -> SimpleNamespace:
+        return SimpleNamespace(document=SimpleNamespace(resolved_row_id=faq_id), score=score)
+
+    results = [chunk(12, 0.9), chunk(12, 0.8), chunk(5, 0.7), chunk(12, 0.6), chunk(3, 0.5), chunk(9, 0.4)]
+
+    assert unique_faq_ranking(results, 3) == [(12, 0.9), (5, 0.7), (3, 0.5)]
 
 
 def test_format_groups() -> None:

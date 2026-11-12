@@ -62,11 +62,17 @@ FAQ 데이터의 `제목`은 질문 형태이고 `본문`은 답변이다. 평�
 
 ## 실행
 
+재실험 검색 구성은 9조합이다. 청킹 2개(`row`, `sentence`) × 임베딩 입력 2개(`title`, `title_body`)에서 `sentence × title`을 뺀 3개에, 임베딩 모델 3개를 곱한다. 임베딩 모델은 `EMBEDDING_MODEL` 하나로 정하고 인덱스 폴더는 제공자(`local`, `openai`) 단위로 나뉘므로, 모델마다 따로 실행한다. OpenAI 두 모델은 폴더를 나눈다.
+
 ```bash
-# 1) 교정본 FAQ(data/faq_v2.csv)로 인덱스 생성 → index/faq_v2
-python src/indexing.py
-# 2) 검색 평가: 요약(유형별), 문항별 상세, 범위 밖 Top-1 유사도를 output/에 저장
-python evaluation/scripts/evaluate_retrieval.py
+# 1) 인덱스 생성 (교정본 data/faq_v2.csv, 청킹 row·sentence)
+EMBEDDING_MODEL=intfloat/multilingual-e5-small python src/indexing.py --providers local
+EMBEDDING_MODEL=text-embedding-3-small python src/indexing.py --providers openai
+EMBEDDING_MODEL=text-embedding-3-large python src/indexing.py --providers openai --output index/faq_v2_3-large
+# 2) 검색 평가: output/retrieval_{summary,details,out_of_scope}_<run-name>.csv
+EMBEDDING_MODEL=intfloat/multilingual-e5-small python evaluation/scripts/evaluate_retrieval.py --providers local --run-name e5-small
+EMBEDDING_MODEL=text-embedding-3-small python evaluation/scripts/evaluate_retrieval.py --providers openai --run-name openai-3-small
+EMBEDDING_MODEL=text-embedding-3-large python evaluation/scripts/evaluate_retrieval.py --providers openai --index-dir index/faq_v2_3-large --run-name openai-3-large
 # 3) 생성과 생성 평가 (앱 설정 INDEX_DIR 기본값도 index/faq_v2)
 python evaluation/scripts/generate_generation.py
 # 4) 범위 밖 10문항 답변 생성 → 자동 평가 없이 "채점 규칙"의 범위 밖 기준으로 직접 판정
@@ -77,7 +83,7 @@ python evaluation/scripts/generate_generation.py --questions evaluation/inputs/e
 
 기본값은 모두 교정본 기준이다(`--csv data/faq_v2.csv`, 인덱스 `index/faq_v2`). 원본으로 1차 실험을 재현하려면 `python src/indexing.py --csv data/faq.csv --output index/faq_v1`로 인덱스를 따로 만들고, 평가할 때 `--index-dir index/faq_v1`을 지정한다(앱은 `INDEX_DIR=index/faq_v1`).
 
-`evaluate_retrieval.py`는 문항당 5개(`--depth`)를 한 번 검색해 @1·@3·@5를 함께 계산한다. 결과 파일에는 평가셋 이름(`eval_set`), 문항 수(`questions`), 인덱스 폴더, 임베딩 모델을 함께 기록한다.
+`sentence` 청킹은 본문을 문장 단위로 자르고(20자 미만 조각은 앞 문장에 붙임) 청크마다 FAQ 제목을 유지한다. 교정본 기준 634청크, FAQ당 평균 2.2개다. `evaluate_retrieval.py`는 청크를 FAQ 연번 기준으로 중복 제거한 뒤, 서로 다른 FAQ 5개(`--depth`)로 @1·@3·@5를 함께 계산한다. 결과 파일에는 평가셋 이름(`eval_set`), 문항 수(`questions`), 인덱스 폴더, 임베딩 모델을 함께 기록한다.
 
 ## 문항 수
 

@@ -6,7 +6,8 @@
 - MRR: 필수 그룹이 1개인 문항만. 그룹 내 FAQ 중 가장 높은 순위의 역수
 - 범위 밖 문항: 지표에 넣지 않고 Top-1 유사도와 검색된 FAQ 번호만 기록(임곗값 없음)
 
-검색 깊이(--depth, 기본 5)만큼 한 번 검색해 @1, @3, @5를 함께 계산한다.
+검색 깊이(--depth, 기본 5)만큼 서로 다른 FAQ를 한 번에 구해 @1, @3, @5를 함께 계산한다.
+청크는 FAQ 연번 기준으로 중복을 제거한다(문장 청킹 등).
 """
 
 import argparse
@@ -38,12 +39,14 @@ from src.indexing import (
     EmbeddingProvider,
     build_embedder,
     index_bundle_paths,
+    is_supported_combination,
 )
 from src.retrieval import build_retriever
 
 KS = (1, 3, 5)
 ALL_TYPES = "전체"
 SINGLE_ONLY = "단일 그룹 전체"  # 필수 그룹이 1개인 문항(복수근거 제외)
+CHUNK_OVERSAMPLE = 10  # FAQ 중복 제거 전에 depth × 10개 청크를 검색
 
 
 @dataclass(frozen=True, slots=True)
@@ -106,6 +109,25 @@ def summary_row(config: dict[str, object], question_type: str, result: GroupEval
     return row
 
 
+def unique_faq_ranking(results: Sequence[object], depth: int) -> list[tuple[int, float]]:
+    """청크 검색 결과를 FAQ 연번 기준으로 중복 제거해 상위 depth개 (연번, 점수) 반환
+
+    문장·문단 청킹에서는 같은 FAQ의 청크가 여러 개 검색된다. FAQ마다 가장 높은 순위의 청크만 남긴다.
+    row 청킹에서는 결과가 바뀌지 않는다.
+    """
+    ranked: list[tuple[int, float]] = []
+    seen: set[int] = set()
+    for result in results:
+        faq_id = result.document.resolved_row_id
+        if faq_id in seen:
+            continue
+        seen.add(faq_id)
+        ranked.append((faq_id, float(result.score)))
+        if len(ranked) == depth:
+            break
+    return ranked
+
+
 def embedding_model_name(embedder: object) -> str:
     """결과 기록용 임베딩 모델 이름"""
     return str(getattr(embedder, "model", None) or getattr(embedder, "model_name", ""))
@@ -126,6 +148,8 @@ def run_experiments(
     for chunking_mode in chunking_modes:
         for provider, embedder in embedders.items():
             for embedding_mode in embedding_modes:
+                if not is_supported_combination(chunking_mode, embedding_mode):
+                    continue
                 index_path, metadata_path = index_bundle_paths(index_dir, chunking_mode, provider, embedding_mode)
                 retriever = build_retriever(index_path, metadata_path, embedder)
                 config = {
@@ -140,8 +164,8 @@ def run_experiments(
 
                 rankings = []
                 for question in questions:
-                    results = retriever.search(question.question, top_k=depth)
-                    ids = [result.document.resolved_row_id for result in results]
+                    ranked = unique_faq_ranking(retriever.search(question.question, top_k=depth * CHUNK_OVERSAMPLE), depth)
+                    ids = [faq_id for faq_id, _ in ranked]
                     rankings.append((question, ids))
                     details.append({
                         **config,
@@ -155,15 +179,15 @@ def run_experiments(
                     summary.append(summary_row(config, question_type, result))
 
                 for question in out_of_scope:
-                    results = retriever.search(question.question, top_k=depth)
+                    ranked = unique_faq_ranking(retriever.search(question.question, top_k=depth * CHUNK_OVERSAMPLE), depth)
                     oos_rows.append({
                         **config,
                         "id": question.id,
                         "difficulty": question.difficulty,
-                        "top1_id": results[0].document.resolved_row_id if results else "",
-                        "top1_score": round(results[0].score, 4) if results else "",
-                        "retrieved_ids": "|".join(str(r.document.resolved_row_id) for r in results),
-                        "retrieved_scores": "|".join(f"{r.score:.4f}" for r in results),
+                        "top1_id": ranked[0][0] if ranked else "",
+                        "top1_score": round(ranked[0][1], 4) if ranked else "",
+                        "retrieved_ids": "|".join(str(faq_id) for faq_id, _ in ranked),
+                        "retrieved_scores": "|".join(f"{score:.4f}" for _, score in ranked),
                         "similar_faqs": "|".join(map(str, question.similar_faqs)),
                     })
     return summary, details, oos_rows
@@ -186,11 +210,11 @@ def main() -> None:
     parser.add_argument("--out-of-scope", type=Path, default=Path("evaluation/inputs/evalset_out_of_scope_v1.3.jsonl"))
     parser.add_argument("--index-dir", type=Path, default=Path("index/faq_v2"),
                         help="src/indexing.py --output 으로 만든 인덱스 폴더")
-    parser.add_argument("--output", type=Path, default=Path("output/retrieval_summary.csv"))
-    parser.add_argument("--details-output", type=Path, default=Path("output/retrieval_details.csv"))
-    parser.add_argument("--out-of-scope-output", type=Path, default=Path("output/retrieval_out_of_scope.csv"))
+    parser.add_argument("--output-dir", type=Path, default=Path("output"))
+    parser.add_argument("--run-name", default="",
+                        help="결과 파일 이름 뒤에 붙일 이름(예: e5-small). 모델별 실행 결과가 덮어써지지 않게 한다")
     parser.add_argument("--providers", nargs="+", default=["openai", "local"])
-    parser.add_argument("--chunking-modes", nargs="+", default=["row", "paragraph", "file"])
+    parser.add_argument("--chunking-modes", nargs="+", default=["row", "sentence"])
     parser.add_argument("--embedding-modes", nargs="+", default=["title", "title_body"])
     parser.add_argument("--depth", type=int, default=max(KS), help="문항당 검색 개수(최소 5)")
     args = parser.parse_args()
@@ -211,11 +235,13 @@ def main() -> None:
         tuple(args.embedding_modes),
         args.depth,
     )
-    write_csv(args.output, summary)
-    write_csv(args.details_output, details)
-    write_csv(args.out_of_scope_output, oos_rows)
+    suffix = f"_{args.run_name}" if args.run_name else ""
+    summary_path = args.output_dir / f"retrieval_summary{suffix}.csv"
+    write_csv(summary_path, summary)
+    write_csv(args.output_dir / f"retrieval_details{suffix}.csv", details)
+    write_csv(args.output_dir / f"retrieval_out_of_scope{suffix}.csv", oos_rows)
     combinations = len(details) // len(questions)
-    print(f"{args.questions.stem}: {len(questions)}문항, 범위 밖 {len(out_of_scope)}문항, 조합 {combinations}개 → {args.output}")
+    print(f"{args.questions.stem}: {len(questions)}문항, 범위 밖 {len(out_of_scope)}문항, 조합 {combinations}개 → {summary_path}")
 
 
 if __name__ == "__main__":

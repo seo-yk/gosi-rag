@@ -23,7 +23,7 @@ from src.config import load_project_env
 EmbeddingMode = Literal["title", "title_body"]
 EmbeddingProvider = Literal["openai", "local"]
 EmbeddingRole = Literal["query", "passage"]
-ChunkingMode = Literal["row", "paragraph", "file"]
+ChunkingMode = Literal["row", "paragraph", "sentence", "file"]
 REQUIRED_COLUMNS = {"연번", "제목", "본문"}
 ENCODINGS = ("utf-8-sig", "utf-8", "cp949")
 LOCAL_EMBEDDING_MODEL = "intfloat/multilingual-e5-small"
@@ -144,12 +144,29 @@ def _split_paragraphs(body: str) -> list[str]:
     return lines if lines else [stripped]
 
 
+# 한글·닫는 괄호/따옴표 뒤의 마침표·물음표·느낌표에서만 자른다("2007.12.31." 같은 날짜는 자르지 않음)
+_SENTENCE_BOUNDARY = re.compile(r"(?<=[가-힣)\]」』\"'][.?!])\s+")
+MIN_SENTENCE_CHARS = 20  # 이보다 짧은 조각은 앞 문장에 붙인다
+
+
+def _split_sentences(body: str) -> list[str]:
+    parts = [part.strip() for part in _SENTENCE_BOUNDARY.split(body.strip()) if part.strip()]
+    sentences: list[str] = []
+    for part in parts:
+        if sentences and len(part) < MIN_SENTENCE_CHARS:
+            sentences[-1] = f"{sentences[-1]} {part}"
+        else:
+            sentences.append(part)
+    return sentences
+
+
 def _chunk_label(row_id: int, chunking_mode: ChunkingMode, paragraph_index: int | None = None) -> str:
     if chunking_mode == "file":
         return "file-0"
-    if chunking_mode == "paragraph":
+    if chunking_mode in ("paragraph", "sentence"):
         suffix = paragraph_index if paragraph_index is not None else 1
-        return f"row-{row_id}-p{suffix}"
+        marker = "p" if chunking_mode == "paragraph" else "s"
+        return f"row-{row_id}-{marker}{suffix}"
     return f"row-{row_id}"
 
 
@@ -184,7 +201,25 @@ def load_faq_csv(path: str | Path) -> list[FaqDocument]:
 
 
 def build_chunked_documents(documents: Sequence[FaqDocument], chunking_mode: ChunkingMode) -> list[FaqDocument]:
-    """행/문단/파일 전체 기준으로 검색용 청크 생성"""
+    """행/문단/문장/파일 전체 기준으로 검색용 청크 생성
+
+    sentence: 본문을 문장 단위로 자르고 청크마다 FAQ 제목을 유지한다(title_body 임베딩 시 제목이 문맥 머리말 역할).
+    """
+
+    if chunking_mode == "sentence":
+        return [
+            FaqDocument(
+                document.row_id,
+                document.title,
+                sentence,
+                chunk_id=_chunk_label(document.row_id, "sentence", index),
+                chunking_mode="sentence",
+                source_row_id=document.resolved_row_id,
+                paragraph_index=index,
+            )
+            for document in documents
+            for index, sentence in enumerate(_split_sentences(document.body) or [document.body], start=1)
+        ]
 
     if chunking_mode == "row":
         return [
@@ -306,6 +341,11 @@ def load_documents(path: str | Path) -> list[FaqDocument]:
     return documents
 
 
+def is_supported_combination(chunking_mode: ChunkingMode, embedding_mode: EmbeddingMode) -> bool:
+    """문장 청크는 FAQ마다 제목이 같아 title만 임베딩하면 같은 벡터가 반복되므로 만들지 않는다"""
+    return not (chunking_mode == "sentence" and embedding_mode == "title")
+
+
 def build_indexes(
     csv_path: Path,
     output_dir: Path,
@@ -326,6 +366,8 @@ def build_indexes(
             metadata_path = mode_dir / "metadata.json"
 
             for embedding_mode in embedding_modes:
+                if not is_supported_combination(chunking_mode, embedding_mode):
+                    continue
                 vectors = embedder.embed(
                     [document.embedding_text(embedding_mode) for document in chunked_documents],
                     role="passage",
@@ -354,7 +396,7 @@ def main() -> None:
     parser.add_argument("--csv", type=Path, default=Path("data/faq_v2.csv"), help="원본 재현은 data/faq.csv")
     parser.add_argument("--output", type=Path, default=Path("index/faq_v2"))
     parser.add_argument("--providers", nargs="+", default=["openai", "local"])
-    parser.add_argument("--chunking-modes", nargs="+", default=["row", "paragraph", "file"])
+    parser.add_argument("--chunking-modes", nargs="+", default=["row", "sentence"])
     parser.add_argument("--embedding-modes", nargs="+", default=["title", "title_body"])
     args = parser.parse_args()
 
