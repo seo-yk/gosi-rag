@@ -354,6 +354,26 @@ def is_supported_combination(chunking_mode: ChunkingMode, embedding_mode: Embedd
 
 
 MANIFEST_NAME = "manifest.json"
+INDEX_ROOT = Path("index/faq_v2")
+
+
+def model_slug(model_name: str) -> str:
+    """모델 이름의 마지막 부분을 폴더 이름으로. 예: 'nlpai-lab/KURE-v1' → 'kure-v1'"""
+    name = model_name.rstrip("/").split("/")[-1].lower()
+    return re.sub(r"[^a-z0-9._-]+", "-", name) or "model"
+
+
+def default_index_dir(model_name: str, root: str | Path = INDEX_ROOT) -> Path:
+    """임베딩 모델별 인덱스 폴더: index/faq_v2/<모델 이름>"""
+    return Path(root) / model_slug(model_name)
+
+
+def resolve_provider(provider: str | None, values: Mapping[str, str]) -> EmbeddingProvider:
+    """명령줄 값이 없으면 EMBEDDING_PROVIDER, 그것도 없으면 local"""
+    value = (provider or values.get("EMBEDDING_PROVIDER", "") or "local").strip().lower()
+    if value not in ("openai", "local"):
+        raise ValueError(f"Unsupported embedding provider: {value}")
+    return value  # type: ignore[return-value]
 
 
 def embedder_model_name(embedder: object) -> str:
@@ -363,6 +383,16 @@ def embedder_model_name(embedder: object) -> str:
 
 def write_index_manifest(mode_dir: Path, manifest: dict[str, Any]) -> None:
     (Path(mode_dir) / MANIFEST_NAME).write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def check_index_model(index_path: str | Path, model_name: str) -> dict[str, Any]:
+    """인덱스를 만든 모델과 질문 임베딩 모델이 같은지 확인. 다르면 ValueError"""
+    manifest = load_index_manifest(index_path)
+    if manifest.get("embedding_model") != model_name:
+        raise ValueError(
+            f"{index_path}: 인덱스 모델({manifest.get('embedding_model')})과 질문 임베딩 모델({model_name})이 다릅니다."
+        )
+    return manifest
 
 
 def load_index_manifest(index_path: str | Path) -> dict[str, Any]:
@@ -439,21 +469,28 @@ def build_embedder(provider: EmbeddingProvider, values: Mapping[str, str]) -> Em
 
 
 def main() -> None:
-    """FAQ 인덱스 생성 CLI 실행"""
+    """FAQ 인덱스 생성 CLI 실행
+
+    임베딩 모델은 .env(또는 명령줄)의 EMBEDDING_PROVIDER·EMBEDDING_MODEL 하나로 정한다.
+    인덱스 폴더 기본값은 index/faq_v2/<모델 이름>이다.
+    """
     parser = argparse.ArgumentParser(description="FAQ CSV에서 FAISS 인덱스를 생성합니다.")
     parser.add_argument("--csv", type=Path, default=Path("data/faq_v2.csv"), help="원본 재현은 data/faq.csv")
-    parser.add_argument("--output", type=Path, default=Path("index/faq_v2"))
-    parser.add_argument("--providers", nargs="+", default=["openai", "local"])
+    parser.add_argument("--output", type=Path, default=None, help="기본값 index/faq_v2/<모델 이름>")
+    parser.add_argument("--provider", choices=["openai", "local"], default=None, help="기본값 EMBEDDING_PROVIDER")
     parser.add_argument("--chunking-modes", nargs="+", default=["row", "sentence"])
     parser.add_argument("--embedding-modes", nargs="+", default=["title", "title_body"])
     args = parser.parse_args()
 
     load_project_env()
-    embedders = {provider: build_embedder(provider, os.environ) for provider in args.providers}
+    provider = resolve_provider(args.provider, os.environ)
+    embedder = build_embedder(provider, os.environ)
+    output = args.output or default_index_dir(embedder_model_name(embedder))
+    print(f"{embedder_model_name(embedder)} ({provider}) → {output}")
     build_indexes(
         args.csv,
-        args.output,
-        embedders,
+        output,
+        {provider: embedder},
         tuple(args.chunking_modes),
         tuple(args.embedding_modes),
     )

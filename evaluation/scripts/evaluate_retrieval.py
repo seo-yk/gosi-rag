@@ -38,11 +38,14 @@ from src.indexing import (
     EmbeddingMode,
     EmbeddingProvider,
     build_embedder,
+    default_index_dir,
     embedder_model_name,
     index_bundle_paths,
     is_supported_combination,
     load_documents,
     load_index_manifest,
+    model_slug,
+    resolve_provider,
 )
 from src.retrieval import build_retriever
 
@@ -260,12 +263,11 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="평가셋 v1.3으로 청킹, 임베딩 모델, 임베딩 입력 필드의 검색 성능을 평가합니다.")
     parser.add_argument("--questions", type=Path, default=Path("evaluation/inputs/evalset_v1.3.jsonl"))
     parser.add_argument("--out-of-scope", type=Path, default=Path("evaluation/inputs/evalset_out_of_scope_v1.3.jsonl"))
-    parser.add_argument("--index-dir", type=Path, default=Path("index/faq_v2"),
-                        help="src/indexing.py --output 으로 만든 인덱스 폴더")
+    parser.add_argument("--index-dir", type=Path, default=None, help="기본값 index/faq_v2/<모델 이름>")
     parser.add_argument("--output-dir", type=Path, default=Path("output"))
-    parser.add_argument("--run-name", default="",
-                        help="결과 파일 이름 뒤에 붙일 이름(예: e5-small). 모델별 실행 결과가 덮어써지지 않게 한다")
-    parser.add_argument("--providers", nargs="+", default=["openai", "local"])
+    parser.add_argument("--run-name", default=None,
+                        help="결과 파일 이름 뒤에 붙일 이름. 기본값은 모델 이름(예: kure-v1)")
+    parser.add_argument("--provider", choices=["openai", "local"], default=None, help="기본값 EMBEDDING_PROVIDER")
     parser.add_argument("--chunking-modes", nargs="+", default=["row", "sentence"])
     parser.add_argument("--embedding-modes", nargs="+", default=["title", "title_body"])
     parser.add_argument("--depth", type=int, default=max(KS), help="문항당 검색 개수(최소 5)")
@@ -276,18 +278,23 @@ def main() -> None:
     load_project_env()
     questions = read_evalset(args.questions)
     out_of_scope = read_out_of_scope(args.out_of_scope) if args.out_of_scope else []
-    embedders = {provider: QueryCachingEmbedder(build_embedder(provider, os.environ)) for provider in args.providers}
+    provider = resolve_provider(args.provider, os.environ)
+    embedder = QueryCachingEmbedder(build_embedder(provider, os.environ))
+    model_name = embedder_model_name(embedder)
+    index_dir = args.index_dir or default_index_dir(model_name)
+    run_name = model_slug(model_name) if args.run_name is None else args.run_name
+    print(f"{model_name} ({provider}), 인덱스 {index_dir}")
     summary, details, oos_rows = run_experiments(
-        args.index_dir,
+        index_dir,
         args.questions.stem,
         questions,
         out_of_scope,
-        embedders,
+        {provider: embedder},
         tuple(args.chunking_modes),
         tuple(args.embedding_modes),
         args.depth,
     )
-    suffix = f"_{args.run_name}" if args.run_name else ""
+    suffix = f"_{run_name}" if run_name else ""
     summary_path = args.output_dir / f"retrieval_summary{suffix}.csv"
     write_csv(summary_path, summary)
     write_csv(args.output_dir / f"retrieval_details{suffix}.csv", details)

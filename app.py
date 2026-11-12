@@ -11,7 +11,7 @@ from openai import OpenAI
 
 from src.config import load_project_env
 from src.generation import GeneratedAnswer, GeminiAnswerGenerator, OpenAIAnswerGenerator
-from src.indexing import build_embedder, index_bundle_paths
+from src.indexing import build_embedder, check_index_model, default_index_dir, index_bundle_paths
 from src.retrieval import FaissRetriever, SearchMetrics, build_retriever
 
 OPENAI_EMBEDDING_COST_PER_1M_TOKENS = 0.02
@@ -79,8 +79,14 @@ class Settings:
         chunking_mode = values.get("CHUNKING_MODE", "row")
         embedding_mode = values.get("EMBEDDING_MODE", "title_body")
         top_k = int(values.get("TOP_K", "3"))
+        embedding_model = values.get(
+            "EMBEDDING_MODEL",
+            "text-embedding-3-small" if embedding_provider == "openai" else "intfloat/multilingual-e5-small",
+        )
+        # 인덱스 폴더: INDEX_DIR가 없으면 index/faq_v2/<모델 이름> (src/indexing.py 기본값과 같음)
+        index_dir = values.get("INDEX_DIR", "").strip() or default_index_dir(embedding_model)
         index_path, metadata_path = index_bundle_paths(
-            values.get("INDEX_DIR", "index/faq_v2"),
+            index_dir,
             chunking_mode,  # type: ignore[arg-type]
             embedding_provider,  # type: ignore[arg-type]
             embedding_mode,  # type: ignore[arg-type]
@@ -91,10 +97,7 @@ class Settings:
             ollama_base_url=ollama_base_url,
             embedding_provider=embedding_provider,
             generation_provider=generation_provider,
-            embedding_model=values.get(
-                "EMBEDDING_MODEL",
-                "text-embedding-3-small" if embedding_provider == "openai" else "intfloat/multilingual-e5-small",
-            ),
+            embedding_model=embedding_model,
             generation_model=values.get(
                 "GENERATION_MODEL",
                 "gemini-3.5-flash"
@@ -125,6 +128,8 @@ def build_services(
             "EMBEDDING_MODEL": settings.embedding_model,
         },
     )
+    # 인덱스를 만든 모델과 질문 임베딩 모델이 다르면 검색 결과가 조용히 틀리므로 멈춘다
+    check_index_model(settings.index_path, settings.embedding_model)
     retriever = build_retriever(settings.index_path, settings.metadata_path, embedder)
     if settings.generation_provider == "gemini":
         generator = GeminiAnswerGenerator(

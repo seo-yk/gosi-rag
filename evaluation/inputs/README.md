@@ -71,20 +71,21 @@ FAQ 데이터의 `제목`은 질문 형태이고 `본문`은 답변이다. 평�
 | 한국어 특화(bge-m3를 한국어로 추가 학습) | `nlpai-lab/KURE-v1` |
 | 상용 API | `text-embedding-3-large` |
 
-임베딩 모델은 `EMBEDDING_MODEL` 하나로 정하고 인덱스 폴더는 제공자(`local`, `openai`) 단위로 나뉜다. 그래서 모델마다 인덱스 폴더를 나눠 따로 실행한다. 폴더마다 `manifest.json`에 원천 CSV 해시와 모델 이름이 남고, 평가 때 질문 임베딩 모델과 다르면 중단한다.
+임베딩 모델은 `EMBEDDING_PROVIDER`·`EMBEDDING_MODEL`(`.env` 또는 명령줄) 하나로 정하고, 모델마다 따로 실행한다. 인덱스 폴더는 `index/faq_v2/<모델 이름>`, 결과 파일은 `output/retrieval_{summary,details,out_of_scope}_<모델 이름>.csv`로 자동으로 정해진다. 폴더마다 `manifest.json`에 원천 CSV 해시와 모델 이름이 남고, 평가와 앱은 질문 임베딩 모델과 다르면 중단한다.
 
 ```bash
-# 1) 인덱스 생성 (교정본 data/faq_v2.csv, 청킹 row·sentence)
-EMBEDDING_MODEL=intfloat/multilingual-e5-small python src/indexing.py --providers local --output index/faq_v2_e5-small
-EMBEDDING_MODEL=BAAI/bge-m3 python src/indexing.py --providers local --output index/faq_v2_bge-m3
-EMBEDDING_MODEL=nlpai-lab/KURE-v1 python src/indexing.py --providers local --output index/faq_v2_kure-v1
-EMBEDDING_MODEL=text-embedding-3-large python src/indexing.py --providers openai --output index/faq_v2_openai-3-large
-# 2) 검색 평가: output/retrieval_{summary,details,out_of_scope}_<run-name>.csv
-EMBEDDING_MODEL=intfloat/multilingual-e5-small python evaluation/scripts/evaluate_retrieval.py --providers local --index-dir index/faq_v2_e5-small --run-name e5-small
-EMBEDDING_MODEL=BAAI/bge-m3 python evaluation/scripts/evaluate_retrieval.py --providers local --index-dir index/faq_v2_bge-m3 --run-name bge-m3
-EMBEDDING_MODEL=nlpai-lab/KURE-v1 python evaluation/scripts/evaluate_retrieval.py --providers local --index-dir index/faq_v2_kure-v1 --run-name kure-v1
-EMBEDDING_MODEL=text-embedding-3-large python evaluation/scripts/evaluate_retrieval.py --providers openai --index-dir index/faq_v2_openai-3-large --run-name openai-3-large
-# 3) 생성과 생성 평가: 1단계에서 고른 구성의 인덱스 폴더를 INDEX_DIR로 지정
+# 1) 인덱스 생성(교정본 data/faq_v2.csv, 청킹 row·sentence) → 2) 검색 평가
+EMBEDDING_PROVIDER=local EMBEDDING_MODEL=intfloat/multilingual-e5-small python src/indexing.py
+EMBEDDING_PROVIDER=local EMBEDDING_MODEL=intfloat/multilingual-e5-small python evaluation/scripts/evaluate_retrieval.py
+EMBEDDING_PROVIDER=local EMBEDDING_MODEL=BAAI/bge-m3 python src/indexing.py
+EMBEDDING_PROVIDER=local EMBEDDING_MODEL=BAAI/bge-m3 python evaluation/scripts/evaluate_retrieval.py
+EMBEDDING_PROVIDER=local EMBEDDING_MODEL=nlpai-lab/KURE-v1 python src/indexing.py
+EMBEDDING_PROVIDER=local EMBEDDING_MODEL=nlpai-lab/KURE-v1 python evaluation/scripts/evaluate_retrieval.py
+EMBEDDING_PROVIDER=openai EMBEDDING_MODEL=text-embedding-3-large python src/indexing.py
+EMBEDDING_PROVIDER=openai EMBEDDING_MODEL=text-embedding-3-large python evaluation/scripts/evaluate_retrieval.py
+# 모델 비교표: output/retrieval_comparison.{csv,md}
+python evaluation/scripts/build_retrieval_comparison.py output/retrieval_summary_multilingual-e5-small.csv output/retrieval_summary_bge-m3.csv output/retrieval_summary_kure-v1.csv output/retrieval_summary_text-embedding-3-large.csv
+# 3) 생성과 생성 평가: .env의 EMBEDDING_MODEL·CHUNKING_MODE·EMBEDDING_MODE를 1단계에서 고른 구성으로 설정
 python evaluation/scripts/generate_generation.py
 # 4) 범위 밖 10문항 답변 생성 → 자동 평가 없이 "채점 규칙"의 범위 밖 기준으로 직접 판정
 python evaluation/scripts/generate_generation.py --questions evaluation/inputs/evalset_out_of_scope_v1.3.jsonl --output output/generated_answers_out_of_scope.csv
@@ -92,7 +93,7 @@ python evaluation/scripts/generate_generation.py --questions evaluation/inputs/e
 
 검색 요약의 `subset` 열은 `전체`, `단일 그룹 전체`(복수근거를 뺀 111문항), `유형: …` 4개, `작성: 본인`·`작성: Claude`다. Hit@1은 `전체`와 `단일 그룹 전체`를 둘 다 보고한다. 검색 파이프라인과 편향 점검 내용은 `docs/retrieval_pipeline.md`에 있다.
 
-기본값은 모두 교정본 기준이다(`--csv data/faq_v2.csv`, 인덱스 `index/faq_v2`). 원본으로 1차 실험을 재현하려면 `python src/indexing.py --csv data/faq.csv --output index/faq_v1`로 인덱스를 따로 만들고, 평가할 때 `--index-dir index/faq_v1`을 지정한다(앱은 `INDEX_DIR=index/faq_v1`).
+기본값은 모두 교정본 기준이다(`--csv data/faq_v2.csv`, 인덱스 `index/faq_v2/<모델 이름>`). 원본으로 1차 실험을 재현하려면 `python src/indexing.py --csv data/faq.csv --output index/faq_v1/<모델 이름>`으로 인덱스를 따로 만들고, 평가할 때 `--index-dir`을, 앱에서는 `INDEX_DIR`를 같은 폴더로 지정한다.
 
 `sentence` 청킹은 본문을 문장 단위로 자르고(20자 미만 조각은 앞 문장에 붙임) 청크마다 FAQ 제목을 유지한다. 교정본 기준 634청크, FAQ당 평균 2.2개다. `evaluate_retrieval.py`는 청크를 FAQ 연번 기준으로 중복 제거한 뒤, 서로 다른 FAQ 5개(`--depth`)로 @1·@3·@5를 함께 계산한다. 결과 파일에는 평가셋 이름(`eval_set`), 문항 수(`questions`), 인덱스 폴더, 임베딩 모델을 함께 기록한다.
 

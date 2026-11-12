@@ -87,13 +87,13 @@ cp .env.example .env
 
 ### 로컬 모델로 빠르게 실행
 
-OpenAI API 키 없이 로컬 임베딩 모델로 벡터 인덱스를 먼저 만들 수 있습니다.
+OpenAI API 키 없이 로컬 임베딩 모델로 벡터 인덱스를 먼저 만들 수 있습니다. 임베딩 모델은 `.env`의 `EMBEDDING_PROVIDER`, `EMBEDDING_MODEL`로 정하고, 인덱스는 `index/faq_v2/<모델 이름>`에 만들어집니다.
 
 ```bash
-python src/indexing.py --providers local --chunking-modes row --embedding-modes title
+python src/indexing.py
 ```
 
-`.env`에서 아래 값을 사용하면 로컬 인덱스를 기준으로 데모 앱을 실행할 수 있습니다.
+`.env`에서 아래 값을 사용하면 로컬 인덱스를 기준으로 데모 앱을 실행할 수 있습니다. 앱은 인덱스를 만든 모델과 `EMBEDDING_MODEL`이 다르면 실행을 멈춥니다.
 
 ```dotenv
 EMBEDDING_PROVIDER=local
@@ -114,10 +114,10 @@ python -m streamlit run app.py
 
 ### 전체 실험용 인덱스 생성
 
-OpenAI 임베딩까지 함께 비교하려면 `OPENAI_API_KEY`를 설정한 뒤 전체 조합을 생성합니다.
+임베딩 모델마다 따로 실행합니다. 모델별 실행 명령과 검색 평가 방법은 `evaluation/inputs/README.md`의 "실행" 절에 있습니다.
 
 ```bash
-python src/indexing.py
+EMBEDDING_PROVIDER=openai EMBEDDING_MODEL=text-embedding-3-large python src/indexing.py
 ```
 
 ---
