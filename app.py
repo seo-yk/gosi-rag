@@ -80,7 +80,7 @@ class Settings:
         embedding_mode = values.get("EMBEDDING_MODE", "title_body")
         top_k = int(values.get("TOP_K", "3"))
         index_path, metadata_path = index_bundle_paths(
-            values.get("INDEX_DIR", "index"),
+            values.get("INDEX_DIR", "index/faq_v2"),
             chunking_mode,  # type: ignore[arg-type]
             embedding_provider,  # type: ignore[arg-type]
             embedding_mode,  # type: ignore[arg-type]

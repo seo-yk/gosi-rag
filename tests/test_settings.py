@@ -15,7 +15,7 @@ def test_settings_reads_required_keys_and_defaults() -> None:
     assert settings.embedding_model == "text-embedding-3-small"
     assert settings.generation_provider == "gemini"
     assert settings.generation_model == "gemini-3.5-flash"
-    assert str(settings.index_path) == "index/row/openai/title_body.faiss"
+    assert str(settings.index_path) == "index/faq_v2/row/openai/title_body.faiss"
 
 
 def test_settings_allows_local_provider_without_openai_key() -> None:
@@ -28,7 +28,7 @@ def test_settings_allows_local_provider_without_openai_key() -> None:
 
     assert settings.embedding_provider == "local"
     assert settings.embedding_model == "intfloat/multilingual-e5-small"
-    assert str(settings.index_path) == "index/row/local/title_body.faiss"
+    assert str(settings.index_path) == "index/faq_v2/row/local/title_body.faiss"
 
 
 def test_settings_supports_ollama_generation_provider() -> None:

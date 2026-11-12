@@ -177,8 +177,8 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="평가셋 v1.3으로 청킹, 임베딩 모델, 임베딩 입력 필드의 검색 성능을 평가합니다.")
     parser.add_argument("--questions", type=Path, default=Path("evaluation/inputs/evalset_v1.3.jsonl"))
     parser.add_argument("--out-of-scope", type=Path, default=Path("evaluation/inputs/evalset_out_of_scope_v1.3.jsonl"))
-    parser.add_argument("--index-dir", type=Path, default=Path("index"),
-                        help="src/indexing.py --output 으로 만든 인덱스 폴더. faq_v2는 예: index/faq_v2")
+    parser.add_argument("--index-dir", type=Path, default=Path("index/faq_v2"),
+                        help="src/indexing.py --output 으로 만든 인덱스 폴더")
     parser.add_argument("--output", type=Path, default=Path("output/retrieval_summary.csv"))
     parser.add_argument("--details-output", type=Path, default=Path("output/retrieval_details.csv"))
     parser.add_argument("--out-of-scope-output", type=Path, default=Path("output/retrieval_out_of_scope.csv"))

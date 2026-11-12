@@ -63,13 +63,15 @@ FAQ 데이터의 `제목`은 질문 형태이고 `본문`은 답변이다. 평�
 ## 실행
 
 ```bash
-# 1) 교정본 FAQ로 인덱스 생성 (1차 실험 인덱스와 섞이지 않게 폴더를 나눈다)
-python src/indexing.py --csv data/faq_v2.csv --output index/faq_v2
+# 1) 교정본 FAQ(data/faq_v2.csv)로 인덱스 생성 → index/faq_v2
+python src/indexing.py
 # 2) 검색 평가: 요약(유형별), 문항별 상세, 범위 밖 Top-1 유사도를 output/에 저장
-python evaluation/scripts/evaluate_retrieval.py --index-dir index/faq_v2
-# 3) 생성·생성 평가: 앱 설정의 인덱스 폴더를 같은 곳으로 맞춘다
-INDEX_DIR=index/faq_v2 python evaluation/scripts/generate_generation.py
+python evaluation/scripts/evaluate_retrieval.py
+# 3) 생성과 생성 평가 (앱 설정 INDEX_DIR 기본값도 index/faq_v2)
+python evaluation/scripts/generate_generation.py
 ```
+
+기본값은 모두 교정본 기준이다(`--csv data/faq_v2.csv`, 인덱스 `index/faq_v2`). 원본으로 1차 실험을 재현하려면 `python src/indexing.py --csv data/faq.csv --output index/faq_v1`로 인덱스를 따로 만들고, 평가할 때 `--index-dir index/faq_v1`을 지정한다(앱은 `INDEX_DIR=index/faq_v1`).
 
 `evaluate_retrieval.py`는 문항당 5개(`--depth`)를 한 번 검색해 @1·@3·@5를 함께 계산한다. 결과 파일에는 평가셋 이름(`eval_set`), 문항 수(`questions`), 인덱스 폴더, 임베딩 모델을 함께 기록한다.
 

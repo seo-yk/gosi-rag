@@ -351,8 +351,8 @@ def build_embedder(provider: EmbeddingProvider, values: Mapping[str, str]) -> Em
 def main() -> None:
     """FAQ 인덱스 생성 CLI 실행"""
     parser = argparse.ArgumentParser(description="FAQ CSV에서 FAISS 인덱스를 생성합니다.")
-    parser.add_argument("--csv", type=Path, default=Path("data/faq.csv"))
-    parser.add_argument("--output", type=Path, default=Path("index"))
+    parser.add_argument("--csv", type=Path, default=Path("data/faq_v2.csv"), help="원본 재현은 data/faq.csv")
+    parser.add_argument("--output", type=Path, default=Path("index/faq_v2"))
     parser.add_argument("--providers", nargs="+", default=["openai", "local"])
     parser.add_argument("--chunking-modes", nargs="+", default=["row", "paragraph", "file"])
     parser.add_argument("--embedding-modes", nargs="+", default=["title", "title_body"])
