@@ -68,7 +68,7 @@ def test_read_generation_questions_reads_evalset_v1_3() -> None:
     from evaluation.scripts.evaluate_generation import read_generation_questions
 
     root = Path(__file__).resolve().parents[1]
-    items = read_generation_questions(root / "evaluation/inputs/evalset_v1.3.jsonl")
+    items = read_generation_questions(root / "evaluation/evalset/evalset_v1.3.jsonl")
     by_id = {item.question_id: item for item in items}
 
     assert len(items) == 148
@@ -83,7 +83,7 @@ def test_read_generation_questions_reads_out_of_scope_v1_3() -> None:
     from evaluation.scripts.evaluate_generation import OUT_OF_SCOPE_TYPE, read_generation_questions
 
     root = Path(__file__).resolve().parents[1]
-    items = read_generation_questions(root / "evaluation/inputs/evalset_out_of_scope_v1.3.jsonl")
+    items = read_generation_questions(root / "evaluation/evalset/evalset_out_of_scope_v1.3.jsonl")
 
     assert [item.question_id for item in items] == [str(i) for i in range(154, 164)]
     assert {item.question_type for item in items} == {OUT_OF_SCOPE_TYPE}

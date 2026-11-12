@@ -727,7 +727,7 @@ def main() -> None:
     parser.add_argument(
         "--questions",
         type=Path,
-        default=Path("evaluation/inputs/evalset_v1.3.jsonl"),
+        default=Path("evaluation/evalset/evalset_v1.3.jsonl"),
     )
     parser.add_argument(
         "--answers",

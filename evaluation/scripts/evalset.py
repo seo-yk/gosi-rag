@@ -1,6 +1,6 @@
 """평가셋 v1.3(JSONL) 로더와 그룹 채점 함수
 
-형식은 evaluation/inputs/README.md 참고.
+형식은 evaluation/evalset/README.md 참고.
 - required_faqs: 바깥 목록은 AND(모든 그룹 필요), 안쪽 목록은 OR(그룹 안 FAQ 하나면 충분)
 - supporting_faqs: 어떤 지표에도 쓰지 않는다
 """

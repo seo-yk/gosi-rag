@@ -176,8 +176,8 @@ def test_read_evalset_keeps_only_keep_rows(tmp_path: Path) -> None:
 
 
 def test_committed_evalset_v1_3_has_expected_counts() -> None:
-    items = read_evalset(ROOT / "evaluation/inputs/evalset_v1.3.jsonl")
-    out_of_scope = read_out_of_scope(ROOT / "evaluation/inputs/evalset_out_of_scope_v1.3.jsonl")
+    items = read_evalset(ROOT / "evaluation/evalset/evalset_v1.3.jsonl")
+    out_of_scope = read_out_of_scope(ROOT / "evaluation/evalset/evalset_out_of_scope_v1.3.jsonl")
 
     assert len(items) == 148
     assert sum(item.is_single for item in items) == 111

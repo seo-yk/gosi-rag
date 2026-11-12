@@ -2,7 +2,7 @@
 
 - ID: "q001" → 1 (FAQ 연번과 같은 정수 형식). 범위 밖 "o01"~"o10" → 154~163
 - 칼럼 이름을 줄이고, 값이 모두 같거나 다른 칼럼으로 계산되는 칼럼을 뺀다
-- CHANGES.csv의 ID와 필드 이름도 v1.3 형식으로 맞춘다
+- evalset_changes.csv의 ID와 필드 이름도 v1.3 형식으로 맞춘다
 
 사용: python evaluation/scripts/build_evalset_v1_3.py
 """
@@ -11,7 +11,7 @@ import csv
 import json
 from pathlib import Path
 
-INPUTS = Path(__file__).resolve().parents[2] / "evaluation/inputs"
+EVALSET = Path(__file__).resolve().parents[2] / "evaluation/evalset"
 OUT_OF_SCOPE_FIRST_ID = 154  # 본 평가셋 마지막 번호(q153) 다음부터
 
 WRITTEN_BY = {"직접 작성(v1.0)": "본인", "초안(Claude)": "Claude"}
@@ -83,17 +83,17 @@ def convert_change_value(field: str, value: str) -> str:
 
 
 def main() -> None:
-    main_rows = [convert_main(r) for r in read_jsonl(INPUTS / "evalset_v1.2.jsonl")]
-    oos_rows = [convert_out_of_scope(r) for r in read_jsonl(INPUTS / "evalset_out_of_scope_v1.2.jsonl")]
-    write_jsonl(INPUTS / "evalset_v1.3.jsonl", main_rows)
-    write_jsonl(INPUTS / "evalset_out_of_scope_v1.3.jsonl", oos_rows)
+    main_rows = [convert_main(r) for r in read_jsonl(EVALSET / "evalset_v1.2.jsonl")]
+    oos_rows = [convert_out_of_scope(r) for r in read_jsonl(EVALSET / "evalset_out_of_scope_v1.2.jsonl")]
+    write_jsonl(EVALSET / "evalset_v1.3.jsonl", main_rows)
+    write_jsonl(EVALSET / "evalset_out_of_scope_v1.3.jsonl", oos_rows)
 
-    # CHANGES.csv: v1.1 → v1.2 변경 기록을 v1.3의 ID·필드 이름으로 표기
-    path = INPUTS / "CHANGES.csv"
+    # evalset_changes.csv: v1.1 → v1.2 변경 기록을 v1.3의 ID·필드 이름으로 표기
+    path = EVALSET / "evalset_changes.csv"
     with path.open(encoding="utf-8-sig", newline="") as file:
         rows = list(csv.DictReader(file))
     if rows and "id" in rows[0]:
-        print("CHANGES.csv는 이미 v1.3 형식")
+        print("evalset_changes.csv는 이미 v1.3 형식")
     else:
         converted = []
         for row in rows:

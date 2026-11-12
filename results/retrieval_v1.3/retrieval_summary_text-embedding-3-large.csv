@@ -1,0 +1,25 @@
+﻿eval_set,source_csv,source_sha256,index_dir,chunking_mode,chunks,embedding_provider,embedding_model,embedding_mode,depth,subset,questions,single_questions,hit_at_1,hit_at_3,hit_at_5,group_recall_at_1,group_recall_at_3,group_recall_at_5,mrr_single,failed_ids
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,전체,148,111,0.6824,0.8919,0.9662,0.7917,0.9347,0.9797,0.944,3;19;57;58;75
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,단일 그룹 전체,111,111,0.9099,0.973,0.991,0.9099,0.973,0.991,0.944,3
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,유형: 복수근거,37,0,0.0,0.6486,0.8919,0.4369,0.8198,0.9459,,19;57;58;75
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,유형: 원문유사,34,34,0.9412,0.9706,1.0,0.9412,0.9706,1.0,0.9618,
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,유형: 일상표현,44,44,0.9545,0.9773,0.9773,0.9545,0.9773,0.9773,0.9659,3
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,유형: 조건형,33,33,0.8182,0.9697,1.0,0.8182,0.9697,1.0,0.8965,
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,작성: Claude,91,64,0.6813,0.9231,0.989,0.8242,0.956,0.9945,0.9805,75
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,작성: 본인,57,47,0.6842,0.8421,0.9298,0.7398,0.9006,0.9561,0.8943,3;19;57;58
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,전체,148,111,0.6959,0.9189,0.9865,0.8086,0.9572,0.9932,0.9587,54;75
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,단일 그룹 전체,111,111,0.9279,0.991,1.0,0.9279,0.991,1.0,0.9587,
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,유형: 복수근거,37,0,0.0,0.7027,0.9459,0.4505,0.8559,0.973,,54;75
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,유형: 원문유사,34,34,0.9118,0.9706,1.0,0.9118,0.9706,1.0,0.9436,
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,유형: 일상표현,44,44,0.9318,1.0,1.0,0.9318,1.0,1.0,0.9621,
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,유형: 조건형,33,33,0.9394,1.0,1.0,0.9394,1.0,1.0,0.9697,
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,작성: Claude,91,64,0.6923,0.9341,0.989,0.8352,0.967,0.9945,0.9896,75
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,작성: 본인,57,47,0.7018,0.8947,0.9825,0.7661,0.9415,0.9912,0.9167,54
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,전체,148,111,0.7095,0.9257,0.973,0.8187,0.9572,0.9865,0.9703,23;54;57;75
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,단일 그룹 전체,111,111,0.9459,0.991,1.0,0.9459,0.991,1.0,0.9703,
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,유형: 복수근거,37,0,0.0,0.7297,0.8919,0.4369,0.8559,0.9459,,23;54;57;75
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,유형: 원문유사,34,34,0.9412,0.9706,1.0,0.9412,0.9706,1.0,0.9618,
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,유형: 일상표현,44,44,0.9545,1.0,1.0,0.9545,1.0,1.0,0.9773,
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,유형: 조건형,33,33,0.9394,1.0,1.0,0.9394,1.0,1.0,0.9697,
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,작성: Claude,91,64,0.6703,0.956,0.989,0.8077,0.978,0.9945,0.9766,75
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,작성: 본인,57,47,0.7719,0.8772,0.9474,0.8363,0.924,0.9737,0.9617,23;54;57

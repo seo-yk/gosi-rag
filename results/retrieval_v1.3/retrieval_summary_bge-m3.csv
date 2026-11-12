@@ -1,0 +1,25 @@
+﻿eval_set,source_csv,source_sha256,index_dir,chunking_mode,chunks,embedding_provider,embedding_model,embedding_mode,depth,subset,questions,single_questions,hit_at_1,hit_at_3,hit_at_5,group_recall_at_1,group_recall_at_3,group_recall_at_5,mrr_single,failed_ids
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,전체,148,111,0.6892,0.9054,0.9459,0.8018,0.9369,0.9696,0.9505,19;23;25;53;57;58;62;82
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,단일 그룹 전체,111,111,0.9189,0.973,0.991,0.9189,0.973,0.991,0.9505,25
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,유형: 복수근거,37,0,0.0,0.7027,0.8108,0.4505,0.8288,0.9054,,19;23;53;57;58;62;82
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,유형: 원문유사,34,34,0.9412,0.9706,0.9706,0.9412,0.9706,0.9706,0.9559,25
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,유형: 일상표현,44,44,0.9091,0.9773,1.0,0.9091,0.9773,1.0,0.9489,
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,유형: 조건형,33,33,0.9091,0.9697,1.0,0.9091,0.9697,1.0,0.947,
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,작성: Claude,91,64,0.6813,0.9451,0.978,0.8242,0.9725,0.989,0.9844,62;82
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,작성: 본인,57,47,0.7018,0.8421,0.8947,0.7661,0.8801,0.9386,0.9043,19;23;25;53;57;58
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,전체,148,111,0.7297,0.9459,0.9865,0.8423,0.9741,0.9932,0.985,19;54
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,단일 그룹 전체,111,111,0.973,1.0,1.0,0.973,1.0,1.0,0.985,
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,유형: 복수근거,37,0,0.0,0.7838,0.9459,0.4505,0.8964,0.973,,19;54
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,유형: 원문유사,34,34,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,유형: 일상표현,44,44,0.9545,1.0,1.0,0.9545,1.0,1.0,0.9735,
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,유형: 조건형,33,33,0.9697,1.0,1.0,0.9697,1.0,1.0,0.9848,
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,작성: Claude,91,64,0.7033,0.967,1.0,0.8516,0.9835,1.0,1.0,
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,작성: 본인,57,47,0.7719,0.9123,0.9649,0.8275,0.9591,0.9825,0.9645,19;54
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,전체,148,111,0.7365,0.9459,0.9865,0.8491,0.9707,0.9932,0.991,19;54
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,단일 그룹 전체,111,111,0.982,1.0,1.0,0.982,1.0,1.0,0.991,
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,유형: 복수근거,37,0,0.0,0.7838,0.9459,0.4505,0.8829,0.973,,19;54
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,유형: 원문유사,34,34,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,유형: 일상표현,44,44,0.9545,1.0,1.0,0.9545,1.0,1.0,0.9773,
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,유형: 조건형,33,33,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,작성: Claude,91,64,0.6923,0.978,1.0,0.8407,0.989,1.0,0.9922,
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,작성: 본인,57,47,0.807,0.8947,0.9649,0.8626,0.9415,0.9825,0.9894,19;54

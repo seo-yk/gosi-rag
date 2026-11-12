@@ -44,17 +44,18 @@ gosi-rag/
 │   ├── indexing.py
 │   ├── retrieval.py
 │   └── generation.py
+├── data/                # FAQ 원본·교정본·검색 대상(faq_v2) (README.md 참고)
 ├── evaluation/
-│   ├── inputs/          # 평가셋 v1.2 이후 (README.md 참고)
-│   └── scripts/
-│       ├── evaluate_retrieval.py
-│       ├── generate_generation.py
-│       └── evaluate_generation.py
+│   ├── evalset/         # 평가셋 v1.3 (README.md 참고)
+│   ├── labeling/        # 평가셋을 만든 원천 자료(검수표, 결정표, 라벨 초안)
+│   └── scripts/         # 검색·생성 평가, 평가셋 생성 스크립트
+├── results/
+│   └── retrieval_v1.3/  # 재실험 검색 결과(공개)
 ├── archive/
 │   └── experiment-v1/   # 1차 실험 질문셋·결과 (README.md 참고)
+├── docs/                # 검색 파이프라인, 인수인계 기록, 2차 설계안
 ├── tests/
-├── data/
-├── output/
+├── output/              # 실행할 때마다 생기는 임시 결과(git 제외)
 ├── .env.example
 ├── requirements.txt
 └── README.md
@@ -114,7 +115,7 @@ python -m streamlit run app.py
 
 ### 전체 실험용 인덱스 생성
 
-임베딩 모델마다 따로 실행합니다. 모델별 실행 명령과 검색 평가 방법은 `evaluation/inputs/README.md`의 "실행" 절에 있습니다.
+임베딩 모델마다 따로 실행합니다. 모델별 실행 명령과 검색 평가 방법은 `evaluation/evalset/README.md`의 "실행" 절에 있습니다.
 
 ```bash
 EMBEDDING_PROVIDER=openai EMBEDDING_MODEL=text-embedding-3-large python src/indexing.py

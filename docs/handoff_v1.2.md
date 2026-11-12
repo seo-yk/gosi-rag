@@ -1,5 +1,11 @@
 # gosi-rag 평가셋 v1.2 인수인계
 
+> **경로 안내(2026-11-12 이후):** 이 문서는 작성 당시 기록이라 본문의 경로를 고치지 않았다. 지금 경로는 다음과 같다.
+> `handoff/HANDOFF_v1.2.md` → `docs/handoff_v1.2.md`, `handoff/`의 검수표·결정표·라벨 초안 → `evaluation/labeling/`,
+> `handoff/validate_labels.py` → `evaluation/labeling/validate_labels_v1_2.py`, `handoff/faq_corrected.csv` → `data/faq_corrected.csv`,
+> `data/faq.csv` → `data/faq_raw.csv`, `evaluation/inputs/` → `evaluation/evalset/`, `CHANGES.csv` → `evalset_changes.csv`,
+> `generate_generation.py` → `generate_answers.py`.
+
 작성일 2026-11-12. 이 문서는 claude.ai 채팅에서 하던 작업을 Claude Code에서 이어 가기 위한 것이다.
 이 문서만 읽고 작업할 수 있게 썼다. 문서에 없는 내용은 추측하지 말고 사용자에게 묻는다.
 

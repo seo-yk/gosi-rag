@@ -1,6 +1,6 @@
 """검색 실험을 실행하고 청킹, 임베딩 모델, 임베딩 입력 필드 비교 (평가셋 v1.3)
 
-지표 (evaluation/inputs/README.md "채점 규칙")
+지표 (evaluation/evalset/README.md "채점 규칙")
 - Hit@K: 모든 필수 그룹에서 FAQ가 1개 이상 Top-K 안에 있으면 1
 - Group Recall@K: 충족된 그룹 수 ÷ 전체 그룹 수
 - MRR: 필수 그룹이 1개인 문항만. 그룹 내 FAQ 중 가장 높은 순위의 역수
@@ -261,8 +261,8 @@ def write_csv(path: Path, rows: Sequence[dict[str, object]]) -> None:
 def main() -> None:
     """검색 성능 평가 CLI 실행"""
     parser = argparse.ArgumentParser(description="평가셋 v1.3으로 청킹, 임베딩 모델, 임베딩 입력 필드의 검색 성능을 평가합니다.")
-    parser.add_argument("--questions", type=Path, default=Path("evaluation/inputs/evalset_v1.3.jsonl"))
-    parser.add_argument("--out-of-scope", type=Path, default=Path("evaluation/inputs/evalset_out_of_scope_v1.3.jsonl"))
+    parser.add_argument("--questions", type=Path, default=Path("evaluation/evalset/evalset_v1.3.jsonl"))
+    parser.add_argument("--out-of-scope", type=Path, default=Path("evaluation/evalset/evalset_out_of_scope_v1.3.jsonl"))
     parser.add_argument("--index-dir", type=Path, default=None, help="기본값 index/faq_v2/<모델 이름>")
     parser.add_argument("--output-dir", type=Path, default=Path("output"))
     parser.add_argument("--run-name", default=None,

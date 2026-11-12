@@ -475,7 +475,7 @@ def main() -> None:
     인덱스 폴더 기본값은 index/faq_v2/<모델 이름>이다.
     """
     parser = argparse.ArgumentParser(description="FAQ CSV에서 FAISS 인덱스를 생성합니다.")
-    parser.add_argument("--csv", type=Path, default=Path("data/faq_v2.csv"), help="원본 재현은 data/faq.csv")
+    parser.add_argument("--csv", type=Path, default=Path("data/faq_v2.csv"), help="원본 재현은 data/faq_raw.csv")
     parser.add_argument("--output", type=Path, default=None, help="기본값 index/faq_v2/<모델 이름>")
     parser.add_argument("--provider", choices=["openai", "local"], default=None, help="기본값 EMBEDDING_PROVIDER")
     parser.add_argument("--chunking-modes", nargs="+", default=["row", "sentence"])

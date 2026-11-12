@@ -11,13 +11,18 @@ __pycache__/
 .env.*
 !.env.example
 
+# IDE
+.idea/
+
 # Generated data
 # 벡터 인덱스(src/indexing.py로 다시 만든다)
 index/
-output/*
+# 실행할 때마다 생기는 임시 결과. 공개할 최종 결과는 results/에 둔다
+output/
 
-# Data: 원본과 검색 대상만 추적
+# Data: 원본, 교정본, 검색 대상, 병합표만 추적
 data/*.csv
-!data/faq.csv
+!data/faq_raw.csv
+!data/faq_corrected.csv
 !data/faq_v2.csv
 !data/faq_merge_map.csv

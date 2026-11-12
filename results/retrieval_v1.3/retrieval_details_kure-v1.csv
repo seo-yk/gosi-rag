@@ -1,0 +1,445 @@
+﻿eval_set,source_csv,source_sha256,index_dir,chunking_mode,chunks,embedding_provider,embedding_model,embedding_mode,depth,id,type,written_by,required_faqs,retrieved_ids,hit_at_1,hit_at_3,hit_at_5
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,1,원문유사,본인,3,3|12|280|92|85,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,2,일상표현,본인,4|252,252|255|153|253|6,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,3,일상표현,본인,4,249|4|6|253|202,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,4,조건형,본인,6,271|6|4|212|153,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,5,조건형,본인,6,6|212|28|153|271,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,6,일상표현,본인,7|46,7|124|128|122|129,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,7,일상표현,본인,8,8|59|53|11|243,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,8,일상표현,본인,9|67,9|255|187|141|68,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,9,일상표현,본인,9,9|116|255|267|221,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,10,원문유사,본인,10,10|244|167|45|138,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,11,원문유사,본인,11,11|251|253|7|203,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,13,원문유사,본인,12,12|280|91|7|92,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,14,일상표현,본인,13,13|4|6|250|7,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,15,조건형,본인,13,62|13|73|9|268,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,16,조건형,본인,14,14|253|24|23|22,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,17,일상표현,본인,15,15|157|178|173|176,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,18,일상표현,본인,77,77|76|75|275|271,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,19,복수근거,본인,272|251 & 77,272|78|9|175|31,0,0,0
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,20,일상표현,본인,78,78|9|272|171|169,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,21,조건형,본인,78,272|78|69|214|9,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,22,일상표현,본인,79,79|272|91|268|66,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,23,복수근거,본인,79 & 64,65|62|63|64|272,0,0,0
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,24,일상표현,본인,226,226|84|169|182|225,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,25,원문유사,본인,227,3|258|200|227|233,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,26,일상표현,본인,228,228|1|245|240|210,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,27,일상표현,본인,229,229|230|64|10|43,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,28,일상표현,본인,230,230|43|64|10|42,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,29,원문유사,본인,231,231|8|11|262|202,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,30,일상표현,본인,232,232|233|71|200|39,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,31,일상표현,본인,233,233|1|232|39|239,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,32,조건형,본인,234,234|232|71|172|237,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,33,일상표현,본인,240,240|165|245|164|233,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,34,조건형,본인,241,241|10|67|273|244,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,35,일상표현,본인,242,242|112|133|281|240,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,36,원문유사,본인,243,243|235|233|232|59,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,37,원문유사,본인,244,244|10|45|138|167,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,38,원문유사,본인,247,247|207|289|170|218,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,39,일상표현,본인,248,248|129|249|175|78,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,40,일상표현,본인,249,249|253|252|256|4,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,41,일상표현,본인,250|5,5|250|153|11|254,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,42,일상표현,본인,251|272,251|11|272|203|252,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,43,일상표현,본인,276|277,276|277|279|252|74,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,44,일상표현,본인,277,277|279|278|81|276,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,45,일상표현,본인,278,278|263|81|277|279,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,46,조건형,본인,279,279|276|277|274|80,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,47,조건형,본인,280,280|12|85|89|90,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,48,일상표현,본인,281,281|7|112|118|120,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,49,원문유사,본인,288,288|211|289|203|202,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,50,원문유사,본인,289,289|288|190|211|223,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,52,복수근거,본인,78 & 272|251,78|272|31|9|251,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,53,복수근거,본인,279 & 77,279|275|81|77|271,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,54,복수근거,본인,3 & 12,12|280|3|92|85,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,55,복수근거,본인,289 & 288,288|289|207|211|170,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,56,복수근거,본인,234 & 232 & 233,233|234|232|1|39,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,57,복수근거,본인,244 & 240,10|142|141|162|244,0,0,0
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,58,복수근거,본인,249 & 4,249|256|253|277|91,0,0,0
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,60,복수근거,본인,277|276 & 278 & 279,276|279|277|278|81,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,61,복수근거,Claude,54 & 55,54|55|45|91|187,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,62,복수근거,Claude,37 & 43,43|34|246|37|36,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,63,복수근거,Claude,213 & 214,213|214|211|53|170,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,64,복수근거,Claude,90 & 93,90|93|12|280|87,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,66,복수근거,Claude,20 & 27,20|22|27|24|23,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,67,복수근거,Claude,264 & 265,264|265|225|80|226,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,68,복수근거,Claude,268 & 269,269|268|183|272|283,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,69,복수근거,Claude,222 & 223,223|222|221|269|193,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,70,복수근거,Claude,206 & 207,206|207|190|205|34,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,71,복수근거,Claude,47 & 48,48|47|34|186|4,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,72,복수근거,Claude,29 & 30,29|30|33|11|172,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,73,복수근거,Claude,81 & 82,81|82|279|263|9,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,74,복수근거,Claude,67|9 & 68,67|68|45|10|140,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,75,복수근거,Claude,71 & 72,72|71|200|202|258,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,76,복수근거,Claude,32 & 33,33|32|202|11|30,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,77,복수근거,Claude,122 & 128|129,128|124|7|129|122,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,78,복수근거,Claude,126 & 127,127|10|126|140|118,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,79,복수근거,Claude,132 & 133,132|133|130|135|134,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,80,복수근거,Claude,134 & 135,135|134|130|133|89,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,81,복수근거,Claude,136 & 137,136|137|138|255|45,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,82,복수근거,Claude,143 & 144,144|149|145|151|143,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,83,복수근거,Claude,166 & 167,167|166|10|139|154,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,84,복수근거,Claude,168 & 172,169|168|172|170|98,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,85,복수근거,Claude,179 & 180,179|180|176|256|135,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,86,복수근거,Claude,177 & 178,177|178|183|173|186,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,87,복수근거,Claude,191 & 192,191|192|217|218|280,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,88,복수근거,Claude,196 & 197,196|197|194|199|243,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,89,원문유사,Claude,102,102|145|98|100|103,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,90,원문유사,Claude,104,104|95|98|97|7,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,91,원문유사,Claude,105,105|95|103|234|240,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,92,원문유사,Claude,110,110|106|109|97|108,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,93,원문유사,Claude,124,124|128|129|7|126,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,94,원문유사,Claude,157,157|25|286|164|1,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,95,원문유사,Claude,158,158|51|142|85|229,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,96,원문유사,Claude,164,164|240|31|165|245,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,97,원문유사,Claude,169,169|182|172|170|134,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,98,원문유사,Claude,187|188,188|233|187|4|252,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,99,원문유사,Claude,189,189|247|228|245|240,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,100,원문유사,Claude,199,199|196|197|252|255,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,101,조건형,Claude,100,101|100|103|96|98,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,102,조건형,Claude,101,101|103|98|100|96,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,103,조건형,Claude,107,107|108|106|109|97,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,104,조건형,Claude,111|116,111|116|281|117|132,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,105,조건형,Claude,114,114|281|270|269|272,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,106,조건형,Claude,119,119|203|114|120|270,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,107,조건형,Claude,125,125|129|131|124|122,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,108,조건형,Claude,129,129|124|128|125|248,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,109,조건형,Claude,138,138|137|136|255|148,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,110,조건형,Claude,139,139|45|187|137|138,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,111,조건형,Claude,148,148|149|144|142|151,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,112,조건형,Claude,160|162,160|161|162|141|67,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,113,조건형,Claude,161,161|162|160|51|229,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,114,조건형,Claude,173,173|183|176|180|269,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,115,조건형,Claude,183,183|185|173|25|186,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,116,일상표현,Claude,103,103|105|126|101|100,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,117,일상표현,Claude,141,141|9|187|68|136,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,118,일상표현,Claude,153,153|6|253|252|249,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,119,일상표현,Claude,155,155|286|282|283|49,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,120,일상표현,Claude,162,162|161|160|10|55,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,121,일상표현,Claude,165,165|261|126|184|38,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,122,일상표현,Claude,174,174|175|185|181|186,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,123,일상표현,Claude,184,184|261|181|186|165,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,124,원문유사,Claude,2,2|1|44|233|18,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,125,원문유사,Claude,39,39|233|232|44|243,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,126,원문유사,Claude,53,53|258|271|55|92,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,127,원문유사,Claude,56,56|54|55|53|58,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,128,원문유사,Claude,61,61|191|88|82|219,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,129,원문유사,Claude,86,86|93|87|89|280,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,131,원문유사,Claude,210,210|1|227|44|233,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,132,원문유사,Claude,211,211|288|289|59|214,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,133,원문유사,Claude,225,225|247|210|170|51,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,134,원문유사,Claude,237,237|239|238|232|225,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,135,원문유사,Claude,258,258|53|200|55|233,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,136,조건형,Claude,25|157,25|157|183|173|148,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,137,조건형,Claude,83,83|84|12|85|280,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,138,조건형,Claude,84,84|16|257|130|226,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,139,조건형,Claude,89,89|135|130|86|87,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,140,조건형,Claude,217,217|289|192|247|220,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,141,조건형,Claude,270|74,270|74|268|269|277,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,142,조건형,Claude,271,271|202|53|6|69,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,143,조건형,Claude,286,286|283|282|181|175,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,144,조건형,Claude,98,98|103|104|190|101,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,145,일상표현,Claude,75,75|62|274|79|9,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,146,일상표현,Claude,76,76|200|1|202|203,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,147,일상표현,Claude,66,66|62|9|64|111,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,148,일상표현,Claude,274,274|75|9|272|250,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,149,일상표현,Claude,275,275|272|9|276|81,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,150,일상표현,Claude,267,267|9|139|81|203,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,151,일상표현,Claude,204,204|213|205|214|217,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,152,일상표현,Claude,38,38|48|261|186|184,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,153,일상표현,Claude,273,273|67|252|10|241,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,1,원문유사,본인,3,3|92|93|280|12,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,2,일상표현,본인,4|252,252|255|153|4|256,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,3,일상표현,본인,4,4|249|28|6|212,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,4,조건형,본인,6,271|6|212|28|46,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,5,조건형,본인,6,6|28|212|154|271,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,6,일상표현,본인,7|46,7|46|129|122|133,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,7,일상표현,본인,8,8|54|59|92|73,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,8,일상표현,본인,9|67,267|9|68|139|67,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,9,일상표현,본인,9,66|267|9|62|63,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,10,원문유사,본인,10,10|45|167|138|139,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,11,원문유사,본인,11,11|251|31|272|253,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,13,원문유사,본인,12,12|91|280|93|46,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,14,일상표현,본인,13,13|46|28|6|69,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,15,조건형,본인,13,13|63|75|66|81,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,16,조건형,본인,14,14|22|23|21|19,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,17,일상표현,본인,15,15|173|204|285|183,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,18,일상표현,본인,77,77|13|69|275|81,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,19,복수근거,본인,272|251 & 77,272|31|78|271|77,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,20,일상표현,본인,78,78|79|169|171|31,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,21,조건형,본인,78,78|69|271|272|171,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,22,일상표현,본인,79,79|268|272|200|204,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,23,복수근거,본인,79 & 64,63|79|65|62|64,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,24,일상표현,본인,226,226|84|214|83|182,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,25,원문유사,본인,227,227|3|241|233|71,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,26,일상표현,본인,228,228|245|210|160|159,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,27,일상표현,본인,229,229|230|85|244|42,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,28,일상표현,본인,230,230|229|43|244|42,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,29,원문유사,본인,231,231|8|203|37|39,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,30,일상표현,본인,232,232|233|71|237|73,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,31,일상표현,본인,233,233|232|227|73|188,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,32,조건형,본인,234,234|232|105|237|187,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,33,일상표현,본인,240,240|165|245|242|164,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,34,조건형,본인,241,241|244|230|273|229,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,35,일상표현,본인,242,242|134|133|112|118,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,36,원문유사,본인,243,243|241|233|235|163,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,37,원문유사,본인,244,244|45|139|167|142,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,38,원문유사,본인,247,247|218|207|289|221,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,39,일상표현,본인,248,248|129|122|123|124,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,40,일상표현,본인,249,249|253|4|5|256,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,41,일상표현,본인,250|5,5|250|28|29|166,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,42,일상표현,본인,251|272,251|272|11|256|31,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,43,일상표현,본인,276|277,276|277|80|252|279,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,44,일상표현,본인,277,278|276|277|81|279,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,45,일상표현,본인,278,278|279|276|263|58,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,46,조건형,본인,279,279|80|82|81|276,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,47,조건형,본인,280,280|12|93|84|90,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,48,일상표현,본인,281,281|112|120|121|7,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,49,원문유사,본인,288,288|211|289|223|247,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,50,원문유사,본인,289,289|247|211|221|223,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,52,복수근거,본인,78 & 272|251,78|272|31|171|166,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,53,복수근거,본인,279 & 77,279|77|256|81|13,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,54,복수근거,본인,3 & 12,12|280|92|93|46,0,0,0
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,55,복수근거,본인,289 & 288,289|288|247|223|213,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,56,복수근거,본인,234 & 232 & 233,233|232|234|227|188,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,57,복수근거,본인,244 & 240,244|142|141|240|67,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,58,복수근거,본인,249 & 4,249|4|253|5|256,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,60,복수근거,본인,277|276 & 278 & 279,276|277|279|278|81,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,61,복수근거,Claude,54 & 55,54|55|56|45|91,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,62,복수근거,Claude,37 & 43,34|43|36|35|37,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,63,복수근거,Claude,213 & 214,213|214|211|289|212,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,64,복수근거,Claude,90 & 93,90|93|12|86|280,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,66,복수근거,Claude,20 & 27,20|23|22|27|24,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,67,복수근거,Claude,264 & 265,265|264|225|80|207,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,68,복수근거,Claude,268 & 269,268|269|49|183|270,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,69,복수근거,Claude,222 & 223,223|222|289|193|247,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,70,복수근거,Claude,206 & 207,206|207|190|61|218,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,71,복수근거,Claude,47 & 48,48|47|34|46|38,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,72,복수근거,Claude,29 & 30,29|30|31|90|190,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,73,복수근거,Claude,81 & 82,81|82|279|278|13,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,74,복수근거,Claude,67|9 & 68,67|68|139|45|10,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,75,복수근거,Claude,71 & 72,72|71|73|200|54,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,76,복수근거,Claude,32 & 33,32|33|30|28|31,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,77,복수근거,Claude,122 & 128|129,7|128|129|122|124,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,78,복수근거,Claude,126 & 127,127|122|126|123|124,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,79,복수근거,Claude,132 & 133,133|132|135|131|7,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,80,복수근거,Claude,134 & 135,135|134|130|131|133,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,81,복수근거,Claude,136 & 137,136|10|137|138|45,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,82,복수근거,Claude,143 & 144,144|143|145|149|146,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,83,복수근거,Claude,166 & 167,167|166|45|154|139,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,84,복수근거,Claude,168 & 172,169|168|172|170|171,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,85,복수근거,Claude,179 & 180,180|179|248|173|176,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,86,복수근거,Claude,177 & 178,177|178|183|173|22,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,87,복수근거,Claude,191 & 192,192|191|217|216|193,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,88,복수근거,Claude,196 & 197,196|194|197|198|199,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,89,원문유사,Claude,102,102|98|100|145|143,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,90,원문유사,Claude,104,104|95|105|103|98,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,91,원문유사,Claude,105,105|150|95|240|103,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,92,원문유사,Claude,110,110|109|108|106|95,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,93,원문유사,Claude,124,124|129|122|7|123,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,94,원문유사,Claude,157,157|25|284|282|52,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,95,원문유사,Claude,158,158|85|229|244|170,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,96,원문유사,Claude,164,164|240|46|31|165,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,97,원문유사,Claude,169,169|190|182|95|134,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,98,원문유사,Claude,187|188,188|187|112|53|92,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,99,원문유사,Claude,189,189|207|205|61|163,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,100,원문유사,Claude,199,199|197|198|194|206,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,101,조건형,Claude,100,100|101|105|103|98,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,102,조건형,Claude,101,101|105|100|103|98,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,103,조건형,Claude,107,107|109|108|106|97,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,104,조건형,Claude,111|116,111|116|118|114|120,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,105,조건형,Claude,114,114|120|281|270|117,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,106,조건형,Claude,119,119|120|114|281|256,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,107,조건형,Claude,125,125|129|123|122|7,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,108,조건형,Claude,129,129|124|123|128|7,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,109,조건형,Claude,138,138|137|148|167|10,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,110,조건형,Claude,139,139|45|146|137|138,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,111,조건형,Claude,148,148|149|144|142|147,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,112,조건형,Claude,160|162,160|161|162|137|138,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,113,조건형,Claude,161,161|162|160|51|272,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,114,조건형,Claude,173,173|183|180|176|208,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,115,조건형,Claude,183,183|173|185|177|14,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,116,일상표현,Claude,103,103|105|101|100|143,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,117,일상표현,Claude,141,141|67|68|142|143,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,118,일상표현,Claude,153,6|153|28|249|212,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,119,일상표현,Claude,155,155|286|156|282|285,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,120,일상표현,Claude,162,162|161|160|272|240,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,121,일상표현,Claude,165,165|261|38|36|164,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,122,일상표현,Claude,174,174|185|175|173|181,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,123,일상표현,Claude,184,184|261|282|181|186,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,124,원문유사,Claude,2,2|92|33|188|187,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,125,원문유사,Claude,39,39|232|233|210|186,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,126,원문유사,Claude,53,53|58|92|55|56,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,127,원문유사,Claude,56,56|54|55|59|57,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,128,원문유사,Claude,61,61|191|88|219|257,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,129,원문유사,Claude,86,86|93|87|89|90,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,131,원문유사,Claude,210,210|245|227|44|204,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,132,원문유사,Claude,211,211|288|289|214|247,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,133,원문유사,Claude,225,225|210|207|226|265,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,134,원문유사,Claude,237,237|238|239|232|110,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,135,원문유사,Claude,258,258|55|53|92|257,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,136,조건형,Claude,25|157,25|157|13|173|186,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,137,조건형,Claude,83,83|84|257|12|85,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,138,조건형,Claude,84,84|12|280|257|126,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,139,조건형,Claude,89,89|135|86|130|87,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,140,조건형,Claude,217,217|247|222|193|192,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,141,조건형,Claude,270|74,270|74|268|69|269,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,142,조건형,Claude,271,271|6|212|69|28,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,143,조건형,Claude,286,286|285|282|283|287,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,144,조건형,Claude,98,98|105|104|103|190,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,145,일상표현,Claude,75,75|62|79|69|65,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,146,일상표현,Claude,76,76|200|202|70|69,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,147,일상표현,Claude,66,66|62|65|64|79,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,148,일상표현,Claude,274,274|75|13|81|69,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,149,일상표현,Claude,275,275|277|276|81|272,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,150,일상표현,Claude,267,267|139|9|66|143,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,151,일상표현,Claude,204,204|205|53|175|213,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,152,일상표현,Claude,38,38|48|282|261|165,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,153,일상표현,Claude,273,273|67|272|82|139,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,1,원문유사,본인,3,3|92|85|280|93,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,2,일상표현,본인,4|252,252|4|255|6|153,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,3,일상표현,본인,4,4|249|6|47|28,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,4,조건형,본인,6,6|271|212|4|28,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,5,조건형,본인,6,6|28|212|271|154,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,6,일상표현,본인,7|46,7|46|129|128|122,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,7,일상표현,본인,8,8|59|54|91|254,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,8,일상표현,본인,9|67,9|267|68|139|187,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,9,일상표현,본인,9,9|66|200|267|63,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,10,원문유사,본인,10,10|45|139|167|67,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,11,원문유사,본인,11,11|251|31|272|253,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,13,원문유사,본인,12,12|280|91|93|92,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,14,일상표현,본인,13,13|6|4|31|7,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,15,조건형,본인,13,13|200|63|75|81,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,16,조건형,본인,14,14|22|23|34|19,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,17,일상표현,본인,15,15|181|157|72|176,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,18,일상표현,본인,77,77|6|13|275|76,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,19,복수근거,본인,272|251 & 77,78|272|251|31|200,0,0,0
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,20,일상표현,본인,78,78|79|6|169|171,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,21,조건형,본인,78,78|69|271|272|200,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,22,일상표현,본인,79,79|268|200|69|78,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,23,복수근거,본인,79 & 64,79|63|64|65|62,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,24,일상표현,본인,226,226|84|214|64|126,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,25,원문유사,본인,227,227|3|254|71|241,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,26,일상표현,본인,228,228|245|210|159|67,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,27,일상표현,본인,229,229|85|42|230|187,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,28,일상표현,본인,230,230|43|229|42|150,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,29,원문유사,본인,231,231|8|203|37|18,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,30,일상표현,본인,232,232|233|71|237|73,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,31,일상표현,본인,233,233|232|188|254|200,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,32,조건형,본인,234,234|232|105|237|187,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,33,일상표현,본인,240,165|240|164|159|245,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,34,조건형,본인,241,241|244|230|273|142,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,35,일상표현,본인,242,242|134|133|112|118,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,36,원문유사,본인,243,243|241|163|233|235,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,37,원문유사,본인,244,244|10|45|142|139,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,38,원문유사,본인,247,247|218|207|289|221,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,39,일상표현,본인,248,248|129|124|122|123,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,40,일상표현,본인,249,249|253|4|5|256,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,41,일상표현,본인,250|5,5|250|28|153|4,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,42,일상표현,본인,251|272,251|11|272|256|31,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,43,일상표현,본인,276|277,276|277|74|252|279,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,44,일상표현,본인,277,278|276|81|277|279,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,45,일상표현,본인,278,278|279|276|263|58,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,46,조건형,본인,279,279|81|80|276|82,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,47,조건형,본인,280,280|12|93|90|84,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,48,일상표현,본인,281,281|112|120|116|121,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,49,원문유사,본인,288,288|211|289|223|247,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,50,원문유사,본인,289,289|247|211|221|223,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,52,복수근거,본인,78 & 272|251,78|272|31|251|6,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,53,복수근거,본인,279 & 77,279|81|256|13|77,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,54,복수근거,본인,3 & 12,12|92|280|93|91,0,0,0
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,55,복수근거,본인,289 & 288,289|288|247|223|213,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,56,복수근거,본인,234 & 232 & 233,233|232|234|227|188,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,57,복수근거,본인,244 & 240,10|142|244|141|240,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,58,복수근거,본인,249 & 4,249|4|5|253|256,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,60,복수근거,본인,277|276 & 278 & 279,276|277|279|278|81,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,61,복수근거,Claude,54 & 55,54|55|56|45|187,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,62,복수근거,Claude,37 & 43,43|34|36|37|44,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,63,복수근거,Claude,213 & 214,213|214|211|289|212,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,64,복수근거,Claude,90 & 93,90|93|130|12|86,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,66,복수근거,Claude,20 & 27,20|23|22|27|21,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,67,복수근거,Claude,264 & 265,265|264|210|225|80,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,68,복수근거,Claude,268 & 269,268|269|49|200|183,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,69,복수근거,Claude,222 & 223,223|222|193|289|247,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,70,복수근거,Claude,206 & 207,206|207|190|61|218,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,71,복수근거,Claude,47 & 48,48|47|34|46|29,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,72,복수근거,Claude,29 & 30,29|30|33|78|31,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,73,복수근거,Claude,81 & 82,81|82|279|200|13,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,74,복수근거,Claude,67|9 & 68,67|68|45|139|10,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,75,복수근거,Claude,71 & 72,72|71|200|91|189,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,76,복수근거,Claude,32 & 33,32|33|30|31|11,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,77,복수근거,Claude,122 & 128|129,128|7|129|122|124,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,78,복수근거,Claude,126 & 127,127|126|122|150|124,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,79,복수근거,Claude,132 & 133,132|133|131|135|134,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,80,복수근거,Claude,134 & 135,135|134|133|130|131,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,81,복수근거,Claude,136 & 137,136|10|138|137|150,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,82,복수근거,Claude,143 & 144,144|143|145|149|146,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,83,복수근거,Claude,166 & 167,166|167|45|139|10,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,84,복수근거,Claude,168 & 172,169|172|168|170|171,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,85,복수근거,Claude,179 & 180,179|180|176|248|173,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,86,복수근거,Claude,177 & 178,177|178|183|173|22,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,87,복수근거,Claude,191 & 192,192|191|217|193|216,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,88,복수근거,Claude,196 & 197,196|197|194|198|199,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,89,원문유사,Claude,102,102|145|100|98|143,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,90,원문유사,Claude,104,104|95|105|103|98,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,91,원문유사,Claude,105,105|150|95|103|240,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,92,원문유사,Claude,110,110|109|108|106|95,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,93,원문유사,Claude,124,124|129|128|7|126,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,94,원문유사,Claude,157,157|25|284|282|52,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,95,원문유사,Claude,158,158|85|229|142|244,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,96,원문유사,Claude,164,164|31|46|240|93,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,97,원문유사,Claude,169,169|95|182|134|167,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,98,원문유사,Claude,187|188,188|187|92|53|254,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,99,원문유사,Claude,189,189|210|66|207|74,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,100,원문유사,Claude,199,199|197|194|198|206,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,101,조건형,Claude,100,100|101|103|105|104,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,102,조건형,Claude,101,101|100|105|103|104,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,103,조건형,Claude,107,107|108|109|106|97,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,104,조건형,Claude,111|116,111|116|114|281|120,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,105,조건형,Claude,114,114|120|281|134|270,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,106,조건형,Claude,119,119|120|281|114|256,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,107,조건형,Claude,125,125|129|123|124|122,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,108,조건형,Claude,129,129|124|128|123|7,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,109,조건형,Claude,138,138|137|148|167|10,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,110,조건형,Claude,139,139|45|187|137|138,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,111,조건형,Claude,148,148|149|144|142|146,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,112,조건형,Claude,160|162,160|161|162|137|138,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,113,조건형,Claude,161,161|162|160|51|272,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,114,조건형,Claude,173,173|183|180|176|269,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,115,조건형,Claude,183,183|173|185|177|14,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,116,일상표현,Claude,103,103|105|100|101|104,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,117,일상표현,Claude,141,141|68|142|67|10,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,118,일상표현,Claude,153,6|153|28|249|212,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,119,일상표현,Claude,155,155|286|157|282|156,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,120,일상표현,Claude,162,162|161|160|64|198,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,121,일상표현,Claude,165,165|261|36|38|184,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,122,일상표현,Claude,174,174|185|175|19|173,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,123,일상표현,Claude,184,184|181|186|261|115,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,124,원문유사,Claude,2,2|92|104|18|187,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,125,원문유사,Claude,39,39|232|233|44|254,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,126,원문유사,Claude,53,53|92|58|56|258,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,127,원문유사,Claude,56,56|54|55|59|58,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,128,원문유사,Claude,61,61|88|191|219|216,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,129,원문유사,Claude,86,86|89|93|90|87,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,131,원문유사,Claude,210,210|245|227|44|204,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,132,원문유사,Claude,211,211|288|289|214|247,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,133,원문유사,Claude,225,225|210|95|207|265,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,134,원문유사,Claude,237,237|238|239|232|218,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,135,원문유사,Claude,258,258|55|53|92|257,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,136,조건형,Claude,25|157,25|157|183|120|173,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,137,조건형,Claude,83,83|84|85|88|12,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,138,조건형,Claude,84,84|12|280|257|126,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,139,조건형,Claude,89,89|135|130|86|87,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,140,조건형,Claude,217,217|215|193|247|192,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,141,조건형,Claude,270|74,270|74|69|6|13,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,142,조건형,Claude,271,271|6|212|69|202,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,143,조건형,Claude,286,286|285|282|157|283,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,144,조건형,Claude,98,98|104|105|103|101,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,145,일상표현,Claude,75,75|69|62|78|274,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,146,일상표현,Claude,76,76|200|70|202|69,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,147,일상표현,Claude,66,66|62|9|63|64,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,148,일상표현,Claude,274,274|75|13|81|69,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,149,일상표현,Claude,275,275|277|276|77|81,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,150,일상표현,Claude,267,267|9|139|200|81,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,151,일상표현,Claude,204,204|53|175|31|205,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,152,일상표현,Claude,38,38|48|282|261|165,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,153,일상표현,Claude,273,273|67|267|54|272,1,1,1
