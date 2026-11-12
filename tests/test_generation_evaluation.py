@@ -117,8 +117,8 @@ def test_generation_output_resumes_from_existing_rows(tmp_path) -> None:
     from evaluation.scripts.generate_answers import append_row, load_done_ids, output_fieldnames
 
     path = tmp_path / "answers.csv"
-    append_row(path, {name: "" for name in output_fieldnames()} | {"question_id": "1"})
-    append_row(path, {name: "" for name in output_fieldnames()} | {"question_id": "2"})
+    append_row(path, {name: "" for name in output_fieldnames()} | {"id": "1"})
+    append_row(path, {name: "" for name in output_fieldnames()} | {"id": "2"})
 
     assert load_done_ids(path) == {"1", "2"}
     assert path.read_bytes().startswith(b"\xef\xbb\xbf")  # BOM은 파일 맨 앞에 한 번만
@@ -157,3 +157,23 @@ def test_check_not_truncated_raises_at_context_limit() -> None:
     check_not_truncated(SimpleNamespace(usage=None), 2048, "t")
     with pytest.raises(RuntimeError, match="잘렸을"):
         check_not_truncated(SimpleNamespace(usage=SimpleNamespace(prompt_tokens=2051)), 2048, "t")
+
+
+def test_read_generated_answers_reads_new_and_legacy_columns(tmp_path) -> None:
+    import csv
+
+    from evaluation.scripts.evaluate_generation import read_generated_answers
+    from evaluation.scripts.generate_answers import output_fieldnames
+
+    new = tmp_path / "new.csv"
+    with new.open("w", encoding="utf-8-sig", newline="") as file:
+        writer = csv.DictWriter(file, fieldnames=output_fieldnames())
+        writer.writeheader()
+        writer.writerow({name: "" for name in output_fieldnames()} | {"id": "52", "answer": "답", "reference_answer": "기준"})
+    from pathlib import Path
+
+    legacy = Path(__file__).resolve().parents[1] / "archive/experiment-v1/output/gen_60_gpt-5.4-mini.csv"
+
+    assert read_generated_answers(new)[0].generated_answer == "답"
+    assert read_generated_answers(new)[0].target_answer == "기준"
+    assert len(read_generated_answers(legacy)) == 60

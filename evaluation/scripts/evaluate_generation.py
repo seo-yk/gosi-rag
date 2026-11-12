@@ -284,26 +284,33 @@ def read_generation_questions(path: Path) -> list[GenerationQuestion]:
         return rows
 
 
+def _first(row: dict[str, str], *names: str) -> str:
+    for name in names:
+        if row.get(name) is not None:
+            return row[name].strip()
+    return ""
+
+
 def read_generated_answers(path: Path) -> list[GeneratedAnswerRow]:
-    """생성 결과 CSV 로드"""
+    """생성 결과 CSV 로드. 새 칼럼(id, answer, …)과 1차 실험의 옛 칼럼(question_id, generated_answer, …)을 모두 읽는다"""
     with path.open(encoding="utf-8-sig", newline="") as file:
         rows: list[GeneratedAnswerRow] = []
         for row in csv.DictReader(file):
             rows.append(
                 GeneratedAnswerRow(
-                    question_id=row["question_id"].strip(),
-                    question=row["question"].strip(),
-                    question_type=row["question_type"].strip(),
-                    evaluation_intent=row["evaluation_intent"].strip(),
-                    target_answer_no=row["target_answer_no"].strip(),
-                    target_answer=row["target_answer"].strip(),
-                    supporting_answer_nos=row.get("supporting_answer_nos", "").strip(),
-                    generation_provider=row.get("generation_provider", "").strip(),
-                    generation_model=row.get("generation_model", "").strip(),
-                    retrieved_answer_nos=row.get("retrieved_answer_nos", "").strip(),
-                    retrieved_contexts=row.get("retrieved_contexts", "").strip(),
-                    generated_answer=row["generated_answer"].strip(),
-                    notes=row.get("notes", "").strip(),
+                    question_id=_first(row, "id", "question_id"),
+                    question=_first(row, "question"),
+                    question_type=_first(row, "type", "question_type"),
+                    evaluation_intent=_first(row, "intent", "evaluation_intent"),
+                    target_answer_no=_first(row, "required_faqs", "target_answer_no"),
+                    target_answer=_first(row, "reference_answer", "target_answer"),
+                    supporting_answer_nos=_first(row, "supporting_faqs", "supporting_answer_nos"),
+                    generation_provider=_first(row, "generation_provider"),
+                    generation_model=_first(row, "model", "generation_model"),
+                    retrieved_answer_nos=_first(row, "context_faqs", "retrieved_answer_nos"),
+                    retrieved_contexts=_first(row, "context_text", "retrieved_contexts"),
+                    generated_answer=_first(row, "answer", "generated_answer"),
+                    notes=_first(row, "context_setup", "notes"),
                 )
             )
         return rows

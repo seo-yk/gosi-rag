@@ -5,7 +5,6 @@ import csv
 import os
 import re
 import sys
-from dataclasses import replace
 from pathlib import Path
 from time import perf_counter
 from typing import Any
@@ -23,47 +22,41 @@ from src.retrieval import SearchResult
 
 
 def output_fieldnames() -> list[str]:
-    """생성 결과 CSV 헤더 반환"""
+    """생성 결과 CSV 헤더 (평가셋 v1.3과 같은 이름 규칙)"""
     return [
-        "question_id",
-        "question",
-        "question_type",
-        "evaluation_intent",
-        "target_answer_no",
-        "target_answer",
-        "supporting_answer_nos",
-        "generation_provider",
-        "generation_model",
-        "retrieved_answer_nos",
-        "retrieved_contexts",
-        "generated_answer",
-        "notes",
+        "id",               # 문항 번호
+        "type",             # 문항 유형
+        "question",         # 질문
+        "required_faqs",    # 정답 FAQ (예: 78 & 272|251)
+        "reference_answer", # 기준 답변
+        "model",            # 생성 모델
+        "context_setup",    # 근거 구성 (retrieval: 검색 모델·청킹·입력·Top-K / oracle: 정답 FAQ)
+        "context_faqs",     # 모델에 근거로 준 FAQ 번호
+        "context_text",     # 모델에 근거로 준 FAQ 제목·본문
+        "answer",           # 생성 답변
     ]
 
 
 def build_output_row(
     item: GenerationQuestion,
-    generation_provider: str,
-    generation_model: str,
-    retrieved_answer_nos: str,
-    retrieved_contexts: str,
-    generated_answer: str,
+    model: str,
+    context_setup: str,
+    context_faqs: str,
+    context_text: str,
+    answer: str,
 ) -> dict[str, Any]:
     """질문과 생성 결과를 CSV 행으로 변환"""
     return {
-        "question_id": item.question_id,
+        "id": item.question_id,
+        "type": item.question_type,
         "question": item.question,
-        "question_type": item.question_type,
-        "evaluation_intent": item.evaluation_intent,
-        "target_answer_no": item.target_answer_no,
-        "target_answer": item.target_answer,
-        "supporting_answer_nos": item.supporting_answer_nos,
-        "generation_provider": generation_provider,
-        "generation_model": generation_model,
-        "retrieved_answer_nos": retrieved_answer_nos,
-        "retrieved_contexts": retrieved_contexts,
-        "generated_answer": generated_answer,
-        "notes": item.notes,
+        "required_faqs": item.target_answer_no,
+        "reference_answer": item.target_answer,
+        "model": model,
+        "context_setup": context_setup,
+        "context_faqs": context_faqs,
+        "context_text": context_text,
+        "answer": answer,
     }
 
 
@@ -80,7 +73,7 @@ def load_done_ids(path: Path) -> set[str]:
     if not path.exists():
         return set()
     with path.open(encoding="utf-8-sig", newline="") as file:
-        return {row["question_id"] for row in csv.DictReader(file)}
+        return {row.get("id") or row.get("question_id", "") for row in csv.DictReader(file)}
 
 
 def append_row(path: Path, row: dict[str, Any]) -> None:
@@ -109,14 +102,14 @@ def generate_answers(
     questions = read_generation_questions(questions_path)
     retriever, generator = build_services(settings)
     faqs = {doc.resolved_row_id: doc for doc in load_faq_csv(faq_path)} if oracle else {}
-    context_note = (
-        f"context=oracle({faq_path})" if oracle else
-        f"context=retrieval({settings.embedding_model}, {settings.chunking_mode}, {settings.embedding_mode}, top_k={settings.top_k})"
+    context_setup = (
+        f"oracle: {faq_path}" if oracle else
+        f"retrieval: {settings.embedding_model}, {settings.chunking_mode}, {settings.embedding_mode}, top_k={settings.top_k}"
     )
     done = load_done_ids(output_path)
 
     total = len(questions)
-    print(f"총 {total}개 질문 (이미 생성 {len(done)}개). 모델: {settings.generation_model}, {context_note}")
+    print(f"총 {total}개 질문 (이미 생성 {len(done)}개). 모델: {settings.generation_model}, {context_setup}")
 
     for i, item in enumerate(questions, 1):
         if item.question_id in done:
@@ -128,16 +121,15 @@ def generate_answers(
         answer = generator.generate(item.question, sources)
 
         print(f" 완료! ({perf_counter() - start:.2f}초)")
-        item_with_note = replace(item, notes="; ".join(x for x in (item.notes, context_note) if x))
         append_row(
             output_path,
             build_output_row(
-                item=item_with_note,
-                generation_provider=settings.generation_provider,
-                generation_model=settings.generation_model,
-                retrieved_answer_nos="|".join(str(source.document.resolved_row_id) for source in answer.sources),
-                retrieved_contexts=render_contexts(answer.sources),
-                generated_answer=answer.text,
+                item=item,
+                model=settings.generation_model,
+                context_setup=context_setup,
+                context_faqs="|".join(str(source.document.resolved_row_id) for source in answer.sources),
+                context_text=render_contexts(answer.sources),
+                answer=answer.text,
             ),
         )
 
