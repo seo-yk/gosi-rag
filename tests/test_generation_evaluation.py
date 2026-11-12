@@ -98,3 +98,28 @@ def test_skip_out_of_scope_removes_out_of_scope_rows() -> None:
     items = [SimpleNamespace(question_type="일상표현"), SimpleNamespace(question_type=OUT_OF_SCOPE_TYPE)]
 
     assert skip_out_of_scope(items) == items[:1]
+
+
+def test_oracle_sources_uses_all_gold_faqs_in_order() -> None:
+    from evaluation.scripts.evaluate_generation import GenerationQuestion
+    from evaluation.scripts.generate_answers import oracle_sources
+    from src.indexing import FaqDocument
+
+    faqs = {i: FaqDocument(i, f"제목{i}", f"본문{i}", source_row_id=i) for i in (78, 251, 272)}
+    item = GenerationQuestion("52", "질문", "복수근거", "", "78 & 272|251", "답", "", "")
+
+    sources = oracle_sources(item, faqs)
+
+    assert [s.document.resolved_row_id for s in sources] == [78, 272, 251]
+
+
+def test_generation_output_resumes_from_existing_rows(tmp_path) -> None:
+    from evaluation.scripts.generate_answers import append_row, load_done_ids, output_fieldnames
+
+    path = tmp_path / "answers.csv"
+    append_row(path, {name: "" for name in output_fieldnames()} | {"question_id": "1"})
+    append_row(path, {name: "" for name in output_fieldnames()} | {"question_id": "2"})
+
+    assert load_done_ids(path) == {"1", "2"}
+    assert path.read_bytes().startswith(b"\xef\xbb\xbf")  # BOM은 파일 맨 앞에 한 번만
+    assert path.read_bytes().count(b"\xef\xbb\xbf") == 1
