@@ -69,7 +69,11 @@ python src/indexing.py
 python evaluation/scripts/evaluate_retrieval.py
 # 3) 생성과 생성 평가 (앱 설정 INDEX_DIR 기본값도 index/faq_v2)
 python evaluation/scripts/generate_generation.py
+# 4) 범위 밖 10문항 답변 생성 → 자동 평가 없이 "채점 규칙"의 범위 밖 기준으로 직접 판정
+python evaluation/scripts/generate_generation.py --questions evaluation/inputs/evalset_out_of_scope_v1.3.jsonl --output output/generated_answers_out_of_scope.csv
 ```
+
+검색 요약에는 `type`이 `전체`, `단일 그룹 전체`(복수근거를 뺀 111문항), 유형 4개인 행이 함께 나온다. Hit@1은 `전체`와 `단일 그룹 전체`를 둘 다 보고한다.
 
 기본값은 모두 교정본 기준이다(`--csv data/faq_v2.csv`, 인덱스 `index/faq_v2`). 원본으로 1차 실험을 재현하려면 `python src/indexing.py --csv data/faq.csv --output index/faq_v1`로 인덱스를 따로 만들고, 평가할 때 `--index-dir index/faq_v1`을 지정한다(앱은 `INDEX_DIR=index/faq_v1`).
 

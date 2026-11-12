@@ -75,3 +75,26 @@ def test_read_generation_questions_reads_evalset_v1_3() -> None:
     assert "12" not in by_id  # exclude 문항
     assert by_id["52"].target_answer_no == "78 & 272|251"
     assert by_id["52"].target_answer.startswith("기한이 만료된 여권은")
+
+
+def test_read_generation_questions_reads_out_of_scope_v1_3() -> None:
+    from pathlib import Path
+
+    from evaluation.scripts.evaluate_generation import OUT_OF_SCOPE_TYPE, read_generation_questions
+
+    root = Path(__file__).resolve().parents[1]
+    items = read_generation_questions(root / "evaluation/inputs/evalset_out_of_scope_v1.3.jsonl")
+
+    assert [item.question_id for item in items] == [str(i) for i in range(154, 164)]
+    assert {item.question_type for item in items} == {OUT_OF_SCOPE_TYPE}
+    assert all(item.target_answer == "" for item in items)
+
+
+def test_skip_out_of_scope_removes_out_of_scope_rows() -> None:
+    from types import SimpleNamespace
+
+    from evaluation.scripts.evaluate_generation import OUT_OF_SCOPE_TYPE, skip_out_of_scope
+
+    items = [SimpleNamespace(question_type="일상표현"), SimpleNamespace(question_type=OUT_OF_SCOPE_TYPE)]
+
+    assert skip_out_of_scope(items) == items[:1]

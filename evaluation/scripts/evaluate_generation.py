@@ -17,7 +17,7 @@ if __package__ is None or __package__ == "":
     sys.path.append(str(Path(__file__).resolve().parents[2]))
 
 from app import Settings, build_services
-from evaluation.scripts.evalset import format_groups, read_evalset
+from evaluation.scripts.evalset import format_groups, read_evalset, read_out_of_scope
 from src.config import load_project_env
 from src.generation import GeneratedAnswer
 from src.retrieval import SearchResult
@@ -195,8 +195,44 @@ class OllamaEvaluator:
         return (response.choices[0].message.content or "").strip()
 
 
+OUT_OF_SCOPE_TYPE = "범위 밖"
+
+
+def _is_out_of_scope_file(path: Path) -> bool:
+    with path.open(encoding="utf-8") as file:
+        first = next((line for line in file if line.strip()), "{}")
+    return "required_faqs" not in json.loads(first)
+
+
+def skip_out_of_scope(items: list[T]) -> list[T]:
+    """범위 밖 문항은 자동 평가에서 뺀다(사람이 pass_rule로 판정)"""
+    kept = [item for item in items if getattr(item, "question_type", "") != OUT_OF_SCOPE_TYPE]
+    if len(kept) != len(items):
+        print(f"범위 밖 {len(items) - len(kept)}문항은 자동 평가에서 제외합니다. 직접 판정하세요.")
+    if not kept:
+        raise SystemExit("자동 평가할 문항이 없습니다.")
+    return kept
+
+
 def read_generation_questions(path: Path) -> list[GenerationQuestion]:
-    """생성 평가 질문셋 로드. .jsonl은 평가셋 v1.3, .csv는 1차 실험 형식"""
+    """생성 평가 질문셋 로드. .jsonl은 평가셋 v1.3(본 평가셋 또는 범위 밖), .csv는 1차 실험 형식
+
+    범위 밖 문항은 기준 답변이 없다. 자동 평가 대상이 아니며, pass_rule에 따라 사람이 판정한다.
+    """
+    if path.suffix == ".jsonl" and _is_out_of_scope_file(path):
+        return [
+            GenerationQuestion(
+                question_id=str(item.id),
+                question=item.question,
+                question_type=OUT_OF_SCOPE_TYPE,
+                evaluation_intent="FAQ에 근거가 없음을 밝히는지",
+                target_answer_no="",
+                target_answer="",
+                supporting_answer_nos="",
+                notes=f"difficulty={item.difficulty}; similar_faqs={'|'.join(map(str, item.similar_faqs))}",
+            )
+            for item in read_out_of_scope(path)
+        ]
     if path.suffix == ".jsonl":
         return [
             GenerationQuestion(
@@ -554,7 +590,7 @@ def evaluate_generation(
     settings: GenerationEvaluationSettings,
 ) -> None:
     """질문셋 기준 생성 + 자동 평가 실행"""
-    questions = read_generation_questions(questions_path)
+    questions = skip_out_of_scope(read_generation_questions(questions_path))
     retriever, generator = build_services(settings.app_settings)
     
     evaluator = build_evaluator(settings)
@@ -624,7 +660,7 @@ def evaluate_generated_answers(
     batch_size: int = 1,
 ) -> None:
     """생성 완료된 답변 CSV를 자동 평가만 실행"""
-    answers = read_generated_answers(answers_path)
+    answers = skip_out_of_scope(read_generated_answers(answers_path))
     existing_rows = load_existing_output_rows(output_path)
     completed_question_ids = {
         row["question_id"].strip()

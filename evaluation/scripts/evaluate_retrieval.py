@@ -43,6 +43,7 @@ from src.retrieval import build_retriever
 
 KS = (1, 3, 5)
 ALL_TYPES = "전체"
+SINGLE_ONLY = "단일 그룹 전체"  # 필수 그룹이 1개인 문항(복수근거 제외)
 
 
 @dataclass(frozen=True, slots=True)
@@ -77,8 +78,14 @@ def evaluate_by_type(
     rankings: Sequence[tuple[EvalQuestion, Sequence[int]]],
     ks: Sequence[int] = KS,
 ) -> dict[str, GroupEvaluationResult]:
-    """전체와 유형별(type) 지표"""
+    """전체, 단일 그룹 문항 전체, 유형별(type) 지표
+
+    복수근거 문항은 Hit@1이 구조적으로 0이므로, 단일 그룹 문항만 모은 행을 따로 낸다.
+    """
     results = {ALL_TYPES: evaluate_groups(rankings, ks)}
+    singles = [(q, ids) for q, ids in rankings if q.is_single]
+    if singles:
+        results[SINGLE_ONLY] = evaluate_groups(singles, ks)
     for question_type in sorted({q.type for q, _ in rankings}):
         results[question_type] = evaluate_groups([(q, ids) for q, ids in rankings if q.type == question_type], ks)
     return results

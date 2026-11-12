@@ -12,7 +12,7 @@ from evaluation.scripts.evalset import (
     read_out_of_scope,
     reciprocal_rank,
 )
-from evaluation.scripts.evaluate_retrieval import ALL_TYPES, evaluate_by_type, evaluate_groups
+from evaluation.scripts.evaluate_retrieval import ALL_TYPES, SINGLE_ONLY, evaluate_by_type, evaluate_groups
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -126,7 +126,7 @@ def test_evaluate_by_type_includes_total_and_each_type() -> None:
 
     results = evaluate_by_type(rankings)
 
-    assert set(results) == {ALL_TYPES, "원문유사", "조건형"}
+    assert set(results) == {ALL_TYPES, SINGLE_ONLY, "원문유사", "조건형"}
     assert results[ALL_TYPES].hit_at[1] == 1 / 2
     assert results["원문유사"].hit_at[1] == 1.0
     assert results["조건형"].hit_at[1] == 0.0
