@@ -45,13 +45,13 @@ gosi-rag/
 │   ├── retrieval.py
 │   └── generation.py
 ├── evaluation/
-│   ├── inputs/
-│   │   ├── question_retrieval.csv
-│   │   └── question_generation.csv
+│   ├── inputs/          # 평가셋 v1.2 이후 (README.md 참고)
 │   └── scripts/
 │       ├── evaluate_retrieval.py
 │       ├── generate_generation.py
 │       └── evaluate_generation.py
+├── archive/
+│   └── experiment-v1/   # 1차 실험 질문셋·결과 (README.md 참고)
 ├── tests/
 ├── data/
 ├── output/
@@ -162,9 +162,9 @@ python src/indexing.py
 - 이 한계를 통해 의미 기반 벡터 검색만으로는 부족한 케이스가 있음을 확인했고, 본문 세부 키워드 회수 한계를 보완할 방향을 추가 검토할 필요가 있다고 봤습니다.
 
 > **산출물**
-> - `e5-small` 결과: `output/retr_e5-small.csv`
-> - `text-embedding-3-small` 결과: `output/retr_openai-3-small.csv`
-> - `text-embedding-3-large` 결과: `output/retr_openai-3-large.csv`
+> - `e5-small` 결과: `archive/experiment-v1/output/retr_e5-small.csv`
+> - `text-embedding-3-small` 결과: `archive/experiment-v1/output/retr_openai-3-small.csv`
+> - `text-embedding-3-large` 결과: `archive/experiment-v1/output/retr_openai-3-large.csv`
 
 ### 7-2. 생성 및 자동 평가(Generation & Evaluation)
 
@@ -195,9 +195,9 @@ python src/indexing.py
 - 다만 정답이 있는데 답을 유보한 경우까지는 자동 평가만으로 완전히 구분하지는 못했습니다.
 
 > **생성 및 평가 산출물**
-> - 답변 생성 원본: `output/gen_60_gpt-5.4-mini.csv`
-> - 단건 채점 결과: `output/eval_60_gpt-5.4-mini-gemma3-4b_single.csv`
-> - 배치 채점 비교군: `output/eval_60_gpt-5.4-mini-gemma3-4b_b3.csv`
+> - 답변 생성 원본: `archive/experiment-v1/output/gen_60_gpt-5.4-mini.csv`
+> - 단건 채점 결과: `archive/experiment-v1/output/eval_60_gpt-5.4-mini-gemma3-4b_single.csv`
+> - 배치 채점 비교군: `archive/experiment-v1/output/eval_60_gpt-5.4-mini-gemma3-4b_b3.csv`
 
 ### 7-3. 이 프로젝트로 확인한 것
 

@@ -16,9 +16,7 @@ index/**/*.faiss
 index/**/metadata.json
 output/*
 
-evaluation/archive
-
-
+# Data: 원본과 검색 대상만 추적
 data/*.csv
 !data/faq.csv
 !data/faq_v2.csv
