@@ -21,3 +21,5 @@ evaluation/archive
 
 data/*.csv
 !data/faq.csv
+!data/faq_v2.csv
+!data/faq_merge_map.csv
