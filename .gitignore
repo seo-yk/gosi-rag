@@ -12,8 +12,8 @@ __pycache__/
 !.env.example
 
 # Generated data
-index/**/*.faiss
-index/**/metadata.json
+# 벡터 인덱스(src/indexing.py로 다시 만든다)
+index/
 output/*
 
 # Data: 원본과 검색 대상만 추적
