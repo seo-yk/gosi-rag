@@ -6,10 +6,15 @@
 
 | 파일 | 내용 |
 |---|---|
-| `review_sheet.csv` | 사람 채점지 40문항(UTF-8, BOM 포함). 노란 칸에 해당하는 오른쪽 5개 열을 채운다 |
+| `review_sheet.xlsx` | 사람 채점지 40문항. `채점` 시트의 노란 칸 5개 열을 채운다. `채점 방법` 시트에 기준 요약 |
 | `output/review_key.csv` | 번호별 조건(A/B)·문항 id. **채점이 끝날 때까지 열지 않는다** |
 
-채점지는 `python evaluation/scripts/build_review_sheet.py`로 다시 만들 수 있다(난수 시드 고정).
+다시 만들기(난수 시드 고정):
+
+```bash
+python evaluation/scripts/build_review_sheet.py          # output/review_sheet_base.csv, output/review_key.csv
+python evaluation/scripts/export_review_xlsx.py          # evaluation/judge_calibration/review_sheet.xlsx (openpyxl 필요)
+```
 
 표본: A(검색 근거, `gpt-5.4-mini`) 20문항 + B(정답 근거, `gpt-5.4-mini`) 20문항, 서로 다른 문항, 유형별 층화(조건마다 복수근거 6, 원문유사 4, 일상표현 5, 조건형 5), 사전등록 경로가 FAQ마다 다른 문항(38, 49, 50, 55) 포함. 모델 이름·근거 구성·자동 점수는 넣지 않고 순서를 섞었다.
 
@@ -36,4 +41,4 @@
 
 ## 채점 후
 
-채운 파일을 같은 이름으로 저장하면 된다. 그다음 후보 채점 모델들을 같은 40문항에 돌려 항목별·판정 일치율을 비교하고, 가장 잘 맞는 모델을 채택한다.
+채운 파일을 같은 이름(`review_sheet.xlsx`)으로 저장하면 된다. 그다음 후보 채점 모델들을 같은 40문항에 돌려 항목별·판정 일치율을 비교하고, 가장 잘 맞는 모델을 채택한다.

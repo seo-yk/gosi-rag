@@ -56,7 +56,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="블라인드 사람 채점지를 만듭니다.")
     parser.add_argument("--a", type=Path, default=Path("output/generated_answers_A_gpt-5.4-mini.csv"))
     parser.add_argument("--b", type=Path, default=Path("output/generated_answers_B_gpt-5.4-mini_oracle.csv"))
-    parser.add_argument("--sheet", type=Path, default=Path("evaluation/judge_calibration/review_sheet.csv"))
+    parser.add_argument("--sheet", type=Path, default=Path("output/review_sheet_base.csv"))
     parser.add_argument("--key", type=Path, default=Path("output/review_key.csv"))
     args = parser.parse_args()
 
