@@ -248,7 +248,8 @@ def write_csv(path: Path, rows: Sequence[dict[str, object]]) -> None:
     if not rows:
         return
     path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("w", encoding="utf-8", newline="") as file:
+    # Excel·Numbers에서 한글이 깨지지 않도록 BOM 포함 UTF-8
+    with path.open("w", encoding="utf-8-sig", newline="") as file:
         writer = csv.DictWriter(file, fieldnames=list(rows[0].keys()))
         writer.writeheader()
         writer.writerows(rows)
