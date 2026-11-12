@@ -19,7 +19,7 @@ if __package__ is None or __package__ == "":
 from app import Settings, build_services
 from evaluation.scripts.evalset import format_groups, read_evalset, read_out_of_scope
 from src.config import load_project_env
-from src.generation import GeneratedAnswer
+from src.generation import GeneratedAnswer, check_not_truncated, ollama_context_length
 from src.retrieval import SearchResult
 
 
@@ -170,6 +170,7 @@ class OllamaEvaluator:
             max_retries=1,
         )
         self.model = model
+        self.context_limit = ollama_context_length(base_url, model)
 
     def evaluate(self, question: str, target_answer: str, generated_answer: str, contexts: str) -> str:
         prompt = BATCH_EVALUATION_PROMPT.format(
@@ -192,6 +193,7 @@ class OllamaEvaluator:
             ],
             temperature=0,
         )
+        check_not_truncated(response, self.context_limit, f"채점 모델 {self.model}")
         return (response.choices[0].message.content or "").strip()
 
 
@@ -202,6 +204,23 @@ def _is_out_of_scope_file(path: Path) -> bool:
     with path.open(encoding="utf-8") as file:
         first = next((line for line in file if line.strip()), "{}")
     return "required_faqs" not in json.loads(first)
+
+
+PARSE_RETRIES = 2
+
+
+def evaluate_with_retry(evaluator, question: str, target_answer: str, generated_answer: str, contexts: str,
+                        retries: int = PARSE_RETRIES) -> EvaluationScores:
+    """채점 결과 JSON을 읽지 못하면 다시 요청한다. 끝내 실패하면 overall='error'로 남긴다
+
+    파싱 실패를 'fail'(오답)로 세면 채점기 오류가 답변 품질로 잘못 집계된다.
+    """
+    for _ in range(retries + 1):
+        scores = parse_evaluation_json(evaluator.evaluate(question, target_answer, generated_answer, contexts))
+        if min(scores.groundedness, scores.correctness, scores.completeness) >= 0:
+            return scores
+    return EvaluationScores(scores.similarity, scores.groundedness, scores.correctness, scores.completeness,
+                            scores.unsupported_claims, "error")
 
 
 def skip_out_of_scope(items: list[T]) -> list[T]:
@@ -608,8 +627,7 @@ def evaluate_generation(
         answer = generator.generate(item.question, results)
         contexts = render_contexts(results)
         
-        raw_evaluation_text = evaluator.evaluate(item.question, item.target_answer, answer.text, contexts)
-        evaluation_scores = parse_evaluation_json(raw_evaluation_text)
+        evaluation_scores = evaluate_with_retry(evaluator, item.question, item.target_answer, answer.text, contexts)
         
         elapsed = perf_counter() - start
         print(f" 완료! ({elapsed:.2f}초 | 판정: {evaluation_scores.overall})")
@@ -706,13 +724,13 @@ def evaluate_generated_answers(
         from time import perf_counter
         start = perf_counter()
         
-        raw_evaluation_text = evaluator.evaluate(
+        evaluation_scores = evaluate_with_retry(
+            evaluator,
             item.question,
             item.target_answer,
             item.generated_answer,
             item.retrieved_contexts or "No retrieved FAQ context.",
         )
-        evaluation_scores = parse_evaluation_json(raw_evaluation_text)
         
         elapsed = perf_counter() - start
         print(f" 완료! ({elapsed:.2f}초 | 판정: {evaluation_scores.overall})")

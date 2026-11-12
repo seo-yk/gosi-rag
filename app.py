@@ -10,7 +10,7 @@ from google import genai
 from openai import OpenAI
 
 from src.config import load_project_env
-from src.generation import GeneratedAnswer, GeminiAnswerGenerator, OpenAIAnswerGenerator
+from src.generation import GeneratedAnswer, GeminiAnswerGenerator, OpenAIAnswerGenerator, ollama_context_length
 from src.indexing import build_embedder, check_index_model, default_index_dir, index_bundle_paths
 from src.retrieval import FaissRetriever, SearchMetrics, build_retriever
 
@@ -154,6 +154,7 @@ def build_services(
                 max_retries=1,
             ),
             model=settings.generation_model,
+            context_limit=ollama_context_length(settings.ollama_base_url, settings.generation_model),
         )
     else:
         generator = OpenAIAnswerGenerator(

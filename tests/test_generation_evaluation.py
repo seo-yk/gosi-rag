@@ -123,3 +123,37 @@ def test_generation_output_resumes_from_existing_rows(tmp_path) -> None:
     assert load_done_ids(path) == {"1", "2"}
     assert path.read_bytes().startswith(b"\xef\xbb\xbf")  # BOM은 파일 맨 앞에 한 번만
     assert path.read_bytes().count(b"\xef\xbb\xbf") == 1
+
+
+def test_evaluate_with_retry_retries_then_marks_error() -> None:
+    from evaluation.scripts.evaluate_generation import evaluate_with_retry
+
+    class Judge:
+        def __init__(self, outputs):
+            self.outputs = list(outputs)
+            self.calls = 0
+
+        def evaluate(self, *args):
+            self.calls += 1
+            return self.outputs.pop(0)
+
+    ok = Judge(["not json", '{"groundedness": 2, "correctness": 1, "completeness": 1}'])
+    assert evaluate_with_retry(ok, "q", "a", "g", "c").overall == "pass"
+    assert ok.calls == 2
+
+    broken = Judge(["x", "y", "z"])
+    assert evaluate_with_retry(broken, "q", "a", "g", "c").overall == "error"
+    assert broken.calls == 3
+
+
+def test_check_not_truncated_raises_at_context_limit() -> None:
+    from types import SimpleNamespace
+
+    import pytest
+
+    from src.generation import check_not_truncated
+
+    check_not_truncated(SimpleNamespace(usage=SimpleNamespace(prompt_tokens=1900)), 2048, "t")
+    check_not_truncated(SimpleNamespace(usage=None), 2048, "t")
+    with pytest.raises(RuntimeError, match="잘렸을"):
+        check_not_truncated(SimpleNamespace(usage=SimpleNamespace(prompt_tokens=2051)), 2048, "t")
