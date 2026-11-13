@@ -1,6 +1,6 @@
 # 생성 실험 결과 (평가셋 v1.3)
 
-2026-11-13 생성·채점. 채점 모델 선정과 사람 검증은 `evaluation/judge_calibration/`, 설계와 해석은 `docs/experiment_log.md`에 있다.
+2026-11-13 생성·채점. **최종 결과와 해석은 `docs/generation_results.md`**, 채점 모델 선정과 사람 검증은 `evaluation/judge_calibration/`, 설계 과정은 `docs/experiment_log.md`에 있다.
 
 | 조건 | 생성 모델 | 근거 | 파일 |
 |---|---|---|---|

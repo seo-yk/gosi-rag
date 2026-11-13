@@ -36,7 +36,8 @@ python -m pytest -q           # 78개 통과 확인
 | 생성 파이프라인 점검 | Ollama 2,048토큰 잘림 발견 → 8K 모델·차단 장치, 채점 파싱 실패는 error로 분리 | `docs/experiment_log.md` 8장 |
 | 루브릭 v2 | 근거성 2만 합격, 그룹별 완결성, 답 회피, 길이·서식 무시, 판단 근거 기록 | `evaluation/scripts/judge_answers.py` |
 | 사람 채점 | 블라인드 40문항(A 20 + B 20), 사람 판정 pass 35·fail 5 | `evaluation/judge_calibration/` |
-| 채점기 선정 | 후보 6개 비교 → gemini-3.8-flash(판정 일치 90%, kappa 0.45) | `evaluation/judge_calibration/judge_comparison.md` |
+| 채점기 선정 | 후보 6개 비교 → gemini-3.8-flash(재검토 후 A·B kappa 0.64, C kappa 0.87) | `evaluation/judge_calibration/` |
+| 생성 결과 | A 93.2%, B 98.0%, C 69.6%, 범위 밖 A·C 10/10 | `docs/generation_results.md` |
 
 검색 결과 요약(Hit@1, 단일 그룹 111문항 기준): bge-m3 `sentence × title_body` 98.2%가 최고다. 5%p를 넘는 모델 차이는 bge-m3와 e5-small 사이 하나뿐이고, bge-m3·KURE-v1·text-embedding-3-large 사이에는 차이가 확인되지 않았다. 작성자 편향(Claude 초안 문항이 더 쉬움)의 원인은 복수근거 질문을 만든 방식의 차이다(9-1).
 
@@ -50,15 +51,13 @@ python -m pytest -q           # 78개 통과 확인
 
 ## 4. 남은 일
 
-1. ~~전체 채점~~ 완료: A 93.2%, B 98.0%, C 69.6% pass(`results/generation_v1.3/`). 반복 채점 29/30 일치
-2. **사람 작업(사용자, 저녁 예정):** `evaluation/judge_calibration/`의 `rereview_sheet.xlsx`(8), `c_review_sheet.xlsx`(15), `oos_review_sheet.xlsx`(20). 키는 `output/*_key.csv`(채점이 끝날 때까지 열지 않음). 받으면 형식만 점검하고 일치율·범위 밖 차단 건수를 계산한다
-3. (사람 작업 결과에 따라) C 결과 해석 확정
-4. **결과 요약:** 조건별·유형별·작성자별 합격률, 답변 길이 편향(C 답변이 가장 김), 범위 밖 10문항 사람 판정(A·C)
-5. **미결정:** 사전등록 경로 상충 문항(38·49·50·55) 처리, B-66 라벨 의심(평가셋 v1.4 여부)
-6. **루트 README 최종 수정**과 **브랜치 정리·PR**
-7. **개선 후보(미정):** 복수 질문을 하위 질문으로 나눠 검색, 리랭커, 문장 청킹을 생성에 쓸 때 원래 FAQ 전체를 근거로 넘기기, 재현용 Dockerfile
+생성 실험까지 끝났다(`docs/generation_results.md`). 사람 채점과 재검토도 모두 끝났다.
 
-채점기 선정 과정 전체(무료 한도, 신규 사용자 모델 제한, 후보 비교, 불일치 분석)는 `docs/experiment_log.md` 8-7·8-8에 있다.
+1. **미결정:** 사전등록 경로 상충 문항(38·49·50·55)과 수정 스티커 규정 상충(A-60)은 원본 그대로 두고 한계로 기록할지 정한다(현재: 한계로 기록)
+2. **앱 동작 확인:** `app.py`가 새 구성(bge-m3 + row + title_body, 모델 대조)으로 실제로 도는지 확인(아직 안 함)
+3. **루트 README 최종 수정:** 1차 수치를 재실험 결과로 교체
+4. **브랜치 정리와 PR:** `evalset-v1.2` → 이름 정리, `main`으로 PR, 최종 태그
+5. **선택:** 포트폴리오 요약 페이지, 후속 실험(복수근거 검색 개선, 리랭커, 근거 규칙 강화 프롬프트), 재현용 Dockerfile
 
 ## 5. 작업 방식 (사용자 선호)
 
