@@ -1,6 +1,6 @@
 # 생성 실험 결과 (평가셋 v1.3)
 
-2026-11-13 생성. 자동 채점(루브릭 v2)과 사람 검증 결과는 채점이 끝나면 이 폴더에 추가한다.
+2026-11-13 생성·채점. 채점 모델 선정과 사람 검증은 `evaluation/judge_calibration/`, 설계와 해석은 `docs/experiment_log.md`에 있다.
 
 | 조건 | 생성 모델 | 근거 | 파일 |
 |---|---|---|---|
@@ -12,3 +12,16 @@
 - 생성 프롬프트는 세 조건 공통(`src/generation.py`의 `build_prompt`), temperature 0
 - 칼럼: `id`, `type`, `question`, `required_faqs`, `reference_answer`, `model`, `context_setup`, `context_faqs`, `context_text`, `answer`
 - 답변 길이 평균: A 258자, B 235자, C 366자
+
+## 자동 채점 (gemini-3.8-flash, 루브릭 v2.1)
+
+| 조건 | pass | 근거성 2 | 정확성 1 | 완결성 1 | 근거 있는데 회피 |
+|---|---:|---:|---:|---:|---:|
+| A (gpt-5.4-mini + 검색) | 138/148 (93.2%) | 98.0% | 93.9% | 93.9% | 1 |
+| B (gpt-5.4-mini + 정답 근거) | 145/148 (98.0%) | 99.3% | 98.6% | 98.0% | 1 |
+| C (EXAONE 3.5 7.8B + 검색) | 103/148 (69.6%) | 75.7% | 83.1% | 84.5% | 8 |
+
+- 파일: `judged_<조건>__gemini-3.8-flash.csv` (칼럼: id, model, context_setup, judge_model, groundedness, correctness, groups_covered, completeness, unjustified_refusal, verdict, reason)
+- 반복 채점(조건별 무작위 10문항, 30문항): 판정 29/30 같음, 모든 점수 28/30 같음(`rejudge_*.csv`)
+- 채점기 한계: 사람 채점 40문항 기준 판정 일치 90%, kappa 0.45, 사람보다 pass를 더 주는 경향(채점기 92.5% 대 사람 87.5%). C 답변에 대한 사람 검증은 별도로 진행
+- 토큰 사용(444문항): 입력 약 61.8만, 출력 약 4.1만, 생각 약 12.6만
