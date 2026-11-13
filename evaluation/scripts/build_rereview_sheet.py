@@ -6,7 +6,7 @@
 - 채점지에는 처음 채점 결과와 채점 모델 판정을 넣지 않는다. 키는 output/rereview_key.csv(재검토가 끝날 때까지 열지 않음)
 
 사용: python evaluation/scripts/build_rereview_sheet.py → output/rereview_base.csv, output/rereview_key.csv
-     python evaluation/scripts/export_review_xlsx.py output/rereview_base.csv evaluation/judge_calibration/rereview_sheet.xlsx
+     python evaluation/scripts/export_review_xlsx.py output/rereview_base.csv output/rereview_sheet.xlsx
 """
 
 import csv
@@ -14,7 +14,7 @@ import random
 from pathlib import Path
 
 SEED = 20261113
-CAL = Path("evaluation/judge_calibration")
+CAL = Path("evaluation/human_review")
 JUDGE = "gemini-3.8-flash"
 
 
@@ -24,8 +24,8 @@ def read(path: Path) -> list[dict[str, str]]:
 
 
 def main() -> None:
-    human = {(r["condition"], r["id"]): r for r in read(CAL / "human_labels.csv")}
-    judged = {(c, r["id"]): r for c in "AB" for r in read(CAL / "candidates" / f"calibration_{JUDGE}_{c}.csv")}
+    human = {(r["condition"], r["id"]): r for r in read(CAL / "1_ab_review" / "labels.csv")}
+    judged = {(c, r["id"]): r for c in "AB" for r in read(CAL / "1_ab_review" / "judges" / f"{JUDGE}_{c}.csv")}
     disagree = [k for k in human if judged[k]["verdict"] != human[k]["verdict"]]
     agree_fail = [k for k in human if k not in disagree and human[k]["verdict"] == "fail"]
     agree_pass = [k for k in human if k not in disagree and human[k]["verdict"] == "pass"]

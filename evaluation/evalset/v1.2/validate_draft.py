@@ -1,6 +1,6 @@
 """평가셋 라벨 검증: 평가 실행 전에 돌리고, 오류가 있으면 중단한다.
 
-사용: python validate_labels.py data/faq_raw.csv faq_merge_map.csv 라벨파일.jsonl [라벨파일2.jsonl ...]
+사용: python evaluation/evalset/v1.2/validate_draft.py data/faq_raw.csv data/faq_merge_map.csv 라벨파일.jsonl [라벨파일2.jsonl ...]
 """
 import csv
 import json

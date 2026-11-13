@@ -44,7 +44,7 @@
 | 비용 | API 키 발급과 비용 집행 | 호출 수와 비용 추정 |
 
 - 사람 채점 결과는 AI가 바꾸지 않았습니다. 채점이 끝난 파일은 형식만 확인했고, 불일치 문항을 다시 볼지와 최종 판단은 본인이 정했습니다.
-- 결정과 변경 이유는 `docs/experiment_log.md`에, 평가셋 변경 이력은 `evaluation/evalset/evalset_changes.csv`에 결정자와 함께 남겼습니다.
+- 결정과 변경 이유는 `docs/experiment_log.md`에, 평가셋 변경 이력은 `evaluation/evalset/changes.csv`에 결정자와 함께 남겼습니다.
 
 ---
 
@@ -75,17 +75,16 @@ gosi-rag/
 │   └── generation.py      # 답변 생성
 ├── data/                  # FAQ 원본·교정본·검색 대상(faq_v2) (README.md 참고)
 ├── evaluation/
-│   ├── evalset/           # 평가셋 v1.3 (README.md 참고)
-│   ├── labeling/          # 평가셋을 만든 원천 자료(검수표, 결정표, 라벨 초안)
-│   ├── judge_calibration/ # 사람 채점, 채점기 후보 비교, 재검토 기록
+│   ├── evalset/           # 평가셋 v1.3, 변경 이력, v1.2 원천 자료(v1.2/)
+│   ├── human_review/      # 사람 채점 결과(1~5단계 폴더)
 │   ├── ollama/            # 로컬 모델 설정(컨텍스트 8K)
-│   └── scripts/           # 검색·생성·채점 스크립트, 평가셋 생성 스크립트
+│   └── scripts/           # 평가셋 생성, 검색·생성·채점, 사람 채점지 스크립트
 ├── results/
 │   ├── retrieval_v1.3/    # 검색 실험 결과
-│   └── generation_v1.3/   # 생성 실험 결과와 자동 채점
+│   └── generation_v1.3/   # 생성 답변과 자동 채점 결과
 ├── archive/
-│   └── experiment-v1/     # 1차 실험 질문셋·결과 (README.md 참고)
-├── docs/                  # 결과·설계 기록 (10장 "문서 안내")
+│   └── experiment-v1/     # 1차 실험 질문셋·결과
+├── docs/                  # 실험 문서(10장 "문서 안내")
 ├── tests/
 ├── output/                # 실행할 때마다 생기는 임시 결과(git 제외)
 ├── Dockerfile             # 데모 앱 이미지(인덱스·임베딩 모델 포함)
@@ -166,7 +165,7 @@ Docker의 Ollama는 맥에서 GPU를 쓰지 못해 느립니다. 맥에 Ollama�
 - 문장 단위 청킹과 행 단위 청킹은 차이가 확인되지 않았습니다. FAQ 본문이 평균 255자로 짧습니다.
 - FAQ 2개 이상이 필요한 질문(37문항)은 1위 결과 하나로는 정답을 채울 수 없어 Hit@1이 항상 0입니다. 그래서 Hit@1과 MRR은 정답 FAQ가 하나인 111문항 기준으로 비교했습니다.
 
-> 전체 12조합 결과: `results/retrieval_v1.3/`, 해석과 편향 점검: `docs/retrieval_pipeline.md`
+> 전체 12조합 결과: `results/retrieval_v1.3/`, 해석과 편향 점검: `docs/1_retrieval.md`
 
 ### 8-2. 생성(Generation)
 
@@ -184,7 +183,7 @@ Docker의 Ollama는 맥에서 GPU를 쓰지 못해 느립니다. 맥에 Ollama�
 - C는 A와 같은 검색 결과와 같은 프롬프트를 받았고, 합격률이 23.6%p 낮았습니다. 필요한 FAQ가 검색된 경우에도 37건이 실패했고, 그중 36건은 근거 FAQ에 없는 내용(존재하지 않는 URL, FAQ에 없는 규정 등)을 포함했습니다.
 - 범위 밖 질문 10개는 A와 C 모두 근거가 없다고 답했고, FAQ에 없는 수치나 사실을 답한 경우는 없었습니다.
 
-> 생성 결과와 실패 원인 분석: `docs/generation_results.md`, 원본: `results/generation_v1.3/`
+> 생성 결과와 실패 원인 분석: `docs/2_generation.md`, 원본: `results/generation_v1.3/`
 
 ### 8-3. 채점기 검증
 
@@ -199,7 +198,7 @@ Docker의 Ollama는 맥에서 GPU를 쓰지 못해 느립니다. 맥에 Ollama�
 - 같은 문항을 다시 채점했을 때 30문항 중 29문항의 판정이 같았습니다.
 - 사람 채점자는 1명이며, 재검토 전과 후의 수치를 모두 기록했습니다.
 
-> 채점기 선정 과정과 재검토 기록: `evaluation/judge_calibration/`
+> 채점기 선정 과정과 재검토: `docs/3_judge_validation.md`, 사람 채점 원본: `evaluation/human_review/`
 
 ### 8-4. 정리
 
@@ -225,13 +224,13 @@ Docker의 Ollama는 맥에서 GPU를 쓰지 못해 느립니다. 맥에 Ollama�
 
 | 문서 | 내용 |
 |---|---|
-| `docs/generation_results.md` | 생성 실험 결과와 해석 |
-| `docs/retrieval_pipeline.md` | 검색 파이프라인, 편향 점검, 검색 결과 |
-| `docs/experiment_log.md` | 재실험의 결정·발견·수정 내용과 이유, 로컬 실행과 실험 재현 방법(13장) |
-| `data/README.md` | FAQ 데이터 교정 내역 |
-| `evaluation/evalset/README.md` | 평가셋 형식, 채점 규칙, 실행 방법 |
-| `evaluation/judge_calibration/README.md` | 사람 채점과 채점기 선정 |
-| `archive/experiment-v1/README.md` | 1차 실험 기록 |
+| `docs/1_retrieval.md` | 검색 파이프라인, 평가 설계, 편향 점검, 검색 결과 |
+| `docs/2_generation.md` | 생성 실험 결과, 실패 원인, 한계 |
+| `docs/3_judge_validation.md` | 채점 기준(루브릭), 사람 채점, 채점기 선정과 검증 |
+| `docs/experiment_log.md` | 재실험의 결정·발견·수정과 이유, 로컬 실행과 다른 조합 실험 방법(13장) |
+| `docs/history/`, `docs/plans/` | 작업 시작 시점 인수인계서, 보관 중인 2차 이터레이션 설계 초안 |
+
+폴더마다 파일 설명 README가 있습니다: `data/`, `evaluation/evalset/`, `evaluation/human_review/`, `evaluation/scripts/`, `results/*/`, `archive/experiment-v1/`.
 
 ---
 

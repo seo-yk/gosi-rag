@@ -7,7 +7,7 @@
 - 범위 밖 문항은 채점하지 않는다(사람이 판정)
 - 1차 실험의 루브릭 v1은 evaluate_generation.py에 그대로 있다
 
-루브릭 v2.1 요약 (자세한 설명: evaluation/judge_calibration/README.md)
+루브릭 v2.1 요약 (자세한 설명: docs/3_judge_validation.md)
 - 채점 모델은 판단 근거(reason)를 먼저 쓰고 점수를 낸다
 - 완결성은 평가셋의 필수 근거 그룹별로 판단한다
 - 길이·서식·말투는 무시하고, 같은 뜻의 다른 표현과 근거 FAQ에 뒷받침되는 대체 답을 인정한다

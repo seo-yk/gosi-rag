@@ -118,5 +118,5 @@ def export(csv_path: Path, xlsx_path: Path) -> None:
 
 if __name__ == "__main__":
     source = Path(sys.argv[1]) if len(sys.argv) > 1 else Path("output/review_sheet_base.csv")
-    target = Path(sys.argv[2]) if len(sys.argv) > 2 else Path("evaluation/judge_calibration/review_sheet.xlsx")
+    target = Path(sys.argv[2]) if len(sys.argv) > 2 else Path("output/review_sheet.xlsx")
     export(source, target)

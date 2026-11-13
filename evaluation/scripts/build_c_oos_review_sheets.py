@@ -8,9 +8,9 @@
    본문에 없는 수치나 사실을 답하면 실패.
 
 키는 output/에만 저장한다(채점이 끝날 때까지 열지 않음).
-사용: python evaluation/scripts/build_extra_review_sheets.py
-     python evaluation/scripts/export_review_xlsx.py output/c_review_base.csv evaluation/judge_calibration/c_review_sheet.xlsx
-     python evaluation/scripts/export_review_xlsx.py output/oos_review_base.csv evaluation/judge_calibration/oos_review_sheet.xlsx
+사용: python evaluation/scripts/build_c_oos_review_sheets.py
+     python evaluation/scripts/export_review_xlsx.py output/c_review_base.csv output/c_review_sheet.xlsx
+     python evaluation/scripts/export_review_xlsx.py output/oos_review_base.csv output/oos_review_sheet.xlsx
 """
 
 import csv

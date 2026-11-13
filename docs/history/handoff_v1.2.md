@@ -5,6 +5,7 @@
 > `handoff/validate_labels.py` → `evaluation/labeling/validate_labels_v1_2.py`, `handoff/faq_corrected.csv` → `data/faq_corrected.csv`,
 > `data/faq.csv` → `data/faq_raw.csv`, `evaluation/inputs/` → `evaluation/evalset/`, `CHANGES.csv` → `evalset_changes.csv`,
 > `generate_generation.py` → `generate_answers.py`.
+> 2026-11-13 정리 이후: `evaluation/labeling/`의 파일과 v1.2 평가셋은 `evaluation/evalset/v1.2/`로 옮기고 영어 이름으로 바꿨다(`검토결정표_v1.2.xlsx` → `label_decisions.xlsx`, `질문셋_v1.1_검수표.xlsx` → `question_review_v1.1.xlsx`, `eval_labels_v1.2_draft.jsonl` → `labels_draft.jsonl`, `validate_labels_v1_2.py` → `validate_draft.py`). `evalset_changes.csv` → `evaluation/evalset/changes.csv`. 이 문서는 `docs/history/`로 옮겼다.
 
 작성일 2026-11-12. 이 문서는 claude.ai 채팅에서 하던 작업을 Claude Code에서 이어 가기 위한 것이다.
 이 문서만 읽고 작업할 수 있게 썼다. 문서에 없는 내용은 추측하지 말고 사용자에게 묻는다.

@@ -10,11 +10,21 @@ v1.3은 v1.2와 라벨·문구가 같고 형식만 다르다(아래 "v1.2 → v1
 |---|---|
 | `evalset_v1.3.jsonl` | 본 평가셋 150줄. `status=keep` 148문항을 평가하고, `exclude` 2문항은 기록용으로 남긴다 |
 | `evalset_out_of_scope_v1.3.jsonl` | 범위 밖 질문 10문항. 별도 묶음이며 Hit·MRR 계산에 넣지 않는다 |
-| `evalset_changes.csv` | 검수표 v1.1 대비 v1.2에서 바뀐 값(v1.3의 ID·필드 이름으로 표기). 열: `id`, `field`, `before`, `after`, `reason`, `decided_by` |
-| `question_edits_approved_v1.2.json` | 검수표 P열 수정안 16건의 승인본(수정 후 문장과 사유) |
-| `evalset_v1.2.jsonl`, `evalset_out_of_scope_v1.2.jsonl` | 이전 형식. 태그 `evalset-v1.2`의 동결본으로 남겨 둔다 |
+| `changes.csv` | 검수표 v1.1 대비 v1.2에서 바뀐 값(v1.3의 ID·필드 이름으로 표기). 열: `id`, `field`, `before`, `after`, `reason`, `decided_by` |
+| `v1.2/` | v1.2를 만든 원천 자료와 v1.2 동결본(아래 표) |
 
-재생성: `python evaluation/scripts/build_faq_v2.py` → `build_evalset_v1_2.py` → `build_evalset_v1_3.py` (모두 `evaluation/scripts/`). 입력은 `data/faq_corrected.csv`와 `evaluation/labeling/`의 원천 파일이다.
+`v1.2/` 폴더 (ID는 `q001` 형식):
+
+| 파일 | 내용 |
+|---|---|
+| `question_review_v1.1.xlsx` | 질문셋 v1.1 검수표(질문, 기준 답변, 검수 의견, P열 수정안) |
+| `labels_draft.jsonl`, `out_of_scope_draft.jsonl` | 정답 FAQ 라벨 초안(Claude 작성) |
+| `label_decisions.xlsx` | 라벨 결정표(작성자가 문항별로 확정) |
+| `question_edits_approved.json` | 검수표 P열 수정안 16건의 승인본(수정 후 문장과 사유) |
+| `validate_draft.py` | 라벨 초안 형식 검증기 |
+| `evalset.jsonl`, `out_of_scope.jsonl` | 평가셋 v1.2 동결본(태그 `evalset-v1.2`) |
+
+재생성: `python evaluation/scripts/build_faq_v2.py` → `build_evalset_v1_2.py` → `build_evalset_v1_3.py` (모두 `evaluation/scripts/`). 입력은 `data/faq_corrected.csv`와 `v1.2/`의 원천 파일이다. 다시 만들어도 같은 파일이 나오는 것을 확인했다(2026-11-13).
 
 검증: `python evaluation/scripts/validate_labels.py data/faq_v2.csv data/faq_merge_map.csv evaluation/evalset/evalset_v1.3.jsonl evaluation/evalset/evalset_out_of_scope_v1.3.jsonl` → 오류 0건.
 
@@ -62,40 +72,7 @@ FAQ 데이터의 `제목`은 질문 형태이고 `본문`은 답변이다. 평�
 
 ## 실행
 
-재실험 검색 구성은 12조합이다. 청킹 2개(`row`, `sentence`) × 임베딩 입력 2개(`title`, `title_body`)에서 `sentence × title`을 뺀 3개에, 임베딩 모델 4개를 곱한다.
-
-| 역할 | 모델 |
-|---|---|
-| 경량 다국어 기준선(1차와 연속) | `intfloat/multilingual-e5-small` |
-| 다국어 대형(한국어 특화 효과의 대조군) | `BAAI/bge-m3` |
-| 한국어 특화(bge-m3를 한국어로 추가 학습) | `nlpai-lab/KURE-v1` |
-| 상용 API | `text-embedding-3-large` |
-
-임베딩 모델은 `EMBEDDING_PROVIDER`·`EMBEDDING_MODEL`(`.env` 또는 명령줄) 하나로 정하고, 모델마다 따로 실행한다. 인덱스 폴더는 `index/faq_v2/<모델 이름>`, 결과 파일은 `output/retrieval_{summary,details,out_of_scope}_<모델 이름>.csv`로 자동으로 정해진다. 폴더마다 `manifest.json`에 원천 CSV 해시와 모델 이름이 남고, 평가와 앱은 질문 임베딩 모델과 다르면 중단한다.
-
-```bash
-# 1) 인덱스 생성(교정본 data/faq_v2.csv, 청킹 row·sentence) → 2) 검색 평가
-EMBEDDING_PROVIDER=local EMBEDDING_MODEL=intfloat/multilingual-e5-small python src/indexing.py
-EMBEDDING_PROVIDER=local EMBEDDING_MODEL=intfloat/multilingual-e5-small python evaluation/scripts/evaluate_retrieval.py
-EMBEDDING_PROVIDER=local EMBEDDING_MODEL=BAAI/bge-m3 python src/indexing.py
-EMBEDDING_PROVIDER=local EMBEDDING_MODEL=BAAI/bge-m3 python evaluation/scripts/evaluate_retrieval.py
-EMBEDDING_PROVIDER=local EMBEDDING_MODEL=nlpai-lab/KURE-v1 python src/indexing.py
-EMBEDDING_PROVIDER=local EMBEDDING_MODEL=nlpai-lab/KURE-v1 python evaluation/scripts/evaluate_retrieval.py
-EMBEDDING_PROVIDER=openai EMBEDDING_MODEL=text-embedding-3-large python src/indexing.py
-EMBEDDING_PROVIDER=openai EMBEDDING_MODEL=text-embedding-3-large python evaluation/scripts/evaluate_retrieval.py
-# 모델 비교표: output/retrieval_comparison.{csv,md} (공개본은 results/retrieval_v1.3/)
-python evaluation/scripts/build_retrieval_comparison.py output/retrieval_summary_multilingual-e5-small.csv output/retrieval_summary_bge-m3.csv output/retrieval_summary_kure-v1.csv output/retrieval_summary_text-embedding-3-large.csv
-# 3) 생성과 생성 평가: .env의 EMBEDDING_MODEL·CHUNKING_MODE·EMBEDDING_MODE를 1단계에서 고른 구성으로 설정
-python evaluation/scripts/generate_answers.py
-# 4) 범위 밖 10문항 답변 생성 → 자동 평가 없이 "채점 규칙"의 범위 밖 기준으로 직접 판정
-python evaluation/scripts/generate_answers.py --questions evaluation/evalset/evalset_out_of_scope_v1.3.jsonl --output output/generated_answers_out_of_scope.csv
-```
-
-검색 요약의 `subset` 열은 `전체`, `단일 그룹 전체`(복수근거를 뺀 111문항), `유형: …` 4개, `작성: 본인`·`작성: Claude`다. Hit@1은 `전체`와 `단일 그룹 전체`를 둘 다 보고한다. 검색 파이프라인과 편향 점검 내용은 `docs/retrieval_pipeline.md`에 있다.
-
-기본값은 모두 교정본 기준이다(`--csv data/faq_v2.csv`, 인덱스 `index/faq_v2/<모델 이름>`). 원본으로 1차 실험을 재현하려면 `python src/indexing.py --csv data/faq_raw.csv --output index/faq_v1/<모델 이름>`으로 인덱스를 따로 만들고, 평가할 때 `--index-dir`을, 앱에서는 `INDEX_DIR`를 같은 폴더로 지정한다.
-
-`sentence` 청킹은 본문을 문장 단위로 자르고(20자 미만 조각은 앞 문장에 붙임) 청크마다 FAQ 제목을 유지한다. 교정본 기준 634청크, FAQ당 평균 2.2개다. `evaluate_retrieval.py`는 청크를 FAQ 연번 기준으로 중복 제거한 뒤, 서로 다른 FAQ 5개(`--depth`)로 @1·@3·@5를 함께 계산한다. 결과 파일에는 평가셋 이름(`eval_set`), 문항 수(`questions`), 인덱스 폴더, 임베딩 모델을 함께 기록한다.
+평가셋으로 검색·생성 실험을 돌리는 방법은 `docs/experiment_log.md` 13장, 검색 지표와 채점 방식은 `docs/1_retrieval.md` 5장에 있다.
 
 ## 문항 수
 
@@ -128,7 +105,7 @@ python evaluation/scripts/generate_answers.py --questions evaluation/evalset/eva
 
 ## v1.1 → v1.2 변경 요약 (라벨·문구)
 
-`evalset_changes.csv`의 필드별 건수다.
+`evaluation/evalset/changes.csv`의 필드별 건수다.
 
 | 필드 | 건수 | 주요 결정 근거 |
 |---|---|---|
@@ -141,8 +118,8 @@ python evaluation/scripts/generate_answers.py --questions evaluation/evalset/eva
 
 - 44: 결정표 1에서 대체 정답 제안이 기각되어 v1.1 라벨(필수 277, 보조 276)을 유지했다.
 - 122: 보조 FAQ를 262에서 261(면접 블라인드)로 바로잡았다(결정표 5).
-- 결정표 `5_기타확인` 시트의 값은 구글 시트 `검토결정표_v1.2`에서 가져왔다(2026-11-12 확인). `evaluation/labeling/검토결정표_v1.2.xlsx`에는 이 시트가 비어 있다.
-- 평가셋을 만든 원천 파일은 `evaluation/labeling/`에 있다: `질문셋_v1.1_검수표.xlsx`(질문·기준 답변), `eval_labels_v1.2_draft.jsonl`(라벨 초안), `검토결정표_v1.2.xlsx`(결정). 이 파일들과 `question_edits_approved_v1.2.json`은 `q001` 형식 ID를 쓴다.
+- 결정표 `5_기타확인` 시트의 값은 구글 시트 `검토결정표_v1.2`에서 가져왔다(2026-11-12 확인). `evaluation/evalset/v1.2/label_decisions.xlsx`에는 이 시트가 비어 있다.
+- 평가셋을 만든 원천 파일은 `evaluation/evalset/v1.2/`에 있다: `evaluation/evalset/v1.2/question_review_v1.1.xlsx`(질문·기준 답변), `evaluation/evalset/v1.2/labels_draft.jsonl`(라벨 초안), `evaluation/evalset/v1.2/label_decisions.xlsx`(결정). 이 파일들과 `evaluation/evalset/v1.2/question_edits_approved.json`은 `q001` 형식 ID를 쓴다.
 
 ## v1.2 → v1.3 변경 (형식만)
 

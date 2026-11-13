@@ -1,6 +1,6 @@
-# 생성 실험 결과 (평가셋 v1.3)
+# 2. 생성 실험 (평가셋 v1.3)
 
-작성일 2026-11-13. 검색 실험(`docs/retrieval_pipeline.md`)에서 고른 검색 구성 위에서, 생성 모델과 근거 조건을 바꿔 답변 품질을 비교했다. 설계와 판단 과정 전체는 `docs/experiment_log.md` 7~8장에 있다.
+작성일 2026-11-13. 검색 실험(`docs/1_retrieval.md`)에서 고른 검색 구성 위에서, 생성 모델과 근거 조건을 바꿔 답변 품질을 비교했다. 설계와 판단 과정 전체는 `docs/experiment_log.md` 7~8장에 있다.
 
 ## 1. 요약
 
@@ -133,16 +133,17 @@ A의 실패는 복수근거 문항에 몰려 있다(8건). 여러 근거를 함�
 
 ## 9. 파일과 재현
 
+결과 파일은 `results/generation_v1.3/`에 있다(파일 목록은 그 폴더의 README).
+
 | 파일 | 내용 |
 |---|---|
-| `results/generation_v1.3/generated_answers_*.csv` | 생성 답변(A·B·C, 범위 밖 A·C) |
-| `results/generation_v1.3/judged_*__gemini-3.8-flash.csv` | 자동 채점 결과(판단 근거 포함) |
-| `results/generation_v1.3/rejudge_*.csv` | 반복 채점 30문항 |
-| `evaluation/judge_calibration/` | 사람 채점, 채점기 후보 비교, 재검토 기록 |
+| `answers_<조건>.csv`, `answers_<A\|C>_out_of_scope.csv` | 생성 답변. 열: `id`, `type`, `question`, `required_faqs`, `reference_answer`, `model`, `context_setup`, `context_faqs`, `context_text`, `answer` |
+| `judged_<조건>.csv` | 자동 채점(gemini-3.8-flash, 루브릭 v2.1). 열: `id`, `model`, `context_setup`, `judge_model`, `groundedness`, `correctness`, `groups_covered`, `completeness`, `unjustified_refusal`, `verdict`, `reason` |
+| `rejudged_<조건>.csv` | 반복 채점(조건별 10문항) |
 
-```bash
-# 생성 (A: 기본 .env 구성, B: --oracle, C: GENERATION_PROVIDER=ollama GENERATION_MODEL=exaone3.5-7.8b-ctx8k)
-GENERATION_PROVIDER=openai GENERATION_MODEL=gpt-5.4-mini python evaluation/scripts/generate_answers.py --output output/generated_answers_A_gpt-5.4-mini.csv
-# 채점
-python evaluation/scripts/judge_answers.py output/generated_answers_A_gpt-5.4-mini.csv --output output/judged_A.csv --judge-provider gemini
-```
+- 생성 프롬프트는 세 조건 공통(`src/generation.py`의 `build_prompt`), temperature 0
+- 답변 길이 평균: A 258자, B 235자, C 366자
+- 토큰 사용(채점 444문항): 입력 약 61.8만, 출력 약 4.1만, 생각 약 12.6만
+- 사람 채점과 채점기 검증: `docs/3_judge_validation.md`, 원본은 `evaluation/human_review/`
+
+다시 실행하는 방법(생성, Ollama 모델 준비, 채점)은 `docs/experiment_log.md` 13장에 있다.

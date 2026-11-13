@@ -1,9 +1,9 @@
 """평가셋 v1.2 생성: 검수표 v1.1 + 라벨 초안 + 검토결정표 + 승인된 P열 수정안
 
-입력(evaluation/labeling/): 질문셋_v1.1_검수표.xlsx, eval_labels_v1.2_draft.jsonl,
-               eval_out_of_scope_v1.2_draft.jsonl, 검토결정표_v1.2.xlsx
-입력(evaluation/evalset/): question_edits_approved_v1.2.json (검수표 P열 수정안, 사용자 승인본)
-출력(evaluation/evalset/): evalset_v1.2.jsonl, evalset_out_of_scope_v1.2.jsonl, evalset_changes.csv
+입력(evaluation/evalset/v1.2/): question_review_v1.1.xlsx(질문 검수표), labels_draft.jsonl,
+               out_of_scope_draft.jsonl, label_decisions.xlsx(라벨 결정표),
+               question_edits_approved.json(검수표 P열 수정안, 사용자 승인본)
+출력: evaluation/evalset/v1.2/evalset.jsonl, evaluation/evalset/v1.2/out_of_scope.jsonl, evaluation/evalset/changes.csv
 
 사용: python evaluation/scripts/build_evalset_v1_2.py
 """
@@ -18,11 +18,11 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from xlsx_reader import read_workbook  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
-LABELING = ROOT / "evaluation/labeling"
+LABELING = ROOT / "evaluation/evalset/v1.2"
 EVALSET = ROOT / "evaluation/evalset"
 VERSION = "v1.2"
 
-# 결정표 5_기타확인: evaluation/labeling/검토결정표_v1.2.xlsx에는 비어 있어,
+# 결정표 5_기타확인: evaluation/evalset/v1.2/label_decisions.xlsx에는 비어 있어,
 # 사용자가 입력한 구글 시트 '검토결정표_v1.2'의 값(2026-11-12 확인)을 쓴다.
 OTHER_DECISIONS = {
     "q122 보조 FAQ": "261로 변경",
@@ -52,15 +52,15 @@ def sheet_rows(sheet, width):
 
 
 def main() -> None:
-    review = sheet_rows(read_workbook(LABELING / "질문셋_v1.1_검수표.xlsx")["검수"], 18)
-    with (LABELING / "eval_labels_v1.2_draft.jsonl").open(encoding="utf-8") as file:
+    review = sheet_rows(read_workbook(LABELING / "question_review_v1.1.xlsx")["검수"], 18)
+    with (LABELING / "labels_draft.jsonl").open(encoding="utf-8") as file:
         labels = [json.loads(line) for line in file]
-    decisions = read_workbook(LABELING / "검토결정표_v1.2.xlsx")
+    decisions = read_workbook(LABELING / "label_decisions.xlsx")
     s1 = sheet_rows(decisions["1_필수라벨"], 8)
     s2 = sheet_rows(decisions["2_기준답변"], 8)
     s3 = sheet_rows(decisions["3_유형재분류"], 8)
     s4 = sheet_rows(decisions["4_범위밖"], 8)
-    approved_p = json.loads((EVALSET / "question_edits_approved_v1.2.json").read_text(encoding="utf-8"))
+    approved_p = json.loads((EVALSET / "v1.2/question_edits_approved.json").read_text(encoding="utf-8"))
 
     changes, undecided = [], []
 
@@ -184,7 +184,7 @@ def main() -> None:
 
     # 범위 밖: 수락=유지, 기각=exclude, 수정=F열 문구
     out_of_scope = []
-    with (LABELING / "eval_out_of_scope_v1.2_draft.jsonl").open(encoding="utf-8") as file:
+    with (LABELING / "out_of_scope_draft.jsonl").open(encoding="utf-8") as file:
         for item in map(json.loads, file):
             qid = item["question_id"]
             decision = s4[qid][4]
@@ -203,11 +203,11 @@ def main() -> None:
     if undecided:
         raise SystemExit(f"결정 칸이 빈 행: {undecided}")
 
-    with (EVALSET / "evalset_v1.2.jsonl").open("w", encoding="utf-8") as file:
+    with (EVALSET / "v1.2/evalset.jsonl").open("w", encoding="utf-8") as file:
         file.writelines(json.dumps(x, ensure_ascii=False) + "\n" for x in output)
-    with (EVALSET / "evalset_out_of_scope_v1.2.jsonl").open("w", encoding="utf-8") as file:
+    with (EVALSET / "v1.2/out_of_scope.jsonl").open("w", encoding="utf-8") as file:
         file.writelines(json.dumps(x, ensure_ascii=False) + "\n" for x in out_of_scope)
-    with (EVALSET / "evalset_changes.csv").open("w", encoding="utf-8-sig", newline="") as file:
+    with (EVALSET / "changes.csv").open("w", encoding="utf-8-sig", newline="") as file:
         writer = csv.DictWriter(file, fieldnames=["question_id", "field", "before", "after", "reason", "decided_by"])
         writer.writeheader()
         writer.writerows(changes)

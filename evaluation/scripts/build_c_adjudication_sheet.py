@@ -1,6 +1,6 @@
 """C(EXAONE) 사람-채점기 불일치 재검토(2단계) 시트: 채점기 판단 근거를 보고 최종 판단
 
-- 대상: c_human_labels.csv에서 사람 판정과 채점기(gemini-3.8-flash) 판정이 다른 문항
+- 대상: evaluation/human_review/3_c_review/labels.csv에서 사람 판정과 채점기(gemini-3.8-flash) 판정이 다른 문항
 - 보여 주는 것: 질문, 필수 근거, 기준 답변, 제공된 근거 FAQ, 생성 답변, 처음 사람 점수, 채점기 점수와 판단 근거
 - 입력: 최종 근거성·정확성·그룹별 충족·회피, 결정(처음 유지 / 채점기 의견 반영 / 둘 다 아님), 메모
 - 채점기 의견을 본 뒤의 판단이므로, 결과는 처음 판정과 함께 기록하고 두 기준으로 모두 보고한다
@@ -18,9 +18,9 @@ from openpyxl.worksheet.datavalidation import DataValidation
 
 sys.path.append(str(Path(__file__).resolve().parents[2]))
 
-CAL = Path("evaluation/judge_calibration")
+CAL = Path("evaluation/human_review")
 GEN = Path("results/generation_v1.3")
-OUTPUT = CAL / "c_adjudication_sheet.xlsx"
+OUTPUT = Path("output/c_adjudication_sheet.xlsx")
 YELLOW = PatternFill("solid", fgColor="FFF2CC")
 GRAY = PatternFill("solid", fgColor="D9D9D9")
 BLUE = PatternFill("solid", fgColor="DDEBF7")
@@ -49,9 +49,9 @@ def read(path: Path) -> list[dict[str, str]]:
 
 
 def main() -> None:
-    labels = [r for r in read(CAL / "c_human_labels.csv") if r["verdict"] != r["judge_verdict"]]
+    labels = [r for r in read(CAL / "3_c_review" / "labels.csv") if r["verdict"] != r["judge_verdict"]]
     base = {r[0]: r for r in csv.reader(open("output/c_review_base.csv", encoding="utf-8-sig"))}
-    judged = {r["id"]: r for r in read(GEN / "judged_C_exaone3.5-7.8b__gemini-3.8-flash.csv")}
+    judged = {r["id"]: r for r in read(GEN / "judged_C.csv")}
 
     workbook = Workbook()
     sheet = workbook.active

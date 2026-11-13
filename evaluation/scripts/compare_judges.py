@@ -6,7 +6,7 @@
 - 조건별(A/B) 판정 일치율, error 수
 사람 판정이 대부분 pass라서(35/40) 단순 일치율만으로는 판단하지 않는다.
 
-사용: python evaluation/scripts/compare_judges.py output/calibration_<모델>_A.csv output/calibration_<모델>_B.csv [...]
+사용: python evaluation/scripts/compare_judges.py evaluation/human_review/1_ab_review/judges/<모델>_A.csv evaluation/human_review/1_ab_review/judges/<모델>_B.csv [...]
      (같은 모델의 A·B 파일을 묶어서 비교한다. judge_model 열로 모델을 구분)
 """
 
@@ -78,15 +78,15 @@ def pct(value) -> str:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="후보 채점 모델과 사람 채점의 일치도를 비교합니다.")
-    parser.add_argument("judged", nargs="+", type=Path, help="calibration_<모델>_<조건>.csv")
-    parser.add_argument("--human", type=Path, default=Path("evaluation/judge_calibration/human_labels.csv"))
-    parser.add_argument("--output", type=Path, default=Path("evaluation/judge_calibration/judge_comparison.md"))
+    parser.add_argument("judged", nargs="+", type=Path, help="<모델>_<조건>.csv")
+    parser.add_argument("--human", type=Path, default=Path("evaluation/human_review/1_ab_review/labels.csv"))
+    parser.add_argument("--output", type=Path, default=Path("output/judge_comparison.md"))
     args = parser.parse_args()
 
     human = read_csv(args.human)
     by_model: dict[str, list[dict[str, str]]] = defaultdict(list)
     for path in args.judged:
-        condition = path.stem.rsplit("_", 1)[-1]  # calibration_<모델>_A → A
+        condition = path.stem.rsplit("_", 1)[-1]  # <모델>_A → A
         for row in read_csv(path):
             by_model[row["judge_model"]].append(row | {"condition": condition})
 

@@ -5,7 +5,7 @@
 - 본 평가셋 행: required_faqs가 있는 행. 바깥 목록은 AND, 안쪽 목록은 OR
 - 범위 밖 행: required_faqs가 없는 행. similar_faqs만 검사
 - status=exclude 행은 ID 중복만 검사한다
-v1.2 형식 검증기는 evaluation/labeling/validate_labels_v1_2.py에 있다.
+v1.2 형식 검증기는 evaluation/evalset/v1.2/validate_draft.py에 있다.
 """
 import csv
 import json
