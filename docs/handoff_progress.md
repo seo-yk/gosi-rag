@@ -35,7 +35,8 @@ python -m pytest -q           # 78개 통과 확인
 | 생성(작업 4의 2단계) | A(gpt-5.4-mini + 검색), B(gpt-5.4-mini + 정답 근거), C(EXAONE 3.5 7.8B + 검색) 생성 완료 | `results/generation_v1.3/` |
 | 생성 파이프라인 점검 | Ollama 2,048토큰 잘림 발견 → 8K 모델·차단 장치, 채점 파싱 실패는 error로 분리 | `docs/experiment_log.md` 8장 |
 | 루브릭 v2 | 근거성 2만 합격, 그룹별 완결성, 답 회피, 길이·서식 무시, 판단 근거 기록 | `evaluation/scripts/judge_answers.py` |
-| 사람 채점지 | 블라인드 40문항(A 20 + B 20) Excel | `evaluation/judge_calibration/` |
+| 사람 채점 | 블라인드 40문항(A 20 + B 20), 사람 판정 pass 35·fail 5 | `evaluation/judge_calibration/` |
+| 채점기 선정 | 후보 6개 비교 → gemini-3.8-flash(판정 일치 90%, kappa 0.45) | `evaluation/judge_calibration/judge_comparison.md` |
 
 검색 결과 요약(Hit@1, 단일 그룹 111문항 기준): bge-m3 `sentence × title_body` 98.2%가 최고다. 5%p를 넘는 모델 차이는 bge-m3와 e5-small 사이 하나뿐이고, bge-m3·KURE-v1·text-embedding-3-large 사이에는 차이가 확인되지 않았다. 작성자 편향(Claude 초안 문항이 더 쉬움)의 원인은 복수근거 질문을 만든 방식의 차이다(9-1).
 
@@ -49,13 +50,15 @@ python -m pytest -q           # 78개 통과 확인
 
 ## 4. 남은 일
 
-1. **사람 채점(사용자 진행 중):** `evaluation/judge_calibration/review_sheet.xlsx`. 끝나면 `output/review_key.csv`로 조건을 맞춰 본다.
-2. **채점 모델 선정:** 4B 로컬 채점기(`gemma3-4b-ctx8k`)는 루브릭 v2를 일관되게 적용하지 못했다. 후보 채점 모델들을 같은 40문항에 돌려 사람과의 일치율로 고른다. 후보는 더 큰 로컬 모델, 다른 계열 API(키 필요)이고, OpenAI 모델은 A·B와 같은 계열이라 주의한다.
-3. **전체 채점:** 고른 채점 모델로 A·B·C 148문항씩 채점(`judge_answers.py`), 일부 문항은 반복 채점으로 일관성 확인. 필요하면 C에서 추가 사람 채점.
-4. **결과 요약:** 조건별·유형별·작성자별 합격률, 답변 길이 편향(C의 답변이 가장 김), 범위 밖 10문항 사람 판정(A·C).
-5. **미결정:** 사전등록 경로 상충 문항(38·49·50·55)의 정답 처리.
-6. **루트 README 최종 수정**과 **브랜치 정리·PR.**
-7. **개선 후보(미정):** 복수 질문을 하위 질문으로 나눠 검색, 리랭커, 문장 청킹을 생성에 쓸 때 원래 FAQ 전체를 근거로 넘기기, 재현용 Dockerfile.
+1. **전체 채점(진행 중):** `gemini-3.8-flash`(루브릭 v2.1)로 A·B·C 148문항씩. 결과는 `output/judged_*__gemini-3.8-flash.csv`. 실행: `python evaluation/scripts/judge_answers.py output/generated_answers_<조건>.csv --output output/judged_<조건>__gemini-3.8-flash.csv --judge-provider gemini`
+2. **불일치 재검토(사용자, 저녁 예정):** `evaluation/judge_calibration/rereview_sheet.xlsx` 8문항. 키는 `output/rereview_key.csv`
+3. **반복 채점 일관성:** 30문항 재채점. **C 사람 채점 15문항**(EXAONE 답변에도 채점기가 공정한지 확인)
+4. **결과 요약:** 조건별·유형별·작성자별 합격률, 답변 길이 편향(C 답변이 가장 김), 범위 밖 10문항 사람 판정(A·C)
+5. **미결정:** 사전등록 경로 상충 문항(38·49·50·55) 처리, B-66 라벨 의심(평가셋 v1.4 여부)
+6. **루트 README 최종 수정**과 **브랜치 정리·PR**
+7. **개선 후보(미정):** 복수 질문을 하위 질문으로 나눠 검색, 리랭커, 문장 청킹을 생성에 쓸 때 원래 FAQ 전체를 근거로 넘기기, 재현용 Dockerfile
+
+채점기 선정 과정 전체(무료 한도, 신규 사용자 모델 제한, 후보 비교, 불일치 분석)는 `docs/experiment_log.md` 8-7·8-8에 있다.
 
 ## 5. 작업 방식 (사용자 선호)
 

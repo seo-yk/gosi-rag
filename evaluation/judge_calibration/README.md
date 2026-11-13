@@ -47,3 +47,24 @@ python evaluation/scripts/export_review_xlsx.py          # evaluation/judge_cali
 ## 채점 후
 
 채운 파일을 같은 이름(`review_sheet.xlsx`)으로 저장하면 된다. 그다음 후보 채점 모델들을 같은 40문항에 돌려 항목별·판정 일치율을 비교하고, 가장 잘 맞는 모델을 채택한다.
+
+## 결과: 채점 모델 선정 (2026-11-13)
+
+후보 6개를 같은 40문항(루브릭 v2.1)으로 채점해 사람과 비교했다. 상세 표는 `judge_comparison.md`, 후보별 원본은 `candidates/`에 있다.
+
+- 로컬 `gemma3-4b`, `qwen2.5:7b`: 판정 일치 40%·30%(kappa 0.10·0.06). 대부분을 fail로 줘서 탈락
+- `gemini-2.5-flash`: 24문항에서 91.7%(kappa 0.70). 무료 한도(프로젝트·모델당 하루 20회)에 걸려 B를 4문항까지만 채점했다. 유료 키는 신규 사용자로 분류돼 이 모델을 쓸 수 없어 40문항을 채우지 못했다
+- `gemini-3.5/3.7/3.8-flash`: 셋 다 판정 일치 90.0%, kappa 0.45, 사람 fail 5개 중 2개 검출. 불일치 문항도 같다(A-7, A-19, A-38, B-66)
+- **채택: `gemini-3.8-flash`.** 한계: 사람보다 pass를 더 주는 경향(채점기 92.5% 대 사람 87.5%)
+
+## 불일치 재검토
+
+| 파일 | 내용 |
+|---|---|
+| `rereview_sheet.xlsx` | 불일치 4 + 일치 4를 섞은 8문항. 처음 채점 결과와 채점기 판정은 숨김. 처음 채점지와 같은 방식으로 채운다 |
+| `output/rereview_key.csv` | 번호별 원래 문항과 불일치 여부. 재검토가 끝날 때까지 열지 않는다 |
+
+다시 만들기: `python evaluation/scripts/build_rereview_sheet.py` → `python evaluation/scripts/export_review_xlsx.py output/rereview_base.csv evaluation/judge_calibration/rereview_sheet.xlsx`
+
+재검토 후에도 다르면 채점기의 판단 근거를 보고 최종 판단을 정하고, 그 사실을 기록한다. 일치율은 처음 채점 기준과 재검토 후 기준을 둘 다 보고한다.
+
