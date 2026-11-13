@@ -1,0 +1,22 @@
+# 비밀값: 이미지에 넣지 않는다(실행할 때 --env-file로 넘김)
+.env
+.env.*
+
+# 로컬 환경·생성물
+.git
+.venv
+.idea
+.claude
+.DS_Store
+.pytest_cache
+**/__pycache__
+index/
+output/
+
+# 데모 실행에 필요 없는 기록
+archive/
+results/
+evaluation/
+docs/
+tests/
+README.draft.md

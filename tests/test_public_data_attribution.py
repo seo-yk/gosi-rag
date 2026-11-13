@@ -7,7 +7,7 @@ ROOT = Path(__file__).parents[1]
 
 
 def test_public_dataset_is_included_with_expected_schema_and_rows() -> None:
-    documents = load_faq_csv(ROOT / "data" / "faq.csv")
+    documents = load_faq_csv(ROOT / "data" / "faq_raw.csv")
 
     assert len(documents) == 289
     assert all(document.title and document.body for document in documents)

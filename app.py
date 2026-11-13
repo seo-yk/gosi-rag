@@ -1,4 +1,5 @@
 import os
+import re
 from math import ceil
 from time import perf_counter
 from dataclasses import dataclass
@@ -10,8 +11,8 @@ from google import genai
 from openai import OpenAI
 
 from src.config import load_project_env
-from src.generation import GeneratedAnswer, GeminiAnswerGenerator, OpenAIAnswerGenerator
-from src.indexing import build_embedder, index_bundle_paths
+from src.generation import GeneratedAnswer, GeminiAnswerGenerator, OpenAIAnswerGenerator, ollama_context_length
+from src.indexing import build_embedder, check_index_model, default_index_dir, index_bundle_paths
 from src.retrieval import FaissRetriever, SearchMetrics, build_retriever
 
 OPENAI_EMBEDDING_COST_PER_1M_TOKENS = 0.02
@@ -79,8 +80,14 @@ class Settings:
         chunking_mode = values.get("CHUNKING_MODE", "row")
         embedding_mode = values.get("EMBEDDING_MODE", "title_body")
         top_k = int(values.get("TOP_K", "3"))
+        embedding_model = values.get(
+            "EMBEDDING_MODEL",
+            "text-embedding-3-small" if embedding_provider == "openai" else "intfloat/multilingual-e5-small",
+        )
+        # 인덱스 폴더: INDEX_DIR가 없으면 index/faq_v2/<모델 이름> (src/indexing.py 기본값과 같음)
+        index_dir = values.get("INDEX_DIR", "").strip() or default_index_dir(embedding_model)
         index_path, metadata_path = index_bundle_paths(
-            values.get("INDEX_DIR", "index"),
+            index_dir,
             chunking_mode,  # type: ignore[arg-type]
             embedding_provider,  # type: ignore[arg-type]
             embedding_mode,  # type: ignore[arg-type]
@@ -91,10 +98,7 @@ class Settings:
             ollama_base_url=ollama_base_url,
             embedding_provider=embedding_provider,
             generation_provider=generation_provider,
-            embedding_model=values.get(
-                "EMBEDDING_MODEL",
-                "text-embedding-3-small" if embedding_provider == "openai" else "intfloat/multilingual-e5-small",
-            ),
+            embedding_model=embedding_model,
             generation_model=values.get(
                 "GENERATION_MODEL",
                 "gemini-3.5-flash"
@@ -125,6 +129,8 @@ def build_services(
             "EMBEDDING_MODEL": settings.embedding_model,
         },
     )
+    # 인덱스를 만든 모델과 질문 임베딩 모델이 다르면 검색 결과가 조용히 틀리므로 멈춘다
+    check_index_model(settings.index_path, settings.embedding_model)
     retriever = build_retriever(settings.index_path, settings.metadata_path, embedder)
     if settings.generation_provider == "gemini":
         generator = GeminiAnswerGenerator(
@@ -149,6 +155,7 @@ def build_services(
                 max_retries=1,
             ),
             model=settings.generation_model,
+            context_limit=ollama_context_length(settings.ollama_base_url, settings.generation_model),
         )
     else:
         generator = OpenAIAnswerGenerator(
@@ -243,6 +250,27 @@ def build_metrics_data(
         embedding_cost_estimate_usd=embedding_cost_estimate_usd,
         generation_cost_estimate_usd=generation_cost_estimate_usd,
     )
+
+
+# Streamlit 마크다운에서 서식으로 해석되는 문자. FAQ 원문처럼 일반 텍스트를 그대로 보여 줄 때 이스케이프한다
+_MARKDOWN_SPECIAL = re.compile(r"([\\`*_{}\[\]()#+!|~$<>])")
+_LINE_START_LIST = re.compile(r"^(\s*)(-|\d+\.)(\s)", re.MULTILINE)
+
+
+def answer_markdown(text: str) -> str:
+    """생성 답변을 마크다운으로 보여 주되, 범위 표기(3~4일)와 금액($)이 서식으로 바뀌지 않게 한다
+
+    - Streamlit 마크다운은 ~ 두 개 사이를 취소선으로 바꾼다. "3~4일 … 8242~8251"처럼 범위가 두 번 나오면 핵심 정보에 줄이 그어진다
+    - $는 수식(LaTeX)으로 해석될 수 있다
+    굵게(**), 목록 같은 나머지 서식은 그대로 둔다. HTML은 Streamlit 기본값대로 해석하지 않는다
+    """
+    return re.sub(r"(?<!\\)([~$])", r"\\\1", text)
+
+
+def plain_text_markdown(text: str) -> str:
+    """일반 텍스트(FAQ 원문·제목)를 서식 없이 원문 그대로 보이게 마크다운 특수문자를 모두 이스케이프한다"""
+    escaped = _MARKDOWN_SPECIAL.sub(r"\\\1", text)
+    return _LINE_START_LIST.sub(lambda m: m.group(1) + m.group(2).replace("-", "\\-").replace(".", "\\.") + m.group(3), escaped)
 
 
 def render_metrics(metrics: MetricsData) -> None:
@@ -352,7 +380,7 @@ def main() -> None:
 
         st.subheader("답변")
         if answer.text:
-            st.write(answer.text)
+            st.markdown(answer_markdown(answer.text))
         if generation_notice:
             st.warning(generation_notice)
         if generation_error_detail:
@@ -362,9 +390,9 @@ def main() -> None:
         for source in answer.sources:
             document = source.document
             with st.expander(
-                f"FAQ {document.resolved_row_id} · {document.title} · 유사도 {source.score:.3f}"
+                f"FAQ {document.resolved_row_id} · {plain_text_markdown(document.title)} · 유사도 {source.score:.3f}"
             ):
-                st.write(document.body)
+                st.markdown(plain_text_markdown(document.body))
 
 
 if __name__ == "__main__":

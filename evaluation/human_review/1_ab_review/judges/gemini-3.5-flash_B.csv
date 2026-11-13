@@ -1,0 +1,21 @@
+﻿id,model,context_setup,judge_model,groundedness,correctness,groups_covered,completeness,unjustified_refusal,verdict,reason
+8,gpt-5.4-mini,oracle: data/faq_v2.csv,gemini-3.5-flash (rubric v2.1),2,1,1,1,0,pass,"후보 답변은 주민등록지나 거주지와 상관없이 시험 지역을 선택할 수 있다고 정확히 안내하며, 세부 시험장은 선택할 수 없다는 관련 사실도 FAQ에 근거하여 올바르게 제시했습니다."
+34,gpt-5.4-mini,oracle: data/faq_v2.csv,gemini-3.5-flash (rubric v2.1),2,1,1,1,0,pass,지원자의 답변은 FAQ 241 내용을 바탕으로 경력경쟁채용과 공개경쟁채용의 시험과목이 다르게 규정되어 있으며 기관장이 일부 변경할 수 있어 공고문 확인이 필수적임을 정확히 설명하고 있습니다. 모든 주장이 FAQ 본문 내용에 근거합니다.
+39,gpt-5.4-mini,oracle: data/faq_v2.csv,gemini-3.5-flash (rubric v2.1),2,1,1,1,0,pass,"후보 답변은 기초생활수급자의 경우 원서접수 당시 응시수수료 납부가 면제된다는 점을 정확히 설명하고 있으며, 모든 내용이 제공된 FAQ에 기반하고 있습니다."
+44,gpt-5.4-mini,oracle: data/faq_v2.csv,gemini-3.5-flash (rubric v2.1),2,1,1,1,0,pass,candidate answer correctly answers that a new answer sheet is not necessary and that correction tape can be used (while fluid and stickers cannot). All details are fully grounded in the provided FAQ context.
+50,gpt-5.4-mini,oracle: data/faq_v2.csv,gemini-3.5-flash (rubric v2.1),2,1,1,1,0,pass,후보 답변은 영어능력검정시험 성적 인정 기준 및 성적표 제출 여부에 대해 FAQ 289 내용에 기반하여 정확하고 완벽하게 설명하고 있습니다.
+55,gpt-5.4-mini,oracle: data/faq_v2.csv,gemini-3.5-flash (rubric v2.1),2,1,1|1,1,0,pass,후보 답변은 영어성적 사전등록 위치 및 기간(Group 2)과 인정기준 및 성적표 제출 여부(Group 1)를 FAQ 정보에 기반하여 정확하게 설명하고 있습니다.
+66,gpt-5.4-mini,oracle: data/faq_v2.csv,gemini-3.5-flash (rubric v2.1),2,1,1|1,1,0,pass,"후보 답변은 FAQ 맥락에 기반하여 두 가지 질문(임용유예 무조건 승인 여부, 유예 중 휴학 가능 여부)에 대해 정확하게 답변하고 있습니다."
+79,gpt-5.4-mini,oracle: data/faq_v2.csv,gemini-3.5-flash (rubric v2.1),2,1,1|1,1,0,pass,"candidate answer fully and accurately addresses all parts of the question, providing supported details from both FAQ 132 and FAQ 133."
+80,gpt-5.4-mini,oracle: data/faq_v2.csv,gemini-3.5-flash (rubric v2.1),2,1,1|1,1,0,pass,후보 답변은 상이등급 유공자가 일반 모집단위에 지원할 수 있는지 여부와 장애인 구분모집 응시 시 취업지원 가산점 제공 여부에 대해 제공된 FAQ 내용을 바탕으로 정확히 답변하였습니다.
+82,gpt-5.4-mini,oracle: data/faq_v2.csv,gemini-3.5-flash (rubric v2.1),2,1,1|1,1,0,pass,후보 답변은 본문의 FAQ 143과 144를 바탕으로 단과대학이 나뉜 경우와 편입한 경우의 출신학교 소재지 판단 기준을 정확히 설명하고 있습니다. 모든 주장은 출처 문서에 기반하며 두 그룹을 모두 충족합니다.
+86,gpt-5.4-mini,oracle: data/faq_v2.csv,gemini-3.5-flash (rubric v2.1),2,1,1|1,1,0,pass,"후보 답변은 FAQ 177과 FAQ 178에 근거하여 선고유예기간(2년) 및 선고유예를 받은 시점(판결 확정일, 하급심/대법원 구분)을 정확하게 설명하였습니다."
+95,gpt-5.4-mini,oracle: data/faq_v2.csv,gemini-3.5-flash (rubric v2.1),2,1,1,1,0,pass,"후보 답변은 5급 공채 사회복지직렬 응시 시 사회복지사 자격증이 필수가 아님을 명확히 설명하고 있으며, 경력경쟁채용시험의 경우 예외가 있을 수 있다는 내용까지 FAQ 내용을 완벽하게 반영하여 정확하게 작성되었습니다."
+99,gpt-5.4-mini,oracle: data/faq_v2.csv,gemini-3.5-flash (rubric v2.1),2,1,1,1,0,pass,"후보 답변은 FAQ 189에 기반하여 학제통합 논술시험의 정의, 평가 목적, 시험 방식 및 기출문제 확인 방법까지 정확하게 설명하고 있습니다."
+104,gpt-5.4-mini,oracle: data/faq_v2.csv,gemini-3.5-flash (rubric v2.1),2,1,1,1,0,pass,"후보 답변은 FAQ 맥락에 기반하여 확대독서기 사용 수험생을 위한 축소문제지(A4 규격, 82%) 제공 여부 및 신청 방법에 대해 정확하고 충실하게 설명하고 있습니다."
+118,gpt-5.4-mini,oracle: data/faq_v2.csv,gemini-3.5-flash (rubric v2.1),2,1,1,1,0,pass,후보 답변은 원서 접수 후 휴대폰 번호 변경 위치(국가공무원채용시스템의 개인정보 수정 메뉴)를 명확하고 정확하게 안내하고 있으며 제공된 FAQ 내용과 완전히 일치합니다.
+128,gpt-5.4-mini,oracle: data/faq_v2.csv,gemini-3.5-flash (rubric v2.1),2,1,1,1,0,pass,"후보 답변은 FAQ 내용에 기반하여 5급 공채 및 외교관후보자 선발시험(일반외교 분야) 1차 시험에서는 두 과락 기준이 모두 적용되고, 그 외 시험에서는 과목별 과락만 적용됨을 정확하게 설명하고 있습니다. 모든 주장이 제공된 출처와 일치합니다."
+137,gpt-5.4-mini,oracle: data/faq_v2.csv,gemini-3.5-flash (rubric v2.1),2,1,1,1,0,pass,후보 답변은 FAQ 83의 내용에 기반하여 미국 공인회계사(AICPA)가 세무직렬 가산점 대상 자격증에 해당하지 않는다고 정확하게 명시하고 있습니다. 모든 주장이 FAQ 맥락과 일치합니다.
+139,gpt-5.4-mini,oracle: data/faq_v2.csv,gemini-3.5-flash (rubric v2.1),2,1,1,1,0,pass,후보 답변은 FAQ 89에 기반하여 선발예정인원이 3명 이하인 모집단위에서는 취업지원대상자 가점이 적용되지 않고 원 점수 기준으로 합격자를 결정한다는 사실을 정확하고 충실하게 설명하고 있습니다.
+141,gpt-5.4-mini,oracle: data/faq_v2.csv,gemini-3.5-flash (rubric v2.1),2,1,1,1,0,pass,답변은 제공된 FAQ(270번)의 내용에 기반하여 자술서와 감독관 확인서를 바탕으로 사실관계를 확인한 뒤 공무원임용시험령 제51조제2항에 따라 당해 시험 무효 처분을 받는다는 내용을 정확히 서술하였습니다.
+146,gpt-5.4-mini,oracle: data/faq_v2.csv,gemini-3.5-flash (rubric v2.1),2,1,1,1,0,pass,"후보 답변은 FAQ 맥락에 기반하여 '공무원 채용시험 응시자 준수사항' 동영상 자료의 존재와 해당 자료를 통해 확인할 수 있는 내용, 그리고 다운로드/시청 경로를 정확히 안내하고 있으므로 완전히 정확하며 모든 그룹을 충족합니다."

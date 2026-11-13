@@ -1,11 +1,13 @@
 """FAISS 인덱스 저장"""
 
 import argparse
+import hashlib
 import json
 import os
 import re
 import sys
 from dataclasses import asdict, dataclass
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Literal, Mapping, Protocol, Sequence
 
@@ -23,7 +25,7 @@ from src.config import load_project_env
 EmbeddingMode = Literal["title", "title_body"]
 EmbeddingProvider = Literal["openai", "local"]
 EmbeddingRole = Literal["query", "passage"]
-ChunkingMode = Literal["row", "paragraph", "file"]
+ChunkingMode = Literal["row", "paragraph", "sentence", "file"]
 REQUIRED_COLUMNS = {"연번", "제목", "본문"}
 ENCODINGS = ("utf-8-sig", "utf-8", "cp949")
 LOCAL_EMBEDDING_MODEL = "intfloat/multilingual-e5-small"
@@ -105,12 +107,17 @@ class LocalEmbedder:
         self._model = SentenceTransformer(self.model_name)
         return self._model
 
+    def _prefix(self, role: EmbeddingRole) -> str:
+        """e5 계열은 학습 규칙상 'query: '/'passage: ' 접두어가 필요하다. 다른 모델(bge-m3, KURE 등)에는 붙이지 않는다."""
+        if "e5" not in self.model_name.lower():
+            return ""
+        return "query: " if role == "query" else "passage: "
+
     def embed(self, texts: Sequence[str], role: EmbeddingRole = "passage") -> np.ndarray:
         if not texts:
             raise ValueError("임베딩할 텍스트 목록이 비어 있습니다.")
 
-        prefix = "query: " if role == "query" else "passage: "
-        payload = [f"{prefix}{text}" for text in texts]
+        payload =[f"{self._prefix(role)}{text}" for text in texts]
         model = self._load_model()
         vectors = model.encode(
             payload,
@@ -144,12 +151,29 @@ def _split_paragraphs(body: str) -> list[str]:
     return lines if lines else [stripped]
 
 
+# 한글·닫는 괄호/따옴표 뒤의 마침표·물음표·느낌표에서만 자른다("2007.12.31." 같은 날짜는 자르지 않음)
+_SENTENCE_BOUNDARY = re.compile(r"(?<=[가-힣)\]」』\"'][.?!])\s+")
+MIN_SENTENCE_CHARS = 20  # 이보다 짧은 조각은 앞 문장에 붙인다
+
+
+def _split_sentences(body: str) -> list[str]:
+    parts = [part.strip() for part in _SENTENCE_BOUNDARY.split(body.strip()) if part.strip()]
+    sentences: list[str] = []
+    for part in parts:
+        if sentences and len(part) < MIN_SENTENCE_CHARS:
+            sentences[-1] = f"{sentences[-1]} {part}"
+        else:
+            sentences.append(part)
+    return sentences
+
+
 def _chunk_label(row_id: int, chunking_mode: ChunkingMode, paragraph_index: int | None = None) -> str:
     if chunking_mode == "file":
         return "file-0"
-    if chunking_mode == "paragraph":
+    if chunking_mode in ("paragraph", "sentence"):
         suffix = paragraph_index if paragraph_index is not None else 1
-        return f"row-{row_id}-p{suffix}"
+        marker = "p" if chunking_mode == "paragraph" else "s"
+        return f"row-{row_id}-{marker}{suffix}"
     return f"row-{row_id}"
 
 
@@ -184,7 +208,25 @@ def load_faq_csv(path: str | Path) -> list[FaqDocument]:
 
 
 def build_chunked_documents(documents: Sequence[FaqDocument], chunking_mode: ChunkingMode) -> list[FaqDocument]:
-    """행/문단/파일 전체 기준으로 검색용 청크 생성"""
+    """행/문단/문장/파일 전체 기준으로 검색용 청크 생성
+
+    sentence: 본문을 문장 단위로 자르고 청크마다 FAQ 제목을 유지한다(title_body 임베딩 시 제목이 문맥 머리말 역할).
+    """
+
+    if chunking_mode == "sentence":
+        return [
+            FaqDocument(
+                document.row_id,
+                document.title,
+                sentence,
+                chunk_id=_chunk_label(document.row_id, "sentence", index),
+                chunking_mode="sentence",
+                source_row_id=document.resolved_row_id,
+                paragraph_index=index,
+            )
+            for document in documents
+            for index, sentence in enumerate(_split_sentences(document.body) or [document.body], start=1)
+        ]
 
     if chunking_mode == "row":
         return [
@@ -306,16 +348,75 @@ def load_documents(path: str | Path) -> list[FaqDocument]:
     return documents
 
 
+def is_supported_combination(chunking_mode: ChunkingMode, embedding_mode: EmbeddingMode) -> bool:
+    """문장 청크는 FAQ마다 제목이 같아 title만 임베딩하면 같은 벡터가 반복되므로 만들지 않는다"""
+    return not (chunking_mode == "sentence" and embedding_mode == "title")
+
+
+MANIFEST_NAME = "manifest.json"
+INDEX_ROOT = Path("index/faq_v2")
+
+
+def model_slug(model_name: str) -> str:
+    """모델 이름의 마지막 부분을 폴더 이름으로. 예: 'nlpai-lab/KURE-v1' → 'kure-v1'"""
+    name = model_name.rstrip("/").split("/")[-1].lower()
+    return re.sub(r"[^a-z0-9._-]+", "-", name) or "model"
+
+
+def default_index_dir(model_name: str, root: str | Path = INDEX_ROOT) -> Path:
+    """임베딩 모델별 인덱스 폴더: index/faq_v2/<모델 이름>"""
+    return Path(root) / model_slug(model_name)
+
+
+def resolve_provider(provider: str | None, values: Mapping[str, str]) -> EmbeddingProvider:
+    """명령줄 값이 없으면 EMBEDDING_PROVIDER, 그것도 없으면 local"""
+    value = (provider or values.get("EMBEDDING_PROVIDER", "") or "local").strip().lower()
+    if value not in ("openai", "local"):
+        raise ValueError(f"Unsupported embedding provider: {value}")
+    return value  # type: ignore[return-value]
+
+
+def embedder_model_name(embedder: object) -> str:
+    """임베더의 모델 이름(OpenAIEmbedder.model, LocalEmbedder.model_name)"""
+    return str(getattr(embedder, "model", None) or getattr(embedder, "model_name", "") or "")
+
+
+def write_index_manifest(mode_dir: Path, manifest: dict[str, Any]) -> None:
+    (Path(mode_dir) / MANIFEST_NAME).write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def check_index_model(index_path: str | Path, model_name: str) -> dict[str, Any]:
+    """인덱스를 만든 모델과 질문 임베딩 모델이 같은지 확인. 다르면 ValueError"""
+    manifest = load_index_manifest(index_path)
+    if manifest.get("embedding_model") != model_name:
+        raise ValueError(
+            f"{index_path}: 인덱스 모델({manifest.get('embedding_model')})과 질문 임베딩 모델({model_name})이 다릅니다."
+        )
+    return manifest
+
+
+def load_index_manifest(index_path: str | Path) -> dict[str, Any]:
+    """인덱스 파일과 같은 폴더의 manifest.json 로드. 없으면 오류(이전 방식으로 만든 인덱스)"""
+    path = Path(index_path).parent / MANIFEST_NAME
+    if not path.exists():
+        raise FileNotFoundError(f"{path}가 없습니다. src/indexing.py로 인덱스를 다시 만드세요.")
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
 def build_indexes(
     csv_path: Path,
     output_dir: Path,
     embedders: dict[EmbeddingProvider, Embedder],
-    chunking_modes: Sequence[ChunkingMode] = ("row", "paragraph", "file"),
+    chunking_modes: Sequence[ChunkingMode] = ("row", "sentence"),
     embedding_modes: Sequence[EmbeddingMode] = ("title", "title_body"),
 ) -> None:
-    """청킹 방식과 임베딩 입력 필드를 조합해 실험용 인덱스 생성"""
+    """청킹 방식과 임베딩 입력 필드를 조합해 실험용 인덱스 생성
+
+    폴더마다 manifest.json에 원천 CSV의 해시와 임베딩 모델을 남겨, 평가 때 다른 데이터·모델과 섞이지 않게 한다.
+    """
 
     source_documents = load_faq_csv(csv_path)
+    source_hash = hashlib.sha256(Path(csv_path).read_bytes()).hexdigest()
     output_dir.mkdir(parents=True, exist_ok=True)
 
     for chunking_mode in chunking_modes:
@@ -324,14 +425,33 @@ def build_indexes(
             mode_dir = output_dir / chunking_mode / embedding_provider
             mode_dir.mkdir(parents=True, exist_ok=True)
             metadata_path = mode_dir / "metadata.json"
+            built_modes: list[str] = []
 
             for embedding_mode in embedding_modes:
+                if not is_supported_combination(chunking_mode, embedding_mode):
+                    continue
                 vectors = embedder.embed(
                     [document.embedding_text(embedding_mode) for document in chunked_documents],
                     role="passage",
                 )
                 index_path = mode_dir / f"{embedding_mode}.faiss"
                 save_index_bundle(build_faiss_index(vectors), chunked_documents, index_path, metadata_path)
+                built_modes.append(embedding_mode)
+
+            write_index_manifest(
+                mode_dir,
+                {
+                    "source_csv": str(csv_path),
+                    "source_sha256": source_hash,
+                    "source_rows": len(source_documents),
+                    "chunking_mode": chunking_mode,
+                    "chunks": len(chunked_documents),
+                    "embedding_provider": embedding_provider,
+                    "embedding_model": embedder_model_name(embedder),
+                    "embedding_modes": built_modes,
+                    "created_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+                },
+            )
 
 
 def build_embedder(provider: EmbeddingProvider, values: Mapping[str, str]) -> Embedder:
@@ -349,21 +469,28 @@ def build_embedder(provider: EmbeddingProvider, values: Mapping[str, str]) -> Em
 
 
 def main() -> None:
-    """FAQ 인덱스 생성 CLI 실행"""
+    """FAQ 인덱스 생성 CLI 실행
+
+    임베딩 모델은 .env(또는 명령줄)의 EMBEDDING_PROVIDER·EMBEDDING_MODEL 하나로 정한다.
+    인덱스 폴더 기본값은 index/faq_v2/<모델 이름>이다.
+    """
     parser = argparse.ArgumentParser(description="FAQ CSV에서 FAISS 인덱스를 생성합니다.")
-    parser.add_argument("--csv", type=Path, default=Path("data/faq.csv"))
-    parser.add_argument("--output", type=Path, default=Path("index"))
-    parser.add_argument("--providers", nargs="+", default=["openai", "local"])
-    parser.add_argument("--chunking-modes", nargs="+", default=["row", "paragraph", "file"])
+    parser.add_argument("--csv", type=Path, default=Path("data/faq_v2.csv"), help="원본 재현은 data/faq_raw.csv")
+    parser.add_argument("--output", type=Path, default=None, help="기본값 index/faq_v2/<모델 이름>")
+    parser.add_argument("--provider", choices=["openai", "local"], default=None, help="기본값 EMBEDDING_PROVIDER")
+    parser.add_argument("--chunking-modes", nargs="+", default=["row", "sentence"])
     parser.add_argument("--embedding-modes", nargs="+", default=["title", "title_body"])
     args = parser.parse_args()
 
     load_project_env()
-    embedders = {provider: build_embedder(provider, os.environ) for provider in args.providers}
+    provider = resolve_provider(args.provider, os.environ)
+    embedder = build_embedder(provider, os.environ)
+    output = args.output or default_index_dir(embedder_model_name(embedder))
+    print(f"{embedder_model_name(embedder)} ({provider}) → {output}")
     build_indexes(
         args.csv,
-        args.output,
-        embedders,
+        output,
+        {provider: embedder},
         tuple(args.chunking_modes),
         tuple(args.embedding_modes),
     )

@@ -1,0 +1,10 @@
+{"id": 154, "status": "keep", "question": "여권 재발급은 어디서 신청하나요?", "difficulty": "easy", "similar_faqs": [], "absence_note": "여권은 신분증 맥락에서만 등장 (교정본 289건 대조)", "written_by": "Claude", "reviewed": true}
+{"id": 155, "status": "keep", "question": "운전면허 필기시험은 몇 점 이상이어야 합격인가요?", "difficulty": "easy", "similar_faqs": [], "absence_note": "관련 내용 없음 (교정본 289건 대조)", "written_by": "Claude", "reviewed": true}
+{"id": 156, "status": "keep", "question": "9급 공무원 1호봉 월급은 얼마인가요?", "difficulty": "medium", "similar_faqs": [1], "absence_note": "금액 없음. 1번이 보수 제도 안내서를 언급 (교정본 289건 대조)", "written_by": "Claude", "reviewed": true}
+{"id": 157, "status": "keep", "question": "공무원도 육아휴직을 쓸 수 있나요? 기간은 얼마나 되나요?", "difficulty": "medium", "similar_faqs": [1], "absence_note": "육아휴직 없음. 1번이 복무 제도 안내서를 언급 (교정본 289건 대조)", "written_by": "Claude", "reviewed": true}
+{"id": 158, "status": "keep", "question": "공무원으로 일하면서 주말에 다른 일을 해도 되나요?", "difficulty": "medium", "similar_faqs": [1], "absence_note": "겸직 없음. 1번이 복무 제도 안내서를 언급 (교정본 289건 대조)", "written_by": "Claude", "reviewed": true}
+{"id": 159, "status": "keep", "question": "경찰공무원 시험은 체력시험 종목이 어떻게 되나요?", "difficulty": "medium", "similar_faqs": [239, 52], "absence_note": "239는 경찰이 별도 시험을 본다는 사실만 있음 (교정본 289건 대조)", "written_by": "Claude", "reviewed": true}
+{"id": 160, "status": "keep", "question": "9급 필기시험은 과목당 몇 문항이고 문항당 배점은 얼마인가요?", "difficulty": "hard", "similar_faqs": [64, 210], "absence_note": "문항 수·배점 없음. 시험시간 100분과 시험 단계만 있음 (교정본 289건 대조)", "written_by": "Claude", "reviewed": true}
+{"id": 161, "status": "keep", "question": "9급 응시수수료는 얼마인가요?", "difficulty": "hard", "similar_faqs": [248, 249, 253], "absence_note": "면제·환불만 다룸. 금액 없음 (교정본 289건 대조)", "written_by": "Claude", "reviewed": true}
+{"id": 162, "status": "keep", "question": "시험실이 추우면 담요나 방석을 써도 되나요?", "difficulty": "hard", "similar_faqs": [77, 75, 274], "absence_note": "지참물·간식·귀마개만 다룸. 담요·방석 없음 (교정본 289건 대조)", "written_by": "Claude", "reviewed": true}
+{"id": 163, "status": "keep", "question": "시험장에 차를 가져가도 되나요? 주차할 수 있나요?", "difficulty": "hard", "similar_faqs": [9, 202, 267], "absence_note": "시험장 배정·공고만 다룸. 주차 없음 (교정본 289건 대조)", "written_by": "Claude", "reviewed": true}

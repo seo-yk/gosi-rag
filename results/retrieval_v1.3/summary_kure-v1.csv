@@ -1,0 +1,25 @@
+﻿eval_set,source_csv,source_sha256,index_dir,chunking_mode,chunks,embedding_provider,embedding_model,embedding_mode,depth,subset,questions,single_questions,hit_at_1,hit_at_3,hit_at_5,group_recall_at_1,group_recall_at_3,group_recall_at_5,mrr_single,failed_ids
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,전체,148,111,0.7095,0.9324,0.973,0.8221,0.9572,0.9865,0.9707,19;23;57;58
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,단일 그룹 전체,111,111,0.9459,0.991,1.0,0.9459,0.991,1.0,0.9707,
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,유형: 복수근거,37,0,0.0,0.7568,0.8919,0.4505,0.8559,0.9459,,19;23;57;58
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,유형: 원문유사,34,34,0.9706,0.9706,1.0,0.9706,0.9706,1.0,0.9779,
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,유형: 일상표현,44,44,0.9773,1.0,1.0,0.9773,1.0,1.0,0.9886,
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,유형: 조건형,33,33,0.8788,1.0,1.0,0.8788,1.0,1.0,0.9394,
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,작성: Claude,91,64,0.6923,0.967,1.0,0.8352,0.9835,1.0,0.9922,
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title,5,작성: 본인,57,47,0.7368,0.8772,0.9298,0.8012,0.9152,0.9649,0.9415,19;23;57;58
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,전체,148,111,0.7162,0.9459,0.9932,0.8255,0.9741,0.9966,0.9745,54
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,단일 그룹 전체,111,111,0.955,1.0,1.0,0.955,1.0,1.0,0.9745,
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,유형: 복수근거,37,0,0.0,0.7838,0.973,0.4369,0.8964,0.9865,,54
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,유형: 원문유사,34,34,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,유형: 일상표현,44,44,0.9091,1.0,1.0,0.9091,1.0,1.0,0.947,
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,유형: 조건형,33,33,0.9697,1.0,1.0,0.9697,1.0,1.0,0.9848,
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,작성: Claude,91,64,0.6923,0.967,1.0,0.8242,0.9835,1.0,0.9922,
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,row,286,local,nlpai-lab/KURE-v1,title_body,5,작성: 본인,57,47,0.7544,0.9123,0.9825,0.8275,0.9591,0.9912,0.9504,54
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,전체,148,111,0.7297,0.9324,0.9865,0.8423,0.964,0.9932,0.9842,19;54
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,단일 그룹 전체,111,111,0.973,0.991,1.0,0.973,0.991,1.0,0.9842,
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,유형: 복수근거,37,0,0.0,0.7568,0.9459,0.4505,0.8829,0.973,,19;54
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,유형: 원문유사,34,34,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,유형: 일상표현,44,44,0.9318,0.9773,1.0,0.9318,0.9773,1.0,0.9602,
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,유형: 조건형,33,33,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,작성: Claude,91,64,0.6923,0.956,1.0,0.8352,0.978,1.0,0.9922,
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/kure-v1,sentence,634,local,nlpai-lab/KURE-v1,title_body,5,작성: 본인,57,47,0.7895,0.8947,0.9649,0.8538,0.9415,0.9825,0.9734,19;54

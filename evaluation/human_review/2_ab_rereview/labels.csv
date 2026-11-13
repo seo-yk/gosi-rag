@@ -1,0 +1,10 @@
+﻿rereview_no,condition,id,kind,groundedness,correctness,groups_covered,completeness,unjustified_refusal,verdict,memo,first_verdict,judge_verdict
+1,A,7,disagree,2,1,1,1,0,pass,,fail,pass
+2,A,63,agree,2,1,1|1,1,0,pass,,pass,pass
+3,A,23,agree,2,1,0|1,0,0,fail,그룹별 충족에서 그룹1이 충족되는지 판단이 애매함 (퇴실은 맞지만 화장실 퇴실인지 확인되지 않음),fail,fail
+4,A,38,disagree,1,1,1,1,1,fail,제공된 근거에 어떤 시험이 있는지 명시되어 있음. 그런데 FAQ 218만을 참조하여 답변하고 있는 것으로 판단됨,fail,pass
+5,B,66,disagree,2,1,1|1,1,0,pass,,fail,pass
+6,A,60,agree,2,0,1|1|1,1,0,fail,"수정 스티커를 사용해도 된댔다가, 안된댔다가 함. 
+원본 데이터셋에서 시기별로 규정이 바뀌면서 변한 규정이 하나로 통일되지 못한 듯함.",fail,fail
+7,A,111,agree,2,1,1,1,0,pass,,pass,pass
+8,A,19,disagree,2,1,1|1,1,0,pass,,pass,fail

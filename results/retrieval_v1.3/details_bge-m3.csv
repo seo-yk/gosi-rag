@@ -1,0 +1,445 @@
+﻿eval_set,source_csv,source_sha256,index_dir,chunking_mode,chunks,embedding_provider,embedding_model,embedding_mode,depth,id,type,written_by,required_faqs,retrieved_ids,hit_at_1,hit_at_3,hit_at_5
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,1,원문유사,본인,3,3|12|280|258|243,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,2,일상표현,본인,4|252,252|255|153|6|9,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,3,일상표현,본인,4,6|202|271|4|200,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,4,조건형,본인,6,6|271|4|153|202,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,5,조건형,본인,6,6|212|28|153|252,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,6,일상표현,본인,7|46,7|124|128|122|12,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,7,일상표현,본인,8,8|59|11|6|231,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,8,일상표현,본인,9|67,9|255|68|187|202,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,9,일상표현,본인,9,9|116|221|252|202,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,10,원문유사,본인,10,10|244|45|138|67,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,11,원문유사,본인,11,11|251|7|253|12,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,13,원문유사,본인,12,12|280|7|4|104,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,14,일상표현,본인,13,13|4|6|7|12,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,15,조건형,본인,13,9|13|73|62|5,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,16,조건형,본인,14,14|253|6|23|19,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,17,일상표현,본인,15,15|157|253|104|11,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,18,일상표현,본인,77,77|4|1|75|9,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,19,복수근거,본인,272|251 & 77,272|9|175|78|11,0,0,0
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,20,일상표현,본인,78,78|9|272|169|171,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,21,조건형,본인,78,272|9|69|78|214,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,22,일상표현,본인,79,272|79|268|9|75,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,23,복수근거,본인,79 & 64,65|62|63|64|6,0,0,0
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,24,일상표현,본인,226,226|95|84|169|182,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,25,원문유사,본인,227,3|258|200|233|243,0,0,0
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,26,일상표현,본인,228,228|1|240|245|164,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,27,일상표현,본인,229,229|10|230|43|64,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,28,일상표현,본인,230,230|43|10|127|42,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,29,원문유사,본인,231,231|8|11|202|7,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,30,일상표현,본인,232,232|233|200|71|258,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,31,일상표현,본인,233,233|1|232|239|39,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,32,조건형,본인,234,234|71|232|172|104,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,33,일상표현,본인,240,240|165|239|164|245,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,34,조건형,본인,241,241|10|67|244|140,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,35,일상표현,본인,242,242|240|281|133|283,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,36,원문유사,본인,243,243|233|200|232|59,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,37,원문유사,본인,244,244|10|45|187|138,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,38,원문유사,본인,247,247|289|207|170|218,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,39,일상표현,본인,248,248|129|175|249|252,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,40,일상표현,본인,249,253|249|252|256|6,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,41,일상표현,본인,250|5,5|250|153|4|6,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,42,일상표현,본인,251|272,251|11|252|202|200,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,43,일상표현,본인,276|277,276|277|252|279|153,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,44,일상표현,본인,277,277|278|279|81|276,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,45,일상표현,본인,278,278|263|81|277|82,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,46,조건형,본인,279,279|277|276|6|274,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,47,조건형,본인,280,280|12|7|11|90,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,48,일상표현,본인,281,7|281|12|112|120,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,49,원문유사,본인,288,288|289|211|12|202,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,50,원문유사,본인,289,289|190|11|288|221,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,52,복수근거,본인,78 & 272|251,78|272|31|9|251,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,53,복수근거,본인,279 & 77,279|275|81|271|274,0,0,0
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,54,복수근거,본인,3 & 12,12|280|3|7|202,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,55,복수근거,본인,289 & 288,289|288|207|170|213,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,56,복수근거,본인,234 & 232 & 233,233|234|232|202|39,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,57,복수근거,본인,244 & 240,10|142|162|141|244,0,0,0
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,58,복수근거,본인,249 & 4,249|256|253|277|91,0,0,0
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,60,복수근거,본인,277|276 & 278 & 279,276|279|277|278|91,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,61,복수근거,Claude,54 & 55,54|55|187|45|91,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,62,복수근거,Claude,37 & 43,43|34|246|36|231,0,0,0
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,63,복수근거,Claude,213 & 214,213|214|211|53|25,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,64,복수근거,Claude,90 & 93,90|12|93|280|7,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,66,복수근거,Claude,20 & 27,20|22|27|23|24,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,67,복수근거,Claude,264 & 265,264|265|225|247|205,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,68,복수근거,Claude,268 & 269,269|268|183|283|272,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,69,복수근거,Claude,222 & 223,223|222|221|269|272,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,70,복수근거,Claude,206 & 207,206|207|190|205|34,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,71,복수근거,Claude,47 & 48,48|47|34|186|4,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,72,복수근거,Claude,29 & 30,29|30|33|172|11,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,73,복수근거,Claude,81 & 82,81|279|263|82|271,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,74,복수근거,Claude,67|9 & 68,67|68|10|45|187,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,75,복수근거,Claude,71 & 72,202|200|72|71|258,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,76,복수근거,Claude,32 & 33,33|32|11|202|289,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,77,복수근거,Claude,122 & 128|129,128|7|124|129|122,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,78,복수근거,Claude,126 & 127,127|126|10|150|140,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,79,복수근거,Claude,132 & 133,132|133|135|130|252,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,80,복수근거,Claude,134 & 135,135|134|130|133|118,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,81,복수근거,Claude,136 & 137,136|137|255|45|138,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,82,복수근거,Claude,143 & 144,144|149|145|151|147,0,0,0
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,83,복수근거,Claude,166 & 167,167|166|10|45|139,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,84,복수근거,Claude,168 & 172,168|169|172|170|98,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,85,복수근거,Claude,179 & 180,180|179|176|256|173,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,86,복수근거,Claude,177 & 178,177|178|183|173|22,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,87,복수근거,Claude,191 & 192,191|192|217|280|289,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,88,복수근거,Claude,196 & 197,196|194|197|243|199,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,89,원문유사,Claude,102,102|98|103|105|100,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,90,원문유사,Claude,104,104|7|95|12|11,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,91,원문유사,Claude,105,105|103|95|104|240,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,92,원문유사,Claude,110,110|97|106|108|240,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,93,원문유사,Claude,124,124|129|7|128|126,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,94,원문유사,Claude,157,157|25|11|7|1,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,95,원문유사,Claude,158,158|170|85|142|51,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,96,원문유사,Claude,164,164|240|1|228|289,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,97,원문유사,Claude,169,169|182|170|172|9,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,98,원문유사,Claude,187|188,233|188|4|200|252,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,99,원문유사,Claude,189,189|228|247|9|289,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,100,원문유사,Claude,199,199|252|10|196|255,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,101,조건형,Claude,100,101|100|103|102|98,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,102,조건형,Claude,101,101|103|102|98|100,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,103,조건형,Claude,107,107|108|106|109|97,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,104,조건형,Claude,111|116,111|281|116|117|252,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,105,조건형,Claude,114,114|281|270|277|278,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,106,조건형,Claude,119,119|277|25|281|203,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,107,조건형,Claude,125,125|129|131|124|122,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,108,조건형,Claude,129,129|124|128|125|248,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,109,조건형,Claude,138,138|137|136|255|252,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,110,조건형,Claude,139,139|45|187|137|138,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,111,조건형,Claude,148,148|149|144|151|142,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,112,조건형,Claude,160|162,160|161|162|10|67,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,113,조건형,Claude,161,161|162|160|10|55,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,114,조건형,Claude,173,173|183|180|205|176,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,115,조건형,Claude,183,183|173|185|25|269,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,116,일상표현,Claude,103,103|105|101|102|98,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,117,일상표현,Claude,141,141|9|68|136|142,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,118,일상표현,Claude,153,153|6|252|253|255,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,119,일상표현,Claude,155,155|286|282|283|49,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,120,일상표현,Claude,162,162|161|10|160|55,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,121,일상표현,Claude,165,165|261|38|126|184,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,122,일상표현,Claude,174,174|175|185|186|181,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,123,일상표현,Claude,184,184|261|181|5|186,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,124,원문유사,Claude,2,2|1|233|44|104,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,125,원문유사,Claude,39,39|233|200|243|44,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,126,원문유사,Claude,53,53|258|271|92|200,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,127,원문유사,Claude,56,56|8|54|55|53,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,128,원문유사,Claude,61,61|191|88|82|126,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,129,원문유사,Claude,86,86|89|93|87|280,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,131,원문유사,Claude,210,210|1|227|44|233,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,132,원문유사,Claude,211,211|289|59|288|53,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,133,원문유사,Claude,225,225|247|68|95|170,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,134,원문유사,Claude,237,237|239|238|127|232,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,135,원문유사,Claude,258,258|200|53|233|202,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,136,조건형,Claude,25|157,25|157|183|173|7,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,137,조건형,Claude,83,83|12|280|84|257,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,138,조건형,Claude,84,84|16|257|130|12,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,139,조건형,Claude,89,89|135|130|86|283,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,140,조건형,Claude,217,217|289|192|247|220,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,141,조건형,Claude,270|74,270|74|268|271|277,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,142,조건형,Claude,271,271|6|202|200|53,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,143,조건형,Claude,286,286|283|282|175|181,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,144,조건형,Claude,98,98|103|190|104|102,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,145,일상표현,Claude,75,75|9|274|62|271,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,146,일상표현,Claude,76,76|200|1|271|202,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,147,일상표현,Claude,66,66|62|9|64|111,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,148,일상표현,Claude,274,274|75|9|4|272,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,149,일상표현,Claude,275,275|272|9|271|277,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,150,일상표현,Claude,267,267|9|5|62|139,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,151,일상표현,Claude,204,204|213|205|252|217,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,152,일상표현,Claude,38,38|261|48|175|186,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title,5,153,일상표현,Claude,273,273|252|10|67|277,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,1,원문유사,본인,3,3|92|280|93|85,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,2,일상표현,본인,4|252,252|255|153|6|4,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,3,일상표현,본인,4,4|249|6|271|28,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,4,조건형,본인,6,271|6|212|46|77,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,5,조건형,본인,6,6|28|212|271|153,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,6,일상표현,본인,7|46,7|46|129|124|133,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,7,일상표현,본인,8,8|59|92|73|26,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,8,일상표현,본인,9|67,9|267|68|67|139,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,9,일상표현,본인,9,66|267|9|62|64,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,10,원문유사,본인,10,10|244|45|167|138,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,11,원문유사,본인,11,11|251|31|256|46,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,13,원문유사,본인,12,12|91|280|93|46,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,14,일상표현,본인,13,13|46|6|69|120,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,15,조건형,본인,13,13|66|63|62|81,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,16,조건형,본인,14,14|22|23|21|29,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,17,일상표현,본인,15,15|173|72|285|11,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,18,일상표현,본인,77,77|275|69|13|46,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,19,복수근거,본인,272|251 & 77,31|272|78|69|171,0,0,0
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,20,일상표현,본인,78,78|171|31|169|79,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,21,조건형,본인,78,78|69|271|268|171,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,22,일상표현,본인,79,79|268|204|91|254,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,23,복수근거,본인,79 & 64,63|65|64|62|79,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,24,일상표현,본인,226,226|84|83|9|95,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,25,원문유사,본인,227,227|3|233|258|71,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,26,일상표현,본인,228,228|245|210|240|1,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,27,일상표현,본인,229,229|230|244|85|124,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,28,일상표현,본인,230,230|229|43|42|244,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,29,원문유사,본인,231,231|8|203|39|37,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,30,일상표현,본인,232,232|233|71|258|73,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,31,일상표현,본인,233,233|232|1|73|227,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,32,조건형,본인,234,234|232|105|237|187,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,33,일상표현,본인,240,240|165|242|245|237,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,34,조건형,본인,241,241|244|230|67|237,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,35,일상표현,본인,242,242|133|134|112|118,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,36,원문유사,본인,243,243|233|241|235|245,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,37,원문유사,본인,244,244|45|139|10|167,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,38,원문유사,본인,247,247|218|207|289|221,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,39,일상표현,본인,248,248|129|124|122|46,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,40,일상표현,본인,249,249|253|256|4|5,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,41,일상표현,본인,250|5,5|250|29|28|26,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,42,일상표현,본인,251|272,251|11|31|272|256,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,43,일상표현,본인,276|277,276|277|74|278|279,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,44,일상표현,본인,277,278|277|276|81|279,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,45,일상표현,본인,278,278|263|279|81|276,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,46,조건형,본인,279,279|80|81|276|278,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,47,조건형,본인,280,280|12|93|90|84,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,48,일상표현,본인,281,281|112|120|7|117,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,49,원문유사,본인,288,288|211|289|223|56,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,50,원문유사,본인,289,289|223|247|288|221,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,52,복수근거,본인,78 & 272|251,78|272|31|171|166,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,53,복수근거,본인,279 & 77,279|256|81|77|80,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,54,복수근거,본인,3 & 12,12|280|93|92|91,0,0,0
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,55,복수근거,본인,289 & 288,289|288|247|223|213,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,56,복수근거,본인,234 & 232 & 233,233|234|232|227|1,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,57,복수근거,본인,244 & 240,141|244|240|142|67,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,58,복수근거,본인,249 & 4,249|4|5|256|253,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,60,복수근거,본인,277|276 & 278 & 279,276|277|279|278|81,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,61,복수근거,Claude,54 & 55,54|55|45|56|91,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,62,복수근거,Claude,37 & 43,43|34|36|37|35,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,63,복수근거,Claude,213 & 214,213|214|211|212|53,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,64,복수근거,Claude,90 & 93,90|93|12|280|86,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,66,복수근거,Claude,20 & 27,20|27|23|22|21,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,67,복수근거,Claude,264 & 265,265|264|225|80|210,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,68,복수근거,Claude,268 & 269,268|269|49|183|270,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,69,복수근거,Claude,222 & 223,223|222|193|289|221,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,70,복수근거,Claude,206 & 207,206|207|190|193|61,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,71,복수근거,Claude,47 & 48,48|47|34|186|46,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,72,복수근거,Claude,29 & 30,29|30|28|31|33,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,73,복수근거,Claude,81 & 82,81|82|279|278|155,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,74,복수근거,Claude,67|9 & 68,67|68|45|139|10,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,75,복수근거,Claude,71 & 72,72|71|73|200|54,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,76,복수근거,Claude,32 & 33,32|33|30|31|28,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,77,복수근거,Claude,122 & 128|129,128|7|129|122|124,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,78,복수근거,Claude,126 & 127,127|126|122|124|43,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,79,복수근거,Claude,132 & 133,132|133|135|134|131,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,80,복수근거,Claude,134 & 135,135|134|130|131|133,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,81,복수근거,Claude,136 & 137,136|10|45|255|137,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,82,복수근거,Claude,143 & 144,144|143|145|149|146,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,83,복수근거,Claude,166 & 167,167|166|154|45|10,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,84,복수근거,Claude,168 & 172,168|169|172|170|171,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,85,복수근거,Claude,179 & 180,180|179|173|248|176,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,86,복수근거,Claude,177 & 178,177|178|183|173|22,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,87,복수근거,Claude,191 & 192,191|192|217|216|44,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,88,복수근거,Claude,196 & 197,196|197|194|198|199,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,89,원문유사,Claude,102,102|105|100|98|145,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,90,원문유사,Claude,104,104|105|95|103|97,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,91,원문유사,Claude,105,105|103|150|240|95,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,92,원문유사,Claude,110,110|109|108|106|97,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,93,원문유사,Claude,124,124|129|7|128|126,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,94,원문유사,Claude,157,157|25|284|283|52,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,95,원문유사,Claude,158,158|85|229|244|171,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,96,원문유사,Claude,164,164|240|46|261|165,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,97,원문유사,Claude,169,169|172|95|168|182,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,98,원문유사,Claude,187|188,188|187|186|92|53,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,99,원문유사,Claude,189,189|247|205|61|207,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,100,원문유사,Claude,199,199|197|194|198|206,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,101,조건형,Claude,100,100|101|103|105|104,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,102,조건형,Claude,101,101|103|100|105|104,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,103,조건형,Claude,107,107|108|109|106|97,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,104,조건형,Claude,111|116,111|116|281|118|120,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,105,조건형,Claude,114,114|270|281|120|263,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,106,조건형,Claude,119,119|120|114|281|277,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,107,조건형,Claude,125,125|123|129|122|7,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,108,조건형,Claude,129,129|124|123|128|7,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,109,조건형,Claude,138,138|137|148|10|167,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,110,조건형,Claude,139,139|45|137|146|150,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,111,조건형,Claude,148,148|149|144|142|146,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,112,조건형,Claude,160|162,160|161|162|137|138,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,113,조건형,Claude,161,161|162|160|244|45,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,114,조건형,Claude,173,173|183|205|208|180,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,115,조건형,Claude,183,183|173|185|14|177,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,116,일상표현,Claude,103,103|105|100|101|143,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,117,일상표현,Claude,141,141|142|67|68|143,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,118,일상표현,Claude,153,153|6|28|212|252,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,119,일상표현,Claude,155,155|286|285|282|156,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,120,일상표현,Claude,162,162|161|160|45|159,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,121,일상표현,Claude,165,165|261|240|163|38,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,122,일상표현,Claude,174,174|185|175|181|14,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,123,일상표현,Claude,184,184|261|181|282|165,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,124,원문유사,Claude,2,2|33|93|92|233,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,125,원문유사,Claude,39,39|232|233|210|186,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,126,원문유사,Claude,53,53|58|92|258|55,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,127,원문유사,Claude,56,56|54|55|59|58,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,128,원문유사,Claude,61,61|191|88|219|257,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,129,원문유사,Claude,86,86|93|89|87|90,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,131,원문유사,Claude,210,210|227|44|245|1,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,132,원문유사,Claude,211,211|288|214|289|223,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,133,원문유사,Claude,225,225|210|247|207|95,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,134,원문유사,Claude,237,237|238|239|232|236,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,135,원문유사,Claude,258,258|53|55|233|92,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,136,조건형,Claude,25|157,25|157|173|13|282,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,137,조건형,Claude,83,83|84|257|26|280,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,138,조건형,Claude,84,84|280|12|257|126,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,139,조건형,Claude,89,89|135|86|130|93,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,140,조건형,Claude,217,217|247|192|216|221,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,141,조건형,Claude,270|74,270|74|69|114|268,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,142,조건형,Claude,271,271|6|69|200|212,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,143,조건형,Claude,286,286|285|283|282|287,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,144,조건형,Claude,98,98|105|103|104|101,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,145,일상표현,Claude,75,75|69|62|79|64,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,146,일상표현,Claude,76,76|200|69|202|70,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,147,일상표현,Claude,66,66|62|64|65|79,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,148,일상표현,Claude,274,274|13|81|75|69,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,149,일상표현,Claude,275,275|277|276|81|114,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,150,일상표현,Claude,267,267|139|9|143|100,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,151,일상표현,Claude,204,204|205|53|213|175,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,152,일상표현,Claude,38,38|48|282|261|165,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,row,286,local,BAAI/bge-m3,title_body,5,153,일상표현,Claude,273,273|67|278|54|139,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,1,원문유사,본인,3,3|92|12|280|85,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,2,일상표현,본인,4|252,252|255|4|153|6,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,3,일상표현,본인,4,4|249|6|187|271,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,4,조건형,본인,6,6|271|212|77|275,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,5,조건형,본인,6,6|28|212|271|153,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,6,일상표현,본인,7|46,7|46|129|128|122,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,7,일상표현,본인,8,8|59|92|58|254,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,8,일상표현,본인,9|67,9|267|68|139|67,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,9,일상표현,본인,9,9|66|267|200|202,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,10,원문유사,본인,10,10|45|139|167|244,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,11,원문유사,본인,11,11|251|31|256|104,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,13,원문유사,본인,12,12|280|91|93|90,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,14,일상표현,본인,13,13|6|46|31|120,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,15,조건형,본인,13,13|200|81|63|62,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,16,조건형,본인,14,14|22|23|34|29,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,17,일상표현,본인,15,15|104|173|72|178,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,18,일상표현,본인,77,77|275|6|13|76,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,19,복수근거,본인,272|251 & 77,78|272|31|251|69,0,0,0
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,20,일상표현,본인,78,78|171|31|200|79,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,21,조건형,본인,78,78|69|271|268|171,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,22,일상표현,본인,79,79|268|69|204|200,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,23,복수근거,본인,79 & 64,65|63|64|62|79,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,24,일상표현,본인,226,226|84|64|85|182,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,25,원문유사,본인,227,227|3|233|71|258,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,26,일상표현,본인,228,228|245|240|67|210,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,27,일상표현,본인,229,229|230|42|85|244,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,28,일상표현,본인,230,230|43|229|42|244,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,29,원문유사,본인,231,231|8|203|39|262,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,30,일상표현,본인,232,232|233|71|258|200,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,31,일상표현,본인,233,233|232|1|188|254,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,32,조건형,본인,234,234|232|237|105|187,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,33,일상표현,본인,240,240|165|242|245|237,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,34,조건형,본인,241,241|244|230|237|187,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,35,일상표현,본인,242,242|133|134|112|215,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,36,원문유사,본인,243,243|233|241|235|245,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,37,원문유사,본인,244,244|45|10|139|167,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,38,원문유사,본인,247,247|218|207|289|221,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,39,일상표현,본인,248,248|129|124|123|10,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,40,일상표현,본인,249,249|253|256|4|5,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,41,일상표현,본인,250|5,5|250|29|26|28,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,42,일상표현,본인,251|272,251|11|272|31|256,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,43,일상표현,본인,276|277,276|277|278|279|270,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,44,일상표현,본인,277,278|277|276|81|279,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,45,일상표현,본인,278,278|263|279|58|276,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,46,조건형,본인,279,279|81|80|276|278,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,47,조건형,본인,280,280|12|93|90|84,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,48,일상표현,본인,281,281|112|120|7|113,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,49,원문유사,본인,288,288|211|289|223|59,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,50,원문유사,본인,289,289|223|247|288|221,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,52,복수근거,본인,78 & 272|251,78|272|31|251|171,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,53,복수근거,본인,279 & 77,279|81|256|77|13,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,54,복수근거,본인,3 & 12,12|280|92|93|91,0,0,0
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,55,복수근거,본인,289 & 288,289|288|247|223|213,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,56,복수근거,본인,234 & 232 & 233,233|234|232|188|227,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,57,복수근거,본인,244 & 240,10|142|141|244|240,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,58,복수근거,본인,249 & 4,249|4|5|256|253,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,60,복수근거,본인,277|276 & 278 & 279,276|277|279|278|81,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,61,복수근거,Claude,54 & 55,54|55|45|56|187,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,62,복수근거,Claude,37 & 43,43|34|36|37|256,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,63,복수근거,Claude,213 & 214,213|214|211|212|53,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,64,복수근거,Claude,90 & 93,90|93|12|280|135,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,66,복수근거,Claude,20 & 27,20|22|27|23|21,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,67,복수근거,Claude,264 & 265,265|264|225|210|80,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,68,복수근거,Claude,268 & 269,268|269|49|183|22,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,69,복수근거,Claude,222 & 223,223|222|193|289|78,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,70,복수근거,Claude,206 & 207,206|207|218|190|193,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,71,복수근거,Claude,47 & 48,48|47|34|46|29,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,72,복수근거,Claude,29 & 30,29|30|33|90|28,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,73,복수근거,Claude,81 & 82,81|82|279|278|13,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,74,복수근거,Claude,67|9 & 68,67|68|45|10|139,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,75,복수근거,Claude,71 & 72,72|200|71|73|91,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,76,복수근거,Claude,32 & 33,32|33|30|31|11,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,77,복수근거,Claude,122 & 128|129,128|7|129|122|124,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,78,복수근거,Claude,126 & 127,127|126|122|150|124,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,79,복수근거,Claude,132 & 133,132|133|131|135|134,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,80,복수근거,Claude,134 & 135,135|134|133|130|131,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,81,복수근거,Claude,136 & 137,136|10|137|45|138,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,82,복수근거,Claude,143 & 144,144|143|145|149|151,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,83,복수근거,Claude,166 & 167,166|167|45|154|139,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,84,복수근거,Claude,168 & 172,168|169|172|170|171,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,85,복수근거,Claude,179 & 180,180|179|248|176|173,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,86,복수근거,Claude,177 & 178,177|178|183|22|173,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,87,복수근거,Claude,191 & 192,192|191|217|216|193,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,88,복수근거,Claude,196 & 197,196|197|194|198|199,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,89,원문유사,Claude,102,102|145|100|105|98,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,90,원문유사,Claude,104,104|95|105|103|97,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,91,원문유사,Claude,105,105|103|150|240|95,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,92,원문유사,Claude,110,110|109|108|106|97,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,93,원문유사,Claude,124,124|129|7|128|125,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,94,원문유사,Claude,157,157|25|284|283|282,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,95,원문유사,Claude,158,158|85|229|244|142,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,96,원문유사,Claude,164,164|240|31|165|46,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,97,원문유사,Claude,169,169|95|182|172|167,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,98,원문유사,Claude,187|188,188|187|92|186|233,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,99,원문유사,Claude,189,189|247|210|205|66,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,100,원문유사,Claude,199,199|197|198|194|206,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,101,조건형,Claude,100,100|101|103|105|104,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,102,조건형,Claude,101,101|100|103|105|104,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,103,조건형,Claude,107,107|108|109|106|97,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,104,조건형,Claude,111|116,111|116|120|281|114,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,105,조건형,Claude,114,114|281|120|270|263,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,106,조건형,Claude,119,119|120|281|114|277,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,107,조건형,Claude,125,125|129|124|123|122,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,108,조건형,Claude,129,129|124|128|123|7,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,109,조건형,Claude,138,138|137|148|167|139,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,110,조건형,Claude,139,139|45|187|137|146,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,111,조건형,Claude,148,148|149|142|146|144,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,112,조건형,Claude,160|162,160|161|162|137|138,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,113,조건형,Claude,161,161|162|160|244|45,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,114,조건형,Claude,173,173|183|205|208|180,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,115,조건형,Claude,183,183|173|177|185|14,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,116,일상표현,Claude,103,103|100|105|101|104,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,117,일상표현,Claude,141,141|67|142|10|68,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,118,일상표현,Claude,153,6|153|28|212|252,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,119,일상표현,Claude,155,155|286|282|285|49,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,120,일상표현,Claude,162,162|161|160|159|64,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,121,일상표현,Claude,165,165|261|240|163|36,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,122,일상표현,Claude,174,174|185|175|19|183,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,123,일상표현,Claude,184,184|261|181|186|26,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,124,원문유사,Claude,2,2|104|187|33|233,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,125,원문유사,Claude,39,39|232|233|44|243,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,126,원문유사,Claude,53,53|92|58|258|59,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,127,원문유사,Claude,56,56|54|55|59|58,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,128,원문유사,Claude,61,61|88|191|216|219,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,129,원문유사,Claude,86,86|93|89|87|90,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,131,원문유사,Claude,210,210|227|44|245|1,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,132,원문유사,Claude,211,211|288|214|289|223,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,133,원문유사,Claude,225,225|210|95|247|207,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,134,원문유사,Claude,237,237|238|239|232|236,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,135,원문유사,Claude,258,258|53|55|92|233,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,136,조건형,Claude,25|157,25|157|173|183|282,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,137,조건형,Claude,83,83|84|257|88|280,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,138,조건형,Claude,84,84|280|12|257|16,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,139,조건형,Claude,89,89|135|130|86|88,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,140,조건형,Claude,217,217|247|192|215|216,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,141,조건형,Claude,270|74,270|74|69|187|6,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,142,조건형,Claude,271,271|6|202|69|212,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,143,조건형,Claude,286,286|285|283|282|287,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,144,조건형,Claude,98,98|104|105|103|101,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,145,일상표현,Claude,75,75|69|62|64|274,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,146,일상표현,Claude,76,76|200|70|202|69,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,147,일상표현,Claude,66,66|62|9|64|63,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,148,일상표현,Claude,274,274|75|13|268|69,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,149,일상표현,Claude,275,275|277|276|81|77,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,150,일상표현,Claude,267,267|9|139|143|100,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,151,일상표현,Claude,204,204|53|205|31|213,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,152,일상표현,Claude,38,38|48|282|261|165,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/bge-m3,sentence,634,local,BAAI/bge-m3,title_body,5,153,일상표현,Claude,273,273|67|278|267|54,1,1,1

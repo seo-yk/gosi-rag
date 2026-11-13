@@ -51,9 +51,9 @@ def test_openai_embedder_rejects_empty_input() -> None:
         embedder.embed([])
 
 
-def test_local_embedder_prefixes_inputs_by_role() -> None:
+def test_local_embedder_prefixes_inputs_by_role_for_e5() -> None:
     model = FakeSentenceTransformer()
-    embedder = LocalEmbedder(model_name="fake-model", model=model)
+    embedder = LocalEmbedder(model_name="intfloat/multilingual-e5-small", model=model)
 
     vectors = embedder.embed(["질문입니다"], role="query")
 
@@ -65,6 +65,16 @@ def test_local_embedder_prefixes_inputs_by_role() -> None:
         "normalize_embeddings": False,
         "show_progress_bar": False,
     }
+
+
+def test_local_embedder_does_not_prefix_non_e5_models() -> None:
+    model = FakeSentenceTransformer()
+    embedder = LocalEmbedder(model_name="nlpai-lab/KURE-v1", model=model)
+
+    embedder.embed(["질문입니다"], role="query")
+    embedder.embed(["본문입니다"], role="passage")
+
+    assert [call[0] for call in model.calls] == [["질문입니다"], ["본문입니다"]]
 
 
 def test_local_embedder_rejects_empty_input() -> None:

@@ -15,7 +15,7 @@ def test_settings_reads_required_keys_and_defaults() -> None:
     assert settings.embedding_model == "text-embedding-3-small"
     assert settings.generation_provider == "gemini"
     assert settings.generation_model == "gemini-3.5-flash"
-    assert str(settings.index_path) == "index/row/openai/title_body.faiss"
+    assert str(settings.index_path) == "index/faq_v2/text-embedding-3-small/row/openai/title_body.faiss"
 
 
 def test_settings_allows_local_provider_without_openai_key() -> None:
@@ -28,7 +28,7 @@ def test_settings_allows_local_provider_without_openai_key() -> None:
 
     assert settings.embedding_provider == "local"
     assert settings.embedding_model == "intfloat/multilingual-e5-small"
-    assert str(settings.index_path) == "index/row/local/title_body.faiss"
+    assert str(settings.index_path) == "index/faq_v2/multilingual-e5-small/row/local/title_body.faiss"
 
 
 def test_settings_supports_ollama_generation_provider() -> None:
@@ -70,3 +70,13 @@ def test_settings_rejects_missing_api_keys() -> None:
                 "GENERATION_PROVIDER": "openai",
             }
         )
+
+
+def test_settings_index_dir_follows_embedding_model_unless_overridden() -> None:
+    base = {"GEMINI_API_KEY": "gemini-key", "EMBEDDING_PROVIDER": "local"}
+
+    kure = Settings.from_mapping({**base, "EMBEDDING_MODEL": "nlpai-lab/KURE-v1", "CHUNKING_MODE": "sentence"})
+    custom = Settings.from_mapping({**base, "INDEX_DIR": "index/custom"})
+
+    assert str(kure.index_path) == "index/faq_v2/kure-v1/sentence/local/title_body.faiss"
+    assert str(custom.index_path) == "index/custom/row/local/title_body.faiss"

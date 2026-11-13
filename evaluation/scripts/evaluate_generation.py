@@ -17,8 +17,9 @@ if __package__ is None or __package__ == "":
     sys.path.append(str(Path(__file__).resolve().parents[2]))
 
 from app import Settings, build_services
+from evaluation.scripts.evalset import format_groups, read_evalset, read_out_of_scope
 from src.config import load_project_env
-from src.generation import GeneratedAnswer
+from src.generation import GeneratedAnswer, check_not_truncated, ollama_context_length
 from src.retrieval import SearchResult
 
 
@@ -169,6 +170,7 @@ class OllamaEvaluator:
             max_retries=1,
         )
         self.model = model
+        self.context_limit = ollama_context_length(base_url, model)
 
     def evaluate(self, question: str, target_answer: str, generated_answer: str, contexts: str) -> str:
         prompt = BATCH_EVALUATION_PROMPT.format(
@@ -191,11 +193,79 @@ class OllamaEvaluator:
             ],
             temperature=0,
         )
+        check_not_truncated(response, self.context_limit, f"채점 모델 {self.model}")
         return (response.choices[0].message.content or "").strip()
 
 
+OUT_OF_SCOPE_TYPE = "범위 밖"
+
+
+def _is_out_of_scope_file(path: Path) -> bool:
+    with path.open(encoding="utf-8") as file:
+        first = next((line for line in file if line.strip()), "{}")
+    return "required_faqs" not in json.loads(first)
+
+
+PARSE_RETRIES = 2
+
+
+def evaluate_with_retry(evaluator, question: str, target_answer: str, generated_answer: str, contexts: str,
+                        retries: int = PARSE_RETRIES) -> EvaluationScores:
+    """채점 결과 JSON을 읽지 못하면 다시 요청한다. 끝내 실패하면 overall='error'로 남긴다
+
+    파싱 실패를 'fail'(오답)로 세면 채점기 오류가 답변 품질로 잘못 집계된다.
+    """
+    for _ in range(retries + 1):
+        scores = parse_evaluation_json(evaluator.evaluate(question, target_answer, generated_answer, contexts))
+        if min(scores.groundedness, scores.correctness, scores.completeness) >= 0:
+            return scores
+    return EvaluationScores(scores.similarity, scores.groundedness, scores.correctness, scores.completeness,
+                            scores.unsupported_claims, "error")
+
+
+def skip_out_of_scope(items: list[T]) -> list[T]:
+    """범위 밖 문항은 자동 평가에서 뺀다(사람이 pass_rule로 판정)"""
+    kept = [item for item in items if getattr(item, "question_type", "") != OUT_OF_SCOPE_TYPE]
+    if len(kept) != len(items):
+        print(f"범위 밖 {len(items) - len(kept)}문항은 자동 평가에서 제외합니다. 직접 판정하세요.")
+    if not kept:
+        raise SystemExit("자동 평가할 문항이 없습니다.")
+    return kept
+
+
 def read_generation_questions(path: Path) -> list[GenerationQuestion]:
-    """생성 평가 질문셋 로드"""
+    """생성 평가 질문셋 로드. .jsonl은 평가셋 v1.3(본 평가셋 또는 범위 밖), .csv는 1차 실험 형식
+
+    범위 밖 문항은 기준 답변이 없다. 자동 평가 대상이 아니며, pass_rule에 따라 사람이 판정한다.
+    """
+    if path.suffix == ".jsonl" and _is_out_of_scope_file(path):
+        return [
+            GenerationQuestion(
+                question_id=str(item.id),
+                question=item.question,
+                question_type=OUT_OF_SCOPE_TYPE,
+                evaluation_intent="FAQ에 근거가 없음을 밝히는지",
+                target_answer_no="",
+                target_answer="",
+                supporting_answer_nos="",
+                notes=f"difficulty={item.difficulty}; similar_faqs={'|'.join(map(str, item.similar_faqs))}",
+            )
+            for item in read_out_of_scope(path)
+        ]
+    if path.suffix == ".jsonl":
+        return [
+            GenerationQuestion(
+                question_id=str(item.id),
+                question=item.question,
+                question_type=item.type,
+                evaluation_intent=item.intent,
+                target_answer_no=format_groups(item.required_faqs),
+                target_answer=item.reference_answer,
+                supporting_answer_nos="|".join(map(str, item.supporting_faqs)),
+                notes="",
+            )
+            for item in read_evalset(path)
+        ]
     with path.open(encoding="utf-8-sig", newline="") as file:
         rows: list[GenerationQuestion] = []
         for row in csv.DictReader(file):
@@ -214,26 +284,33 @@ def read_generation_questions(path: Path) -> list[GenerationQuestion]:
         return rows
 
 
+def _first(row: dict[str, str], *names: str) -> str:
+    for name in names:
+        if row.get(name) is not None:
+            return row[name].strip()
+    return ""
+
+
 def read_generated_answers(path: Path) -> list[GeneratedAnswerRow]:
-    """생성 결과 CSV 로드"""
+    """생성 결과 CSV 로드. 새 칼럼(id, answer, …)과 1차 실험의 옛 칼럼(question_id, generated_answer, …)을 모두 읽는다"""
     with path.open(encoding="utf-8-sig", newline="") as file:
         rows: list[GeneratedAnswerRow] = []
         for row in csv.DictReader(file):
             rows.append(
                 GeneratedAnswerRow(
-                    question_id=row["question_id"].strip(),
-                    question=row["question"].strip(),
-                    question_type=row["question_type"].strip(),
-                    evaluation_intent=row["evaluation_intent"].strip(),
-                    target_answer_no=row["target_answer_no"].strip(),
-                    target_answer=row["target_answer"].strip(),
-                    supporting_answer_nos=row.get("supporting_answer_nos", "").strip(),
-                    generation_provider=row.get("generation_provider", "").strip(),
-                    generation_model=row.get("generation_model", "").strip(),
-                    retrieved_answer_nos=row.get("retrieved_answer_nos", "").strip(),
-                    retrieved_contexts=row.get("retrieved_contexts", "").strip(),
-                    generated_answer=row["generated_answer"].strip(),
-                    notes=row.get("notes", "").strip(),
+                    question_id=_first(row, "id", "question_id"),
+                    question=_first(row, "question"),
+                    question_type=_first(row, "type", "question_type"),
+                    evaluation_intent=_first(row, "intent", "evaluation_intent"),
+                    target_answer_no=_first(row, "required_faqs", "target_answer_no"),
+                    target_answer=_first(row, "reference_answer", "target_answer"),
+                    supporting_answer_nos=_first(row, "supporting_faqs", "supporting_answer_nos"),
+                    generation_provider=_first(row, "generation_provider"),
+                    generation_model=_first(row, "model", "generation_model"),
+                    retrieved_answer_nos=_first(row, "context_faqs", "retrieved_answer_nos"),
+                    retrieved_contexts=_first(row, "context_text", "retrieved_contexts"),
+                    generated_answer=_first(row, "answer", "generated_answer"),
+                    notes=_first(row, "context_setup", "notes"),
                 )
             )
         return rows
@@ -539,7 +616,7 @@ def evaluate_generation(
     settings: GenerationEvaluationSettings,
 ) -> None:
     """질문셋 기준 생성 + 자동 평가 실행"""
-    questions = read_generation_questions(questions_path)
+    questions = skip_out_of_scope(read_generation_questions(questions_path))
     retriever, generator = build_services(settings.app_settings)
     
     evaluator = build_evaluator(settings)
@@ -557,8 +634,7 @@ def evaluate_generation(
         answer = generator.generate(item.question, results)
         contexts = render_contexts(results)
         
-        raw_evaluation_text = evaluator.evaluate(item.question, item.target_answer, answer.text, contexts)
-        evaluation_scores = parse_evaluation_json(raw_evaluation_text)
+        evaluation_scores = evaluate_with_retry(evaluator, item.question, item.target_answer, answer.text, contexts)
         
         elapsed = perf_counter() - start
         print(f" 완료! ({elapsed:.2f}초 | 판정: {evaluation_scores.overall})")
@@ -609,7 +685,7 @@ def evaluate_generated_answers(
     batch_size: int = 1,
 ) -> None:
     """생성 완료된 답변 CSV를 자동 평가만 실행"""
-    answers = read_generated_answers(answers_path)
+    answers = skip_out_of_scope(read_generated_answers(answers_path))
     existing_rows = load_existing_output_rows(output_path)
     completed_question_ids = {
         row["question_id"].strip()
@@ -655,13 +731,13 @@ def evaluate_generated_answers(
         from time import perf_counter
         start = perf_counter()
         
-        raw_evaluation_text = evaluator.evaluate(
+        evaluation_scores = evaluate_with_retry(
+            evaluator,
             item.question,
             item.target_answer,
             item.generated_answer,
             item.retrieved_contexts or "No retrieved FAQ context.",
         )
-        evaluation_scores = parse_evaluation_json(raw_evaluation_text)
         
         elapsed = perf_counter() - start
         print(f" 완료! ({elapsed:.2f}초 | 판정: {evaluation_scores.overall})")
@@ -676,7 +752,7 @@ def main() -> None:
     parser.add_argument(
         "--questions",
         type=Path,
-        default=Path("evaluation/inputs/generation_question.csv"),
+        default=Path("evaluation/evalset/evalset_v1.3.jsonl"),
     )
     parser.add_argument(
         "--answers",

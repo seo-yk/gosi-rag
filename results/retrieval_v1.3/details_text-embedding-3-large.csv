@@ -1,0 +1,445 @@
+﻿eval_set,source_csv,source_sha256,index_dir,chunking_mode,chunks,embedding_provider,embedding_model,embedding_mode,depth,id,type,written_by,required_faqs,retrieved_ids,hit_at_1,hit_at_3,hit_at_5
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,1,원문유사,본인,3,3|85|92|280|33,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,2,일상표현,본인,4|252,252|255|153|253|256,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,3,일상표현,본인,4,249|253|153|92|11,0,0,0
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,4,조건형,본인,6,271|6|47|11|212,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,5,조건형,본인,6,212|6|28|271|153,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,6,일상표현,본인,7|46,7|133|122|118|129,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,7,일상표현,본인,8,8|59|243|57|92,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,8,일상표현,본인,9|67,9|202|187|267|255,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,9,일상표현,본인,9,9|255|79|200|252,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,10,원문유사,본인,10,10|244|167|142|150,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,11,원문유사,본인,11,11|251|12|280|31,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,13,원문유사,본인,12,12|104|91|11|47,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,14,일상표현,본인,13,13|4|271|164|6,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,15,조건형,본인,13,9|268|13|202|200,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,16,조건형,본인,14,14|34|15|23|204,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,17,일상표현,본인,15,15|2|231|157|1,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,18,일상표현,본인,77,77|275|200|271|76,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,19,복수근거,본인,272|251 & 77,78|272|46|271|11,0,0,0
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,20,일상표현,본인,78,78|271|46|31|77,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,21,조건형,본인,78,78|214|46|9|272,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,22,일상표현,본인,79,79|75|271|274|268,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,23,복수근거,본인,79 & 64,63|62|65|79|64,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,24,일상표현,본인,226,226|241|95|83|225,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,25,원문유사,본인,227,235|3|243|39|227,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,26,일상표현,본인,228,228|245|164|247|210,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,27,일상표현,본인,229,229|158|230|42|10,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,28,일상표현,본인,230,230|42|238|10|206,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,29,원문유사,본인,231,231|262|44|8|202,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,30,일상표현,본인,232,232|202|71|237|233,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,31,일상표현,본인,233,233|1|239|243|232,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,32,조건형,본인,234,232|234|237|71|238,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,33,일상표현,본인,240,240|165|245|164|124,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,34,조건형,본인,241,241|245|235|10|247,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,35,일상표현,본인,242,242|133|120|281|135,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,36,원문유사,본인,243,243|232|235|245|233,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,37,원문유사,본인,244,244|10|142|169|136,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,38,원문유사,본인,247,247|218|10|51|289,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,39,일상표현,본인,248,248|129|125|122|123,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,40,일상표현,본인,249,249|253|4|132|252,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,41,일상표현,본인,250|5,5|250|254|11|271,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,42,일상표현,본인,251|272,251|11|272|79|55,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,43,일상표현,본인,276|277,276|277|279|278|263,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,44,일상표현,본인,277,277|278|263|276|279,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,45,일상표현,본인,278,278|263|277|279|53,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,46,조건형,본인,279,279|277|80|276|81,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,47,조건형,본인,280,12|280|11|253|104,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,48,일상표현,본인,281,120|281|7|118|112,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,49,원문유사,본인,288,288|211|289|11|247,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,50,원문유사,본인,289,289|223|288|222|221,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,52,복수근거,본인,78 & 272|251,78|46|271|272|31,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,53,복수근거,본인,279 & 77,279|77|275|81|80,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,54,복수근거,본인,3 & 12,12|280|3|92|11,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,55,복수근거,본인,289 & 288,289|10|288|223|211,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,56,복수근거,본인,234 & 232 & 233,233|234|243|232|210,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,57,복수근거,본인,244 & 240,10|142|244|134|169,0,0,0
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,58,복수근거,본인,249 & 4,249|253|256|132|91,0,0,0
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,60,복수근거,본인,277|276 & 278 & 279,276|279|277|278|263,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,61,복수근거,Claude,54 & 55,54|55|53|256|255,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,62,복수근거,Claude,37 & 43,34|43|36|246|37,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,63,복수근거,Claude,213 & 214,213|211|214|142|247,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,64,복수근거,Claude,90 & 93,90|93|87|86|12,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,66,복수근거,Claude,20 & 27,20|22|27|24|23,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,67,복수근거,Claude,264 & 265,265|225|264|209|80,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,68,복수근거,Claude,268 & 269,268|269|74|49|183,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,69,복수근거,Claude,222 & 223,223|222|221|219|218,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,70,복수근거,Claude,206 & 207,206|190|218|193|207,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,71,복수근거,Claude,47 & 48,48|47|186|261|46,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,72,복수근거,Claude,29 & 30,29|30|46|33|166,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,73,복수근거,Claude,81 & 82,81|279|263|82|274,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,74,복수근거,Claude,67|9 & 68,67|68|142|45|137,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,75,복수근거,Claude,71 & 72,72|53|74|272|91,0,0,0
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,76,복수근거,Claude,32 & 33,33|32|30|46|164,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,77,복수근거,Claude,122 & 128|129,128|129|248|122|124,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,78,복수근거,Claude,126 & 127,126|127|124|128|10,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,79,복수근거,Claude,132 & 133,132|133|118|134|242,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,80,복수근거,Claude,134 & 135,135|134|133|130|118,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,81,복수근거,Claude,136 & 137,136|137|139|138|67,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,82,복수근거,Claude,143 & 144,144|149|145|143|147,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,83,복수근거,Claude,166 & 167,166|167|168|154|139,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,84,복수근거,Claude,168 & 172,168|170|172|169|190,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,85,복수근거,Claude,179 & 180,179|180|186|173|183,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,86,복수근거,Claude,177 & 178,177|178|90|173|22,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,87,복수근거,Claude,191 & 192,192|191|217|289|209,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,88,복수근거,Claude,196 & 197,196|197|194|193|190,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,89,원문유사,Claude,102,102|98|105|101|103,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,90,원문유사,Claude,104,104|96|7|97|95,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,91,원문유사,Claude,105,105|103|98|96|104,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,92,원문유사,Claude,110,110|97|106|108|109,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,93,원문유사,Claude,124,124|126|129|130|122,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,94,원문유사,Claude,157,157|25|284|15|164,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,95,원문유사,Claude,158,158|85|229|51|10,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,96,원문유사,Claude,164,164|46|190|240|245,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,97,원문유사,Claude,169,169|10|134|64|95,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,98,원문유사,Claude,187|188,4|188|252|187|233,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,99,원문유사,Claude,189,189|247|220|219|225,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,100,원문유사,Claude,199,199|194|197|196|172,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,101,조건형,Claude,100,101|98|103|100|144,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,102,조건형,Claude,101,101|98|103|105|23,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,103,조건형,Claude,107,107|108|97|106|109,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,104,조건형,Claude,111|116,111|116|281|117|133,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,105,조건형,Claude,114,114|281|120|285|111,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,106,조건형,Claude,119,119|25|281|120|114,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,107,조건형,Claude,125,125|129|122|204|248,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,108,조건형,Claude,129,129|248|128|124|122,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,109,조건형,Claude,138,138|137|139|136|147,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,110,조건형,Claude,139,139|137|45|187|132,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,111,조건형,Claude,148,148|21|23|151|185,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,112,조건형,Claude,160|162,160|161|162|21|213,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,113,조건형,Claude,161,161|160|162|51|55,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,114,조건형,Claude,173,173|269|183|180|179,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,115,조건형,Claude,183,183|185|177|186|173,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,116,일상표현,Claude,103,103|101|105|98|96,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,117,일상표현,Claude,141,141|67|104|187|9,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,118,일상표현,Claude,153,153|6|212|277|4,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,119,일상표현,Claude,155,155|25|286|49|282,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,120,일상표현,Claude,162,162|161|160|159|244,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,121,일상표현,Claude,165,165|261|186|184|36,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,122,일상표현,Claude,174,174|185|261|175|183,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,123,일상표현,Claude,184,184|261|165|36|186,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,124,원문유사,Claude,2,2|1|233|18|17,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,125,원문유사,Claude,39,39|44|243|232|233,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,126,원문유사,Claude,53,53|55|54|258|59,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,127,원문유사,Claude,56,56|55|258|53|54,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,128,원문유사,Claude,61,61|88|191|219|126,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,129,원문유사,Claude,86,86|87|93|89|130,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,131,원문유사,Claude,210,210|1|227|233|245,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,132,원문유사,Claude,211,211|288|289|203|247,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,133,원문유사,Claude,225,225|241|32|95|226,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,134,원문유사,Claude,237,237|238|239|232|169,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,135,원문유사,Claude,258,258|55|54|56|79,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,136,조건형,Claude,25|157,25|157|119|52|261,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,137,조건형,Claude,83,83|85|84|280|3,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,138,조건형,Claude,84,84|85|83|130|280,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,139,조건형,Claude,89,89|87|135|130|86,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,140,조건형,Claude,217,217|289|218|222|247,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,141,조건형,Claude,270|74,270|74|268|53|79,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,142,조건형,Claude,271,271|69|275|55|53,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,143,조건형,Claude,286,286|283|261|157|175,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,144,조건형,Claude,98,98|101|103|105|104,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,145,일상표현,Claude,75,75|77|270|79|268,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,146,일상표현,Claude,76,76|77|275|200|202,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,147,일상표현,Claude,66,66|62|79|64|77,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,148,일상표현,Claude,274,274|9|275|75|79,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,149,일상표현,Claude,275,275|9|268|271|49,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,150,일상표현,Claude,267,267|9|187|139|137,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,151,일상표현,Claude,204,204|205|213|282|272,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,152,일상표현,Claude,38,38|186|165|261|184,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title,5,153,일상표현,Claude,273,273|241|252|51|277,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,1,원문유사,본인,3,3|92|85|280|83,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,2,일상표현,본인,4|252,252|255|9|153|253,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,3,일상표현,본인,4,4|249|253|11|33,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,4,조건형,본인,6,271|6|46|212|77,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,5,조건형,본인,6,6|28|271|212|153,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,6,일상표현,본인,7|46,7|135|133|122|134,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,7,일상표현,본인,8,8|59|73|54|270,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,8,일상표현,본인,9|67,9|267|141|143|144,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,9,일상표현,본인,9,9|267|255|79|200,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,10,원문유사,본인,10,45|244|10|137|67,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,11,원문유사,본인,11,11|251|272|31|46,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,13,원문유사,본인,12,12|280|91|93|47,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,14,일상표현,본인,13,13|271|28|78|164,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,15,조건형,본인,13,13|81|200|268|63,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,16,조건형,본인,14,14|204|22|15|23,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,17,일상표현,본인,15,15|11|231|8|26,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,18,일상표현,본인,77,77|275|81|200|271,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,19,복수근거,본인,272|251 & 77,78|77|272|271|46,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,20,일상표현,본인,78,78|271|77|46|272,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,21,조건형,본인,78,78|271|272|46|77,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,22,일상표현,본인,79,79|81|82|75|62,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,23,복수근거,본인,79 & 64,79|63|62|65|64,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,24,일상표현,본인,226,226|83|241|225|84,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,25,원문유사,본인,227,3|227|241|247|235,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,26,일상표현,본인,228,228|245|210|247|241,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,27,일상표현,본인,229,229|158|230|42|85,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,28,일상표현,본인,230,230|42|229|206|238,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,29,원문유사,본인,231,231|37|8|262|44,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,30,일상표현,본인,232,232|71|233|187|237,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,31,일상표현,본인,233,233|239|232|188|210,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,32,조건형,본인,234,232|234|238|233|71,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,33,일상표현,본인,240,240|165|245|164|242,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,34,조건형,본인,241,241|245|242|163|235,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,35,일상표현,본인,242,120|242|112|135|134,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,36,원문유사,본인,243,243|232|188|233|262,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,37,원문유사,본인,244,244|142|10|146|45,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,38,원문유사,본인,247,218|217|289|247|221,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,39,일상표현,본인,248,248|129|122|125|123,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,40,일상표현,본인,249,249|253|4|5|250,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,41,일상표현,본인,250|5,250|5|28|254|271,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,42,일상표현,본인,251|272,251|272|11|55|56,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,43,일상표현,본인,276|277,276|277|275|252|278,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,44,일상표현,본인,277,277|276|278|263|279,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,45,일상표현,본인,278,278|263|277|276|279,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,46,조건형,본인,279,279|80|277|276|82,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,47,조건형,본인,280,280|12|213|84|11,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,48,일상표현,본인,281,120|281|112|121|118,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,49,원문유사,본인,288,288|211|247|223|289,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,50,원문유사,본인,289,289|247|223|222|221,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,52,복수근거,본인,78 & 272|251,78|272|271|77|46,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,53,복수근거,본인,279 & 77,77|82|81|275|279,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,54,복수근거,본인,3 & 12,12|280|92|46|91,0,0,0
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,55,복수근거,본인,289 & 288,289|223|288|211|219,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,56,복수근거,본인,234 & 232 & 233,233|232|234|202|243,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,57,복수근거,본인,244 & 240,142|244|134|240|169,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,58,복수근거,본인,249 & 4,249|4|253|5|256,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,60,복수근거,본인,277|276 & 278 & 279,277|276|278|279|81,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,61,복수근거,Claude,54 & 55,54|55|46|53|212,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,62,복수근거,Claude,37 & 43,34|43|36|37|246,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,63,복수근거,Claude,213 & 214,213|214|211|289|212,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,64,복수근거,Claude,90 & 93,90|93|129|86|135,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,66,복수근거,Claude,20 & 27,20|23|22|24|27,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,67,복수근거,Claude,264 & 265,265|264|225|224|209,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,68,복수근거,Claude,268 & 269,268|269|183|49|74,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,69,복수근거,Claude,222 & 223,223|222|289|221|193,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,70,복수근거,Claude,206 & 207,206|218|190|34|207,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,71,복수근거,Claude,47 & 48,48|47|46|211|34,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,72,복수근거,Claude,29 & 30,29|30|46|28|190,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,73,복수근거,Claude,81 & 82,81|82|279|278|80,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,74,복수근거,Claude,67|9 & 68,67|9|68|142|141,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,75,복수근거,Claude,71 & 72,72|53|272|54|271,0,0,0
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,76,복수근거,Claude,32 & 33,32|33|46|31|30,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,77,복수근거,Claude,122 & 128|129,129|122|128|248|124,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,78,복수근거,Claude,126 & 127,126|127|122|124|129,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,79,복수근거,Claude,132 & 133,132|133|134|118|135,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,80,복수근거,Claude,134 & 135,135|134|133|130|89,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,81,복수근거,Claude,136 & 137,137|136|139|68|45,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,82,복수근거,Claude,143 & 144,144|149|145|143|105,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,83,복수근거,Claude,166 & 167,167|166|154|168|139,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,84,복수근거,Claude,168 & 172,168|170|169|172|190,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,85,복수근거,Claude,179 & 180,179|180|186|173|176,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,86,복수근거,Claude,177 & 178,177|178|22|183|173,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,87,복수근거,Claude,191 & 192,192|191|217|289|247,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,88,복수근거,Claude,196 & 197,196|194|197|198|190,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,89,원문유사,Claude,102,102|105|100|98|145,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,90,원문유사,Claude,104,104|7|95|105|96,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,91,원문유사,Claude,105,105|103|95|98|104,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,92,원문유사,Claude,110,110|106|108|97|109,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,93,원문유사,Claude,124,124|126|122|248|129,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,94,원문유사,Claude,157,157|25|284|49|156,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,95,원문유사,Claude,158,158|229|85|51|214,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,96,원문유사,Claude,164,164|46|240|31|245,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,97,원문유사,Claude,169,169|134|64|192|23,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,98,원문유사,Claude,187|188,188|187|92|211|4,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,99,원문유사,Claude,189,189|220|221|219|247,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,100,원문유사,Claude,199,199|197|198|206|194,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,101,조건형,Claude,100,100|101|105|103|144,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,102,조건형,Claude,101,101|105|98|103|100,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,103,조건형,Claude,107,107|108|106|97|109,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,104,조건형,Claude,111|116,111|116|118|281|114,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,105,조건형,Claude,114,114|120|281|111|118,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,106,조건형,Claude,119,119|120|114|25|46,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,107,조건형,Claude,125,125|129|122|123|248,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,108,조건형,Claude,129,129|248|122|128|124,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,109,조건형,Claude,138,138|137|167|147|125,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,110,조건형,Claude,139,139|45|148|137|146,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,111,조건형,Claude,148,148|21|146|23|149,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,112,조건형,Claude,160|162,160|161|162|173|213,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,113,조건형,Claude,161,161|160|162|229|240,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,114,조건형,Claude,173,173|269|183|205|185,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,115,조건형,Claude,183,183|177|22|173|185,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,116,일상표현,Claude,103,103|105|143|101|100,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,117,일상표현,Claude,141,141|9|67|68|142,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,118,일상표현,Claude,153,153|28|6|212|139,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,119,일상표현,Claude,155,155|25|156|286|283,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,120,일상표현,Claude,162,162|161|160|159|244,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,121,일상표현,Claude,165,165|261|186|57|184,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,122,일상표현,Claude,174,174|185|175|21|183,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,123,일상표현,Claude,184,184|261|36|186|282,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,124,원문유사,Claude,2,2|33|187|1|188,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,125,원문유사,Claude,39,39|44|232|233|95,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,126,원문유사,Claude,53,53|54|55|56|58,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,127,원문유사,Claude,56,56|54|55|59|53,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,128,원문유사,Claude,61,61|88|191|219|106,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,129,원문유사,Claude,86,86|89|93|135|122,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,131,원문유사,Claude,210,210|245|227|189|44,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,132,원문유사,Claude,211,211|288|247|289|221,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,133,원문유사,Claude,225,225|226|210|241|265,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,134,원문유사,Claude,237,237|238|232|110|210,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,135,원문유사,Claude,258,258|55|56|82|46,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,136,조건형,Claude,25|157,25|157|46|269|282,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,137,조건형,Claude,83,83|84|85|280|12,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,138,조건형,Claude,84,84|280|12|83|85,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,139,조건형,Claude,89,89|135|42|134|86,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,140,조건형,Claude,217,217|247|221|222|216,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,141,조건형,Claude,270|74,270|74|278|79|277,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,142,조건형,Claude,271,271|69|77|46|6,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,143,조건형,Claude,286,286|287|283|282|156,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,144,조건형,Claude,98,98|105|103|101|190,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,145,일상표현,Claude,75,75|79|155|77|270,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,146,일상표현,Claude,76,77|200|76|271|275,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,147,일상표현,Claude,66,66|62|79|64|81,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,148,일상표현,Claude,274,274|75|275|38|63,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,149,일상표현,Claude,275,275|277|276|112|271,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,150,일상표현,Claude,267,267|9|139|143|141,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,151,일상표현,Claude,204,204|175|205|30|125,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,152,일상표현,Claude,38,38|261|48|186|57,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,row,286,openai,text-embedding-3-large,title_body,5,153,일상표현,Claude,273,273|241|276|67|212,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,1,원문유사,본인,3,3|85|92|83|280,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,2,일상표현,본인,4|252,252|255|4|9|6,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,3,일상표현,본인,4,4|249|6|253|11,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,4,조건형,본인,6,6|271|46|212|77,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,5,조건형,본인,6,6|28|271|212|153,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,6,일상표현,본인,7|46,7|135|133|122|129,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,7,일상표현,본인,8,8|59|73|54|270,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,8,일상표현,본인,9|67,9|267|187|200|141,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,9,일상표현,본인,9,9|267|200|187|79,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,10,원문유사,본인,10,10|45|244|139|67,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,11,원문유사,본인,11,11|251|272|7|31,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,13,원문유사,본인,12,12|280|91|93|104,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,14,일상표현,본인,13,13|6|271|32|4,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,15,조건형,본인,13,13|200|63|81|268,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,16,조건형,본인,14,14|22|204|15|23,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,17,일상표현,본인,15,15|11|26|231|8,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,18,일상표현,본인,77,77|275|200|81|75,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,19,복수근거,본인,272|251 & 77,78|77|271|272|6,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,20,일상표현,본인,78,78|271|77|6|46,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,21,조건형,본인,78,78|271|6|46|272,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,22,일상표현,본인,79,79|75|81|74|82,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,23,복수근거,본인,79 & 64,79|63|62|69|200,0,0,0
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,24,일상표현,본인,226,226|241|84|83|225,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,25,원문유사,본인,227,3|227|241|247|187,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,26,일상표현,본인,228,228|245|210|164|247,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,27,일상표현,본인,229,229|85|158|230|42,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,28,일상표현,본인,230,230|42|229|35|43,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,29,원문유사,본인,231,231|37|8|262|127,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,30,일상표현,본인,232,232|71|233|188|70,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,31,일상표현,본인,233,233|239|232|188|210,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,32,조건형,본인,234,232|234|104|101|238,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,33,일상표현,본인,240,240|165|245|164|133,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,34,조건형,본인,241,241|245|187|242|43,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,35,일상표현,본인,242,242|281|120|135|114,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,36,원문유사,본인,243,243|188|232|233|59,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,37,원문유사,본인,244,244|10|142|187|146,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,38,원문유사,본인,247,218|217|289|215|247,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,39,일상표현,본인,248,248|129|125|122|123,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,40,일상표현,본인,249,249|253|4|5|132,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,41,일상표현,본인,250|5,250|5|13|4|254,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,42,일상표현,본인,251|272,251|272|11|79|55,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,43,일상표현,본인,276|277,276|277|275|252|153,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,44,일상표현,본인,277,277|276|278|81|263,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,45,일상표현,본인,278,278|263|277|276|279,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,46,조건형,본인,279,279|80|81|277|82,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,47,조건형,본인,280,280|12|46|93|84,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,48,일상표현,본인,281,281|120|112|121|7,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,49,원문유사,본인,288,288|211|247|289|223,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,50,원문유사,본인,289,289|247|223|222|221,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,52,복수근거,본인,78 & 272|251,78|272|271|77|6,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,53,복수근거,본인,279 & 77,77|81|80|275|279,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,54,복수근거,본인,3 & 12,12|280|92|46|91,0,0,0
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,55,복수근거,본인,289 & 288,289|223|288|219|211,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,56,복수근거,본인,234 & 232 & 233,233|232|234|243|188,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,57,복수근거,본인,244 & 240,10|142|187|244|134,0,0,0
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,58,복수근거,본인,249 & 4,249|4|253|6|47,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,60,복수근거,본인,277|276 & 278 & 279,277|276|278|81|279,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,61,복수근거,Claude,54 & 55,54|55|91|46|53,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,62,복수근거,Claude,37 & 43,34|43|36|37|246,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,63,복수근거,Claude,213 & 214,213|214|211|289|46,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,64,복수근거,Claude,90 & 93,90|93|86|130|12,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,66,복수근거,Claude,20 & 27,20|22|23|24|27,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,67,복수근거,Claude,264 & 265,265|264|225|224|95,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,68,복수근거,Claude,268 & 269,268|269|200|183|74,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,69,복수근거,Claude,222 & 223,223|222|289|193|221,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,70,복수근거,Claude,206 & 207,206|218|190|207|34,0,0,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,71,복수근거,Claude,47 & 48,48|47|46|12|211,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,72,복수근거,Claude,29 & 30,29|30|46|166|193,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,73,복수근거,Claude,81 & 82,81|82|279|80|278,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,74,복수근거,Claude,67|9 & 68,67|9|68|142|46,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,75,복수근거,Claude,71 & 72,72|74|53|54|81,0,0,0
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,76,복수근거,Claude,32 & 33,32|33|31|46|164,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,77,복수근거,Claude,122 & 128|129,129|122|128|248|124,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,78,복수근거,Claude,126 & 127,126|127|124|122|129,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,79,복수근거,Claude,132 & 133,132|133|134|118|135,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,80,복수근거,Claude,134 & 135,135|134|133|130|118,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,81,복수근거,Claude,136 & 137,137|139|136|9|67,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,82,복수근거,Claude,143 & 144,145|144|143|149|147,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,83,복수근거,Claude,166 & 167,167|166|154|168|139,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,84,복수근거,Claude,168 & 172,168|170|172|169|190,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,85,복수근거,Claude,179 & 180,179|180|176|173|183,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,86,복수근거,Claude,177 & 178,177|178|22|173|183,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,87,복수근거,Claude,191 & 192,192|191|217|289|247,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,88,복수근거,Claude,196 & 197,196|197|194|198|190,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,89,원문유사,Claude,102,102|100|101|105|98,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,90,원문유사,Claude,104,104|7|105|110|96,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,91,원문유사,Claude,105,105|103|104|98|26,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,92,원문유사,Claude,110,110|106|108|97|104,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,93,원문유사,Claude,124,124|126|129|122|248,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,94,원문유사,Claude,157,157|25|284|156|282,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,95,원문유사,Claude,158,158|85|229|51|214,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,96,원문유사,Claude,164,164|46|31|240|165,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,97,원문유사,Claude,169,169|134|187|64|10,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,98,원문유사,Claude,187|188,187|188|4|92|13,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,99,원문유사,Claude,189,189|220|221|247|219,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,100,원문유사,Claude,199,199|197|198|194|206,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,101,조건형,Claude,100,101|100|103|105|98,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,102,조건형,Claude,101,101|98|105|100|103,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,103,조건형,Claude,107,107|108|106|97|109,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,104,조건형,Claude,111|116,111|116|118|281|114,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,105,조건형,Claude,114,114|120|281|134|111,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,106,조건형,Claude,119,119|114|120|25|281,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,107,조건형,Claude,125,125|129|122|123|7,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,108,조건형,Claude,129,129|248|122|124|128,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,109,조건형,Claude,138,138|137|139|167|146,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,110,조건형,Claude,139,139|45|148|137|138,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,111,조건형,Claude,148,148|21|23|146|149,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,112,조건형,Claude,160|162,160|161|162|173|213,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,113,조건형,Claude,161,161|162|160|134|229,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,114,조건형,Claude,173,173|269|183|205|185,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,115,조건형,Claude,183,183|185|177|173|22,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,116,일상표현,Claude,103,103|105|101|143|100,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,117,일상표현,Claude,141,9|141|67|104|142,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,118,일상표현,Claude,153,6|153|28|212|139,0,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,119,일상표현,Claude,155,155|25|49|286|156,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,120,일상표현,Claude,162,162|161|160|198|159,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,121,일상표현,Claude,165,165|261|184|186|57,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,122,일상표현,Claude,174,174|185|175|19|181,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,123,일상표현,Claude,184,184|261|36|165|186,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,124,원문유사,Claude,2,2|187|33|18|1,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,125,원문유사,Claude,39,39|232|95|188|44,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,126,원문유사,Claude,53,53|55|54|92|59,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,127,원문유사,Claude,56,56|55|59|58|92,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,128,원문유사,Claude,61,61|88|191|126|219,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,129,원문유사,Claude,86,86|89|93|130|87,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,131,원문유사,Claude,210,210|245|227|1|189,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,132,원문유사,Claude,211,211|288|247|289|221,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,133,원문유사,Claude,225,225|95|226|210|241,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,134,원문유사,Claude,237,237|238|232|95|187,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,135,원문유사,Claude,258,258|55|82|56|54,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,136,조건형,Claude,25|157,25|157|119|156|46,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,137,조건형,Claude,83,83|84|85|280|12,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,138,조건형,Claude,84,84|280|12|83|85,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,139,조건형,Claude,89,89|135|130|87|133,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,140,조건형,Claude,217,217|216|192|215|247,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,141,조건형,Claude,270|74,270|74|6|79|278,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,142,조건형,Claude,271,271|6|69|13|77,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,143,조건형,Claude,286,286|287|283|282|157,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,144,조건형,Claude,98,98|101|105|103|104,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,145,일상표현,Claude,75,75|79|77|275|49,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,146,일상표현,Claude,76,76|77|200|275|70,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,147,일상표현,Claude,66,66|9|62|113|79,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,148,일상표현,Claude,274,274|79|75|9|13,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,149,일상표현,Claude,275,275|277|77|276|49,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,150,일상표현,Claude,267,267|9|139|143|45,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,151,일상표현,Claude,204,204|175|205|125|30,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,152,일상표현,Claude,38,38|261|48|165|186,1,1,1
+evalset_v1.3,data/faq_v2.csv,9d96b362ff63,index/faq_v2/text-embedding-3-large,sentence,634,openai,text-embedding-3-large,title_body,5,153,일상표현,Claude,273,273|67|137|241|276,1,1,1
