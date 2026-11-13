@@ -1,10 +1,11 @@
-# 진행 상황 인수인계 (2026-11-12 기준)
+# 진행 상황 인수인계 (2026-11-13 기준)
 
 다른 컴퓨터나 새 Claude 세션에서 이어서 작업하기 위한 문서다. 이 문서와 아래 링크한 문서만 읽고 이어 갈 수 있게 썼다. 문서에 없는 결정은 추측하지 말고 사용자에게 묻는다.
 
 - 브랜치: `evalset-v1.2`(원격에 푸시됨. `main`에는 아직 병합하지 않음. 이름이 내용보다 좁아 PR 때 정리 예정)
 - 태그: `experiment-v1`(1차 실험 시점), `evalset-v1.2`, `evalset-v1.3`(평가셋 동결). 태그는 폴더 이름 정리 전 경로를 가리킨다
 - 처음 받은 인수인계서: `docs/handoff_v1.2.md`
+- **설계·변경 이유 전체 기록: `docs/experiment_log.md`** (포트폴리오 재료)
 
 ## 1. 새 컴퓨터 준비
 
@@ -14,7 +15,7 @@ cd gosi-rag && git switch evalset-v1.2
 python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt
 cp .env.example .env          # OPENAI_API_KEY는 직접 입력(채팅·메신저로 옮기지 않는다)
 python src/indexing.py        # .env 기본값(bge-m3)으로 index/faq_v2/bge-m3 생성. 처음엔 모델 약 2.3GB 다운로드
-python -m pytest -q           # 67개 통과 확인
+python -m pytest -q           # 78개 통과 확인
 ```
 
 `index/`와 `output/`은 git에서 빠져 있어 새 컴퓨터에는 없다. 인덱스는 위 명령으로 다시 만든다. 검색 실험 결과는 `results/retrieval_v1.3/`에 공개본이 있다.
@@ -31,6 +32,10 @@ python -m pytest -q           # 67개 통과 확인
 | 검색 실험(작업 4의 1단계) | 임베딩 모델 4개 × 3조합 = 12조합 실행 | `docs/retrieval_pipeline.md` 9장, `results/retrieval_v1.3/` |
 | 생성 단계 검색 구성 결정 | bge-m3 + `row` + `title_body`, `TOP_K=3`(.env.example 기본값) | `docs/retrieval_pipeline.md` 9-3 |
 | 폴더·파일 이름 정리 | `handoff/` 해체, `evaluation/evalset/`, `data/faq_raw.csv` 등 | 커밋 `5035886` |
+| 생성(작업 4의 2단계) | A(gpt-5.4-mini + 검색), B(gpt-5.4-mini + 정답 근거), C(EXAONE 3.5 7.8B + 검색) 생성 완료 | `results/generation_v1.3/` |
+| 생성 파이프라인 점검 | Ollama 2,048토큰 잘림 발견 → 8K 모델·차단 장치, 채점 파싱 실패는 error로 분리 | `docs/experiment_log.md` 8장 |
+| 루브릭 v2 | 근거성 2만 합격, 그룹별 완결성, 답 회피, 길이·서식 무시, 판단 근거 기록 | `evaluation/scripts/judge_answers.py` |
+| 사람 채점지 | 블라인드 40문항(A 20 + B 20) Excel | `evaluation/judge_calibration/` |
 
 검색 결과 요약(Hit@1, 단일 그룹 111문항 기준): bge-m3 `sentence × title_body` 98.2%가 최고다. 5%p를 넘는 모델 차이는 bge-m3와 e5-small 사이 하나뿐이고, bge-m3·KURE-v1·text-embedding-3-large 사이에는 차이가 확인되지 않았다. 작성자 편향(Claude 초안 문항이 더 쉬움)의 원인은 복수근거 질문을 만든 방식의 차이다(9-1).
 
@@ -44,17 +49,13 @@ python -m pytest -q           # 67개 통과 확인
 
 ## 4. 남은 일
 
-1. **생성 단계 실행 계획(다음 할 일):** 아래를 정리해 사용자 승인을 받은 뒤 실행한다. 유료 API라서 승인 전에는 실행하지 않는다.
-   - 생성 모델: `gpt-5.4-mini`(1차와 같음)
-   - 생성 Top-K: 3만 할지, 3과 5를 비교할지
-   - 호출 수: 본 평가셋 148 + 범위 밖 10
-   - 자동 평가: Ollama `gemma3:4b`, 로컬
-   - 범위 밖 판정: 사람이 `pass_rule` 기준으로 판정(`evaluation/evalset/README.md` 채점 규칙)
-2. **생성 평가 관련 미결정:** 사전등록 경로가 FAQ마다 다르다(288·289·247). 생성 평가에서 세 경로를 모두 정답으로 볼지 사용자에게 묻는다.
-3. **결과 공개:** 생성 결과도 최종본은 `results/`에 둔다(예: `results/generation_v1.3/`).
-4. **루트 README 최종 수정:** 1차 수치를 재실험 결과로 한 번에 교체한다. 사용자가 "나중에 최종 수정"하기로 했다.
-5. **브랜치 정리와 PR:** `evalset-v1.2` 브랜치 이름 정리 후 `main`으로 PR.
-6. **개선 후보(미정):** 복수근거 질문을 하위 질문으로 나눠 검색하기, 리랭커(bge-reranker-v2-m3), 문장 청킹을 생성에 쓸 때 원래 FAQ 전체를 근거로 넘기기, 재현용 Dockerfile.
+1. **사람 채점(사용자 진행 중):** `evaluation/judge_calibration/review_sheet.xlsx`. 끝나면 `output/review_key.csv`로 조건을 맞춰 본다.
+2. **채점 모델 선정:** 4B 로컬 채점기(`gemma3-4b-ctx8k`)는 루브릭 v2를 일관되게 적용하지 못했다. 후보 채점 모델들을 같은 40문항에 돌려 사람과의 일치율로 고른다. 후보는 더 큰 로컬 모델, 다른 계열 API(키 필요)이고, OpenAI 모델은 A·B와 같은 계열이라 주의한다.
+3. **전체 채점:** 고른 채점 모델로 A·B·C 148문항씩 채점(`judge_answers.py`), 일부 문항은 반복 채점으로 일관성 확인. 필요하면 C에서 추가 사람 채점.
+4. **결과 요약:** 조건별·유형별·작성자별 합격률, 답변 길이 편향(C의 답변이 가장 김), 범위 밖 10문항 사람 판정(A·C).
+5. **미결정:** 사전등록 경로 상충 문항(38·49·50·55)의 정답 처리.
+6. **루트 README 최종 수정**과 **브랜치 정리·PR.**
+7. **개선 후보(미정):** 복수 질문을 하위 질문으로 나눠 검색, 리랭커, 문장 청킹을 생성에 쓸 때 원래 FAQ 전체를 근거로 넘기기, 재현용 Dockerfile.
 
 ## 5. 작업 방식 (사용자 선호)
 

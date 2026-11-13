@@ -53,7 +53,7 @@ gosi-rag/
 │   └── retrieval_v1.3/  # 재실험 검색 결과(공개)
 ├── archive/
 │   └── experiment-v1/   # 1차 실험 질문셋·결과 (README.md 참고)
-├── docs/                # 검색 파이프라인, 진행 상황·인수인계 기록, 2차 설계안
+├── docs/                # 설계·변경 기록(experiment_log), 검색 파이프라인, 진행 상황, 2차 설계안
 ├── tests/
 ├── output/              # 실행할 때마다 생기는 임시 결과(git 제외)
 ├── .env.example
