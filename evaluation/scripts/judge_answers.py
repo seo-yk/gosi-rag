@@ -225,6 +225,9 @@ class GeminiJudge:
                 return (response.text or "").strip()
             except (errors.ServerError, errors.ClientError) as error:
                 code = getattr(error, "code", None)
+                if code == 429 and "PerDay" in str(error):
+                    # 하루 한도는 기다려도 몇 시간 뒤에야 풀린다. 채점한 문항은 저장돼 있으니 깔끔하게 멈춘다
+                    raise SystemExit(f"Gemini 하루 요청 한도 초과({self.model}). 한도가 풀린 뒤 같은 명령으로 다시 실행하면 남은 문항만 채점합니다.")
                 if code not in (429, 500, 503) or attempt == self.max_retries:
                     raise
                 print(f"  Gemini {code}, {delay:.0f}초 후 다시 시도")
