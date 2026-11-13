@@ -373,6 +373,45 @@ v1(1차): 근거성 0~2, 정확성 0/1, 완결성 0/1. 합격은 근거성 1 이
 - 수정: 생성 답변은 마크다운을 유지하되 `~`·`$`만 문자 그대로 표시(`answer_markdown`). FAQ 원문과 제목은 일반 텍스트이므로 마크다운 특수문자를 모두 이스케이프해 원문 그대로 표시(`plain_text_markdown`). HTML은 Streamlit 기본값대로 해석하지 않는다. 테스트 4개를 추가했다.
 - 앱 확인(2026-11-13): 새 구성(bge-m3 + row + title_body, 모델 대조 장치)으로 앱이 정상 동작했다. 실제 질문(기출문제·이의제기)에서 굵게 표시는 적용되고 "3~4일"은 그대로 보였으며, 출처 FAQ는 원문 그대로 표시됐다.
 
+### 8-12. A(gpt-5.4-mini + 검색) 실패 10건 상세
+
+채점기(gemini-3.8-flash) 판정과 판단 근거, 생성 답변, 근거 FAQ 원문을 대조해 정리했다(Claude가 정리, 이 10건은 사람 채점 표본에 없었다). 필수 근거의 `|`는 "또는", 그룹은 `;`로 나눴다.
+
+| 문항 | 유형 | 필수 근거 | 검색된 FAQ(상위 3) | 빠진 근거 | 실패 내용 |
+|---|---|---|---|---|---|
+| 19 | 복수근거 | 272\|251; 77 | 31, 272, 78 | 77(지참물) | 응시표 미지참은 답했고, 지참물 부분은 "확인할 수 없다" |
+| 23 | 복수근거 | 79; 64 | 63, 65, 64 | 79(재입실 원칙) | 모든 시험에서 화장실 후 재입실이 되는 것처럼 답함(근거성 0, 정확성 0) |
+| 53 | 복수근거 | 279; 77 | 279, 256, 81 | 77(지참물) | 예비마킹은 답했고, 준비물 기준은 "확인할 수 없다" |
+| 54 | 복수근거 | 3; 12 | 12, 280, 93 | 3(자격증 확인처) | 7급 자격증 기준 시점을 제1차시험으로 잘못 답함(실제는 제2차시험), 확인처 누락 |
+| 60 | 복수근거 | 277\|276; 278; 279 | 276, 277, 279 | 278(약한 표시 OCR 미인식) | 수정액·스티커와 예비마킹은 맞게 답했고, 약하게 표시하는 경우를 빠뜨림 |
+| 62 | 복수근거 | 37; 43 | 43, 34, 36 | 37(추가합격 통지) | 예비자 순위 의미는 답했고, 추가합격 통지는 "확인할 수 없다" |
+| 77 | 복수근거 | 122; 128\|129 | 128, 7, 129 | 122(교육급여) | 확인처는 답했고, 교육급여만 받는 경우는 "확인할 수 없다" |
+| 81 | 복수근거 | 136; 137 | 136, 10, 45 | 137(같은 모집단위 내 주소 이전) | 5년 근무 제한은 답했고, 주소 이전은 "확인할 수 없다" |
+| 122 | 일상표현 | 174 | 174, 185, 175 | 없음 | 근거가 있는데 답을 피함(회피 1) |
+| 153 | 일상표현 | 273 | 273, 67, 278 | 없음 | 원문을 반대로 해석해 "바꿔도 된다"고 답함 |
+
+**검색이 필요한 FAQ를 못 가져온 8건(모두 복수근거)**
+
+- 빠진 부분을 "확인할 수 없다"고 밝힘 5건(19, 53, 62, 77, 81), 빠뜨림 1건(60), 근거 없이 틀린 내용 2건(23, 54).
+- 8건 중 6건은 모델이 근거 범위를 지켰다. 루브릭상 "확인할 수 없다"는 회피가 아니지만 그 그룹이 미충족이라 불합격이다. 즉 이 실패는 생성이 아니라 검색에서 나왔다.
+- 23·54번은 근거가 없는 부분을 일반 지식으로 채우다 틀렸다. 검색 누락이 원인이지만, 근거가 없을 때 답을 만들어 내는 생성 쪽 문제도 함께 있다.
+- 빠진 FAQ 중 77(시험 당일 지참물)이 두 번 나온다. 질문의 중심 주제(응시표, 예비마킹)에 검색이 몰려 두 번째 주제를 놓치는 패턴이다. 하위 질문으로 나눠 검색하는 후속 실험의 근거다.
+
+**필요한 FAQ가 검색됐는데도 실패한 2건**
+
+- **122번(예비군 동원훈련 불참 벌금과 임용 제한)**
+  - FAQ 174는 제목이 질문과 거의 같고, 본문은 「병역법」 제76조의 임용 제한 대상(검사 기피, 징집·소집 기피, 복무 이탈)을 나열한다.
+  - 예비군 벌금은 목록에 없으므로 "해당하지 않는다"고 답할 수 있다. 기준 답변도 이렇게 썼다.
+  - 모델은 목록을 옮긴 뒤 "FAQ에 명시되어 있지 않아 확인할 수 없다"고 답했다.
+  - 본문에 "해당하지 않는다"는 문장이 직접 있지는 않아, 나열에서 결론을 끌어내야 한다. 모델이 근거 규칙을 지나치게 보수적으로 적용한 경우다.
+  - B(같은 모델에 정답 FAQ 174만 제공)도 같은 방식으로 답을 피해 불합격했다. 검색 결과와 관계없이 이 모델이 "나열에 없음 → 해당하지 않음" 추론을 하지 않는 경우다.
+- **153번(9급 행정직 답안지 과목 순서)**
+  - FAQ 273 원문: "제1~5과목을 문제책 과목 순서대로 작성하시면 됩니다. 수험생이 답안 마킹시 문제책 과목순이 아닌 순서를 바꾸어 표기하여도, 문제책 순서대로 채점이 되므로 착오 없으시기 바랍니다."
+  - 뜻은 "순서를 바꿔 적어도 문제책 순서로 채점되니(= 오답 처리될 수 있으니) 주의하라"다.
+  - 모델은 "바꿔 표기해도 문제책 순서대로 채점된다 → 바꿔도 된다"로 읽고 "네, 가능합니다"라고 답했다. 같은 답변 끝에 "문제책 순서대로 작성하라고 안내하고 있으니 주의"를 덧붙여 앞뒤가 맞지 않는다.
+  - B(정답 FAQ 273 제공)도 "네, 가능합니다"로 같은 해석을 했는데, 채점기는 B-153을 **합격**으로 판정했다. 같은 내용의 답에 A는 불합격, B는 합격을 준 것으로, 채점기가 놓친 실패다. B 합격률 98.0%(145/148)에는 이 1건이 포함돼 있다(빼면 97.3%). 이 문항은 사람 채점 표본에 없었다.
+  - 원문 문장이 두 가지로 읽힐 수 있다는 점도 원인이다. 원본 FAQ의 표현 문제는 사전등록 경로 상충, 수정 스티커 규정 상충(A-60 메모)과 함께 데이터 한계로 기록한다.
+
 ## 9. 저장소·재현성 정리
 
 | 항목 | 내용 |
@@ -424,3 +463,98 @@ v1(1차): 근거성 0~2, 정확성 0/1, 완결성 0/1. 합격은 근거성 1 이
 - **사람 채점도 그대로 믿지 않았다.** 불일치를 채점기 탓으로 단정하지 않고, 블라인드 재검토를 설계했다(일치 문항을 섞어 같은 사람의 재채점 일관성도 확인). 재검토 전·후 일치율을 둘 다 보고한다.
 - **비용 제약 안에서 결정했다.** 무료 한도(하루 20회), 신규 사용자 모델 제한, 최소 충전액을 실측·확인하고, 자기 계열 편향 위험(OpenAI 채점기)까지 따져 선택했다.
 - **모든 결정에 출처·결정자·변경 이력을 남겼다.** `evalset_changes.csv`, 태그, manifest, 이 문서.
+
+---
+
+## 13. 로컬 실행과 다른 조합 실험 방법
+
+README에는 데모를 띄우는 Docker 방법만 남기고, 실험을 다시 돌리거나 다른 조합을 시험하는 방법은 여기에 모아 둔다. 모든 명령은 저장소 루트에서 실행한다.
+
+### 13-1. 로컬 설치
+
+```bash
+python -m venv .venv
+source .venv/bin/activate            # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+cp .env.example .env                 # API 키는 .env에 직접 입력(채팅·메신저로 옮기지 않는다)
+python -m pytest -q                  # 테스트 확인
+```
+
+- 인덱스(`index/`)와 임시 결과(`output/`)는 git에 없다. 아래 명령으로 다시 만든다.
+- 처음 인덱스를 만들 때 임베딩 모델을 내려받는다(bge-m3 약 2.3GB).
+
+### 13-2. 데모 앱
+
+```bash
+python src/indexing.py               # .env 기본값(bge-m3) → index/faq_v2/bge-m3
+python -m streamlit run app.py
+```
+
+- 검색 구성은 `.env`의 `EMBEDDING_PROVIDER`, `EMBEDDING_MODEL`, `CHUNKING_MODE`, `EMBEDDING_MODE`, `TOP_K`로 정한다. 인덱스를 만든 모델과 `EMBEDDING_MODEL`이 다르면 앱이 멈춘다.
+- 생성 모델은 `GENERATION_PROVIDER`(`openai`, `gemini`, `ollama`)와 `GENERATION_MODEL`로 정한다.
+
+### 13-3. 검색 실험
+
+임베딩 모델마다 인덱스를 만들고 평가한다. 청킹(`row`, `sentence`)과 임베딩 입력(`title`, `title_body`) 조합은 한 번에 모두 평가한다(`sentence × title`은 지원하지 않음).
+
+```bash
+EMBEDDING_PROVIDER=local EMBEDDING_MODEL=BAAI/bge-m3 python src/indexing.py
+EMBEDDING_PROVIDER=local EMBEDDING_MODEL=BAAI/bge-m3 python evaluation/scripts/evaluate_retrieval.py
+# 여러 모델 비교표: output/retrieval_comparison.{csv,md}
+python evaluation/scripts/build_retrieval_comparison.py output/retrieval_summary_<모델1>.csv output/retrieval_summary_<모델2>.csv
+```
+
+- 결과 파일: `output/retrieval_{summary,details,out_of_scope}_<모델 이름>.csv`
+- 재실험의 4개 모델 명령은 `evaluation/evalset/README.md` "실행" 절에 있다.
+- 1차 원본 데이터로 재현: `python src/indexing.py --csv data/faq_raw.csv --output index/faq_v1/<모델 이름>` 후 평가에 `--index-dir` 지정
+
+### 13-4. 생성 실험
+
+검색 구성은 `.env`(또는 명령 앞 환경변수) 값을 따른다.
+
+```bash
+# A: 검색 결과 3개를 근거로 생성
+GENERATION_PROVIDER=openai GENERATION_MODEL=gpt-5.4-mini python evaluation/scripts/generate_answers.py --output output/generated_answers_A_gpt-5.4-mini.csv
+# B: 정답 FAQ를 근거로 생성(검색 영향 제거)
+GENERATION_PROVIDER=openai GENERATION_MODEL=gpt-5.4-mini python evaluation/scripts/generate_answers.py --oracle --output output/generated_answers_B_gpt-5.4-mini_oracle.csv
+# 범위 밖 질문 10개
+python evaluation/scripts/generate_answers.py --questions evaluation/evalset/evalset_out_of_scope_v1.3.jsonl --output output/generated_answers_A_gpt-5.4-mini_out_of_scope.csv
+```
+
+- 중간에 멈추면 같은 명령을 다시 실행해 이어서 생성한다.
+- **Ollama 모델(실험 C):** 기본 컨텍스트 2,048토큰으로는 프롬프트 앞부분이 잘리므로(8-1) 8K 모델을 만들어 쓴다.
+
+  ```bash
+  ollama pull exaone3.5:7.8b
+  ollama create exaone3.5-7.8b-ctx8k -f evaluation/ollama/exaone3.5-7.8b-ctx8k.Modelfile
+  GENERATION_PROVIDER=ollama GENERATION_MODEL=exaone3.5-7.8b-ctx8k python evaluation/scripts/generate_answers.py --output output/generated_answers_C_exaone3.5-7.8b.csv
+  ```
+
+  입력이 컨텍스트 한도에 닿으면 생성을 멈추고 오류를 낸다.
+
+### 13-5. 자동 채점
+
+```bash
+python evaluation/scripts/judge_answers.py output/generated_answers_A_gpt-5.4-mini.csv --output output/judged_A.csv --judge-provider gemini
+# 반복 채점 확인(일부 문항만)
+python evaluation/scripts/judge_answers.py output/generated_answers_A_gpt-5.4-mini.csv --output output/rejudge_A.csv --judge-provider gemini --ids 1,5,9
+```
+
+- 채점 모델 기본값은 `gemini-3.8-flash`(8-7), `GEMINI_API_KEY`가 필요하다. 무료 등급은 프로젝트·모델당 하루 20회라 전체 채점에는 유료 등급이 필요하다(10장).
+- 채점 결과를 읽지 못하면 2번 다시 요청하고, 그래도 실패하면 `error`로 따로 센다(8-2).
+- 다른 채점 모델을 쓰려면 먼저 사람 채점 40문항으로 일치도를 확인한다: 같은 40문항을 채점한 뒤 `python evaluation/scripts/compare_judges.py <채점 결과 CSV들>`.
+- 범위 밖 질문 답변은 자동 채점하지 않고 사람이 판정한다(`evaluation/judge_calibration/` "범위 밖 판정").
+
+### 13-6. 다른 조합을 시험할 때
+
+| 바꾸는 것 | 방법 | 주의 |
+|---|---|---|
+| 임베딩 모델 | `EMBEDDING_MODEL`을 바꿔 13-3 실행 | 공식 사용법에 접두어가 있는 모델은 `src/indexing.py`의 `LocalEmbedder._prefix`에 추가(현재 e5만) |
+| 청킹·임베딩 입력 | `CHUNKING_MODE`, `EMBEDDING_MODE` | 새 청킹 방식은 `src/indexing.py`에 추가하고 테스트 작성 |
+| 검색 개수 | `TOP_K` | 생성 프롬프트 길이가 늘어나 Ollama 한도에 닿을 수 있음 |
+| 생성 모델 | `GENERATION_PROVIDER`, `GENERATION_MODEL` | 같은 검색 구성·프롬프트로 A 조건과 비교. 가능하면 B(`--oracle`)도 함께 돌려 검색 탓과 생성 탓을 나눈다 |
+| 생성 프롬프트 | `src/generation.py` | 프롬프트를 바꾸면 이전 결과와 직접 비교할 수 없으므로 A·B를 다시 생성 |
+
+- 결과는 먼저 `output/`에 두고, 공개할 최종 결과만 `results/<실험 이름>/`으로 옮긴다.
+- 판단 기준(148문항에서 5%p 이내면 "차이가 확인되지 않음")과 평가셋 버전(v1.3)을 바꾸지 않아야 이번 결과와 비교할 수 있다.
+- 무엇을 왜 바꿨는지와 결과를 이 문서에 새 절로 남긴다.
