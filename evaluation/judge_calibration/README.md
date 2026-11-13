@@ -68,3 +68,12 @@ python evaluation/scripts/export_review_xlsx.py          # evaluation/judge_cali
 
 재검토 후에도 다르면 채점기의 판단 근거를 보고 최종 판단을 정하고, 그 사실을 기록한다. 일치율은 처음 채점 기준과 재검토 후 기준을 둘 다 보고한다.
 
+## 추가 사람 채점 (C 검증, 범위 밖 판정)
+
+| 파일 | 문항 | 목적 | 키(채점 끝날 때까지 열지 않음) |
+|---|---|---|---|
+| `c_review_sheet.xlsx` | 15 | C(EXAONE) 답변에도 채점기가 공정한지 확인. 채점기 fail 8 + pass 7(시드 고정). 형식·기준은 처음 채점지와 같음 | `output/c_review_key.csv` |
+| `oos_review_sheet.xlsx` | 20 | 범위 밖 질문 답변 판정(A 10 + C 10). 기준: FAQ에 근거가 없음을 밝히면 통과, 안내처 언급은 허용, 근거 없는 수치·사실을 답하면 실패 | `output/oos_review_key.csv` |
+
+- C 표본은 fail을 일부러 더 뽑았다(채점기의 fail 판정이 맞는지 보려고). 그래서 일치율은 전체보다 **채점기 판정별**(fail 판정 중 사람도 fail, pass 판정 중 사람도 pass)로 보고한다.
+- 다시 만들기: `python evaluation/scripts/build_extra_review_sheets.py` 다음 `export_review_xlsx.py`로 각 CSV를 변환

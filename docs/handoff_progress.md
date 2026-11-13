@@ -50,9 +50,9 @@ python -m pytest -q           # 78개 통과 확인
 
 ## 4. 남은 일
 
-1. **전체 채점(진행 중):** `gemini-3.8-flash`(루브릭 v2.1)로 A·B·C 148문항씩. 결과는 `output/judged_*__gemini-3.8-flash.csv`. 실행: `python evaluation/scripts/judge_answers.py output/generated_answers_<조건>.csv --output output/judged_<조건>__gemini-3.8-flash.csv --judge-provider gemini`
-2. **불일치 재검토(사용자, 저녁 예정):** `evaluation/judge_calibration/rereview_sheet.xlsx` 8문항. 키는 `output/rereview_key.csv`
-3. **반복 채점 일관성:** 30문항 재채점. **C 사람 채점 15문항**(EXAONE 답변에도 채점기가 공정한지 확인)
+1. ~~전체 채점~~ 완료: A 93.2%, B 98.0%, C 69.6% pass(`results/generation_v1.3/`). 반복 채점 29/30 일치
+2. **사람 작업(사용자, 저녁 예정):** `evaluation/judge_calibration/`의 `rereview_sheet.xlsx`(8), `c_review_sheet.xlsx`(15), `oos_review_sheet.xlsx`(20). 키는 `output/*_key.csv`(채점이 끝날 때까지 열지 않음). 받으면 형식만 점검하고 일치율·범위 밖 차단 건수를 계산한다
+3. (사람 작업 결과에 따라) C 결과 해석 확정
 4. **결과 요약:** 조건별·유형별·작성자별 합격률, 답변 길이 편향(C 답변이 가장 김), 범위 밖 10문항 사람 판정(A·C)
 5. **미결정:** 사전등록 경로 상충 문항(38·49·50·55) 처리, B-66 라벨 의심(평가셋 v1.4 여부)
 6. **루트 README 최종 수정**과 **브랜치 정리·PR**
