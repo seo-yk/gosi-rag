@@ -1,0 +1,17 @@
+﻿review_no,condition,id,type,groundedness,correctness,groups_covered,completeness,unjustified_refusal,verdict,memo,judge_verdict,judge_groundedness,judge_correctness,judge_groups,judge_refusal
+1,C,10,원문유사,2,1,1,1,0,pass,,fail,0,0,0,0
+2,C,115,조건형,2,1,1,1,0,pass,,pass,2,1,1,0
+3,C,100,원문유사,2,1,1,1,0,pass,,fail,1,1,1,0
+4,C,47,조건형,2,1,1,1,0,pass,,pass,2,1,1,0
+5,C,31,일상표현,2,1,1,1,0,pass,,fail,0,0,0,1
+6,C,121,일상표현,2,1,1,1,0,pass,,pass,2,1,1,0
+7,C,118,일상표현,2,1,1,1,0,pass,,fail,1,1,1,0
+8,C,53,복수근거,2,1,1|1,1,0,pass,,fail,1,1,1|0,0
+9,C,108,조건형,2,1,1,1,0,pass,,pass,2,1,1,0
+10,C,28,일상표현,2,1,1,1,0,pass,,pass,2,1,1,0
+11,C,110,조건형,2,1,1,1,0,pass,,fail,0,0,0,0
+12,C,57,복수근거,2,1,1|1,1,0,pass,,pass,2,1,1|1,0
+13,C,125,원문유사,2,1,1,1,0,pass,,fail,1,0,1,0
+14,C,81,복수근거,0,1,1|1,1,0,fail,"대구/경북 키워드가 빠져서 응시자격 상실 여부에 대한 답변을 유보함.
+만약 제공된 근거 FAQ에 FAQ 137이 포함됐다면 정확한 답변을 했을 것으로 보임.",fail,0,0,1|0,0
+15,C,123,일상표현,2,1,1,1,0,pass,,pass,2,1,1,0

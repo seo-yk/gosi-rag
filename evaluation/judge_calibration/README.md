@@ -85,3 +85,9 @@ python evaluation/scripts/export_review_xlsx.py          # evaluation/judge_cali
 - 같은 사람 재채점: 판정 4/4 같음(세부 점수는 2/4 달라짐). 불일치 4건 중 2건은 사람이 판단을 바꿔 채점기와 같아졌고 2건(A-38, A-19)은 유지
 - gemini-3.8-flash 일치도: 처음 기준 90.0%(kappa 0.45) → 재검토 후 95.0%(kappa 0.64). 표는 `judge_comparison_rereviewed.md`
 
+## C 검증 결과
+
+- `c_review_sheet_filled.xlsx`(원본), `c_review_key.csv`(공개), `c_human_labels.csv`(사람 점수와 채점기 점수 비교)
+- 사람 pass 14·fail 1. 채점기와 판정 일치 8/15(kappa 0.12). 채점기 pass 7개는 사람도 모두 pass, 채점기 fail 8개 중 사람 fail은 1개
+- 불일치 7건의 해석(채점기가 박한가, 사람이 놓쳤는가)은 재검토 후 정한다. `docs/experiment_log.md` 8-10 참고
+
