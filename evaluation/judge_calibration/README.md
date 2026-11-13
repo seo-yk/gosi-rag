@@ -91,3 +91,9 @@ python evaluation/scripts/export_review_xlsx.py          # evaluation/judge_cali
 - 사람 pass 14·fail 1. 채점기와 판정 일치 8/15(kappa 0.12). 채점기 pass 7개는 사람도 모두 pass, 채점기 fail 8개 중 사람 fail은 1개
 - 불일치 7건의 해석(채점기가 박한가, 사람이 놓쳤는가)은 재검토 후 정한다. `docs/experiment_log.md` 8-10 참고
 
+## 범위 밖 판정 결과
+
+- `oos_review_sheet_filled.xlsx`(원본), `oos_review_key.csv`(공개), `oos_human_labels.csv`(판정)
+- **A 10/10, C 10/10 차단**(근거 없음을 밝힘 20/20, 근거 없는 수치·사실 0/20)
+- 19·20번 행은 드라이브 파일에 저장이 반영되지 않아 사용자가 채팅으로 알려 준 값을 썼다(`source` 열)
+

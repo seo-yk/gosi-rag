@@ -1,0 +1,21 @@
+﻿review_no,condition,id,question,difficulty,stated_no_evidence,unsupported_facts,verdict,memo,source
+1,A,161,9급 응시수수료는 얼마인가요?,hard,1,0,pass,,sheet
+2,A,155,운전면허 필기시험은 몇 점 이상이어야 합격인가요?,easy,1,0,pass,,sheet
+3,C,154,여권 재발급은 어디서 신청하나요?,easy,1,0,pass,,sheet
+4,C,161,9급 응시수수료는 얼마인가요?,hard,1,0,pass,,sheet
+5,A,163,시험장에 차를 가져가도 되나요? 주차할 수 있나요?,hard,1,0,pass,,sheet
+6,A,157,공무원도 육아휴직을 쓸 수 있나요? 기간은 얼마나 되나요?,medium,1,0,pass,,sheet
+7,C,160,9급 필기시험은 과목당 몇 문항이고 문항당 배점은 얼마인가요?,hard,1,0,pass,,sheet
+8,A,154,여권 재발급은 어디서 신청하나요?,easy,1,0,pass,,sheet
+9,A,162,시험실이 추우면 담요나 방석을 써도 되나요?,hard,1,0,pass,,sheet
+10,C,162,시험실이 추우면 담요나 방석을 써도 되나요?,hard,1,0,pass,,sheet
+11,C,157,공무원도 육아휴직을 쓸 수 있나요? 기간은 얼마나 되나요?,medium,1,0,pass,,sheet
+12,C,163,시험장에 차를 가져가도 되나요? 주차할 수 있나요?,hard,1,0,pass,,sheet
+13,A,160,9급 필기시험은 과목당 몇 문항이고 문항당 배점은 얼마인가요?,hard,1,0,pass,,sheet
+14,C,158,공무원으로 일하면서 주말에 다른 일을 해도 되나요?,medium,1,0,pass,,sheet
+15,C,156,9급 공무원 1호봉 월급은 얼마인가요?,medium,1,0,pass,,sheet
+16,C,159,경찰공무원 시험은 체력시험 종목이 어떻게 되나요?,medium,1,0,pass,,sheet
+17,C,155,운전면허 필기시험은 몇 점 이상이어야 합격인가요?,easy,1,0,pass,,sheet
+18,A,156,9급 공무원 1호봉 월급은 얼마인가요?,medium,1,0,pass,,sheet
+19,A,159,경찰공무원 시험은 체력시험 종목이 어떻게 되나요?,medium,1,0,pass,,chat(드라이브 파일에 미반영)
+20,A,158,공무원으로 일하면서 주말에 다른 일을 해도 되나요?,medium,1,0,pass,,chat(드라이브 파일에 미반영)
