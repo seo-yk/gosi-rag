@@ -1,4 +1,5 @@
 import os
+import re
 from math import ceil
 from time import perf_counter
 from dataclasses import dataclass
@@ -251,6 +252,27 @@ def build_metrics_data(
     )
 
 
+# Streamlit 마크다운에서 서식으로 해석되는 문자. FAQ 원문처럼 일반 텍스트를 그대로 보여 줄 때 이스케이프한다
+_MARKDOWN_SPECIAL = re.compile(r"([\\`*_{}\[\]()#+!|~$<>])")
+_LINE_START_LIST = re.compile(r"^(\s*)(-|\d+\.)(\s)", re.MULTILINE)
+
+
+def answer_markdown(text: str) -> str:
+    """생성 답변을 마크다운으로 보여 주되, 범위 표기(3~4일)와 금액($)이 서식으로 바뀌지 않게 한다
+
+    - Streamlit 마크다운은 ~ 두 개 사이를 취소선으로 바꾼다. "3~4일 … 8242~8251"처럼 범위가 두 번 나오면 핵심 정보에 줄이 그어진다
+    - $는 수식(LaTeX)으로 해석될 수 있다
+    굵게(**), 목록 같은 나머지 서식은 그대로 둔다. HTML은 Streamlit 기본값대로 해석하지 않는다
+    """
+    return re.sub(r"(?<!\\)([~$])", r"\\\1", text)
+
+
+def plain_text_markdown(text: str) -> str:
+    """일반 텍스트(FAQ 원문·제목)를 서식 없이 원문 그대로 보이게 마크다운 특수문자를 모두 이스케이프한다"""
+    escaped = _MARKDOWN_SPECIAL.sub(r"\\\1", text)
+    return _LINE_START_LIST.sub(lambda m: m.group(1) + m.group(2).replace("-", "\\-").replace(".", "\\.") + m.group(3), escaped)
+
+
 def render_metrics(metrics: MetricsData) -> None:
     """답변별 메트릭 표시"""
     columns = st.columns(5)
@@ -358,7 +380,7 @@ def main() -> None:
 
         st.subheader("답변")
         if answer.text:
-            st.write(answer.text)
+            st.markdown(answer_markdown(answer.text))
         if generation_notice:
             st.warning(generation_notice)
         if generation_error_detail:
@@ -368,9 +390,9 @@ def main() -> None:
         for source in answer.sources:
             document = source.document
             with st.expander(
-                f"FAQ {document.resolved_row_id} · {document.title} · 유사도 {source.score:.3f}"
+                f"FAQ {document.resolved_row_id} · {plain_text_markdown(document.title)} · 유사도 {source.score:.3f}"
             ):
-                st.write(document.body)
+                st.markdown(plain_text_markdown(document.body))
 
 
 if __name__ == "__main__":
