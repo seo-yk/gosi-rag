@@ -23,7 +23,7 @@
 
 - 파일: `judged_<조건>__gemini-3.8-flash.csv` (칼럼: id, model, context_setup, judge_model, groundedness, correctness, groups_covered, completeness, unjustified_refusal, verdict, reason)
 - 반복 채점(조건별 무작위 10문항, 30문항): 판정 29/30 같음, 모든 점수 28/30 같음(`rejudge_*.csv`)
-- 채점기 한계: 사람 채점 40문항 기준 판정 일치 90%, kappa 0.45, 사람보다 pass를 더 주는 경향(채점기 92.5% 대 사람 87.5%). C 답변에 대한 사람 검증은 별도로 진행
+- 채점기 신뢰도(사람 기준): A·B 40문항 판정 일치 90.0%(kappa 0.45) → 불일치 재검토 후 95.0%(kappa 0.64). C 15문항 8/15(kappa 0.12) → 재검토 후 14/15(kappa 0.87). C 보정 추정 합격률 약 73.4%(채점기 69.6%와 차이 확인 안 됨)
 - 토큰 사용(444문항): 입력 약 61.8만, 출력 약 4.1만, 생각 약 12.6만
 
 ## 범위 밖 질문 차단 (사람 판정)

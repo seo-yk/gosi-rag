@@ -1,0 +1,19 @@
+﻿review_no,id,type,first_verdict,judge_verdict,final_groundedness,final_correctness,final_groups_covered,final_completeness,final_unjustified_refusal,final_verdict,decision,adjudication_memo
+1,10,원문유사,pass,fail,0,0,0,0,0,fail,채점기 의견 반영,
+2,115,조건형,pass,pass,2,1,1,1,0,pass,(불일치 아님),
+3,100,원문유사,pass,fail,1,1,1,1,0,fail,둘 다 아님,"인사혁신처를 확인하라는 내용은 근거성은 떨어지지만 맞는 말임.
+제공된 FAQ를 기반으로 잘 답변한 것 같음."
+4,47,조건형,pass,pass,2,1,1,1,0,pass,(불일치 아님),
+5,31,일상표현,pass,fail,1,1,1,1,0,fail,둘 다 아님,"답변을 부당하게 거부한 것은 아님.
+다른 기관을 어떻게 해석하느냐에 따른 것으로 보임
+해당 생성기는 민간 기관까지 포함한 것 같고, 기준 답변은 공무원 중에서도 국가기관, 지방자체단체로 구분한 것 같음."
+6,121,일상표현,pass,pass,2,1,1,1,0,pass,(불일치 아님),
+7,118,일상표현,pass,fail,2,1,1,1,0,pass,둘 다 아님,"채점기 판단 근거도 맞는 말이지만, 오히려 제공된 FAQ를 활용한 답변같음. FAQ 6에서 주민등록번호와 같은 값을 변경할 땐 콜센터로 연락하라고 되어있음. (주민등록번호는 임의로 등록할 수 없어 막아놨을 것이고, 이건 관리자 권한으로 수정 가능 --> 시스템 에러가 발생했을 때도 관리자 권한으로 수정 가능할 것이다 라는 추정을 한 듯함. 꽤나 합리적임)"
+8,53,복수근거,pass,fail,1,1,1|0,0,0,fail,채점기 의견 반영,
+9,108,조건형,pass,pass,2,1,1,1,0,pass,(불일치 아님),
+10,28,일상표현,pass,pass,2,1,1,1,0,pass,(불일치 아님),
+11,110,조건형,pass,fail,0,0,0,0,0,fail,채점기 의견 반영,
+12,57,복수근거,pass,pass,2,1,1|1,1,0,pass,(불일치 아님),
+13,125,원문유사,pass,fail,1,0,1,1,0,fail,채점기 의견 반영,
+14,81,복수근거,fail,fail,0,1,1|1,1,0,fail,(불일치 아님),
+15,123,일상표현,pass,pass,2,1,1,1,0,pass,(불일치 아님),

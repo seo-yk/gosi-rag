@@ -102,4 +102,5 @@ python evaluation/scripts/export_review_xlsx.py          # evaluation/judge_cali
 - `c_adjudication_sheet.xlsx`: 불일치 7문항. 처음 사람 점수, 채점기 점수와 판단 근거(파란 칸)를 보고 최종 점수와 결정(노란 칸)을 입력
 - 채점기 의견을 본 뒤의 판단이라 처음 판정과 함께 기록하고, 두 기준으로 모두 보고한다
 - 다시 만들기: `python evaluation/scripts/build_c_adjudication_sheet.py`(openpyxl 필요)
+- **재검토 결과:** `c_adjudication_sheet_filled.xlsx`(원본), `c_human_labels_adjudicated.csv`(처음·최종 판정, 결정, 메모). 채점기 의견 반영 4, 둘 다 아님 3(최종 fail 2, pass 1). 재검토 후 사람 pass 8·fail 7, 채점기와 일치 14/15(kappa 0.87). 보정 추정 C 합격률 약 73.4%(채점기 69.6%)
 
