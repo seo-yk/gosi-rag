@@ -25,7 +25,7 @@ import re
 import sys
 from dataclasses import dataclass
 from pathlib import Path
-from time import perf_counter
+from time import perf_counter, sleep
 from typing import Any, Sequence
 
 
@@ -40,6 +40,7 @@ from src.generation import check_not_truncated, ollama_context_length
 
 RUBRIC_VERSION = "v2.1"
 DEFAULT_JUDGE_MODEL = "gemma3-4b-ctx8k"
+DEFAULT_GEMINI_JUDGE = "gemini-2.5-flash"  # 고정 버전(재현성). -latest 별칭은 쓰지 않는다
 PARSE_RETRIES = 2
 
 SYSTEM_PROMPT = (
@@ -192,6 +193,46 @@ class OllamaJudge:
         return (response.choices[0].message.content or "").strip()
 
 
+class GeminiJudge:
+    """Gemini API 채점 모델. 무료 구간 요청 한도에 맞춰 간격을 두고, 일시 오류(429·503)는 기다렸다 다시 보낸다"""
+
+    def __init__(self, api_key: str, model: str, interval_seconds: float = 4.0, max_retries: int = 6) -> None:
+        from google import genai
+
+        self._client = genai.Client(api_key=api_key)
+        self.model = model
+        self.interval_seconds = interval_seconds
+        self.max_retries = max_retries
+        self._last_call = 0.0
+
+    def complete(self, prompt: str, group_count: int | None = None) -> str:
+        from google.genai import errors, types
+
+        config = types.GenerateContentConfig(
+            system_instruction=SYSTEM_PROMPT,
+            temperature=0,
+            response_mime_type="application/json",
+            response_json_schema=response_schema(group_count)["json_schema"]["schema"] if group_count else None,
+        )
+        delay = 10.0
+        for attempt in range(self.max_retries + 1):
+            wait = self.interval_seconds - (perf_counter() - self._last_call)
+            if wait > 0:
+                sleep(wait)
+            self._last_call = perf_counter()
+            try:
+                response = self._client.models.generate_content(model=self.model, contents=prompt, config=config)
+                return (response.text or "").strip()
+            except (errors.ServerError, errors.ClientError) as error:
+                code = getattr(error, "code", None)
+                if code not in (429, 500, 503) or attempt == self.max_retries:
+                    raise
+                print(f"  Gemini {code}, {delay:.0f}초 후 다시 시도")
+                sleep(delay)
+                delay = min(delay * 2, 120.0)
+        return ""
+
+
 def judge_one(judge, item: GeneratedAnswerRow, titles: dict[int, str], retries: int = PARSE_RETRIES) -> JudgeScores | None:
     """채점하고, JSON을 읽지 못하면 다시 요청한다. 끝내 실패하면 None(verdict=error)"""
     groups = parse_groups(item.target_answer_no)
@@ -262,13 +303,21 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="생성 답변을 루브릭 v2로 자동 채점합니다.")
     parser.add_argument("answers", type=Path, help="generate_answers.py 결과 CSV")
     parser.add_argument("--output", type=Path, required=True)
-    parser.add_argument("--judge-model", default=None, help=f"기본값 JUDGE_MODEL 또는 {DEFAULT_JUDGE_MODEL}")
+    parser.add_argument("--judge-provider", choices=["ollama", "gemini"], default="ollama")
+    parser.add_argument("--judge-model", default=None,
+                        help=f"기본값: ollama는 JUDGE_MODEL 또는 {DEFAULT_JUDGE_MODEL}, gemini는 {DEFAULT_GEMINI_JUDGE}")
     parser.add_argument("--ids", default=None, help="일부 문항만 채점(쉼표 구분). 반복 채점 확인용")
     args = parser.parse_args()
 
     load_project_env()
-    base_url = os.environ.get("OLLAMA_BASE_URL", "http://localhost:11434/v1").strip()
-    judge = OllamaJudge(base_url, args.judge_model or os.environ.get("JUDGE_MODEL") or DEFAULT_JUDGE_MODEL)
+    if args.judge_provider == "gemini":
+        api_key = os.environ.get("GEMINI_API_KEY", "").strip()
+        if not api_key:
+            raise SystemExit("GEMINI_API_KEY가 필요합니다(.env).")
+        judge = GeminiJudge(api_key, args.judge_model or DEFAULT_GEMINI_JUDGE)
+    else:
+        base_url = os.environ.get("OLLAMA_BASE_URL", "http://localhost:11434/v1").strip()
+        judge = OllamaJudge(base_url, args.judge_model or os.environ.get("JUDGE_MODEL") or DEFAULT_JUDGE_MODEL)
     only_ids = set(args.ids.split(",")) if args.ids else None
     judge_answers(args.answers, args.output, judge, only_ids=only_ids)
 
