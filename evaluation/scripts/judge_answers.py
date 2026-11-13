@@ -40,7 +40,7 @@ from src.generation import check_not_truncated, ollama_context_length
 
 RUBRIC_VERSION = "v2.1"
 DEFAULT_JUDGE_MODEL = "gemma3-4b-ctx8k"
-DEFAULT_GEMINI_JUDGE = "gemini-2.5-flash"  # 고정 버전(재현성). -latest 별칭은 쓰지 않는다
+DEFAULT_GEMINI_JUDGE = "gemini-3.8-flash"  # 고정 버전(재현성). -latest 별칭은 쓰지 않는다. 2.5-flash는 신규 사용자에게 막힘(2026-11-13)
 PARSE_RETRIES = 2
 
 SYSTEM_PROMPT = (
@@ -196,7 +196,7 @@ class OllamaJudge:
 class GeminiJudge:
     """Gemini API 채점 모델. 무료 구간 요청 한도에 맞춰 간격을 두고, 일시 오류(429·503)는 기다렸다 다시 보낸다"""
 
-    def __init__(self, api_key: str, model: str, interval_seconds: float = 4.0, max_retries: int = 6) -> None:
+    def __init__(self, api_key: str, model: str, interval_seconds: float = 1.0, max_retries: int = 6) -> None:
         from google import genai
 
         self._client = genai.Client(api_key=api_key)
@@ -204,6 +204,7 @@ class GeminiJudge:
         self.interval_seconds = interval_seconds
         self.max_retries = max_retries
         self._last_call = 0.0
+        self.usage = {"calls": 0, "prompt": 0, "output": 0, "thinking": 0}  # 비용 추정용 토큰 집계
 
     def complete(self, prompt: str, group_count: int | None = None) -> str:
         from google.genai import errors, types
@@ -222,6 +223,11 @@ class GeminiJudge:
             self._last_call = perf_counter()
             try:
                 response = self._client.models.generate_content(model=self.model, contents=prompt, config=config)
+                meta = response.usage_metadata
+                self.usage["calls"] += 1
+                self.usage["prompt"] += getattr(meta, "prompt_token_count", 0) or 0
+                self.usage["output"] += getattr(meta, "candidates_token_count", 0) or 0
+                self.usage["thinking"] += getattr(meta, "thoughts_token_count", 0) or 0
                 return (response.text or "").strip()
             except (errors.ServerError, errors.ClientError) as error:
                 code = getattr(error, "code", None)
@@ -323,6 +329,9 @@ def main() -> None:
         judge = OllamaJudge(base_url, args.judge_model or os.environ.get("JUDGE_MODEL") or DEFAULT_JUDGE_MODEL)
     only_ids = set(args.ids.split(",")) if args.ids else None
     judge_answers(args.answers, args.output, judge, only_ids=only_ids)
+    if getattr(judge, "usage", None):
+        u = judge.usage
+        print(f"토큰 사용: 호출 {u['calls']}, 입력 {u['prompt']}, 출력 {u['output']}, 생각 {u['thinking']}")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,21 @@
+﻿id,model,context_setup,judge_model,groundedness,correctness,groups_covered,completeness,unjustified_refusal,verdict,reason
+8,gpt-5.4-mini,oracle: data/faq_v2.csv,gemini-3.7-flash (rubric v2.1),2,1,1,1,0,pass,"The candidate answer accurately addresses the question based on FAQ 9, confirming that candidates can apply for an exam location different from where they live regardless of residence."
+34,gpt-5.4-mini,oracle: data/faq_v2.csv,gemini-3.7-flash (rubric v2.1),2,1,1,1,0,pass,"후보 답변은 FAQ 241의 내용을 충실히 반영하여 경채와 공채의 시험과목이 다르게 규정되어 있으며, 공고문 확인이 필요함을 정확하게 안내했습니다."
+39,gpt-5.4-mini,oracle: data/faq_v2.csv,gemini-3.7-flash (rubric v2.1),2,1,1,1,0,pass,후보 답변은 FAQ 맥락에 기반하여 기초생활수급자의 응시수수료 면제 여부와 면제 대상 확인 방법에 대해 정확하게 답변하고 있습니다.
+44,gpt-5.4-mini,oracle: data/faq_v2.csv,gemini-3.7-flash (rubric v2.1),2,1,1,1,0,pass,후보 답변은 FAQ 277의 내용을 정확하게 반영하여 새 답안지를 반드시 받을 필요 없이 수정테이프로 수정할 수 있다는 점과 관련 유의사항을 모두 올바르게 설명했습니다.
+50,gpt-5.4-mini,oracle: data/faq_v2.csv,gemini-3.7-flash (rubric v2.1),2,1,1,1,0,pass,"The candidate answer accurately describes the recognition period for the English language proficiency test and states that submitting score reports is generally not required unless verification fails, directly matching the FAQ context."
+55,gpt-5.4-mini,oracle: data/faq_v2.csv,gemini-3.7-flash (rubric v2.1),2,1,1|1,1,0,pass,"후보 답변은 영어성적 사전등록 위치 및 인정 기준, 성적표 별도 제출 여부 등 질문의 모든 항목에 대해 제공된 FAQ에 기반하여 정확하게 설명하고 있습니다."
+66,gpt-5.4-mini,oracle: data/faq_v2.csv,gemini-3.7-flash (rubric v2.1),2,1,1|1,1,0,pass,후보 답변은 FAQ의 내용을 바탕으로 무조건 승인되는 것이 아니라는 점과 임용유예 기간 중 휴학 시 유예 사유가 소멸될 수 있다는 점을 모두 정확하게 설명하였습니다.
+79,gpt-5.4-mini,oracle: data/faq_v2.csv,gemini-3.7-flash (rubric v2.1),2,1,1|1,1,0,pass,"후보 답변은 제공된 FAQ 내용을 바탕으로 질문된 모든 항목(구분모집 대상 직렬, 장애 등급 제한 여부, 접수 후 등록 취소 시 응시자격 유지 여부)을 정확하고 충실하게 설명하였습니다."
+80,gpt-5.4-mini,oracle: data/faq_v2.csv,gemini-3.7-flash (rubric v2.1),2,1,1|1,1,0,pass,답변은 질문에 제시된 두 가지 질문(일반 모집 응시 가능 여부 및 장애인 구분모집 시 취업지원 가점 적용 여부)을 FAQ 맥락에 기반하여 정확하고 충실하게 설명하고 있습니다.
+82,gpt-5.4-mini,oracle: data/faq_v2.csv,gemini-3.7-flash (rubric v2.1),2,1,1|1,1,0,pass,후보 답변은 두 FAQ의 내용을 충실하게 반영하여 분산 캠퍼스 및 편입 시의 출신학교 소재지 판단 기준을 정확하게 설명하고 있습니다.
+86,gpt-5.4-mini,oracle: data/faq_v2.csv,gemini-3.7-flash (rubric v2.1),2,1,1|1,1,0,pass,"The candidate answer accurately addresses both the duration of disqualification (2 years) and the exact point in time when the probation of sentence takes effect (date of final judgment), fully grounded in the provided FAQ contexts."
+95,gpt-5.4-mini,oracle: data/faq_v2.csv,gemini-3.7-flash (rubric v2.1),2,1,1,1,0,pass,FAQ 158의 내용을 정확하고 빠짐없이 반영하여 5급 공채 사회복지직렬 응시 시 자격증이 필수가 아님을 잘 설명하였습니다.
+99,gpt-5.4-mini,oracle: data/faq_v2.csv,gemini-3.7-flash (rubric v2.1),2,1,1,1,0,pass,"후보 답변은 FAQ 189의 내용을 완벽하게 반영하여 학제통합 논술시험의 도입 목적, 평가 내용 및 기출문제 확인 경로까지 정확하게 설명하고 있습니다."
+104,gpt-5.4-mini,oracle: data/faq_v2.csv,gemini-3.7-flash (rubric v2.1),2,1,1,1,0,pass,후보 답변은 FAQ의 내용을 바탕으로 확대독서기 사용 시각장애인이 축소문제지를 신청 및 제공받을 수 있는 기준과 신청 방법을 정확하고 빠짐없이 설명하였습니다.
+118,gpt-5.4-mini,oracle: data/faq_v2.csv,gemini-3.7-flash (rubric v2.1),2,1,1,1,0,pass,후보 답변은 FAQ 153의 내용에 기반하여 국가공무원채용시스템의 개인정보 수정 메뉴에서 직접 휴대폰 번호를 수정할 수 있다는 점과 필수 인적정보 변경 제한 사항을 정확히 설명하고 있습니다.
+128,gpt-5.4-mini,oracle: data/faq_v2.csv,gemini-3.7-flash (rubric v2.1),2,1,1,1,0,pass,후보 답변은 FAQ 61의 내용을 정확하게 반영하여 과목별 과락과 평균점수 과락이 동시에 적용되는 시험과 그렇지 않은 시험을 명확히 설명하였습니다.
+137,gpt-5.4-mini,oracle: data/faq_v2.csv,gemini-3.7-flash (rubric v2.1),2,1,1,1,0,pass,"The candidate answer accurately reflects the FAQ content, correctly stating that AICPA is not recognized for extra points and that only domestically acquired licenses qualify."
+139,gpt-5.4-mini,oracle: data/faq_v2.csv,gemini-3.7-flash (rubric v2.1),2,1,1,1,0,pass,답변은 선발예정인원이 3명 이하인 경우 장애인 모집을 포함해 취업지원대상자 가점이 적용되지 않는다는 점을 FAQ 89에 근거하여 정확하게 설명하고 있습니다.
+141,gpt-5.4-mini,oracle: data/faq_v2.csv,gemini-3.7-flash (rubric v2.1),2,1,1,1,0,pass,"The candidate answer accurately states based on FAQ 270 that writing on the answer sheet after the test ends results in the test being invalidated (무효처분) pursuant to Article 51, Paragraph 2 of the Public Official Appointment Examination Decree."
+146,gpt-5.4-mini,oracle: data/faq_v2.csv,gemini-3.7-flash (rubric v2.1),2,1,1,1,0,pass,"답변은 제공된 FAQ 76의 내용을 정확히 반영하여 행동요령 동영상의 명칭 및 확인 방법(국가공무원채용시스템, 유튜브)을 충실히 안내하고 있습니다."
