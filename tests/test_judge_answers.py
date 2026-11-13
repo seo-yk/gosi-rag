@@ -90,4 +90,4 @@ def test_judge_answers_skips_out_of_scope_and_resumes(tmp_path: Path) -> None:
     rows = list(csv.DictReader(output.open(encoding="utf-8-sig")))
     assert [r["id"] for r in rows] == ["1", "2"]
     assert rows[0]["verdict"] == "pass"
-    assert rows[0]["judge_model"] == "fake-judge (rubric v2)"
+    assert rows[0]["judge_model"] == "fake-judge (rubric v2.1)"

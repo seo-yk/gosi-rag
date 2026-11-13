@@ -7,11 +7,13 @@
 - 범위 밖 문항은 채점하지 않는다(사람이 판정)
 - 1차 실험의 루브릭 v1은 evaluate_generation.py에 그대로 있다
 
-루브릭 v2 요약 (자세한 설명: evaluation/evalset/README.md "생성 채점")
+루브릭 v2.1 요약 (자세한 설명: evaluation/judge_calibration/README.md)
 - 채점 모델은 판단 근거(reason)를 먼저 쓰고 점수를 낸다
 - 완결성은 평가셋의 필수 근거 그룹별로 판단한다
 - 길이·서식·말투는 무시하고, 같은 뜻의 다른 표현과 근거 FAQ에 뒷받침되는 대체 답을 인정한다
-- 근거가 있는데 답을 피하면 unjustified_refusal = 1
+- 정확성은 답변에 실제로 쓴 내용이 맞는지만 본다(빠뜨림은 그룹 충족, 회피는 회피 항목에서 본다)
+- 근거에 답이 있는 부분을 하나라도 피하면 unjustified_refusal = 1. 답을 준 뒤 덧붙인 안내는 회피가 아니다
+- v2 → v2.1(2026-11-13): "회피면 정확성 0" 규칙을 없애 세 항목이 각각 하나만 보게 했다
 - verdict(파이썬에서 계산): groundedness 2, correctness 1, 모든 그룹 충족, unjustified_refusal 0이면 pass
 """
 
@@ -36,7 +38,7 @@ from evaluation.scripts.evaluate_generation import GeneratedAnswerRow, OUT_OF_SC
 from src.config import load_project_env
 from src.generation import check_not_truncated, ollama_context_length
 
-RUBRIC_VERSION = "v2"
+RUBRIC_VERSION = "v2.1"
 DEFAULT_JUDGE_MODEL = "gemma3-4b-ctx8k"
 PARSE_RETRIES = 2
 
@@ -68,14 +70,15 @@ The answer must address every group below. A group is satisfied if the answer co
 - Paraphrases count as correct.
 - If the FAQ contexts disagree with each other, an answer that follows one of them is correct.
 - Extra information is fine if it is supported by the FAQ contexts.
-- If the FAQ contexts contain the answer but the candidate says it cannot confirm or does not answer, set unjustified_refusal = 1 and correctness = 0.
+- If the FAQ contexts contain the answer to ANY part of the question but the candidate says it cannot confirm that part or does not answer it, set unjustified_refusal = 1. Judge correctness only on what the candidate actually stated.
+- Giving the answer and then adding a pointer such as "check the official notice for details" is NOT a refusal.
 - If the FAQ contexts do not contain the needed information and the candidate says it cannot confirm, set unjustified_refusal = 0 and correctness = 0.
 
 ## Scores
 - groundedness: 2 = every claim is supported by the FAQ contexts; 1 = a minor detail is not supported; 0 = a key claim is unsupported or contradicts the contexts
-- correctness: 1 = the question is answered correctly (consistent with the reference answer, or supported by the FAQ contexts); 0 = otherwise
+- correctness: 1 = everything the candidate stated in answer to the question is correct (consistent with the reference answer, or supported by the FAQ contexts) and nothing stated is wrong; 0 = something stated is wrong, or the candidate gave no answer at all. Missing parts are judged by groups_covered, not here.
 - groups_covered: a list with one 0 or 1 per required group, in the order above
-- unjustified_refusal: 0 or 1
+- unjustified_refusal: 1 if the candidate refused or said it cannot confirm any part whose answer is in the FAQ contexts; otherwise 0
 
 Write a short reason first (1-3 sentences), then the scores. Return exactly this JSON shape:
 {"reason": "...", "groundedness": 0, "correctness": 0, "groups_covered": [0], "unjustified_refusal": 0}
