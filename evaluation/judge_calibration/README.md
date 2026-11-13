@@ -77,3 +77,11 @@ python evaluation/scripts/export_review_xlsx.py          # evaluation/judge_cali
 
 - C 표본은 fail을 일부러 더 뽑았다(채점기의 fail 판정이 맞는지 보려고). 그래서 일치율은 전체보다 **채점기 판정별**(fail 판정 중 사람도 fail, pass 판정 중 사람도 pass)로 보고한다.
 - 다시 만들기: `python evaluation/scripts/build_extra_review_sheets.py` 다음 `export_review_xlsx.py`로 각 CSV를 변환
+
+## 재검토 결과
+
+- `rereview_sheet_filled.xlsx`(원본), `rereview_key.csv`(공개), `rereview_labels.csv`(재검토 점수와 처음 판정·채점기 판정 비교)
+- `human_labels_rereviewed.csv`: 처음 사람 채점에 재검토 8문항을 반영한 결과(pass 37, fail 3). `adjudicated` 열이 `rereview`인 행이 바뀐 대상
+- 같은 사람 재채점: 판정 4/4 같음(세부 점수는 2/4 달라짐). 불일치 4건 중 2건은 사람이 판단을 바꿔 채점기와 같아졌고 2건(A-38, A-19)은 유지
+- gemini-3.8-flash 일치도: 처음 기준 90.0%(kappa 0.45) → 재검토 후 95.0%(kappa 0.64). 표는 `judge_comparison_rereviewed.md`
+
