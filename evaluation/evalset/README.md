@@ -2,7 +2,7 @@
 
 교정본 FAQ(`data/faq_v2.csv`, 286건)를 검색 대상으로 하는 단일 평가셋이다. 1차 실험의 검색용(50문항)·생성용(60문항) 평가셋을 대체한다. 1차 실험 파일은 `archive/experiment-v1/`에 있다.
 
-v1.3은 v1.2와 라벨·문구가 같고 형식만 다르다(아래 "v1.2 → v1.3"). 재실험에는 v1.3을 쓴다.
+재실험의 모든 결과는 v1.3으로 냈다. 질문, 정답 FAQ, 기준 답변은 v1.2에서 확정했고, v1.3은 같은 내용을 실험에 쓰기 편하게 파일 형식만 정리한 버전이다(아래 "v1.2 → v1.3").
 
 ## 파일
 
@@ -121,7 +121,7 @@ FAQ 데이터의 `제목`은 질문 형태이고 `본문`은 답변이다. 평�
 - 결정표 `5_기타확인` 시트의 값은 구글 시트 `검토결정표_v1.2`에서 가져왔다(2026-11-12 확인). `evaluation/evalset/v1.2/label_decisions.xlsx`에는 이 시트가 비어 있다.
 - 평가셋을 만든 원천 파일은 `evaluation/evalset/v1.2/`에 있다: `evaluation/evalset/v1.2/question_review_v1.1.xlsx`(질문·기준 답변), `evaluation/evalset/v1.2/labels_draft.jsonl`(라벨 초안), `evaluation/evalset/v1.2/label_decisions.xlsx`(결정). 이 파일들과 `evaluation/evalset/v1.2/question_edits_approved.json`은 `q001` 형식 ID를 쓴다.
 
-## v1.2 → v1.3 변경 (형식만)
+## v1.2 → v1.3 변경 (파일 형식 정리, 질문·정답은 같음)
 
 | v1.2 | v1.3 |
 |---|---|
