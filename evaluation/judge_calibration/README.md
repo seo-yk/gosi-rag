@@ -7,7 +7,9 @@
 | 파일 | 내용 |
 |---|---|
 | `review_sheet.xlsx` | 사람 채점지 40문항. `채점` 시트의 노란 칸 5개 열을 채운다. `채점 방법` 시트에 기준 요약 |
-| `output/review_key.csv` | 번호별 조건(A/B)·문항 id. **채점이 끝날 때까지 열지 않는다** |
+| `review_key.csv` | 번호별 조건(A/B)·문항 id. 채점 중에는 `output/`에만 두었고, 사람 채점이 끝난 뒤(2026-11-13) 공개 |
+| `review_sheet_filled.xlsx` | 사람이 채점을 마친 파일(원본 그대로) |
+| `human_labels.csv` | 위 파일을 키와 합친 사람 채점 결과. 열: `review_no`, `condition`, `id`, `type`, `groundedness`, `correctness`, `groups_covered`, `completeness`, `unjustified_refusal`, `verdict`, `memo`. `completeness`와 `verdict`는 입력값으로 계산 |
 
 다시 만들기(난수 시드 고정):
 
