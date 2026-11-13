@@ -97,3 +97,9 @@ python evaluation/scripts/export_review_xlsx.py          # evaluation/judge_cali
 - **A 10/10, C 10/10 차단**(근거 없음을 밝힘 20/20, 근거 없는 수치·사실 0/20)
 - 19·20번 행은 드라이브 파일에 저장이 반영되지 않아 사용자가 채팅으로 알려 준 값을 썼다(`source` 열)
 
+## C 불일치 재검토(2단계)
+
+- `c_adjudication_sheet.xlsx`: 불일치 7문항. 처음 사람 점수, 채점기 점수와 판단 근거(파란 칸)를 보고 최종 점수와 결정(노란 칸)을 입력
+- 채점기 의견을 본 뒤의 판단이라 처음 판정과 함께 기록하고, 두 기준으로 모두 보고한다
+- 다시 만들기: `python evaluation/scripts/build_c_adjudication_sheet.py`(openpyxl 필요)
+
