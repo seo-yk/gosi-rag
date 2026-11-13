@@ -1,0 +1,27 @@
+# 기본: 앱만 실행(생성 모델 OpenAI, .env에 OPENAI_API_KEY 필요)
+#   docker compose up --build
+# 로컬 생성 모델(Ollama)까지 실행: ollama 프로필
+#   docker compose --profile ollama up --build
+#   모델 준비는 README "Docker로 실행" 참고
+services:
+  app:
+    build: .
+    image: gosi-rag
+    ports:
+      - "8501:8501"
+    env_file: .env
+    environment:
+      # 프로필 ollama를 켰을 때 컨테이너 안에서 Ollama에 접속하는 주소
+      OLLAMA_BASE_URL: ${DOCKER_OLLAMA_BASE_URL:-http://ollama:11434/v1}
+
+  ollama:
+    image: ollama/ollama:0.31.1
+    profiles: ["ollama"]
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama-models:/root/.ollama
+      - ./evaluation/ollama:/modelfiles:ro
+
+volumes:
+  ollama-models:
